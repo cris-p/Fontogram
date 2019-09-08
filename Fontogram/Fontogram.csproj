@@ -48,6 +48,7 @@
     <Reference Include="PresentationFramework" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Builtin.cs" />
     <Compile Include="FgRecipe.xaml.cs">
       <DependentUpon>FgRecipe.xaml</DependentUpon>
     </Compile>

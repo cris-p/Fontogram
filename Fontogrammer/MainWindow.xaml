@@ -10,7 +10,17 @@
 
         <pgl:Fontogram
             Margin="100,100,154,100"
-            FontSizeRel="150;10;"
+            Builtin="Test1"
+            />
+
+        <pgl:Fontogram
+            Margin="10,10,455,290"
+            Builtin="Test2"
+            />
+
+        <pgl:Fontogram
+            Margin="200,10,0,290"
+            FontSizeRel="40"
             />
 
     </Grid>

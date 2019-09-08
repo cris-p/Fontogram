@@ -7,11 +7,22 @@ using System.Windows.Controls;
 namespace PergleLabs.UI
 {
 
+    public enum BuiltinFontogram
+    {
+        Test1,
+        Test2
+    }
+
+
     /// <summary>
     /// just to have them in one place ('internal' is fine)
     /// </summary>
     internal interface FontogramProperties
     {
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <value>default: 100</value>
         string FontSizeRel { set; }
     }
 
@@ -27,6 +38,15 @@ namespace PergleLabs.UI
         public Fontogram()
         {
             InitializeComponent();
+        }
+
+
+        public BuiltinFontogram Builtin
+        {
+            set
+            {
+                CreateBuiltin(value);
+            }
         }
 
 
@@ -48,8 +68,47 @@ namespace PergleLabs.UI
 
 
 
+        private void CreateBuiltin(BuiltinFontogram value)
+        {
+            if (_isBuiltIn == false)
+                StartClean();
+
+            _isBuiltIn = true;
+
+
+            switch (value)
+            {
+                case BuiltinFontogram.Test1:
+                    AddRecipes_Test1();
+                    break;
+                case BuiltinFontogram.Test2:
+                    AddRecipes_Test2();
+                    break;
+                default:
+                    AddRecipes_Default();
+                    break;
+            }
+        }
+
+        private void AddInternalRecipe(string fontSizeRel)
+        {
+            FgRecipe newRecipe = new FgRecipe();
+
+            newRecipe.FontSizeRel = fontSizeRel;
+
+            _ParentGrid.Children.Add(newRecipe);
+            // no need to deal with this._Recipes
+        }
+
+
         private FgRecipe GetOrCreateNthRecipe(int n)
         {
+            if (_isBuiltIn == true)
+                StartClean();
+
+            _isBuiltIn = false;
+
+
             // 'n' can be at most 1 past the end of the current list
             System.Diagnostics.Debug.Assert(n <= _Recipes.Count);
 
@@ -66,8 +125,18 @@ namespace PergleLabs.UI
         }
 
 
-        // kept it in sync with the control Grid's 'Children' collection
+        private void StartClean()
+        {
+            _ParentGrid.Children.Clear();
+            _Recipes.Clear();
+        }
+
+
+        // for convenience - kept it in sync with the control Grid's 'Children' collection
         private readonly List<FgRecipe> _Recipes = new List<FgRecipe>();
+
+
+        private bool? _isBuiltIn = null;
 
     }
 
