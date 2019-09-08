@@ -11,6 +11,13 @@ namespace PergleLabs.UI
     public partial class Fontogram
     {
 
+        void AddRecipes_Logo()
+        {
+            AddInternalRecipe(
+                    "80"
+                    );
+        }
+
         void AddRecipes_Default()
         {
 

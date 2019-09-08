@@ -10,7 +10,8 @@ namespace PergleLabs.UI
     public enum BuiltinFontogram
     {
         Test1,
-        Test2
+        Test2,
+        Logo
     }
 
 
@@ -38,6 +39,8 @@ namespace PergleLabs.UI
         public Fontogram()
         {
             InitializeComponent();
+
+            Builtin = BuiltinFontogram.Logo;
         }
 
 
@@ -83,6 +86,9 @@ namespace PergleLabs.UI
                     break;
                 case BuiltinFontogram.Test2:
                     AddRecipes_Test2();
+                    break;
+                case BuiltinFontogram.Logo:
+                    AddRecipes_Logo();
                     break;
                 default:
                     AddRecipes_Default();
