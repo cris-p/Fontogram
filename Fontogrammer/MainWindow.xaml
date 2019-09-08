@@ -13,7 +13,6 @@
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
 
-
         <pgl:Fontogram
             Margin="370,10,0,476"
             FontSizeRel="20"
@@ -22,6 +21,7 @@
 
         <Grid
             Grid.Column="1"
+            Name="_PreviewGrid"
             >
             
             <Grid.ColumnDefinitions>
@@ -66,24 +66,35 @@
                 Grid.ColumnSpan="3" Grid.RowSpan="3"
                 Background="#eeee"/>
 
-            <GridSplitter
+            <GridSplitter x:Name="_LeftSplitter"
                 Grid.Column="1" Grid.Row="1" Width="5" Background="Wheat"
-                HorizontalAlignment="Left" VerticalAlignment="Stretch" Margin="-2" />
+                HorizontalAlignment="Left" VerticalAlignment="Stretch" Margin="-2"
+                MouseDoubleClick="GridSplitter_MouseDoubleClick"
+                />
             <GridSplitter
                 Grid.Column="1" Grid.Row="1" Height="5" Background="Wheat"
-                HorizontalAlignment="Stretch" VerticalAlignment="Top" Margin="-2" />
+                HorizontalAlignment="Stretch" VerticalAlignment="Top" Margin="-2"
+                MouseDoubleClick="GridSplitter_MouseDoubleClick"
+                />
+
             <GridSplitter
                 Grid.Column="1" Grid.Row="1" Width="5" Background="Wheat"
-                HorizontalAlignment="Right" VerticalAlignment="Stretch" Margin="-2" />
+                HorizontalAlignment="Right" VerticalAlignment="Stretch" Margin="-2"
+                MouseDoubleClick="GridSplitter_MouseDoubleClick"
+                />
             <GridSplitter
                 Grid.Column="1" Grid.Row="1" Height="5" Background="Wheat"
-                HorizontalAlignment="Stretch" VerticalAlignment="Bottom" Margin="-2" />
+                HorizontalAlignment="Stretch" VerticalAlignment="Bottom" Margin="-2"
+                MouseDoubleClick="GridSplitter_MouseDoubleClick"
+                />
 
             <Border Grid.Row="1" Grid.Column="1"  Background="White"/>
-            <Rectangle            
-                Grid.Row="1" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
+            <Rectangle
+                Grid.Row="1" Grid.Column="1" 
+                HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
                 Stroke="#FF000000" StrokeThickness="1" StrokeDashArray="4 4"
-                                                       Margin="0"/>
+                SnapsToDevicePixels="True"
+                />
 
             <pgl:Fontogram
                 Grid.Row="1" Grid.Column="1"

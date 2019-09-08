@@ -22,6 +22,7 @@
             FontSize="{Binding FontSize}"
             >
             
+            &#xe115;
         </Label>
     </Grid>
 </UserControl>
