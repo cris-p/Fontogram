@@ -3,14 +3,14 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:PergleLabs.UI;assembly=PergleLabs.Fontogram"
+        xmlns:pgl="clr-namespace:PergleLabs.UI;assembly=PergleLabs.Fontogram"
         mc:Ignorable="d"
         Title="Fontogrammer" Height="450" Width="800">
     <Grid>
 
-        <local:Fontogram
+        <pgl:Fontogram
             Margin="100,100,154,100"
-            FontSizeRel="150"
+            FontSizeRel="150;10;"
             />
 
     </Grid>

@@ -48,7 +48,14 @@
     <Reference Include="PresentationFramework" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="FgRecipe.xaml.cs">
+      <DependentUpon>FgRecipe.xaml</DependentUpon>
+    </Compile>
     <Compile Include="XamlProps.cs" />
+    <Page Include="FgRecipe.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Fontogram.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
