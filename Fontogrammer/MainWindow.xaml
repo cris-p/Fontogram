@@ -10,7 +10,7 @@
 
         <local:Fontogram
             Margin="100,100,154,100"
-            FontSizeRel="100"
+            FontSizeRel="150"
             />
 
     </Grid>

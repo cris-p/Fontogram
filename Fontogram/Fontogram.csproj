@@ -48,6 +48,7 @@
     <Reference Include="PresentationFramework" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="XamlProps.cs" />
     <Page Include="Fontogram.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>

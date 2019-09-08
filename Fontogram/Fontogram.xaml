@@ -10,14 +10,14 @@
              >
     
     <Grid>
-        <TextBlock
-            Name="TestLabel"
+        <Label
             VerticalAlignment="Center" HorizontalAlignment="Center"
             Margin="0"
             Padding="0"
             FontFamily="Segoe MDL2 Assets"
+            FontSize="{Binding FontSize}"
             >
             
-        </TextBlock>
+        </Label>
     </Grid>
 </UserControl>
