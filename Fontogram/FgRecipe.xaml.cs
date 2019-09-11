@@ -16,25 +16,20 @@ using System.Windows.Shapes;
 namespace PergleLabs.UI
 {
 
-    public interface RecipeProperties
-    {
-        string FontSizeRel { set; }
-    }
-
 
     /// <summary>
     /// Interaction logic for FgRecipe.xaml
     /// </summary>
     internal partial class FgRecipe
         : UserControl
-        , RecipeProperties
+        , FontogramProperties   // flowing down from Fontogram
     {
 
         public FgRecipe()
         {
             InitializeComponent();
 
-            DataContext = _XamlProps;
+            DataContext = _BindingProps;
 
             this.SizeChanged += FgFormula_SizeChanged;
         }
@@ -49,8 +44,9 @@ namespace PergleLabs.UI
         private void UpdateFontSize(double controlHeight)
         {
             if (controlHeight > 0)
-                _XamlProps.FontSize = controlHeight * _fontSizeVal / 100;
+                _BindingProps.SymbolFontSize = controlHeight * _fontSizeVal / 100;
         }
+
 
         private int _fontSizeVal = 20;
         public string FontSizeRel
@@ -67,9 +63,23 @@ namespace PergleLabs.UI
             }
         }
 
+        #region Fontogram-specified Properties
 
+        public string SymbolFont { set { } }
+        public string SymbolFontWeight { set { } }
+        public string SymbolColor { set { } }
+        public string SymbolMarginRel { set { } }
+        public string SymbolText { set { } }
+        public string BackOpacity { set { } }
+        public string BackFillColor { set { } }
+        public string BackStrokeColor { set { } }
+        public string BackMarginRel { set { } }
+        public string BackStrokeThicknessRel { set { } }
+        public string BackCornerRadiusRel { set { } }
 
-        private readonly XamlProps _XamlProps = new XamlProps();
+        #endregion
+
+        private readonly RecipeBindingProps _BindingProps = new RecipeBindingProps();
 
     }
 

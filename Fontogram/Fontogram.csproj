@@ -52,7 +52,7 @@
     <Compile Include="FgRecipe.xaml.cs">
       <DependentUpon>FgRecipe.xaml</DependentUpon>
     </Compile>
-    <Compile Include="XamlProps.cs" />
+    <Compile Include="RecipeBindingProps.cs" />
     <Page Include="FgRecipe.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
