@@ -3,26 +3,86 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:pgl="clr-namespace:PergleLabs.UI;assembly=PergleLabs.Fontogram"
+        xmlns:fg="clr-namespace:PergleLabs.UI;assembly=PergleLabs.Fontogram"
         mc:Ignorable="d"
-        Title="Fontogrammer" Height="600" Width="1248">
+        Title="Fontogrammer" Height="600" Width="1248"
+        >
+    <Window.Resources>
+        <ControlTemplate
+            x:Key="rgbStar"
+            x:Name="rgbStar">
+            <Grid>
+                <Border
+            Width="100" Height="100"
+            Background="#ff00ff00" 
+            HorizontalAlignment="Center" VerticalAlignment="Center"
+            Margin="20"
+            RenderTransformOrigin="0.5,0.5" Grid.ColumnSpan="1" Grid.Column="0"
+            >
+                    <Border.RenderTransform>
+                        <TransformGroup>
+                            <RotateTransform Angle="30"/>
+                        </TransformGroup>
+                    </Border.RenderTransform>
+                </Border>
+                <Border
+                    Background="#80ff0000" 
+                    Width="100" Height="100"
+                    HorizontalAlignment="Center" VerticalAlignment="Center"
+                    >
+                </Border>
+            <Border
+                Width="100" Height="100"
+                Background="#550000ff" 
+                HorizontalAlignment="Center" VerticalAlignment="Center"
+                RenderTransformOrigin="0.5,0.5"
+                >
+                    <Border.RenderTransform>
+                        <TransformGroup>
+                            <RotateTransform Angle="60"/>
+                        </TransformGroup>
+                    </Border.RenderTransform>
+                </Border>
+            </Grid>
+        </ControlTemplate>
+    </Window.Resources>
+    
     <Grid>
-
+        
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="600"/>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
 
-        <pgl:Fontogram
-            Margin="370,10,0,476"
+        <Label
+            FontWeight="Bold"
+            HorizontalAlignment="Center" VerticalAlignment="Center"
+            FontSize="50" Margin="0,0,200,200"
+            >
+            <Label.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform ScaleY="1" ScaleX="3" CenterX="0"/>
+                    <!--<SkewTransform AngleY="-41.498" AngleX="1.032" />-->
+                    <RotateTransform Angle="0"/>
+                </TransformGroup>
+            </Label.RenderTransform> @
+        </Label>
+
+        <Control
+            HorizontalAlignment="Center" VerticalAlignment="Center"
+            Template="{StaticResource ResourceKey=rgbStar}"
+            />
+
+        <fg:Fontogram
+            Margin="370,10,0,476" Grid.ColumnSpan="2"
             />
 
 
         <Grid
-            Grid.Column="1"
+            Grid.Column="2"
             Name="_PreviewGrid"
             >
-            
+
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="1*" MinWidth="5px"/>
                 <ColumnDefinition Width="2*" MinWidth="5px"/>
@@ -36,28 +96,28 @@
 
 
 
-            <pgl:Fontogram Builtin="Test1"
+            <fg:Fontogram Builtin="Test1"
                 Grid.Row="0" Grid.Column="0" Margin="10"
                 />
-            <pgl:Fontogram
+            <fg:Fontogram Text="😀" TextAttr="" TextPosRel=""
                 Grid.Row="0" Grid.Column="1" Margin="10"
                 />
-            <pgl:Fontogram
+            <fg:Fontogram
                 Grid.Row="0" Grid.Column="2" Margin="10"
                 />
-            <pgl:Fontogram
+            <fg:Fontogram
                 Grid.Row="1" Grid.Column="0" Margin="10"
                 />
-            <pgl:Fontogram
+            <fg:Fontogram
                 Grid.Row="1" Grid.Column="2" Margin="10"
                 />
-            <pgl:Fontogram
+            <fg:Fontogram
                 Grid.Row="2" Grid.Column="0" Margin="10"
                 />
-            <pgl:Fontogram Builtin="Test2"
+            <fg:Fontogram Builtin="Test2"
                 Grid.Row="2" Grid.Column="1" Margin="10"
                 />
-            <pgl:Fontogram
+            <fg:Fontogram
                 Grid.Row="2" Grid.Column="2" Margin="10"
                 />
 
@@ -66,24 +126,28 @@
                 Background="#eeee"/>
 
             <GridSplitter
+                Panel.ZIndex="100"
                 Grid.Column="1" Grid.Row="1" Width="7" Background="#bdf"
                 HorizontalAlignment="Left" VerticalAlignment="Stretch" Margin="-2"
                 MouseDoubleClick="GridSplitter_MouseDoubleClick"
                 ToolTip="double-click -> square"
                 />
             <GridSplitter
+                Panel.ZIndex="100"
                 Grid.Column="1" Grid.Row="1" Height="7" Background="#bdf"
                 HorizontalAlignment="Stretch" VerticalAlignment="Top" Margin="-2"
                 MouseDoubleClick="GridSplitter_MouseDoubleClick"
                 ToolTip="double-click -> square"
                 />
             <GridSplitter
+                Panel.ZIndex="100"
                 Grid.Column="1" Grid.Row="1" Width="5" Background="#bdf"
                 HorizontalAlignment="Right" VerticalAlignment="Stretch" Margin="-2"
                 MouseDoubleClick="GridSplitter_MouseDoubleClick"
                 ToolTip="double-click -> square"
                 />
             <GridSplitter
+                Panel.ZIndex="100"
                 Grid.Column="1" Grid.Row="1" Height="5" Background="#bdf"
                 HorizontalAlignment="Stretch" VerticalAlignment="Bottom" Margin="-2"
                 MouseDoubleClick="GridSplitter_MouseDoubleClick"
@@ -93,14 +157,18 @@
             <Border Grid.Row="1" Grid.Column="1"  Background="White"/>
             <Rectangle
                 Grid.Row="1" Grid.Column="1" 
+                Panel.ZIndex="101"
                 HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
                 Stroke="#FF000000" StrokeThickness="1" StrokeDashArray="4 4"
                 SnapsToDevicePixels="True"
                 />
 
-            <pgl:Fontogram
+            <fg:Fontogram
                 Grid.Row="1" Grid.Column="1"
-                Builtin="Logo"/>
+                Text="😀;😀" TextAttr=",,red;" TextPosRel="50,30,30"
+                BackAttr="1,gainsboro,1,red" BackPosRel="100,100,0,0" BackCornerRadiusRel="10"
+                BackTransform="0"
+                />
 
 
         </Grid>

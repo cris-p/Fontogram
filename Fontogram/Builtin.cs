@@ -11,25 +11,10 @@ namespace PergleLabs.UI
     public partial class Fontogram
     {
 
-        const string DEF_SymbolFont = "Segoe MDL2 Assets";
-        const string DEF_SymbolFontWeight = "Normal";
-        const string DEF_SymbolColor = "Black";
-        const string DEF_SymbolMarginRel = "0,0,0,0";
-        const string DEF_SymbolText = "";   // no text
-        const string DEF_BackOpacity = "1";
-        const string DEF_BackFillColor = "Transparent"; // no backdrop
-        const string DEF_BackStrokeThicknessRel = "0";  // no border
-        const string DEF_BackStrokeColor = "Black";
-        const string DEF_BackMarginRel = "0,0,0,0";
-        const string DEF_BackCornerRadiusRel = "10,10,10,10";   // slightly rounded corners
-
-
-
-
         void AddRecipes_Logo()
         {
             AddInternalRecipe(
-                    "80"
+                    "0,0,0,0"
                     );
         }
 
@@ -37,7 +22,7 @@ namespace PergleLabs.UI
         {
 
             AddInternalRecipe(
-                    "50"
+                    "0,0,0,0"
                     );
 
         }
@@ -46,19 +31,19 @@ namespace PergleLabs.UI
         {
 
             AddInternalRecipe(
-                    "20"
+                    "0,0,0,0"
                     );
 
             AddInternalRecipe(
-                    "40"
+                    "0,0,0,0"
                     );
 
             AddInternalRecipe(
-                    "60"
+                    "0,0,0,0"
                     );
 
             AddInternalRecipe(
-                    "80"
+                    "0,0,0,0"
                     );
         }
 
@@ -66,19 +51,19 @@ namespace PergleLabs.UI
         {
 
             AddInternalRecipe(
-                    "100"
+                    "0,0,0,0"
                     );
 
             AddInternalRecipe(
-                    "95"
+                    "0,0,0,0"
                     );
 
             AddInternalRecipe(
-                    "90"
+                    "0,0,0,0"
                     );
 
             AddInternalRecipe(
-                    "85"
+                    "0,0,0,0"
                     );
         }
 

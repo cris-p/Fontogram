@@ -6,34 +6,54 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:PergleLabs.UI"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
+             d:DesignHeight="60" d:DesignWidth="60">
     <Grid>
-        <!--
-        public string SymbolFont
-        public double SymbolFontSize
-        public string SymbolFontWeight
-        public string SymbolColor
-        public string SymbolMargin
-        public string SymbolText
-        -->
+
         <Border
-            Opacity="{Binding BackOpacity}"
-            BorderThickness="{Binding BackStrokeThickness}" BorderBrush="{Binding BackStrokeColor}"
-            Background="{Binding BackFillColor}"
-            Height="{Binding BackHeight}" Width="{Binding BackWidth}"
-            CornerRadius="{Binding BackCornerRadius}"
-            Margin="{Binding BackMargin}"
+            Opacity="{Binding BackOpacity.Val}"
+            Background="{Binding BackFillColor.Val}"
+            BorderThickness="{Binding BackStrokeThickness.Val}"
+            BorderBrush="{Binding BackStrokeColor.Val}"
+            
+            Width="{Binding BackWidth.Val}" Height="{Binding BackHeight.Val}"
+            Margin="{Binding BackMargin.Val}"
+            
+            CornerRadius="{Binding BackCornerRadius.Val}"
+
             HorizontalAlignment="Center" VerticalAlignment="Center"
-            />
+            >
+            <Border.RenderTransform>
+                <TransformGroup>
+                    <RotateTransform Angle="{Binding BackRotAngle.Val}" CenterX="0" CenterY="0"/>
+                    <ScaleTransform ScaleX="{Binding BackScaleX.Val}" ScaleY="{Binding BackScaleY.Val}" CenterX="0" CenterY="0"/>
+                    <SkewTransform AngleX="{Binding BackSkewX.Val}" AngleY="{Binding BackSkewY.Val}" CenterX="0" CenterY="0" />
+                </TransformGroup>
+            </Border.RenderTransform>
+        </Border>
+        
         <Label
-            Margin="0"
+            Content="{Binding Text.Val}"
+            
+            FontFamily="{Binding TextFont.Val}"
+            FontSize="{Binding TextFontSize.Val}"
+            FontWeight="{Binding TextFontWeight.Val}"
+            Foreground="{Binding TextColor.Val}"
+            
+            Margin="{Binding TextMargin.Val}"
+
             Padding="0"
-            FontFamily="Segoe MDL2 Assets"
-            FontSize="{Binding FontSize}"
             VerticalAlignment="Center" HorizontalAlignment="Center"
             >
-            
-            &#xe115;
+            <Label.RenderTransform>
+                <TransformGroup>
+                    <RotateTransform Angle="{Binding TextRotAngle.Val}" CenterX="0" CenterY="0"/>
+                    <ScaleTransform ScaleX="{Binding TextScaleX.Val}" ScaleY="{Binding TextScaleY.Val}" CenterX="0" CenterY="0"/>
+                    <SkewTransform AngleX="{Binding TextSkewX.Val}" AngleY="{Binding TextSkewY.Val}" CenterX="0" CenterY="0"/>
+                </TransformGroup>
+            </Label.RenderTransform>
+            <!--
+            &#xe115;-->
         </Label>
+        
     </Grid>
 </UserControl>

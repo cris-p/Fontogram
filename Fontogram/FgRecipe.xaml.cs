@@ -16,10 +16,6 @@ using System.Windows.Shapes;
 namespace PergleLabs.UI
 {
 
-
-    /// <summary>
-    /// Interaction logic for FgRecipe.xaml
-    /// </summary>
     internal partial class FgRecipe
         : UserControl
         , FontogramProperties   // flowing down from Fontogram
@@ -31,53 +27,125 @@ namespace PergleLabs.UI
 
             DataContext = _BindingProps;
 
-            this.SizeChanged += FgFormula_SizeChanged;
+            this.SizeChanged += FgControl_SizeChanged;
         }
 
 
-        private void FgFormula_SizeChanged(object sender, SizeChangedEventArgs e)
+        private void FgControl_SizeChanged(object sender, SizeChangedEventArgs e)
         {
-            UpdateFontSize(e.NewSize.Height);
+            _BindingProps.OnControlSizeChanged(e.NewSize.Width, e.NewSize.Height);
         }
 
 
-        private void UpdateFontSize(double controlHeight)
+        private static void DispatchValues(string cslVals, params TranslatedProperty[] xProperties)
         {
-            if (controlHeight > 0)
-                _BindingProps.SymbolFontSize = controlHeight * _fontSizeVal / 100;
+            string[] partsIn = cslVals.Split(',').Select(part => part.Trim()).ToArray();
+
+            for (int i = 0; i < xProperties.Length; i++)
+                xProperties[i].In =
+                    partsIn.Length <= i ? null : partsIn[i];            
         }
 
 
-        private int _fontSizeVal = 20;
-        public string FontSizeRel
+        #region Fontogram-originated properties
+ 
+        public string Text
         {
             set
             {
-                try
-                {
-                    _fontSizeVal = int.Parse(value);
-
-                    UpdateFontSize(this.ActualHeight);
-                }
-                catch { }
+                _BindingProps.Text.In = value;
             }
         }
 
-        #region Fontogram-specified Properties
+        public string TextAttr
+        {
+            set
+            {
+                DispatchValues(value,
+                    _BindingProps.TextFont,
+                    _BindingProps.TextFontWeight,
+                    _BindingProps.TextColor
+                    );
+            }
+        }
 
-        public string SymbolFont { set { } }
-        public string SymbolFontWeight { set { } }
-        public string SymbolColor { set { } }
-        public string SymbolMarginRel { set { } }
-        public string SymbolText { set { } }
-        public string BackOpacity { set { } }
-        public string BackFillColor { set { } }
-        public string BackStrokeColor { set { } }
-        public string BackMarginRel { set { } }
-        public string BackStrokeThicknessRel { set { } }
-        public string BackCornerRadiusRel { set { } }
+        public string TextPosRel
+        {
+            set
+            {
+                DispatchValues(value,
+                    _BindingProps.TextFontSize,
+                    _BindingProps.TextShiftX,
+                    _BindingProps.TextShiftY
+                    );
+            }
+        }
+
+        public string TextTransform
+        {
+            set
+            {
+                DispatchValues(value,
+                    _BindingProps.TextRotAngle,
+                    _BindingProps.TextScaleX,
+                    _BindingProps.TextScaleY,
+                    _BindingProps.TextSkewX,
+                    _BindingProps.TextSkewY
+                    );
+            }
+        }
+
+
+        public string BackAttr
+        {
+            set
+            {
+                DispatchValues(value,
+                    _BindingProps.BackOpacity,
+                    _BindingProps.BackFillColor,
+                    _BindingProps.BackStrokeThickness,
+                    _BindingProps.BackStrokeColor
+                    );
+            }
+        }
+
+        public string BackPosRel
+        {
+            set
+            {
+                DispatchValues(value,
+                    _BindingProps.BackWidth,
+                    _BindingProps.BackHeight,
+                    _BindingProps.BackShiftX,
+                    _BindingProps.BackShiftY
+                    );
+            }
+        }
+
+        public string BackCornerRadiusRel
+        {
+            set
+            {
+                _BindingProps.BackCornerRadius.In = value;
+            }
+        }
+
+        public string BackTransform
+        {
+            set
+            {
+                DispatchValues(value,
+                    _BindingProps.BackRotAngle,
+                    _BindingProps.BackScaleX,
+                    _BindingProps.BackScaleY,
+                    _BindingProps.BackSkewX,
+                    _BindingProps.BackSkewY
+                    );
+            }
+        }
 
         #endregion
+
 
         private readonly RecipeBindingProps _BindingProps = new RecipeBindingProps();
 
