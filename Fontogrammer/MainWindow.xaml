@@ -166,8 +166,9 @@
             <fg:Fontogram
                 Grid.Row="1" Grid.Column="1"
                 Text="😀;😀" TextAttr=",,red;" TextPosRel="50,30,30"
-                BackAttr="1,gainsboro,1,red" BackPosRel="100,100,0,0" BackCornerRadiusRel="10"
-                BackTransform="0"
+                TextTransform="0,4,2"                
+                BackAttr="1,gainsboro,1,red" BackPosRel="100,100,20,20" BackCornerRadiusRel="10"
+                BackTransform="20"
                 />
 
 

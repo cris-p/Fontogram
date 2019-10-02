@@ -247,6 +247,15 @@ namespace PergleLabs.UI
 
         #region Fontogram properties resolved to actual control properties
 
+        #region not in Fontogram, but affected by it and/or control size
+
+        public MarginProperty TextMargin { get; }   // updated indirectly, via Shift properties
+
+        public MarginProperty BackMargin { get; }   // updated indirectly, via Shift properties
+
+        #endregion
+
+
         #region Text
 
         public TranslatedProperty Text { get; }
@@ -264,8 +273,6 @@ namespace PergleLabs.UI
         #region TextPosRel
 
         public TranslatedProperty TextFontSize { get; }
-
-        public MarginProperty TextMargin { get; }   // updated indirectly, via Shift properties
 
         public TranslatedProperty TextShiftX { get; }
         public TranslatedProperty TextShiftY { get; }
@@ -305,8 +312,6 @@ namespace PergleLabs.UI
 
         public TranslatedProperty BackWidth { get; }
         public TranslatedProperty BackHeight { get; }
-
-        public MarginProperty BackMargin { get; }   // updated indirectly, via Shift properties
 
         public TranslatedProperty BackShiftX { get; }
         public TranslatedProperty BackShiftY { get; }

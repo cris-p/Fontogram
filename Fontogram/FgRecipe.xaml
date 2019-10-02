@@ -20,13 +20,15 @@
             
             CornerRadius="{Binding BackCornerRadius.Val}"
 
-            HorizontalAlignment="Center" VerticalAlignment="Center"
+            HorizontalAlignment="Left" VerticalAlignment="Top"
+            
+            RenderTransformOrigin="0.5,0.5"
             >
             <Border.RenderTransform>
                 <TransformGroup>
-                    <RotateTransform Angle="{Binding BackRotAngle.Val}" CenterX="0" CenterY="0"/>
-                    <ScaleTransform ScaleX="{Binding BackScaleX.Val}" ScaleY="{Binding BackScaleY.Val}" CenterX="0" CenterY="0"/>
-                    <SkewTransform AngleX="{Binding BackSkewX.Val}" AngleY="{Binding BackSkewY.Val}" CenterX="0" CenterY="0" />
+                    <RotateTransform Angle="{Binding BackRotAngle.Val}" />
+                    <ScaleTransform ScaleX="{Binding BackScaleX.Val}" ScaleY="{Binding BackScaleY.Val}" />
+                    <SkewTransform AngleX="{Binding BackSkewX.Val}" AngleY="{Binding BackSkewY.Val}" />
                 </TransformGroup>
             </Border.RenderTransform>
         </Border>
@@ -42,13 +44,15 @@
             Margin="{Binding TextMargin.Val}"
 
             Padding="0"
-            VerticalAlignment="Center" HorizontalAlignment="Center"
+            HorizontalAlignment="Left" VerticalAlignment="Top"
+            
+            RenderTransformOrigin="0.5,0.5"
             >
             <Label.RenderTransform>
                 <TransformGroup>
-                    <RotateTransform Angle="{Binding TextRotAngle.Val}" CenterX="0" CenterY="0"/>
-                    <ScaleTransform ScaleX="{Binding TextScaleX.Val}" ScaleY="{Binding TextScaleY.Val}" CenterX="0" CenterY="0"/>
-                    <SkewTransform AngleX="{Binding TextSkewX.Val}" AngleY="{Binding TextSkewY.Val}" CenterX="0" CenterY="0"/>
+                    <RotateTransform Angle="{Binding TextRotAngle.Val}" />
+                    <ScaleTransform ScaleX="{Binding TextScaleX.Val}" ScaleY="{Binding TextScaleY.Val}" />
+                    <SkewTransform AngleX="{Binding TextSkewX.Val}" AngleY="{Binding TextSkewY.Val}" />
                 </TransformGroup>
             </Label.RenderTransform>
             <!--

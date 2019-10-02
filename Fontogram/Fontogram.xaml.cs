@@ -42,6 +42,9 @@ namespace PergleLabs.UI
     /// </remarks>
     internal interface FontogramProperties
     {
+
+        //string AspectRatio // "3:4"
+
         //// e.g. "Segoe UI Emoji", "Arial", "Monospace", "Wingdings 3"
         //// default "Segoe MDL2 Assets"
         //string TextFont { set; }
