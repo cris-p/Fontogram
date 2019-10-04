@@ -162,11 +162,13 @@ namespace PergleLabs.UI
         : UserControl
         , FontogramProperties
     {
+        public Grid _ParentGrid;
 
         public Fontogram()
         {
-            InitializeComponent();
+            _ParentGrid = new Grid();
 
+            this.AddChild(_ParentGrid);
 
             //Builtin = BuiltinFontogram.Logo;
         }

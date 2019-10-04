@@ -52,19 +52,18 @@
     <Compile Include="FgRecipe.xaml.cs">
       <DependentUpon>FgRecipe.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Fontogram.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="RecipeBindingProps.cs" />
     <Page Include="FgRecipe.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Fontogram.xaml">
+    <Page Include="Themes\Generic.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Compile Include="Fontogram.xaml.cs">
-      <DependentUpon>Fontogram.xaml</DependentUpon>
-      <SubType>Code</SubType>
-    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">
