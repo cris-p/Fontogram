@@ -9,14 +9,6 @@ using System.Windows.Controls;
 namespace PergleLabs.UI
 {
 
-    public enum BuiltinFontogram
-    {
-        Test1,
-        Test2,
-        Logo
-    }
-
-
     /// <summary>
     /// Properties to be used in XAML
     /// </summary>
@@ -158,13 +150,14 @@ namespace PergleLabs.UI
     /// <summary>
     /// Interaction logic for Fontogram.xaml
     /// </summary>
-    public partial class Fontogram
+    public abstract class FontogramBase<_T>
         : UserControl
         , FontogramProperties
+        where _T: System.Enum
     {
         public Grid _ParentGrid;
 
-        public Fontogram()
+        public FontogramBase()
         {
             _ParentGrid = new Grid();
 
@@ -249,32 +242,10 @@ namespace PergleLabs.UI
 
 
 
-        private void CreateBuiltin(BuiltinFontogram value)
-        {
-            if (_isBuiltIn == false)
-                StartClean();
-
-            _isBuiltIn = true;
+        protected abstract void CreateBuiltin(BuiltinFontogram value);
 
 
-            switch (value)
-            {
-                case BuiltinFontogram.Test1:
-                    AddRecipes_Test1();
-                    break;
-                case BuiltinFontogram.Test2:
-                    AddRecipes_Test2();
-                    break;
-                case BuiltinFontogram.Logo:
-                    AddRecipes_Logo();
-                    break;
-                default:
-                    AddRecipes_Default();
-                    break;
-            }
-        }
-
-        private void AddInternalRecipe(string textMarginRel)
+        protected void AddInternalRecipe(string textMarginRel)
         {
             FgRecipe newRecipe = new FgRecipe();
 
@@ -309,7 +280,7 @@ namespace PergleLabs.UI
         }
 
 
-        private void StartClean()
+        protected void StartClean()
         {
             _ParentGrid.Children.Clear();
             _Recipes.Clear();
@@ -320,7 +291,7 @@ namespace PergleLabs.UI
         private readonly List<FgRecipe> _Recipes = new List<FgRecipe>();
 
 
-        private bool? _isBuiltIn = null;
+        protected bool? _isBuiltIn = null;
 
     }
 
