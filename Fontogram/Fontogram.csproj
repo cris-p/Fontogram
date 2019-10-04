@@ -48,11 +48,11 @@
     <Reference Include="PresentationFramework" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Builtin.cs" />
+    <Compile Include="Fontogram.cs" />
     <Compile Include="FgRecipe.xaml.cs">
       <DependentUpon>FgRecipe.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Fontogram.xaml.cs">
+    <Compile Include="FontogramBase.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="RecipeBindingProps.cs" />
