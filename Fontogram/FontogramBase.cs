@@ -73,7 +73,7 @@ namespace PergleLabs.UI
         //string TextHeightRel { set; }
 
 
-        // e.g. "👍", "Abc", "!"
+        // e.g. "?", "Abc", "!"
         // default "" (no text)
         string Text { set; }
 
@@ -150,10 +150,9 @@ namespace PergleLabs.UI
     /// <summary>
     /// Interaction logic for Fontogram.xaml
     /// </summary>
-    public abstract class FontogramBase<_T>
+    public abstract class FontogramBase
         : UserControl
         , FontogramProperties
-        where _T: System.Enum
     {
         public Grid _ParentGrid;
 
@@ -294,5 +293,15 @@ namespace PergleLabs.UI
         protected bool? _isBuiltIn = null;
 
     }
+
+
+    // Can't make the UserControl one generic, because then the properties are marked as incorrect in XAML.
+    public abstract class FontogramBase<_T>
+        : FontogramBase
+        where _T: System.Enum
+    {
+
+    }
+
 
 }

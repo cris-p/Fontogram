@@ -26,7 +26,7 @@ namespace PergleLabs.UI
             if (_isBuiltIn == false)
                 StartClean();
 
-        _isBuiltIn = true;
+            _isBuiltIn = true;
 
 
             switch (value)
@@ -38,16 +38,17 @@ namespace PergleLabs.UI
                     AddRecipes_Test2();
                     break;
                 case BuiltinFontogram.Logo:
-                    AddRecipes_Logo();
+                    AddRecipes_Logo();  // 
                     break;
                 default:
                     AddRecipes_Default();
                     break;
             }
-}
+        }
 
 
-void AddRecipes_Logo()
+
+        void AddRecipes_Logo()
         {
             AddInternalRecipe(
                     "0,0,0,0"
