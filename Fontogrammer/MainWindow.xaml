@@ -186,10 +186,10 @@
             <fg:Fontogram
                 Name="fgCenter"
                 Grid.Row="1" Grid.Column="1"
-                Text="🎞;Abc;Abc" TextAttr=",,#6000;Courier New,bold,#304f;Courier New,bold,#e04f" TextPosRel="100,58,-15;70,-16,-5;70,-13,-4"
-                TextTransform="-10,2,0.5,60,-20;-13.1,0.8,1.62,-8;-13.1,0.8,1.62,-8"
-                BackAttr=",#6baa,1,#cbaa" BackPosRel="90,42,47,2" BackCornerRadiusRel="15"
-                BackTransform="-10,2,0.5,60,-20;,1.8,0.16"
+                Text="🎞|Abc|Abc" TextAttr=";;#6000|Courier New;bold;#304f|Courier New;bold;#e04f" TextPosRel="100;58;-15|70;-16;-5|70;-13;-4"
+                TextTransform="-10;2;0.5;60;-20|-13.1;0.8;1.62;-8|-13.1;0.8;1.62;-8"
+                BackAttr=";#6baa;1,0,0,1.5;#cbaa" BackPosRel="90;42;47;2" BackCornerRadiusRel="15"
+                BackTransform="-10;2;0.5;60;-20"
                 />
             <!--"-10,2,0.5,60,-20"-->
             <!--Text color - blue    #e04f-->
@@ -201,7 +201,7 @@
             Height="30" Width="300" Margin="0,200,0,0"
             TextChanged="TbBackPosRel_TextChanged"
             >
-            90,42,47,2
+            90;42;47;2
         </TextBox>
     </Grid>
 </Window>

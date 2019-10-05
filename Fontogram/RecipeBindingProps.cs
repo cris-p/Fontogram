@@ -73,7 +73,7 @@ namespace PergleLabs.UI
     class RelsizeProperty
         : TranslatedProperty
     {
-        private readonly int _DefaultRelsize = 0;
+        private readonly double _DefaultRelsize = 0;
 
         private readonly Action<double> _ActionOnChange;
 
@@ -82,7 +82,7 @@ namespace PergleLabs.UI
         public RelsizeProperty(string relDefault, ControlSizeNotifier sizeNotifier, Action<double> actionOnChange = null)
             : base(relDefault)
         {
-            int.TryParse(relDefault, out _DefaultRelsize);
+            double.TryParse(relDefault, out _DefaultRelsize);
 
             _ActionOnChange = actionOnChange == null ? _NullAction : actionOnChange;
 
@@ -112,14 +112,14 @@ namespace PergleLabs.UI
 
         protected override string Translate(string inVal)
         {
-            int newRelVal;
+            double newRelVal;
 
-            if (int.TryParse(inVal, out newRelVal))
+            if (double.TryParse(inVal, out newRelVal))
                 _currInVal = inVal;
             else
                 newRelVal = _DefaultRelsize;
 
-            double newVal = _currControlHeight * newRelVal / 100;
+            double newVal = _currControlHeight * newRelVal / RecipeBindingProps.UNIT_H_FRACTION;
 
             return newVal.ToString("f1");
         }
@@ -172,13 +172,16 @@ namespace PergleLabs.UI
         : ControlSizeNotifier
     {
 
+        public const int UNIT_H_FRACTION = 100;
+        const string UNIT_H_FRACTION_STR = "100";
+
         #region Defaults (in original units)
 
         const string DEF_Text = ""; // no text //?
         const string DEF_TextFont = "Segoe UI Emoji";
         const string DEF_TextFontWeight = "Normal";
         const string DEF_TextColor = "Black";
-        const string DEF_TextFontSize = "100";
+        const string DEF_TextFontSize = UNIT_H_FRACTION_STR;
         const string DEF_TextShiftX = "0";
         const string DEF_TextShiftY = "0";
         const string DEF_TextRotAngle = "0";
@@ -192,8 +195,8 @@ namespace PergleLabs.UI
         const string DEF_BackFillColor = "Transparent"; // no backdrop
         const string DEF_BackStrokeThickness = "0";  // no border
         const string DEF_BackStrokeColor = "Black";
-        const string DEF_BackWidth = "100"; // percentages relative to control *height*
-        const string DEF_BackHeight = "100";
+        const string DEF_BackWidth = UNIT_H_FRACTION_STR; // percentages relative to control *height*
+        const string DEF_BackHeight = UNIT_H_FRACTION_STR;
         const string DEF_BackShiftX = "0";
         const string DEF_BackShiftY = "0";
         const string DEF_BackCornerRadius = "10,10,10,10";   // slightly rounded        

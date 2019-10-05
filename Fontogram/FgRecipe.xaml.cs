@@ -39,7 +39,7 @@ namespace PergleLabs.UI
 
         private static void DispatchValues(string cslVals, params TranslatedProperty[] xProperties)
         {
-            string[] partsIn = cslVals.Split(',').Select(part => part.Trim()).ToArray();
+            string[] partsIn = cslVals.Split(';').Select(part => part.Trim()).ToArray();
 
             for (int i = 0; i < xProperties.Length; i++)
                 xProperties[i].In =

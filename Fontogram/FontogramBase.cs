@@ -180,15 +180,15 @@ namespace PergleLabs.UI
         {
             PropertyInfo propInfo = typeof(FgRecipe).GetProperty(propertyName);
 
-            string[] values = valueList.Split(';');
+            string[] values = valueList.Split('|');
 
             for (int n = 0; n < values.Length; n++)
             {
-                string fontSizeRel = values[n];
+                string userValue = values[n];
 
                 FgRecipe recipe = GetOrCreateNthRecipe(n);
 
-                propInfo.SetValue(recipe, fontSizeRel);
+                propInfo.SetValue(recipe, userValue);
             }
         }
 
@@ -204,42 +204,9 @@ namespace PergleLabs.UI
         public string BackPosRel { set { SetPropertyValuesInRecipes(value); } }
         public string BackCornerRadiusRel { set { SetPropertyValuesInRecipes(value); } }
         public string BackTransform { set { SetPropertyValuesInRecipes(value); } }
-        //public string TextFont { set { SetPropertyValuesInRecipes(value); } }
-        //public string TextFontWeight { set { SetPropertyValuesInRecipes(value); } }
-        //public string TextColor { set { SetPropertyValuesInRecipes(value); } }
-        //public string TextPosRel { set { SetPropertyValuesInRecipes(value); } }
-        //public string Text { set { SetPropertyValuesInRecipes(value); } }
-        //public string BackOpacity { set { SetPropertyValuesInRecipes(value); } }
-        //public string BackFillColor { set { SetPropertyValuesInRecipes(value); } }
-        //public string BackStrokeColor { set { SetPropertyValuesInRecipes(value); } }
-        ////public string BackMarginRel { set { SetPropertyValuesInRecipes(value); } }
-        //public string BackStrokeThicknessRel { set { SetPropertyValuesInRecipes(value); } }
-        //public string BackCornerRadiusRel { set { SetPropertyValuesInRecipes(value); } }
-        //public string RotAngle { set { SetPropertyValuesInRecipes(value); } }
-        //public string SkewAngleX { set { SetPropertyValuesInRecipes(value); } }
-        //public string SkewAngleY { set { SetPropertyValuesInRecipes(value); } }
 
 
         #endregion
-
-
-
-        //public string FontSizeRel
-        //{
-        //    set
-        //    {
-        //        string[] fontSizes = value.Split(';');
-
-        //        for (int n=0; n<fontSizes.Length; n++)
-        //        {
-        //            string fontSizeRel = fontSizes[n];
-        //            FgRecipe recipe = GetOrCreateNthRecipe(n);
-
-        //            recipe.FontSizeRel = fontSizeRel;
-        //        }
-        //    }
-        //}
-
 
 
         protected abstract void CreateBuiltin(BuiltinFontogram value);
