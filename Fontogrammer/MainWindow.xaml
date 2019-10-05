@@ -53,7 +53,7 @@
     <Grid>
         
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="400"/>
+            <ColumnDefinition Width="500"/>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
 
@@ -97,14 +97,14 @@
             >
 
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="1*" MinWidth="5px"/>
                 <ColumnDefinition Width="3*" MinWidth="5px"/>
-                <ColumnDefinition Width="1*" MinWidth="5px"/>
+                <ColumnDefinition Width="7*" MinWidth="5px"/>
+                <ColumnDefinition Width="2*" MinWidth="5px"/>
             </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
-                <RowDefinition Height="1*" MinHeight="5px"/>
-                <RowDefinition Height="1*" MinHeight="5px"/>
-                <RowDefinition Height="1*" MinHeight="5px"/>
+                <RowDefinition Height="4*" MinHeight="5px"/>
+                <RowDefinition Height="5*" MinHeight="5px"/>
+                <RowDefinition Height="3*" MinHeight="5px"/>
             </Grid.RowDefinitions>
 
 
