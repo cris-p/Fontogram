@@ -159,6 +159,7 @@ namespace PergleLabs.UI
         public FontogramBase()
         {
             _ParentGrid = new Grid();
+            _ParentGrid.ClipToBounds = true;
 
             this.AddChild(_ParentGrid);
 
