@@ -42,7 +42,7 @@ namespace PergleLabs.UI
                 string newIn =
                     string.IsNullOrWhiteSpace(value)
                     ? InDefault
-                    : value; 
+                    : value;
 
                 Val = Translate(newIn);
             }
@@ -99,7 +99,7 @@ namespace PergleLabs.UI
         }
 
         private double _currControlHeight = 0;
-        private string _currInVal; 
+        private string _currInVal;
 
         private void SizeNotifier_HeightUpdated(double newHeight)
         {
@@ -150,10 +150,17 @@ namespace PergleLabs.UI
 
         private void SetVal()
         {
-            double l = 0, t = 0, r = 0, b = 0;
+            double l = -400, t = -400, r = -400, b = -400;
 
-            l += _currShiftX;
-            t += _currShiftY;
+            if (_currShiftX > 0)
+                r -= 2 * _currShiftX;
+            else
+                l += 2 * _currShiftX;
+
+            if (_currShiftY > 0)
+                b -= 2 * _currShiftY;
+            else
+                t += 2 * _currShiftY;
 
             Val = string.Format("{0:f1},{1:f1},{2:f1},{3:f1}", l, t, r, b);
         }
@@ -167,7 +174,7 @@ namespace PergleLabs.UI
 
         #region Defaults (in original units)
 
-        const string DEF_Text = ""; // no text //😀
+        const string DEF_Text = ""; // no text //?
         const string DEF_TextFont = "Segoe UI Emoji";
         const string DEF_TextFontWeight = "Normal";
         const string DEF_TextColor = "Black";

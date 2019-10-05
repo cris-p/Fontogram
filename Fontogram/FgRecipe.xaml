@@ -20,7 +20,7 @@
             
             CornerRadius="{Binding BackCornerRadius.Val}"
 
-            HorizontalAlignment="Left" VerticalAlignment="Top"
+            HorizontalAlignment="Center" VerticalAlignment="Center"
             
             RenderTransformOrigin="0.5,0.5"
             >
@@ -44,7 +44,7 @@
             Margin="{Binding TextMargin.Val}"
 
             Padding="0"
-            HorizontalAlignment="Left" VerticalAlignment="Top"
+            HorizontalAlignment="Center" VerticalAlignment="Center"
             
             RenderTransformOrigin="0.5,0.5"
             >
