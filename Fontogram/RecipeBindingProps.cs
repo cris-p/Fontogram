@@ -152,15 +152,8 @@ namespace PergleLabs.UI
         {
             double l = 0, t = 0, r = 0, b = 0;
 
-            if (_currShiftX > 0)
-                r -= 2 * _currShiftX;
-            else
-                l += 2 * _currShiftX;
-
-            if (_currShiftY > 0)
-                b -= 2 * _currShiftY;
-            else
-                t += 2 * _currShiftY;
+            l += _currShiftX;
+            t += _currShiftY;
 
             Val = string.Format("{0:f1},{1:f1},{2:f1},{3:f1}", l, t, r, b);
         }
