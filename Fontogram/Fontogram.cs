@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 namespace PergleLabs.UI
 {
 
-    public enum BuiltinFontogram
+    public enum FontogramReadyMade
     {
         Test1,
         Test2,
@@ -16,28 +16,21 @@ namespace PergleLabs.UI
     }
 
 
-
     public class Fontogram
-        : FontogramBase<BuiltinFontogram>
+        : FontogramBase<FontogramReadyMade>
     {
 
-        protected override void CreateBuiltin(BuiltinFontogram value)
+        protected override void CreateBuiltin(FontogramReadyMade value)
         {
-            if (_isBuiltIn == false)
-                StartClean();
-
-            _isBuiltIn = true;
-
-
             switch (value)
             {
-                case BuiltinFontogram.Test1:
+                case FontogramReadyMade.Test1:
                     AddRecipes_Test1();
                     break;
-                case BuiltinFontogram.Test2:
+                case FontogramReadyMade.Test2:
                     AddRecipes_Test2();
                     break;
-                case BuiltinFontogram.Logo:
+                case FontogramReadyMade.Logo:
                     AddRecipes_Logo();  // 
                     break;
                 default:

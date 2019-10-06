@@ -150,7 +150,7 @@ namespace PergleLabs.UI
     /// <summary>
     /// Interaction logic for Fontogram.xaml
     /// </summary>
-    public abstract class FontogramBase
+    public class FontogramBase
         : UserControl
         , FontogramProperties
     {
@@ -162,22 +162,14 @@ namespace PergleLabs.UI
             _ParentGrid.ClipToBounds = true;
 
             this.AddChild(_ParentGrid);
-
-            //Builtin = BuiltinFontogram.Logo;
-        }
-
-
-        public BuiltinFontogram Builtin
-        {
-            set
-            {
-                CreateBuiltin(value);
-            }
         }
 
 
         private void SetPropertyValuesInRecipes(string valueList, [CallerMemberName] string propertyName = "")
         {
+            if (valueList == null)
+                valueList = "";
+
             PropertyInfo propInfo = typeof(FgRecipe).GetProperty(propertyName);
 
             string[] values = valueList.Split('|');
@@ -205,43 +197,26 @@ namespace PergleLabs.UI
         public string BackCornerRadiusRel { set { SetPropertyValuesInRecipes(value); } }
         public string BackTransform { set { SetPropertyValuesInRecipes(value); } }
 
-
         #endregion
 
 
-        protected abstract void CreateBuiltin(BuiltinFontogram value);
+        protected readonly Dictionary<string, string> _ReadyMadeValues = new Dictionary<string, string>();
 
-
-        protected void AddInternalRecipe(string textMarginRel)
-        {
-            FgRecipe newRecipe = new FgRecipe();
-
-            //newRecipe.TextMarginRel = textMarginRel;
-
-            _ParentGrid.Children.Add(newRecipe);
-            // no need to deal with 'this._Recipes'
-        }
+        protected readonly Dictionary<string, string> _EffectiveValues = new Dictionary<string, string>();
 
 
         private FgRecipe GetOrCreateNthRecipe(int n)
         {
-            if (_isBuiltIn == true)
-                StartClean();
-
-            _isBuiltIn = false;
-
-
             // 'n' can be at most 1 past the end of the current list
-            System.Diagnostics.Debug.Assert(n <= _Recipes.Count);
+            System.Diagnostics.Debug.Assert(n <= _ParentGrid.Children.Count);
 
-            if (n < _Recipes.Count)
-                return _Recipes[n];
+            if (n < _ParentGrid.Children.Count)
+                return _ParentGrid.Children[n] as FgRecipe;
 
 
             FgRecipe newRecipe = new FgRecipe();
 
             _ParentGrid.Children.Add(newRecipe);
-            _Recipes.Add(newRecipe);
 
             return newRecipe;
         }
@@ -250,15 +225,7 @@ namespace PergleLabs.UI
         protected void StartClean()
         {
             _ParentGrid.Children.Clear();
-            _Recipes.Clear();
         }
-
-
-        // for convenience - kept it in sync with the control Grid's 'Children' collection
-        private readonly List<FgRecipe> _Recipes = new List<FgRecipe>();
-
-
-        protected bool? _isBuiltIn = null;
 
     }
 
@@ -268,6 +235,15 @@ namespace PergleLabs.UI
         : FontogramBase
         where _T: System.Enum
     {
+
+        protected abstract void CreateBuiltin(FontogramReadyMade value);
+
+        protected void AddInternalRecipe(string spec)
+        {
+            FgRecipe newRecipe = new FgRecipe();
+
+            _ParentGrid.Children.Add(newRecipe);
+        }
 
     }
 
