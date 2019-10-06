@@ -183,16 +183,23 @@
                 SnapsToDevicePixels="True"
                 />
 
-            <fg:Fontogram
+            <!--<fg:Fontogram
                 Name="fgCenter"
                 Grid.Row="1" Grid.Column="1"
                 Text="🎞|Abc|Abc" TextAttr=";;#6000|Courier New;bold;#304f|Courier New;bold;#e04f" TextPosRel="100;58;-15|70;-16;-5|70;-13;-4"
                 TextTransform="-10;2;0.5;60;-20|-13.1;0.8;1.62;-8|-13.1;0.8;1.62;-8"
                 BackAttr=";#6baa;1,0,0,1.5;#cbaa" BackPosRel="90;42;47;2" BackCornerRadiusRel="15"
                 BackTransform="-10;2;0.5;60;-20"
+                />-->
+            <fg:Fontogram
+                Grid.Row="1" Grid.Column="1"
+                Name="fgSquareLogo"
+                
+                Text="🎞|A|A" TextAttr=";;#999|Courier New;bold;#304f|Courier New;bold;#f01d" TextPosRel="100;26;7|70;-16.4;-0.6|70;-12;1"
+                TextTransform="-10;1;0.3;60;-20|-15.8;0.9;1.7;-18,17|-15.8;0.9;1.7;-18,17"
+                BackAttr=";#7baa;1,0,0,1.5;#cbaa" BackPosRel="105;42;28;10"
+                BackTransform="-10;1;0.3;60;-20"
                 />
-            <!--"-10,2,0.5,60,-20"-->
-            <!--Text color - blue    #e04f-->
         </Grid>
 
         <TextBox

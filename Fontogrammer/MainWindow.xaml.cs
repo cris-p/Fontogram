@@ -84,7 +84,7 @@ namespace PergleLabs.UI
 
         private void TbBackPosRel_TextChanged(object sender, TextChangedEventArgs e)
         {
-            fgCenter.BackPosRel = tbBackPosRel.Text;
+            //fgCenter.BackPosRel = tbBackPosRel.Text;
         }
     }
 }
