@@ -52,14 +52,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Fontogram.cs" />
-    <Compile Include="FgRecipe.xaml.cs">
-      <DependentUpon>FgRecipe.xaml</DependentUpon>
+    <Compile Include="FgLayer.xaml.cs">
+      <DependentUpon>FgLayer.xaml</DependentUpon>
     </Compile>
     <Compile Include="FontogramBase.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="RecipeBindingProps.cs" />
-    <Page Include="FgRecipe.xaml">
+    <Page Include="FgLayer.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
