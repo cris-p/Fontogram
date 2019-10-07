@@ -119,7 +119,7 @@ namespace PergleLabs.UI
             else
                 newRelVal = _DefaultRelsize;
 
-            double newVal = _currControlHeight * newRelVal / RecipeBindingProps.UNIT_H_FRACTION;
+            double newVal = _currControlHeight * newRelVal / LayerBindingProps.UNIT_H_FRACTION;
 
             return newVal.ToString("f1");
         }
@@ -168,7 +168,7 @@ namespace PergleLabs.UI
     }
 
 
-    class RecipeBindingProps
+    class LayerBindingProps
         : ControlSizeNotifier
     {
 
@@ -209,7 +209,7 @@ namespace PergleLabs.UI
         #endregion
 
 
-        public RecipeBindingProps()
+        public LayerBindingProps()
         {
             // TEXT
 

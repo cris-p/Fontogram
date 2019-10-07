@@ -14,9 +14,9 @@ namespace PergleLabs.UI
     /// </summary>
     /// 
     /// <remarks>
-    /// This interface is shared between Fontogram and FgRecipe - important for 'SetForEachRecipe' (the 'string' type also helps).
+    /// This interface is shared between Fontogram and FgLayer - important for 'SetPropertyValuesInLayers' (the 'string' type also helps).
     /// 
-    /// Values are semicolon-separated - one for each recipe.
+    /// Values are '|'-separated - one for each layer.
     /// 
     /// All size-like values are in percentages relative to the *height* of the Fontogram. Left and Right margins
     /// are considered relative to a square whose top and bottom edges coincide with that of the Fontogram, centered
@@ -30,7 +30,7 @@ namespace PergleLabs.UI
     /// In addition, the left and right margins will not cause the symbol to be stretched horizontally -
     /// instead, it will just be centered between the specified margins.
     /// 
-    /// Transforms apply to each recipe (backdrop + text) as a whole.
+    /// Transforms apply to each layer (backdrop + text) as a whole.
     /// </remarks>
     internal interface FontogramProperties
     {
@@ -165,12 +165,12 @@ namespace PergleLabs.UI
         }
 
 
-        private void SetPropertyValuesInRecipes(string valueList, [CallerMemberName] string propertyName = "")
+        private void SetPropertyValuesInLayers(string valueList, [CallerMemberName] string propertyName = "")
         {
             if (valueList == null)
                 valueList = "";
 
-            PropertyInfo propInfo = typeof(FgRecipe).GetProperty(propertyName);
+            PropertyInfo propInfo = typeof(FgLayer).GetProperty(propertyName);
 
             string[] values = valueList.Split('|');
 
@@ -178,24 +178,24 @@ namespace PergleLabs.UI
             {
                 string userValue = values[n];
 
-                FgRecipe recipe = GetOrCreateNthRecipe(n);
+                FgLayer layer = GetOrCreateNthLayer(n);
 
-                propInfo.SetValue(recipe, userValue);
+                propInfo.SetValue(layer, userValue);
             }
         }
 
 
         #region The Properties
 
-        public string Text { set { SetPropertyValuesInRecipes(value); } }
-        public string TextAttr { set { SetPropertyValuesInRecipes(value); } }
-        public string TextPosRel { set { SetPropertyValuesInRecipes(value); } }
-        public string TextTransform { set { SetPropertyValuesInRecipes(value); } }
+        public string Text { set { SetPropertyValuesInLayers(value); } }
+        public string TextAttr { set { SetPropertyValuesInLayers(value); } }
+        public string TextPosRel { set { SetPropertyValuesInLayers(value); } }
+        public string TextTransform { set { SetPropertyValuesInLayers(value); } }
 
-        public string BackAttr { set { SetPropertyValuesInRecipes(value); } }
-        public string BackPosRel { set { SetPropertyValuesInRecipes(value); } }
-        public string BackCornerRadiusRel { set { SetPropertyValuesInRecipes(value); } }
-        public string BackTransform { set { SetPropertyValuesInRecipes(value); } }
+        public string BackAttr { set { SetPropertyValuesInLayers(value); } }
+        public string BackPosRel { set { SetPropertyValuesInLayers(value); } }
+        public string BackCornerRadiusRel { set { SetPropertyValuesInLayers(value); } }
+        public string BackTransform { set { SetPropertyValuesInLayers(value); } }
 
         #endregion
 
@@ -205,20 +205,20 @@ namespace PergleLabs.UI
         protected readonly Dictionary<string, string> _EffectiveValues = new Dictionary<string, string>();
 
 
-        private FgRecipe GetOrCreateNthRecipe(int n)
+        private FgLayer GetOrCreateNthLayer(int n)
         {
             // 'n' can be at most 1 past the end of the current list
             System.Diagnostics.Debug.Assert(n <= _ParentGrid.Children.Count);
 
             if (n < _ParentGrid.Children.Count)
-                return _ParentGrid.Children[n] as FgRecipe;
+                return _ParentGrid.Children[n] as FgLayer;
 
 
-            FgRecipe newRecipe = new FgRecipe();
+            FgLayer newLayer = new FgLayer();
 
-            _ParentGrid.Children.Add(newRecipe);
+            _ParentGrid.Children.Add(newLayer);
 
-            return newRecipe;
+            return newLayer;
         }
 
 
@@ -238,11 +238,11 @@ namespace PergleLabs.UI
 
         protected abstract void CreateBuiltin(FontogramReadyMade value);
 
-        protected void AddInternalRecipe(string spec)
+        protected void AddInternalLayer(string spec)
         {
-            FgRecipe newRecipe = new FgRecipe();
+            FgLayer newLayer = new FgLayer();
 
-            _ParentGrid.Children.Add(newRecipe);
+            _ParentGrid.Children.Add(newLayer);
         }
 
     }

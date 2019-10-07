@@ -16,12 +16,12 @@ using System.Windows.Shapes;
 namespace PergleLabs.UI
 {
 
-    internal partial class FgRecipe
+    internal partial class FgLayer
         : UserControl
         , FontogramProperties   // flowing down from Fontogram
     {
 
-        public FgRecipe()
+        public FgLayer()
         {
             InitializeComponent();
 
@@ -147,7 +147,7 @@ namespace PergleLabs.UI
         #endregion
 
 
-        private readonly RecipeBindingProps _BindingProps = new RecipeBindingProps();
+        private readonly LayerBindingProps _BindingProps = new LayerBindingProps();
 
     }
 

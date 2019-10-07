@@ -12,7 +12,8 @@ namespace PergleLabs.UI
     {
         Test1,
         Test2,
-        Logo
+        Logo,
+        LogoWide
     }
 
 
@@ -25,74 +26,74 @@ namespace PergleLabs.UI
             switch (value)
             {
                 case FontogramReadyMade.Test1:
-                    AddRecipes_Test1();
+                    AddLayers_Test1();
                     break;
                 case FontogramReadyMade.Test2:
-                    AddRecipes_Test2();
+                    AddLayers_Test2();
                     break;
                 case FontogramReadyMade.Logo:
-                    AddRecipes_Logo();  // 
+                    AddLayers_Logo();  // 
                     break;
                 default:
-                    AddRecipes_Default();
+                    AddLayers_Default();
                     break;
             }
         }
 
 
 
-        void AddRecipes_Logo()
+        void AddLayers_Logo()
         {
-            AddInternalRecipe(
+            AddInternalLayer(
                     "0,0,0,0"
                     );
         }
 
-        void AddRecipes_Default()
+        void AddLayers_Default()
         {
 
-            AddInternalRecipe(
+            AddInternalLayer(
                     "0,0,0,0"
                     );
 
         }
 
-        void AddRecipes_Test1()
+        void AddLayers_Test1()
         {
 
-            AddInternalRecipe(
+            AddInternalLayer(
                     "0,0,0,0"
                     );
 
-            AddInternalRecipe(
+            AddInternalLayer(
                     "0,0,0,0"
                     );
 
-            AddInternalRecipe(
+            AddInternalLayer(
                     "0,0,0,0"
                     );
 
-            AddInternalRecipe(
+            AddInternalLayer(
                     "0,0,0,0"
                     );
         }
 
-        void AddRecipes_Test2()
+        void AddLayers_Test2()
         {
 
-            AddInternalRecipe(
+            AddInternalLayer(
                     "0,0,0,0"
                     );
 
-            AddInternalRecipe(
+            AddInternalLayer(
                     "0,0,0,0"
                     );
 
-            AddInternalRecipe(
+            AddInternalLayer(
                     "0,0,0,0"
                     );
 
-            AddInternalRecipe(
+            AddInternalLayer(
                     "0,0,0,0"
                     );
         }
