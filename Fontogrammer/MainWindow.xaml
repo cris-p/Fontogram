@@ -9,46 +9,7 @@
         Title="Fontogrammer" Height="600" Width="1248"
         >
     <Window.Resources>
-        <ControlTemplate
-            x:Key="rgbStar"
-            x:Name="rgbStar">
-            <Grid>
-                <Border
-                    Width="100" Height="100"
-                    Background="#ff00ff00" 
-                    HorizontalAlignment="Center" VerticalAlignment="Center"
-                    Margin="20"
-                    RenderTransformOrigin="0.5,0.5" Grid.ColumnSpan="1" Grid.Column="0"
-                    BorderThickness="1,2,3,4" BorderBrush="Green"
-                    >
-                    <Border.RenderTransform>
-                        <TransformGroup>
-                            <RotateTransform Angle="30"/>
-                        </TransformGroup>
-                    </Border.RenderTransform>
-                </Border>
-                <Border
-                    Background="#80ff0000" 
-                    Width="100" Height="100"
-                    HorizontalAlignment="Center" VerticalAlignment="Center"
-                    BorderThickness="1,2,3,4" BorderBrush="Red"
-                    >
-                </Border>
-                <Border
-                    Width="100" Height="100"
-                    Background="#550000ff" 
-                    HorizontalAlignment="Center" VerticalAlignment="Center"
-                    RenderTransformOrigin="0.5,0.5"
-                    BorderThickness="1,2,3,4" BorderBrush="Blue"
-                    >
-                    <Border.RenderTransform>
-                        <TransformGroup>
-                            <RotateTransform Angle="60"/>
-                        </TransformGroup>
-                    </Border.RenderTransform>
-                </Border>
-            </Grid>
-        </ControlTemplate>
+    
     </Window.Resources>
     
     <Grid>
@@ -62,38 +23,6 @@
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
 
-        <Grid
-            Height="100" Width="100"
-            HorizontalAlignment="Left"
-            Background="Yellow"
-            ClipToBounds="True" Margin="0,234,0,235" Grid.RowSpan="2"
-            >
-
-            <Label
-                FontWeight="Bold"
-                HorizontalAlignment="Center" VerticalAlignment="Center"
-                FontSize="50" Margin="0"
-                >
-                <Label.RenderTransform>
-                    <TransformGroup>
-                        <ScaleTransform ScaleY="1" ScaleX="3" CenterX="0"/>
-                        <!--<SkewTransform AngleY="-41.498" AngleX="1.032" />-->
-                        <RotateTransform Angle="0"/>
-                    </TransformGroup>
-                </Label.RenderTransform> @
-            </Label>
-
-        </Grid>
-
-
-        <Control
-            HorizontalAlignment="Center" VerticalAlignment="Center"
-            Template="{StaticResource ResourceKey=rgbStar}" Margin="180,214,180,215" Grid.RowSpan="2"
-            />
-
-        <!--<fg:Fontogram
-            Margin="370,10,0,476" Grid.ColumnSpan="2"
-            />-->
 
 
         <Grid
@@ -113,7 +42,24 @@
                 <RowDefinition Height="3*" MinHeight="5px"/>
             </Grid.RowDefinitions>
 
+            
+            <fg:Fontogram
+                Margin="10"
+                Name="fgRgbSwirl"
+                
+                BackAttr=";#0f0;0,2,4,6;green|;#8f00;0,2,4,6;red|;#500f;0,2,4,6;blue" BackPosRel="50;50|50;50|50;50"
+                BackTransform="30|0|60"
+                />
 
+            <fg:Fontogram
+                Name="fgWideLogo"
+                Grid.Column="1"
+                Margin="10"
+                Text="🎞|Abc|Abc" TextAttr=";;#6000|Courier New;bold;#304f|Courier New;bold;#e04f" TextPosRel="100;58;-15|70;-16;-5|70;-13;-4"
+                TextTransform="-10;2;0.5;60;-20|-13.1;0.8;1.62;-8|-13.1;0.8;1.62;-8"
+                BackAttr=";#6baa;1,0,0,1.5;#cbaa" BackPosRel="90;42;47;2" BackCornerRadiusRel="15"
+                BackTransform="-10;2;0.5;60;-20"
+                />
 
             <!--<fg:Fontogram Builtin="Test1"
                 Grid.Row="0" Grid.Column="0" Margin="10"
@@ -180,14 +126,6 @@
                 SnapsToDevicePixels="True"
                 />
 
-            <!--<fg:Fontogram
-                Name="fgCenter"
-                Grid.Row="1" Grid.Column="1"
-                Text="🎞|Abc|Abc" TextAttr=";;#6000|Courier New;bold;#304f|Courier New;bold;#e04f" TextPosRel="100;58;-15|70;-16;-5|70;-13;-4"
-                TextTransform="-10;2;0.5;60;-20|-13.1;0.8;1.62;-8|-13.1;0.8;1.62;-8"
-                BackAttr=";#6baa;1,0,0,1.5;#cbaa" BackPosRel="90;42;47;2" BackCornerRadiusRel="15"
-                BackTransform="-10;2;0.5;60;-20"
-                />-->
             <fg:Fontogram
                 Grid.Row="1" Grid.Column="1" Margin="4"
                 Name="fgSquareLogo"
@@ -199,13 +137,5 @@
                 />
         </Grid>
 
-        <TextBox
-            x:Name="tbBackPosRel"
-            HorizontalAlignment="Center" VerticalAlignment="Center"
-            Height="30" Width="300" Margin="100,85,100,169"
-            TextChanged="TbBackPosRel_TextChanged" Grid.Row="1"
-            >
-            90;42;47;2
-        </TextBox>
     </Grid>
 </Window>

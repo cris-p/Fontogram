@@ -82,9 +82,6 @@ namespace PergleLabs.UI
             colDefs[2].Width = new GridLength(W2, GridUnitType.Star);
         }
 
-        private void TbBackPosRel_TextChanged(object sender, TextChangedEventArgs e)
-        {
-            //fgCenter.BackPosRel = tbBackPosRel.Text;
-        }
     }
+
 }
