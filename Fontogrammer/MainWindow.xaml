@@ -4,6 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:fg="clr-namespace:PergleLabs.UI;assembly=PergleLabs.Fontogram"
+        xmlns:local="clr-namespace:PergleLabs.UI"
         mc:Ignorable="d"
         Title="Fontogrammer" Height="600" Width="1248"
         >
@@ -51,7 +52,11 @@
     </Window.Resources>
     
     <Grid>
-        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="285*"/>
+            <RowDefinition Height="284*"/>
+        </Grid.RowDefinitions>
+
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="500"/>
             <ColumnDefinition/>
@@ -61,9 +66,9 @@
             Height="100" Width="100"
             HorizontalAlignment="Left"
             Background="Yellow"
-            ClipToBounds="True"
+            ClipToBounds="True" Margin="0,234,0,235" Grid.RowSpan="2"
             >
-            
+
             <Label
                 FontWeight="Bold"
                 HorizontalAlignment="Center" VerticalAlignment="Center"
@@ -83,7 +88,7 @@
 
         <Control
             HorizontalAlignment="Center" VerticalAlignment="Center"
-            Template="{StaticResource ResourceKey=rgbStar}"
+            Template="{StaticResource ResourceKey=rgbStar}" Margin="180,214,180,215" Grid.RowSpan="2"
             />
 
         <!--<fg:Fontogram
@@ -92,8 +97,9 @@
 
 
         <Grid
-            Grid.Column="2"
-            Name="_PreviewGrid"
+            Grid.Column="1"
+            Name="_PreviewGrid" Grid.RowSpan="2"
+            ClipToBounds="True"
             >
 
             <Grid.ColumnDefinitions>
@@ -138,48 +144,39 @@
                 Grid.ColumnSpan="3" Grid.RowSpan="3"
                 Background="#eeee"/>
 
-            <GridSplitter
-                Panel.ZIndex="100"
-                Grid.Column="1" Grid.Row="0" Grid.RowSpan="3" Width="4" Background="#8fff"
-                HorizontalAlignment="Left" VerticalAlignment="Stretch" Margin="-2"
-                MouseDoubleClick="GridSplitter_MouseDoubleClick"
-                ToolTip="double-click -> square"
-                />
-            <GridSplitter
-                Panel.ZIndex="100"
-                Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="3" Height="4" Background="#8fff"
-                HorizontalAlignment="Stretch" VerticalAlignment="Top" Margin="-2"
-                MouseDoubleClick="GridSplitter_MouseDoubleClick"
-                ToolTip="double-click -> square"
-                />
-            <GridSplitter
-                Panel.ZIndex="100"
-                Grid.Column="1" Grid.Row="0" Grid.RowSpan="3" Width="4" Background="#8fff"
-                HorizontalAlignment="Right" VerticalAlignment="Stretch" Margin="-2"
-                MouseDoubleClick="GridSplitter_MouseDoubleClick"
-                ToolTip="double-click -> square"
-                />
-            <GridSplitter
-                Panel.ZIndex="100"
-                Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="3" Height="4" Background="#8fff"
-                HorizontalAlignment="Stretch" VerticalAlignment="Bottom" Margin="-2"
-                MouseDoubleClick="GridSplitter_MouseDoubleClick"
-                ToolTip="double-click -> square"
-                />
 
+            <local:MovableBoundary
+                Location="Left"
+                Panel.ZIndex="100" MouseDoubleClick="GridSplitter_MouseDoubleClick"
+                />
+            <local:MovableBoundary
+                Location="Top"
+                Panel.ZIndex="100" MouseDoubleClick="GridSplitter_MouseDoubleClick"
+                />
+            <local:MovableBoundary
+                Location="Right"
+                Panel.ZIndex="100" MouseDoubleClick="GridSplitter_MouseDoubleClick"
+                />
+            <local:MovableBoundary
+                Location="Bottom"
+                Panel.ZIndex="100" MouseDoubleClick="GridSplitter_MouseDoubleClick"
+                />
+ 
             <Border Grid.Row="1" Grid.Column="1"  Background="White"/>
+            
+            <!-- The Rectangles give us more flexibility than Grid's ShowGridLines. -->
             <Rectangle
                 Grid.Row="0" Grid.Column="1" Grid.RowSpan="3" Margin="0,-10"
                 Panel.ZIndex="101"
                 HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
-                Stroke="#FF000000" StrokeThickness="1" StrokeDashArray="4 4"
+                Stroke="#FF0000dd" StrokeThickness="1" StrokeDashArray="4 4"
                 SnapsToDevicePixels="True"
                 />
             <Rectangle
                 Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3" Margin="-10,0"
                 Panel.ZIndex="101"
                 HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
-                Stroke="#FF000000" StrokeThickness="1" StrokeDashArray="4 4"
+                Stroke="#FF0000dd" StrokeThickness="1" StrokeDashArray="4 4"
                 SnapsToDevicePixels="True"
                 />
 
@@ -192,7 +189,7 @@
                 BackTransform="-10;2;0.5;60;-20"
                 />-->
             <fg:Fontogram
-                Grid.Row="1" Grid.Column="1"
+                Grid.Row="1" Grid.Column="1" Margin="4"
                 Name="fgSquareLogo"
                 
                 Text="🎞|A|A" TextAttr=";;#999|Courier New;bold;#304f|Courier New;bold;#f01d" TextPosRel="100;26;7|70;-16.4;-0.6|70;-12;1"
@@ -205,8 +202,8 @@
         <TextBox
             x:Name="tbBackPosRel"
             HorizontalAlignment="Center" VerticalAlignment="Center"
-            Height="30" Width="300" Margin="0,200,0,0"
-            TextChanged="TbBackPosRel_TextChanged"
+            Height="30" Width="300" Margin="100,85,100,169"
+            TextChanged="TbBackPosRel_TextChanged" Grid.Row="1"
             >
             90;42;47;2
         </TextBox>
