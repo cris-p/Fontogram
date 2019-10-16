@@ -7,6 +7,7 @@
         xmlns:local="clr-namespace:PergleLabs.UI"
         mc:Ignorable="d"
         Title="Fontogrammer" Height="600" Width="1248"
+        WindowStartupLocation="CenterScreen"
         >
     <Window.Resources>
     
@@ -23,6 +24,26 @@
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
 
+        <Border
+            HorizontalAlignment="Right" VerticalAlignment="Stretch"
+            Grid.RowSpan="4" Width="4" Background="WhiteSmoke"
+            Margin="0,-2" BorderBrush="Silver" BorderThickness="1,0,2,0"
+            />
+        <!--<GridSplitter
+            HorizontalAlignment="Right" VerticalAlignment="Stretch"
+            Grid.RowSpan="4" Width="4"
+            Margin="1,0" Background="Gainsboro"
+            />-->
+
+
+        <ComboBox
+            VerticalAlignment="Top" HorizontalAlignment="Left"
+            Margin="30" Width="200"
+            ItemsSource="{Binding ReadyMadeFontogramChoices}"
+            SelectedIndex="{Binding ReadyMadeFontogramSelection}"
+            >
+            
+        </ComboBox>
 
 
         <Grid

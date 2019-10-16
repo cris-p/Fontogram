@@ -8,30 +8,31 @@ using System.Threading.Tasks;
 namespace PergleLabs.UI
 {
 
-    public enum FontogramReadyMade
+    public enum ReadyMadeFontogram
     {
         Test1,
         Test2,
-        Logo,
-        LogoWide
+        Sample_Logo,
+        Sample_LogoWide,
+        Sample_RgbSwirl
     }
 
 
     public class Fontogram
-        : FontogramBase<FontogramReadyMade>
+        : FontogramBase<ReadyMadeFontogram>
     {
 
-        protected override void CreateBuiltin(FontogramReadyMade value)
+        protected override void CreateBuiltin(ReadyMadeFontogram value)
         {
             switch (value)
             {
-                case FontogramReadyMade.Test1:
+                case ReadyMadeFontogram.Test1:
                     AddLayers_Test1();
                     break;
-                case FontogramReadyMade.Test2:
+                case ReadyMadeFontogram.Test2:
                     AddLayers_Test2();
                     break;
-                case FontogramReadyMade.Logo:
+                case ReadyMadeFontogram.Sample_Logo:
                     AddLayers_Logo();  // 
                     break;
                 default:

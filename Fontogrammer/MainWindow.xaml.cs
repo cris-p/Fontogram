@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -20,9 +21,22 @@ namespace PergleLabs.UI
     /// </summary>
     public partial class MainWindow : Window
     {
+
+        public List<string> ReadyMadeFontogramChoices { get; private set; } = new List<string>() { "(none)" };
+
+        public int ReadyMadeFontogramSelection { get; set; } = 0;
+
+
         public MainWindow()
         {
             InitializeComponent();
+
+            this.DataContext = this;
+
+            foreach (var readyMadeID in (ReadyMadeFontogram[])Enum.GetValues(typeof(ReadyMadeFontogram)))
+            {
+                ReadyMadeFontogramChoices.Add(readyMadeID.ToString());
+            }
         }
 
         private void GridSplitter_MouseDoubleClick(object sender, MouseButtonEventArgs e)

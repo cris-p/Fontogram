@@ -58,8 +58,12 @@ namespace PergleLabs.UI
                         break;
                 }
 
+
                 Grid.SetColumn(this, 1);
+                Grid.SetColumnSpan(this, 1);
                 Grid.SetRow(this, 1);
+                Grid.SetRowSpan(this, 1);
+
                 switch (_location)
                 {
                     case Position.Left:

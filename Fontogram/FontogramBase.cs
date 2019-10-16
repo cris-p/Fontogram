@@ -236,7 +236,7 @@ namespace PergleLabs.UI
         where _T: System.Enum
     {
 
-        protected abstract void CreateBuiltin(FontogramReadyMade value);
+        protected abstract void CreateBuiltin(ReadyMadeFontogram value);
 
         protected void AddInternalLayer(string spec)
         {
