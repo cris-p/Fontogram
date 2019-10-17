@@ -25,49 +25,13 @@ namespace PergleLabs.UI
     /// </summary>
     public partial class MainWindow
         : Window
-        , INotifyPropertyChanged
     {
-
-        public List<ReadyMadeFontogram> ReadyMadeFontogramChoices { get; private set; } = new List<ReadyMadeFontogram>();
-
-        public event PropertyChangedEventHandler PropertyChanged;
-
-        private void NotifyPropertyChanged([CallerMemberName] String propertyName = "")
-        {
-            this.PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-        }
-
-
-
-        int _selectedReadyMadeFontogram = 0;
-        public int ReadyMadeFontogramSelection
-        {
-            get { return _selectedReadyMadeFontogram; }
-            set
-            {
-                if (value > 0)
-                    this.fgCenterLogo.ReadyMade = (ReadyMadeFontogram)ReadyMadeFontogramChoices[value];
-                else
-                    this.fgCenterLogo.ReadyMade = null;
-
-                _selectedReadyMadeFontogram = value;
-            }
-        }
-
 
         public MainWindow()
         {
             InitializeComponent();
 
-            this.DataContext = this;
-
-            foreach (var readyMadeID in (ReadyMadeFontogram[])Enum.GetValues(typeof(ReadyMadeFontogram)))
-            {
-                ReadyMadeFontogramChoices.Add(readyMadeID);
-            }
-
-
-            this.ReadyMadeFontogramSelection = 0;
+            this.DataContext = new MainWindowContext();
         }
 
         private void GridSplitter_MouseDoubleClick(object sender, MouseButtonEventArgs e)
