@@ -6,7 +6,7 @@
         xmlns:fg="clr-namespace:PergleLabs.UI;assembly=PergleLabs.Fontogram"
         xmlns:local="clr-namespace:PergleLabs.UI"
         mc:Ignorable="d"
-        Title="Fontogrammer" Height="600" Width="1248"
+        Title="Fontogrammer" Height="900" Width="1440" MinHeight="760" MinWidth="640"
         WindowStartupLocation="CenterScreen"
         >
     <Window.Resources>
@@ -21,89 +21,410 @@
 
 
         <Grid
+            Name="grdFontogramDefinition"
             Grid.Column="0"
+            Background="Gainsboro"
             >
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="70"/>
+                <RowDefinition />
+                <RowDefinition Height="500"/>
+                <RowDefinition Height="100"/>
+            </Grid.RowDefinitions>
+
 
             <!-- Vertical divider between editing and preview sides -->
             <Border
                 HorizontalAlignment="Right" VerticalAlignment="Stretch"
                 Width="4" Background="White"
                 Margin="0,-2" BorderBrush="Gray" BorderThickness="1,0,2,0"
+                Grid.RowSpan="8"
                 />
 
-            <!-- List of ReadyMade icons. -->
-            <Label 
-                VerticalAlignment="Top" HorizontalAlignment="Left"
-                Margin="16,22" Padding="0">
-                Base Fontogram
-            </Label>
-            <ComboBox
-                VerticalAlignment="Top" HorizontalAlignment="Left"
-                Margin="16,40" Width="160"
-                SelectedIndex="{Binding ReadyMadeFontogramSelection}"
-                IsSynchronizedWithCurrentItem="True"
-                >
-                <ComboBox.Resources>
-                    <CollectionViewSource x:Key="ReadyMadeTypes" Source="{Binding ReadyMadeFontogramChoices}" />
-                </ComboBox.Resources>
-                <ComboBox.ItemsSource>
-                    <CompositeCollection>
-                        <Label Padding="0">--- none ---</Label>
-                        <CollectionContainer Collection="{Binding Source={StaticResource ReadyMadeTypes}}"/>
-                    </CompositeCollection>
-                </ComboBox.ItemsSource>
-            </ComboBox>
 
+            <Grid
+                Name="grdFontogramTop"
+                >
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="192"/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+
+                <!-- List of ReadyMade icons. -->
+                <Label 
+                    VerticalAlignment="Top" HorizontalAlignment="Left"
+                    Margin="16,22,0,0" Padding="0">
+                    Base Fontogram (ready-made)
+                </Label>
+                <ComboBox
+                    VerticalAlignment="Top" HorizontalAlignment="Left"
+                    Margin="16,40,0,0" Width="160"
+                    SelectedIndex="{Binding ReadyMadeFontogramSelection}"
+                    IsSynchronizedWithCurrentItem="True"
+                    Background="#e4e4e4"
+                    >
+                    <ComboBox.Resources>
+                        <CollectionViewSource x:Key="ReadyMadeTypes" Source="{Binding ReadyMadeFontogramChoices}" />
+                    </ComboBox.Resources>
+                    <ComboBox.ItemsSource>
+                        <CompositeCollection>
+                            <Label Padding="0">--- none ---</Label>
+                            <CollectionContainer Collection="{Binding Source={StaticResource ReadyMadeTypes}}"/>
+                        </CompositeCollection>
+                    </ComboBox.ItemsSource>
+                </ComboBox>
+
+                <!-- Preview background color -->
+                <Label 
+                    VerticalAlignment="Top" HorizontalAlignment="Right"
+                    Margin="16,43,130,0" Padding="0"
+                    Grid.Column="1"
+                    >
+                    Preview background color
+                </Label>
+                <TextBox
+                    x:Name="txtBkCol"
+                    VerticalAlignment="Top" HorizontalAlignment="Right"
+                    Margin="16,42,16,0" Width="110" Padding="0,0,0,2"
+                    Grid.Column="1"
+                    Text="white" HorizontalContentAlignment="Center"
+                    >
+                    
+                </TextBox>
+
+            </Grid>
+
+
+            <Grid
+                Grid.Row="1"
+                >
+
+                <RichTextBox
+                    x:Name="rtbXaml1"
+                    Grid.Column="1"
+                    Margin="16,8" Background="LightYellow"
+                    ToolTip="Triple-click to select all text."
+                    FontFamily="Courier New" FontSize="13"
+                    IsReadOnly="True"
+                    HorizontalScrollBarVisibility="Visible"
+                    BorderBrush="Gray"
+                    >
+                    <FlowDocument
+                        PageWidth="800"
+                        >
+                        <Paragraph>
+                            &lt;...
+                            <LineBreak/>
+                            &#160;&#160;&#160;&#160;xmlns:fg="clr-namespace:PergleLabs.UI;assembly=PergleLabs.Fontogram"
+                            <LineBreak/>
+                            &#160;&#160;&#160;&#160;&gt;...
+
+                            <LineBreak/>
+                            <LineBreak/>
+
+                            This is flow content and you can
+                            <Bold>edit me!</Bold>         alksdfja f;lakdfj aodjasdf                   
+                            
+                            <LineBreak/>
+                            <LineBreak/>
+                            <![CDATA[
+                            This is flow content and you can
+                            <Bold>edit me!</Bold>                            
+                            ]]>
+                            <LineBreak/>
+                            <LineBreak/>
+                            <LineBreak/>
+                            <Run Foreground="Red">red text</Run>
+                        </Paragraph>
+                    </FlowDocument>
+                </RichTextBox>
+
+                <!--<Canvas
+                    Grid.Column="1"
+                    >
+                    <Path
+                    Panel.ZIndex="200"
+                    Stroke="Gainsboro" StrokeThickness="12">
+                        <Path.Data>
+                            <PathGeometry>
+                                <PathFigure StartPoint="0,40">
+                                    <QuadraticBezierSegment Point1="40,50" Point2="200,45" />
+                                    <QuadraticBezierSegment Point1="400,30" Point2="490,50" />
+                                </PathFigure>
+                            </PathGeometry>
+                        </Path.Data>
+                    </Path>
+                </Canvas>-->
+
+
+            </Grid>
+            
             
             <Grid
-                Margin="0,80,0,0"
+                Name="grdCustomization"
+                Grid.Row="2"
                 >
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition/>
                     <ColumnDefinition/>
                 </Grid.ColumnDefinitions>
 
-                
-                <Label
-                    Content="Layers"
-                    Padding="0" Margin="16,-2"
-                    HorizontalAlignment="Left" VerticalAlignment="Top"
-                    />
-                <ListBox
-                    Margin="16"
-                    HorizontalContentAlignment="Center"
+
+                <Grid
+                    Name="grdLayers"
                     >
-                    <!--<ListBox.ItemTemplate>
-                        <DataTemplate>
-                        </DataTemplate>
-                    </ListBox.ItemTemplate>-->
+                    
+                    <ListBox
+                        Margin="16,26,8,8"
+                        HorizontalContentAlignment="Center"
+                        ScrollViewer.VerticalScrollBarVisibility="Visible"     
+                        >
+                        <!--<ListBox.ItemTemplate>
+                            <DataTemplate>
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>-->
       
-                    <Grid Width="192" Height="128" >
+                        <Grid Width="192" Height="128" >
                         
-                        <!-- checkered background -->
-                        <Rectangle>
-                            <Rectangle.Fill>
-                                <DrawingBrush Stretch="None" TileMode="Tile" Viewport="0,0,8,8" ViewportUnits="Absolute">
-                                    <DrawingBrush.Drawing>
-                                        <DrawingGroup>
-                                            <GeometryDrawing Geometry="M0,0 L8,0 8,8, 0,8Z" Brush="White"/>
-                                            <GeometryDrawing Geometry="M0,4 L8,4 8,8, 4,8 4,0 0,0Z" Brush="Silver"/>
-                                        </DrawingGroup>
-                                    </DrawingBrush.Drawing>
-                                </DrawingBrush>
-                            </Rectangle.Fill>
-                        </Rectangle>
-                        <Border BorderThickness="1" BorderBrush="#aaa" />
-                        <fg:Fontogram
-                            BackAttr=";#0f0;0,2,4,6;green|;#8f00;0,2,4,6;red|;#500f;0,2,4,6;blue" BackPosRel="70;70|70;70|70;70"
-                            BackTransform="30|0|60"                            
+                            <!-- checkered background -->
+                            <Rectangle>
+                                <Rectangle.Fill>
+                                    <DrawingBrush Stretch="None" TileMode="Tile" Viewport="0,0,16,16" ViewportUnits="Absolute">
+                                        <DrawingBrush.Drawing>
+                                            <DrawingGroup>
+                                                <GeometryDrawing Geometry="M0,0 L16,0 16,16, 0,16Z" Brush="White"/>
+                                                <GeometryDrawing Geometry="M0,8 L16,8 16,16, 8,16 8,0 0,0Z" Brush="Silver"/>
+                                            </DrawingGroup>
+                                        </DrawingBrush.Drawing>
+                                    </DrawingBrush>
+                                </Rectangle.Fill>
+                            </Rectangle>
+                            <Border BorderThickness="1" BorderBrush="#aaa" />
+                            <fg:Fontogram
+                                BackAttr=";#0f0;0,2,4,6;green|;#8f00;0,2,4,6;red|;#500f;0,2,4,6;blue" BackPosRel="70;70|70;70|70;70"
+                                BackTransform="30|0|60"   
+                                SelectiveLayerEnable="2"
+                                />
+                        
+                        </Grid>
+                        <Grid Width="192" Height="128" >
+
+                            <!-- checkered background -->
+                            <Rectangle>
+                                <Rectangle.Fill>
+                                    <DrawingBrush Stretch="None" TileMode="Tile" Viewport="0,0,8,8" ViewportUnits="Absolute">
+                                        <DrawingBrush.Drawing>
+                                            <DrawingGroup>
+                                                <GeometryDrawing Geometry="M0,0 L8,0 8,8, 0,8Z" Brush="White"/>
+                                                <GeometryDrawing Geometry="M0,4 L8,4 8,8, 4,8 4,0 0,0Z" Brush="Silver"/>
+                                            </DrawingGroup>
+                                        </DrawingBrush.Drawing>
+                                    </DrawingBrush>
+                                </Rectangle.Fill>
+                            </Rectangle>
+                            <Border BorderThickness="1" BorderBrush="#aaa" />
+                            <fg:Fontogram
+                                BackAttr=";#0f0;0,2,4,6;green|;#8f00;0,2,4,6;red|;#500f;0,2,4,6;blue" BackPosRel="70;70|70;70|70;70"
+                                BackTransform="30|0|60"                            
+                                SelectiveLayerEnable="1"
+                                />
+
+                        </Grid>
+                    </ListBox>
+
+                    <Border
+                        Margin="16,8,8,0"
+                        Background="#bbb"
+                        VerticalAlignment="Top"
+                        Padding="6,0,0,2"
+                        BorderThickness="1,1,1,0" BorderBrush="#aaa"
+                        >
+                        <Label
+                            Content="Layers"
+                            Padding="0"
+                            HorizontalAlignment="Left" VerticalAlignment="Top"
                             />
+                    </Border>
+
+                </Grid>
+
+
+                <Grid
+                    Name="grdAttributes"
+                    Grid.Column="1"
+                    Margin="8,8,16,8"
+                    >
+                    <Border
+                        Background="#eef8fc"
+                        BorderThickness="1" BorderBrush="#26a0da"
+                        SnapsToDevicePixels="True"
+                        >
                         
+                    </Border>
+
+                    <TextBlock
+                        Margin="1"
+                        Background="#cbe8f6"
+                        VerticalAlignment="Top"
+                        Padding="6,0,0,2"
+                        >
+Selected layer details (base overrides)                        
+                    </TextBlock>
+
+                    <GroupBox
+                        Margin="8,25,8,0"
+                        VerticalAlignment="Top"
+                        BorderBrush="#aaa"
+                        >
+                        <GroupBox.Header>
+                            <CheckBox
+                                x:Name="chkBackdrop"
+                                >
+                                Backdrop
+                            </CheckBox>
+                        </GroupBox.Header>
+                        <Grid
+                            IsEnabled="{Binding ElementName=chkBackdrop, Path=IsChecked}"
+                            >
+                            <StackPanel
+                            Orientation="Vertical"
+                            >
+                            <Label
+                                >
+                                color
+                            </Label>
+                            <Label
+                                >
+                                color
+                            </Label>
+                            <Label
+                                >
+                                color
+                            </Label>
+                            <Label
+                                >
+                                color
+                            </Label>
+                        </StackPanel>
+                        </Grid>
+                    </GroupBox>
+
+
+                    <GroupBox
+                        Margin="8,225,8,8"
+                        Height="200"
+                        VerticalAlignment="Top"
+                        >
+                        <GroupBox.Header>
+                            <CheckBox
+                                x:Name="chkText"
+                                >
+                                Text
+                            </CheckBox>
+                        </GroupBox.Header>
+                        <Grid
+                            IsEnabled="{Binding ElementName=chkText, Path=IsChecked}"
+                            >
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="10*"/>
+                                <RowDefinition Height="10*"/>
+                                <RowDefinition Height="10*"/>
+                                <RowDefinition Height="10*"/>
+                            </Grid.RowDefinitions>
+                            
+                            <TextBox
+                                Grid.Row="0"
+                                Name="txtText"
+                                Padding="0" Margin="4,8,4,4" VerticalContentAlignment="Center"
+                                HorizontalContentAlignment="Center"
+                                Text="A😀#⚙1"
+                                FontSize="20"
+                                FontFamily="{Binding ElementName=txtFontName, Path=Text}"
+                                />
+
+                            <Label
+                                Grid.Row="1"
+                                Width="36"
+                                HorizontalAlignment="Left" VerticalAlignment="Center"
+                                >
+                                Font
+                            </Label>
+
+                            <TextBox                                
+                                Grid.Row="1"
+                                VerticalAlignment="Center"
+                                Width="160" Margin="4,0" HorizontalAlignment="Right"
+                                Text="{Binding ElementName=txtText, Path=FontFamily}"
+                                Foreground="Gray"
+                                IsTabStop="False"
+                                />
+                            <TextBox                                
+                                x:Name="txtFontName"
+                                Grid.Row="1"
+                                VerticalAlignment="Center"
+                                Width="160" Margin="4,0" HorizontalAlignment="Right"
+                                Text="Arial"
+                                Background="Transparent"
+                                />
+
+                            <Label
+                                Grid.Row="2"
+                                >
+                                color
+                            </Label>
+                            <Label
+                                Grid.Row="3"
+                                >
+                                color
+                            </Label>
+                        </Grid>
+                    </GroupBox>
+
+                </Grid>
+                
+            </Grid>
+
+
+            <Grid
+                Name="grdSave"
+                Grid.Row="3"
+                >
+
+                <Button
+                    Margin="16,8,16,16" HorizontalAlignment="Left"
+                    Padding="16,0"
+                    Content="Save..."
+                    Background="#e4e4e4"
+                    />
+
+                
+                <Border
+                    Margin="16,8,16,16" HorizontalAlignment="Right"
+                    Width="360"
+                    BorderBrush="Silver" BorderThickness="1"
+                    >
+                    <Grid
+                        >
+                        <TextBlock
+                            Padding="4,0"
+                            VerticalAlignment="Top"
+                            Background="#bbb"
+                            >
+                        Export as Bitmap
+                        </TextBlock>
+                        <Button
+                            Margin="8" HorizontalAlignment="Right"
+                            Padding="16,0"
+                            Background="#e4e4e4"
+                            Content="Export..."
+                            />
                     </Grid>
-                </ListBox>
+                </Border>
 
             </Grid>
-                
+            
         </Grid>
         
 
@@ -178,7 +499,7 @@
 
             <Border
                 Grid.ColumnSpan="3" Grid.RowSpan="3"
-                Background="#eeee"/>
+                Background="#9ddd"/>
 
 
             <local:MovableBoundary
@@ -198,7 +519,10 @@
                 Panel.ZIndex="100" MouseDoubleClick="GridSplitter_MouseDoubleClick"
                 />
  
-            <Border Grid.Row="1" Grid.Column="1"  Background="White"/>
+            <Border
+                Grid.Row="1" Grid.Column="1" 
+                Background="{Binding ElementName=txtBkCol, Path=Text}"
+                />
             
             <!-- The Rectangles give us more flexibility than Grid's ShowGridLines. -->
             <Rectangle
