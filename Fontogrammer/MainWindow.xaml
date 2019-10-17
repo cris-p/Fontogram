@@ -11,51 +11,105 @@
         >
     <Window.Resources>
     </Window.Resources>
-    
+
     <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="285*"/>
-            <RowDefinition Height="284*"/>
-        </Grid.RowDefinitions>
 
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="500"/>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
 
-        <Border
-            HorizontalAlignment="Right" VerticalAlignment="Stretch"
-            Grid.RowSpan="4" Width="4" Background="White"
-            Margin="0,-2" BorderBrush="Gray" BorderThickness="1,0,2,0"
-            />
-        <!--<GridSplitter
-            HorizontalAlignment="Right" VerticalAlignment="Stretch"
-            Grid.RowSpan="4" Width="4"
-            Margin="1,0" Background="Gainsboro"
-            />-->
 
-
-        <ComboBox
-            VerticalAlignment="Top" HorizontalAlignment="Left"
-            Margin="30" Width="200"
-            SelectedIndex="{Binding ReadyMadeFontogramSelection}"
-            IsSynchronizedWithCurrentItem="True"
+        <Grid
+            Grid.Column="0"
             >
-            <ComboBox.Resources>
-                <CollectionViewSource x:Key="ReadyMadeTypes" Source="{Binding ReadyMadeFontogramChoices}" />
-            </ComboBox.Resources>
-            <ComboBox.ItemsSource>
-                <CompositeCollection>
-                    <Label Padding="0">--- none ---</Label>
-                    <CollectionContainer Collection="{Binding Source={StaticResource ReadyMadeTypes}}"/>
-                </CompositeCollection>
-            </ComboBox.ItemsSource>
-        </ComboBox>
 
+            <!-- Vertical divider between editing and preview sides -->
+            <Border
+                HorizontalAlignment="Right" VerticalAlignment="Stretch"
+                Width="4" Background="White"
+                Margin="0,-2" BorderBrush="Gray" BorderThickness="1,0,2,0"
+                />
+
+            <!-- List of ReadyMade icons. -->
+            <Label 
+                VerticalAlignment="Top" HorizontalAlignment="Left"
+                Margin="16,22" Padding="0">
+                Base Fontogram
+            </Label>
+            <ComboBox
+                VerticalAlignment="Top" HorizontalAlignment="Left"
+                Margin="16,40" Width="160"
+                SelectedIndex="{Binding ReadyMadeFontogramSelection}"
+                IsSynchronizedWithCurrentItem="True"
+                >
+                <ComboBox.Resources>
+                    <CollectionViewSource x:Key="ReadyMadeTypes" Source="{Binding ReadyMadeFontogramChoices}" />
+                </ComboBox.Resources>
+                <ComboBox.ItemsSource>
+                    <CompositeCollection>
+                        <Label Padding="0">--- none ---</Label>
+                        <CollectionContainer Collection="{Binding Source={StaticResource ReadyMadeTypes}}"/>
+                    </CompositeCollection>
+                </ComboBox.ItemsSource>
+            </ComboBox>
+
+            
+            <Grid
+                Margin="0,80,0,0"
+                >
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+
+                
+                <Label
+                    Content="Layers"
+                    Padding="0" Margin="16,-2"
+                    HorizontalAlignment="Left" VerticalAlignment="Top"
+                    />
+                <ListBox
+                    Margin="16"
+                    HorizontalContentAlignment="Center"
+                    >
+                    <!--<ListBox.ItemTemplate>
+                        <DataTemplate>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>-->
+      
+                    <Grid Width="192" Height="128" >
+                        
+                        <!-- checkered background -->
+                        <Rectangle>
+                            <Rectangle.Fill>
+                                <DrawingBrush Stretch="None" TileMode="Tile" Viewport="0,0,8,8" ViewportUnits="Absolute">
+                                    <DrawingBrush.Drawing>
+                                        <DrawingGroup>
+                                            <GeometryDrawing Geometry="M0,0 L8,0 8,8, 0,8Z" Brush="White"/>
+                                            <GeometryDrawing Geometry="M0,4 L8,4 8,8, 4,8 4,0 0,0Z" Brush="Silver"/>
+                                        </DrawingGroup>
+                                    </DrawingBrush.Drawing>
+                                </DrawingBrush>
+                            </Rectangle.Fill>
+                        </Rectangle>
+                        <Border BorderThickness="1" BorderBrush="#aaa" />
+                        <fg:Fontogram
+                            BackAttr=";#0f0;0,2,4,6;green|;#8f00;0,2,4,6;red|;#500f;0,2,4,6;blue" BackPosRel="70;70|70;70|70;70"
+                            BackTransform="30|0|60"                            
+                            />
+                        
+                    </Grid>
+                </ListBox>
+
+            </Grid>
+                
+        </Grid>
+        
 
         <Grid
             Grid.Column="1"
-            Name="_PreviewGrid" Grid.RowSpan="2"
+            Name="_PreviewGrid"
             ClipToBounds="True"
             >
 
@@ -70,11 +124,10 @@
                 <RowDefinition Height="3*" MinHeight="5px"/>
             </Grid.RowDefinitions>
 
-            
+
             <fg:Fontogram
                 Margin="10"
                 Name="fgRgbSwirl"
-                ReadyMade="{x:Null}"
                 BackAttr=";#0f0;0,2,4,6;green|;#8f00;0,2,4,6;red|;#500f;0,2,4,6;blue" BackPosRel="50;50|50;50|50;50"
                 BackTransform="30|0|60"
                 />
@@ -113,6 +166,15 @@
             <fg:Fontogram
                 Grid.Row="2" Grid.Column="2" Margin="10"
                 />-->
+            <fg:Fontogram
+                Name="fgWideLogo2"
+                Grid.Column="1" Grid.Row="2"
+                Margin="10"
+                Text="🎞|Abc|Abc" TextAttr=";;#6000|Courier New;bold;#304f|Courier New;bold;#e04f" TextPosRel="100;58;-15|70;-16;-5|70;-13;-4"
+                TextTransform="-10;2;0.5;60;-20|-13.1;0.8;1.62;-8|-13.1;0.8;1.62;-8"
+                BackAttr=";#6baa;1,0,0,1.5;#cbaa" BackPosRel="90;42;47;2" BackCornerRadiusRel="15"
+                BackTransform="-10;2;0.5;60;-20"
+                />
 
             <Border
                 Grid.ColumnSpan="3" Grid.RowSpan="3"
