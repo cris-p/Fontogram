@@ -233,8 +233,10 @@ namespace PergleLabs.UI
     // Can't make the UserControl one generic, because then the properties are marked as incorrect in XAML.
     public abstract class FontogramBase<_T>
         : FontogramBase
-        where _T: System.Enum
+        where _T: struct, System.Enum
     {
+
+        public _T? ReadyMade { get; set; } = null;
 
         protected abstract void CreateBuiltin(ReadyMadeFontogram value);
 

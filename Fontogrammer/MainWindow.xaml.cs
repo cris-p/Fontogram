@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -16,15 +18,41 @@ using System.Windows.Shapes;
 
 namespace PergleLabs.UI
 {
+
+
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class MainWindow
+        : Window
+        , INotifyPropertyChanged
     {
 
-        public List<string> ReadyMadeFontogramChoices { get; private set; } = new List<string>() { "(none)" };
+        public List<ReadyMadeFontogram> ReadyMadeFontogramChoices { get; private set; } = new List<ReadyMadeFontogram>();
 
-        public int ReadyMadeFontogramSelection { get; set; } = 0;
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        private void NotifyPropertyChanged([CallerMemberName] String propertyName = "")
+        {
+            this.PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
+
+
+
+        int _selectedReadyMadeFontogram = 0;
+        public int ReadyMadeFontogramSelection
+        {
+            get { return _selectedReadyMadeFontogram; }
+            set
+            {
+                if (value > 0)
+                    this.fgCenterLogo.ReadyMade = (ReadyMadeFontogram)ReadyMadeFontogramChoices[value];
+                else
+                    this.fgCenterLogo.ReadyMade = null;
+
+                _selectedReadyMadeFontogram = value;
+            }
+        }
 
 
         public MainWindow()
@@ -35,8 +63,11 @@ namespace PergleLabs.UI
 
             foreach (var readyMadeID in (ReadyMadeFontogram[])Enum.GetValues(typeof(ReadyMadeFontogram)))
             {
-                ReadyMadeFontogramChoices.Add(readyMadeID.ToString());
+                ReadyMadeFontogramChoices.Add(readyMadeID);
             }
+
+
+            this.ReadyMadeFontogramSelection = 0;
         }
 
         private void GridSplitter_MouseDoubleClick(object sender, MouseButtonEventArgs e)

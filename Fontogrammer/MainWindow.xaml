@@ -10,7 +10,6 @@
         WindowStartupLocation="CenterScreen"
         >
     <Window.Resources>
-    
     </Window.Resources>
     
     <Grid>
@@ -26,8 +25,8 @@
 
         <Border
             HorizontalAlignment="Right" VerticalAlignment="Stretch"
-            Grid.RowSpan="4" Width="4" Background="WhiteSmoke"
-            Margin="0,-2" BorderBrush="Silver" BorderThickness="1,0,2,0"
+            Grid.RowSpan="4" Width="4" Background="White"
+            Margin="0,-2" BorderBrush="Gray" BorderThickness="1,0,2,0"
             />
         <!--<GridSplitter
             HorizontalAlignment="Right" VerticalAlignment="Stretch"
@@ -39,10 +38,18 @@
         <ComboBox
             VerticalAlignment="Top" HorizontalAlignment="Left"
             Margin="30" Width="200"
-            ItemsSource="{Binding ReadyMadeFontogramChoices}"
             SelectedIndex="{Binding ReadyMadeFontogramSelection}"
+            IsSynchronizedWithCurrentItem="True"
             >
-            
+            <ComboBox.Resources>
+                <CollectionViewSource x:Key="ReadyMadeTypes" Source="{Binding ReadyMadeFontogramChoices}" />
+            </ComboBox.Resources>
+            <ComboBox.ItemsSource>
+                <CompositeCollection>
+                    <Label Padding="0">--- none ---</Label>
+                    <CollectionContainer Collection="{Binding Source={StaticResource ReadyMadeTypes}}"/>
+                </CompositeCollection>
+            </ComboBox.ItemsSource>
         </ComboBox>
 
 
@@ -67,7 +74,7 @@
             <fg:Fontogram
                 Margin="10"
                 Name="fgRgbSwirl"
-                
+                ReadyMade="{x:Null}"
                 BackAttr=";#0f0;0,2,4,6;green|;#8f00;0,2,4,6;red|;#500f;0,2,4,6;blue" BackPosRel="50;50|50;50|50;50"
                 BackTransform="30|0|60"
                 />
@@ -149,7 +156,7 @@
 
             <fg:Fontogram
                 Grid.Row="1" Grid.Column="1" Margin="4"
-                Name="fgSquareLogo"
+                Name="fgCenterLogo"
                 
                 Text="🎞|A|A" TextAttr=";;#999|Courier New;bold;#304f|Courier New;bold;#f01d" TextPosRel="100;26;7|70;-16.4;-0.6|70;-12;1"
                 TextTransform="-10;1;0.3;60;-20|-15.8;0.9;1.7;-18,17|-15.8;0.9;1.7;-18,17"
