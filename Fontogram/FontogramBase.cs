@@ -185,6 +185,36 @@ namespace PergleLabs.UI
         }
 
 
+        /// <summary>
+        /// 0: all layers; other: just that layer (1-based)
+        /// </summary>
+        /// <remarks>
+        /// When the property is removed from XAML, it receives the default value of 0.
+        /// In that situation we want to show all layers.
+        /// </remarks>
+        public int SelectiveLayerEnable
+        {
+            set
+            {
+                for (int i = 0; i < _ParentGrid.Children.Count; i++)
+                {
+                    FgLayer layer = _ParentGrid.Children[i] as FgLayer;
+
+                    int userIndex = i + 1;
+
+                    layer.Visibility =
+                        (value == 0
+                            ? Visibility.Visible
+                            : (value == userIndex
+                                ? Visibility.Visible
+                                : Visibility.Hidden
+                                )
+                            );
+                }
+            }
+        }
+
+
         #region The Properties
 
         public string Text { set { SetPropertyValuesInLayers(value); } }
@@ -207,12 +237,14 @@ namespace PergleLabs.UI
 
         private FgLayer GetOrCreateNthLayer(int n)
         {
-            // 'n' can be at most 1 past the end of the current list
-            System.Diagnostics.Debug.Assert(n <= _ParentGrid.Children.Count);
-
             if (n < _ParentGrid.Children.Count)
                 return _ParentGrid.Children[n] as FgLayer;
 
+            if (n > _ParentGrid.Children.Count)
+                return null;
+
+
+            // 'n' is 1 past the end of the current list -> add new layer
 
             FgLayer newLayer = new FgLayer();
 
@@ -221,6 +253,13 @@ namespace PergleLabs.UI
             return newLayer;
         }
 
+        private FgLayer GetNthLayer(int n)
+        {
+            if (n < _ParentGrid.Children.Count)
+                return _ParentGrid.Children[n] as FgLayer;
+
+            return null;
+        }
 
         protected void StartClean()
         {
