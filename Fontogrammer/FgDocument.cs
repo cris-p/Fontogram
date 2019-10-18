@@ -9,6 +9,7 @@ namespace PergleLabs.UI
 
     class FgDocument
     {
+        public string Text { get; set; } = "A😀#⚙1";
     }
 
 }

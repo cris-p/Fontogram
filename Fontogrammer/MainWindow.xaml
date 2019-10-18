@@ -141,7 +141,7 @@
                     </FlowDocument>
                 </RichTextBox>
 
-                <!--<Canvas
+                <Canvas
                     Grid.Column="1"
                     >
                     <Path
@@ -149,14 +149,14 @@
                     Stroke="Gainsboro" StrokeThickness="12">
                         <Path.Data>
                             <PathGeometry>
-                                <PathFigure StartPoint="0,40">
-                                    <QuadraticBezierSegment Point1="40,50" Point2="200,45" />
-                                    <QuadraticBezierSegment Point1="400,30" Point2="490,50" />
+                                <PathFigure StartPoint="0,55">
+                                    <QuadraticBezierSegment Point1="40,65" Point2="200,60" />
+                                    <QuadraticBezierSegment Point1="400,45" Point2="490,65" />
                                 </PathFigure>
                             </PathGeometry>
                         </Path.Data>
                     </Path>
-                </Canvas>-->
+                </Canvas>
 
 
             </Grid>
@@ -339,7 +339,7 @@ Selected layer details (base overrides)
                                 Name="txtText"
                                 Padding="0" Margin="4,8,4,4" VerticalContentAlignment="Center"
                                 HorizontalContentAlignment="Center"
-                                Text="A😀#⚙1"
+                                Text="{Binding Path=FgDoc.Text, UpdateSourceTrigger=PropertyChanged}"
                                 FontSize="20"
                                 FontFamily="{Binding ElementName=txtFontName, Path=Text}"
                                 />
@@ -545,7 +545,7 @@ Selected layer details (base overrides)
                 Name="fgCenterLogo"
                 ReadyMade="{Binding ReadyMadeSelection}"
                 
-                Text="{Binding ElementName=txtText, Path=Text}" TextAttr=";;#999|Courier New;bold;#304f|Courier New;bold;#f01d" TextPosRel="100;26;7|70;-16.4;-0.6|70;-12;1"
+                Text="{Binding ElementName=txtText, Path=Text, Mode=OneWay}" TextAttr=";;#999|Courier New;bold;#304f|Courier New;bold;#f01d" TextPosRel="100;26;7|70;-16.4;-0.6|70;-12;1"
                 TextTransform="-10;1;0.3;60;-20|-15.8;0.9;1.7;-18,17|-15.8;0.9;1.7;-18,17"
                 BackAttr=";#7baa;1,0,0,1.5;#cbaa" BackPosRel="105;42;28;10"
                 BackTransform="-10;1;0.3;60;-20"

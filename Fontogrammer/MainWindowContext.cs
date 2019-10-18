@@ -22,6 +22,8 @@ namespace PergleLabs.UI
         }
 
 
+        public FgDocument FgDoc { get; } = new FgDocument();
+
 
         public MainWindowContext()
         {
