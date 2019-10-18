@@ -20,6 +20,7 @@ namespace PergleLabs.UI
 
     public class Fontogram
         : FontogramBase<ReadyMadeFontogram>
+        , FontogramProperties
     {
 
         protected override void CreateBuiltin(ReadyMadeFontogram value)

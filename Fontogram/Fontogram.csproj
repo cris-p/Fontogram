@@ -82,6 +82,11 @@
     <Compile Include="FontogramBase.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="FontogramBaseProps.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>FontogramBaseProps.tt</DependentUpon>
+    </Compile>
     <Compile Include="RecipeBindingProps.cs" />
     <Page Include="FgLayer.xaml">
       <SubType>Designer</SubType>
@@ -113,6 +118,15 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="fontogram.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="FontogramBaseProps.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>FontogramBaseProps.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

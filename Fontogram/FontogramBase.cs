@@ -32,7 +32,7 @@ namespace PergleLabs.UI
     /// 
     /// Transforms apply to each layer (backdrop + text) as a whole.
     /// </remarks>
-    internal interface FontogramProperties
+    public interface FontogramProperties
     {
 
         //string AspectRatio // "3:4"
@@ -150,9 +150,8 @@ namespace PergleLabs.UI
     /// <summary>
     /// Interaction logic for Fontogram.xaml
     /// </summary>
-    public class FontogramBase
+    public partial class FontogramBase
         : UserControl
-        , FontogramProperties
     {
         public Grid _ParentGrid;
 
@@ -217,15 +216,7 @@ namespace PergleLabs.UI
 
         #region The Properties
 
-        public string Text { set { SetPropertyValuesInLayers(value); } }
-        public string TextAttr { set { SetPropertyValuesInLayers(value); } }
-        public string TextPosRel { set { SetPropertyValuesInLayers(value); } }
-        public string TextTransform { set { SetPropertyValuesInLayers(value); } }
-
-        public string BackAttr { set { SetPropertyValuesInLayers(value); } }
-        public string BackPosRel { set { SetPropertyValuesInLayers(value); } }
-        public string BackCornerRadiusRel { set { SetPropertyValuesInLayers(value); } }
-        public string BackTransform { set { SetPropertyValuesInLayers(value); } }
+        // see FontogramBaseProps.cs, generated from FontogramBaseProps.tt
 
         #endregion
 
@@ -275,6 +266,11 @@ namespace PergleLabs.UI
         where _T: struct, System.Enum
     {
 
+        public static readonly DependencyProperty ReadyMadeProperty =
+            DependencyProperty.Register(
+                "ReadyMade", typeof(_T?),
+                typeof(FontogramBase<_T>)
+                );
         public _T? ReadyMade { get; set; } = null;
 
         protected abstract void CreateBuiltin(ReadyMadeFontogram value);
