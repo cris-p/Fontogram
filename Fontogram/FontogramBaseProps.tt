@@ -4,11 +4,19 @@
 <#@ import namespace="System.Text" #>
 <#@ import namespace="System.Collections.Generic" #>
 <#@ output extension=".cs" #>
-using System.Collections.Generic;
-using System.Reflection;
-using System.Runtime.CompilerServices;
+<#
+List<string>    PROPERTY_NAMES = new List<string>{
+                    "Text",
+                    "TextAttr",
+                    "TextPosRel",
+                    "TextTransform",
+                    "BackAttr",
+                    "BackPosRel",
+                    "BackCornerRadiusRel",
+                    "BackTransform"
+                    };
+#>
 using System.Windows;
-using System.Windows.Controls;
 
 namespace PergleLabs.UI
 {
@@ -17,11 +25,12 @@ namespace PergleLabs.UI
         : FontogramProperties
     {
 <#
-foreach (string propName in new List<string>{"Text", "TextAttr", "TextPosRel", "TextTransform", "BackAttr", "BackPosRel", "BackCornerRadiusRel", "BackTransform"})
+foreach (string propName in PROPERTY_NAMES)
 {
     string depPropName = $"{propName}Property";
 #>
 
+        // <#= propName #>
         public static readonly DependencyProperty <#= propName #>Property = DependencyProperty.Register(
             "<#= propName #>", typeof(string), typeof(FontogramBase), new PropertyMetadata(null, On<#= propName #>Changed) );
         private static void On<#= propName #>Changed(DependencyObject depObj, DependencyPropertyChangedEventArgs e)

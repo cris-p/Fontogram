@@ -1,8 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Reflection;
-using System.Runtime.CompilerServices;
-using System.Windows;
-using System.Windows.Controls;
+﻿using System.Windows;
 
 namespace PergleLabs.UI
 {
@@ -11,6 +7,7 @@ namespace PergleLabs.UI
         : FontogramProperties
     {
 
+        // Text
         public static readonly DependencyProperty TextProperty = DependencyProperty.Register(
             "Text", typeof(string), typeof(FontogramBase), new PropertyMetadata(null, OnTextChanged) );
         private static void OnTextChanged(DependencyObject depObj, DependencyPropertyChangedEventArgs e)
@@ -23,6 +20,7 @@ namespace PergleLabs.UI
             set { SetValue(TextProperty, value); }
         }
 
+        // TextAttr
         public static readonly DependencyProperty TextAttrProperty = DependencyProperty.Register(
             "TextAttr", typeof(string), typeof(FontogramBase), new PropertyMetadata(null, OnTextAttrChanged) );
         private static void OnTextAttrChanged(DependencyObject depObj, DependencyPropertyChangedEventArgs e)
@@ -35,6 +33,7 @@ namespace PergleLabs.UI
             set { SetValue(TextAttrProperty, value); }
         }
 
+        // TextPosRel
         public static readonly DependencyProperty TextPosRelProperty = DependencyProperty.Register(
             "TextPosRel", typeof(string), typeof(FontogramBase), new PropertyMetadata(null, OnTextPosRelChanged) );
         private static void OnTextPosRelChanged(DependencyObject depObj, DependencyPropertyChangedEventArgs e)
@@ -47,6 +46,7 @@ namespace PergleLabs.UI
             set { SetValue(TextPosRelProperty, value); }
         }
 
+        // TextTransform
         public static readonly DependencyProperty TextTransformProperty = DependencyProperty.Register(
             "TextTransform", typeof(string), typeof(FontogramBase), new PropertyMetadata(null, OnTextTransformChanged) );
         private static void OnTextTransformChanged(DependencyObject depObj, DependencyPropertyChangedEventArgs e)
@@ -59,6 +59,7 @@ namespace PergleLabs.UI
             set { SetValue(TextTransformProperty, value); }
         }
 
+        // BackAttr
         public static readonly DependencyProperty BackAttrProperty = DependencyProperty.Register(
             "BackAttr", typeof(string), typeof(FontogramBase), new PropertyMetadata(null, OnBackAttrChanged) );
         private static void OnBackAttrChanged(DependencyObject depObj, DependencyPropertyChangedEventArgs e)
@@ -71,6 +72,7 @@ namespace PergleLabs.UI
             set { SetValue(BackAttrProperty, value); }
         }
 
+        // BackPosRel
         public static readonly DependencyProperty BackPosRelProperty = DependencyProperty.Register(
             "BackPosRel", typeof(string), typeof(FontogramBase), new PropertyMetadata(null, OnBackPosRelChanged) );
         private static void OnBackPosRelChanged(DependencyObject depObj, DependencyPropertyChangedEventArgs e)
@@ -83,6 +85,7 @@ namespace PergleLabs.UI
             set { SetValue(BackPosRelProperty, value); }
         }
 
+        // BackCornerRadiusRel
         public static readonly DependencyProperty BackCornerRadiusRelProperty = DependencyProperty.Register(
             "BackCornerRadiusRel", typeof(string), typeof(FontogramBase), new PropertyMetadata(null, OnBackCornerRadiusRelChanged) );
         private static void OnBackCornerRadiusRelChanged(DependencyObject depObj, DependencyPropertyChangedEventArgs e)
@@ -95,6 +98,7 @@ namespace PergleLabs.UI
             set { SetValue(BackCornerRadiusRelProperty, value); }
         }
 
+        // BackTransform
         public static readonly DependencyProperty BackTransformProperty = DependencyProperty.Register(
             "BackTransform", typeof(string), typeof(FontogramBase), new PropertyMetadata(null, OnBackTransformChanged) );
         private static void OnBackTransformChanged(DependencyObject depObj, DependencyPropertyChangedEventArgs e)
