@@ -499,7 +499,7 @@ Selected layer details (base overrides)
 
             <Border
                 Grid.ColumnSpan="3" Grid.RowSpan="3"
-                Background="#9ddd"/>
+                Background="#eeee"/>
 
 
             <local:MovableBoundary
@@ -543,12 +543,14 @@ Selected layer details (base overrides)
             <fg:Fontogram
                 Grid.Row="1" Grid.Column="1" Margin="4"
                 Name="fgCenterLogo"
+                ReadyMade="{Binding ReadyMadeSelection}"
                 
-                Text="🎞|A|A" TextAttr=";;#999|Courier New;bold;#304f|Courier New;bold;#f01d" TextPosRel="100;26;7|70;-16.4;-0.6|70;-12;1"
+                Text="{Binding ElementName=txtText, Path=Text}" TextAttr=";;#999|Courier New;bold;#304f|Courier New;bold;#f01d" TextPosRel="100;26;7|70;-16.4;-0.6|70;-12;1"
                 TextTransform="-10;1;0.3;60;-20|-15.8;0.9;1.7;-18,17|-15.8;0.9;1.7;-18,17"
                 BackAttr=";#7baa;1,0,0,1.5;#cbaa" BackPosRel="105;42;28;10"
                 BackTransform="-10;1;0.3;60;-20"
                 />
+            <!--🎞|A|A-->
         </Grid>
 
     </Grid>

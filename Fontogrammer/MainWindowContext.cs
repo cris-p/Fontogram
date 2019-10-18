@@ -40,31 +40,31 @@ namespace PergleLabs.UI
         public List<ReadyMadeFontogram> ReadyMadeFontogramChoices { get; private set; } = new List<ReadyMadeFontogram>();
 
 
-        private ReadyMadeFontogram? _readyMadeSelection = null;
-        public ReadyMadeFontogram? ReadyMadeSelection
+        private ReadyMadeFontogram? _readyMadeSelectedValue = null;
+        public ReadyMadeFontogram? ReadyMadeSelectedValue
         {
-            get { return _readyMadeSelection; }
+            get { return _readyMadeSelectedValue; }
             private set
             {
-                _readyMadeSelection = value;
+                _readyMadeSelectedValue = value;
 
                 NotifyPropertyChanged();
             }
         }
 
 
-        int _selectedReadyMadeFontogram = 0;
+        int _readyMadeFontogramSelection = 0;
         public int ReadyMadeFontogramSelection
         {
-            get { return _selectedReadyMadeFontogram; }
+            get { return _readyMadeFontogramSelection; }
             set
             {
                 if (value > 0)
-                    ReadyMadeSelection = ReadyMadeFontogramChoices[value];
+                    ReadyMadeSelectedValue = ReadyMadeFontogramChoices[value];
                 else
-                    ReadyMadeSelection = null;
+                    ReadyMadeSelectedValue = null;
 
-                _selectedReadyMadeFontogram = value;
+                _readyMadeFontogramSelection = value;
             }
         }
 
