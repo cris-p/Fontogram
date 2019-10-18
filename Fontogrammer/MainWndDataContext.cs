@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 namespace PergleLabs.UI
 {
 
-    class MainWindowContext
+    class MainWndDataContext
         : INotifyPropertyChanged
     {
 
@@ -22,10 +22,10 @@ namespace PergleLabs.UI
         }
 
 
-        public FgDocument FgDoc { get; } = new FgDocument();
+        public FontogramData FgDoc { get; } = new FontogramData();
 
 
-        public MainWindowContext()
+        public MainWndDataContext()
         {
             foreach (var readyMadeID in (ReadyMadeFontogram[])Enum.GetValues(typeof(ReadyMadeFontogram)))
             {

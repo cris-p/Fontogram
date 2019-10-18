@@ -31,7 +31,7 @@ namespace PergleLabs.UI
         {
             InitializeComponent();
 
-            this.DataContext = new MainWindowContext();
+            this.DataContext = new MainWndDataContext();
         }
 
         private void GridSplitter_MouseDoubleClick(object sender, MouseButtonEventArgs e)

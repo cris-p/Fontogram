@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace PergleLabs.UI
 {
 
-    class FgDocument
+    class FontogramData
     {
         public string Text { get; set; } = "A😀#⚙1";
     }
