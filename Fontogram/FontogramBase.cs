@@ -184,32 +184,33 @@ namespace PergleLabs.UI
         }
 
 
-        /// <summary>
-        /// 0: all layers; other: just that layer (1-based)
-        /// </summary>
-        /// <remarks>
-        /// When the property is removed from XAML, it receives the default value of 0.
-        /// In that situation we want to show all layers.
-        /// </remarks>
+        // SelectiveLayerEnable
+        public static readonly DependencyProperty SelectiveLayerEnableProperty = DependencyProperty.Register(
+            "SelectiveLayerEnable", typeof(int), typeof(FontogramBase), new PropertyMetadata(-1, OnSelectiveLayerEnableChanged));
+        private static void OnSelectiveLayerEnableChanged(DependencyObject depObj, DependencyPropertyChangedEventArgs e)
+        {
+            (depObj as FontogramBase).EnableLayerSelectively((int)e.NewValue);
+        }
         public int SelectiveLayerEnable
         {
-            set
+            get { return (int)GetValue(SelectiveLayerEnableProperty); }
+            set { SetValue(SelectiveLayerEnableProperty, value); }
+        }
+
+        private void EnableLayerSelectively(int layerPos)
+        {
+            for (int i = 0; i < _ParentGrid.Children.Count; i++)
             {
-                for (int i = 0; i < _ParentGrid.Children.Count; i++)
-                {
-                    FgLayer layer = _ParentGrid.Children[i] as FgLayer;
+                FgLayer layer = _ParentGrid.Children[i] as FgLayer;
 
-                    int userIndex = i + 1;
-
-                    layer.Visibility =
-                        (value == 0
+                layer.Visibility =
+                    (layerPos == 0
+                        ? Visibility.Visible
+                        : (layerPos == i
                             ? Visibility.Visible
-                            : (value == userIndex
-                                ? Visibility.Visible
-                                : Visibility.Hidden
-                                )
-                            );
-                }
+                            : Visibility.Hidden
+                            )
+                        );
             }
         }
 
