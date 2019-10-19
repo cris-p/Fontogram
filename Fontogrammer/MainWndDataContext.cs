@@ -79,6 +79,16 @@ namespace PergleLabs.Fontogrammer
 
         public ObservableCollection<XamlLayerItem> XamlLayers { get; private set; } = new ObservableCollection<XamlLayerItem>();
 
+        private XamlLayerItem _currentXamlLayer;
+        public XamlLayerItem CurrentXamlLayer {
+            get { return _currentXamlLayer; }
+            set
+            {
+                _currentXamlLayer = value;
+                NotifyPropertyChanged();
+            }
+        }
+
 
         public void AddLayer()
         {

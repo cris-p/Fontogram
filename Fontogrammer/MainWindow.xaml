@@ -185,6 +185,7 @@
                         HorizontalContentAlignment="Center"
                         ScrollViewer.VerticalScrollBarVisibility="Visible"
                         ItemsSource="{Binding XamlLayers}"
+                        SelectedItem="{Binding CurrentXamlLayer}"
                         >
                         <ListBox.ItemTemplate>
                             <DataTemplate>
@@ -344,7 +345,7 @@ Selected layer details (override Base)
                                 Name="txtText"
                                 Padding="0" Margin="4,8,4,4" VerticalContentAlignment="Center"
                                 HorizontalContentAlignment="Center"
-                                Text="{Binding Path=FgData.Text, UpdateSourceTrigger=PropertyChanged}"
+                                Text="{Binding Path=CurrentXamlLayer.Text, UpdateSourceTrigger=PropertyChanged}"
                                 FontSize="20"
                                 FontFamily="{Binding ElementName=txtFontName, Path=Text}"
                                 />
