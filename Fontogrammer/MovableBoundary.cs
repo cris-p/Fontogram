@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using System.Windows.Controls;
 using System.Windows.Media;
 
-namespace PergleLabs.UI
+namespace PergleLabs.Fontogrammer
 {
     /// <summary>
     /// Divider in a 3x3 grid.

@@ -6,12 +6,12 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
 
-namespace PergleLabs.UI
+namespace PergleLabs.Fontogrammer
 {
     /// <summary>
     /// Interaction logic for App.xaml
     /// </summary>
-    public partial class Fontogrammer : Application
+    public partial class FontogrammerApp : Application
     {
     }
 }

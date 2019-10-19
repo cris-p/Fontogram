@@ -1,7 +1,7 @@
-﻿<Application x:Class="PergleLabs.UI.Fontogrammer"
+﻿<Application x:Class="PergleLabs.Fontogrammer.FontogrammerApp"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:local="clr-namespace:PergleLabs.UI"
+             xmlns:local="clr-namespace:PergleLabs.Fontogrammer"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
          
