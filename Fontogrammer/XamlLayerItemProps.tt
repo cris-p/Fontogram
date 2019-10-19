@@ -1,0 +1,38 @@
+﻿<#@ template debug="false" hostspecific="false" language="C#" #>
+<#@ assembly name="System.Core" #>
+<#@ import namespace="System.Linq" #>
+<#@ import namespace="System.Text" #>
+<#@ import namespace="System.Collections.Generic" #>
+<#@ output extension=".cs" #>
+<#
+List<string>    PROPERTY_NAMES = new List<string>{
+                    "Text",
+                    "TextAttr",
+                    "TextPosRel",
+                    "TextTransform",
+                    "BackAttr",
+                    "BackPosRel",
+                    "BackCornerRadiusRel",
+                    "BackTransform"
+                    };
+#>
+using System.Windows;
+
+namespace PergleLabs.Fontogrammer
+{
+
+    partial class XamlLayerItem
+    {
+<#
+foreach (string propName in PROPERTY_NAMES)
+{
+#>
+
+        public string <#= propName #> { get; set; }
+<#
+}
+#>
+
+    }
+
+}

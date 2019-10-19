@@ -1,5 +1,7 @@
-﻿using System;
+﻿using PergleLabs.UI;
+using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
 using System.Runtime.CompilerServices;
@@ -7,7 +9,8 @@ using System.Text;
 using System.Threading.Tasks;
 
 
-namespace PergleLabs.UI
+
+namespace PergleLabs.Fontogrammer
 {
 
     class MainWndDataContext
@@ -22,11 +25,14 @@ namespace PergleLabs.UI
         }
 
 
-        public FontogramData FgDoc { get; } = new FontogramData();
+        public FontogramData FgData { get; } = new FontogramData();
 
 
-        public MainWndDataContext()
+        private readonly Fontogram _FgPreview;
+        public MainWndDataContext(Fontogram fgPreview)
         {
+            _FgPreview = fgPreview;
+
             foreach (var readyMadeID in (ReadyMadeFontogram[])Enum.GetValues(typeof(ReadyMadeFontogram)))
             {
                 ReadyMadeFontogramChoices.Add(readyMadeID);
@@ -71,7 +77,22 @@ namespace PergleLabs.UI
         }
 
 
+        public ObservableCollection<XamlLayerItem> XamlLayers { get; private set; } = new ObservableCollection<XamlLayerItem>();
 
+
+        public void AddLayer()
+        {
+            int pos = XamlLayers.Count;
+
+            var newLayer = new XamlLayerItem(_FgPreview, pos);
+
+            XamlLayers.Add(newLayer);
+
+        }
+
+        internal void RemoveCurrentLayer()
+        {
+        }
     }
 
 }

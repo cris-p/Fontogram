@@ -6,7 +6,7 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{3BA4F123-EB39-4E5A-AF00-AA65609B475E}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <RootNamespace>PergleLabs.UI</RootNamespace>
+    <RootNamespace>PergleLabs.Fontogrammer</RootNamespace>
     <AssemblyName>Fontogrammer</AssemblyName>
     <TargetFrameworkVersion>v4.6.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
@@ -83,6 +83,11 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="XamlLayerItemProps.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>XamlLayerItemProps.tt</DependentUpon>
+    </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -92,6 +97,7 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="FontogramData.cs" />
+    <Compile Include="XamlLayerItem.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -133,6 +139,15 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="fontogrammer.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="XamlLayerItemProps.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>XamlLayerItemProps.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

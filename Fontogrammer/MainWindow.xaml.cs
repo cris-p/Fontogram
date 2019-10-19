@@ -16,9 +16,9 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace PergleLabs.UI
-{
 
+namespace PergleLabs.Fontogrammer
+{
 
     /// <summary>
     /// Interaction logic for MainWindow.xaml
@@ -31,7 +31,7 @@ namespace PergleLabs.UI
         {
             InitializeComponent();
 
-            this.DataContext = new MainWndDataContext();
+            this.DataContext = new MainWndDataContext(fgPreview);
         }
 
         private void GridSplitter_MouseDoubleClick(object sender, MouseButtonEventArgs e)
@@ -91,6 +91,15 @@ namespace PergleLabs.UI
             colDefs[2].Width = new GridLength(W2, GridUnitType.Star);
         }
 
+        private void btnNewLayer_Click(object sender, RoutedEventArgs e)
+        {
+            (this.DataContext as MainWndDataContext).AddLayer();
+        }
+
+        private void btnRemoveLayer_Click(object sender, RoutedEventArgs e)
+        {
+            (this.DataContext as MainWndDataContext).RemoveCurrentLayer();
+        }
     }
 
 }
