@@ -169,7 +169,12 @@ namespace PergleLabs.UI
             if (valueList == null)
                 valueList = "";
 
-            PropertyInfo propInfo = typeof(FgLayer).GetProperty(propertyName);
+
+            PropertyInfo fgPropInfo = typeof(Fontogram).GetProperty(propertyName);
+            fgPropInfo.SetValue(this, valueList);
+
+
+            PropertyInfo layerPropInfo = typeof(FgLayer).GetProperty(propertyName);
 
             string[] values = valueList.Split('|');
 
@@ -179,8 +184,11 @@ namespace PergleLabs.UI
 
                 FgLayer layer = GetOrCreateNthLayer(n);
 
-                propInfo.SetValue(layer, userValue);
+                layerPropInfo.SetValue(layer, userValue);
             }
+
+            if (SelectiveLayerEnable != (int)SelectiveLayerEnableProperty.DefaultMetadata.DefaultValue)
+                EnableLayerSelectively(SelectiveLayerEnable);
         }
 
 
@@ -204,7 +212,7 @@ namespace PergleLabs.UI
                 FgLayer layer = _ParentGrid.Children[i] as FgLayer;
 
                 layer.Visibility =
-                    (layerPos == 0
+                    (layerPos == (int)SelectiveLayerEnableProperty.DefaultMetadata.DefaultValue
                         ? Visibility.Visible
                         : (layerPos == i
                             ? Visibility.Visible
