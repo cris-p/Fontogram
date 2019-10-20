@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using System.Windows;
 
 namespace PergleLabs.UI
 {
@@ -42,6 +42,16 @@ namespace PergleLabs.UI
             }
         }
 
+        public static readonly DependencyProperty ReadyMadeProperty =
+            DependencyProperty.Register(
+                "ReadyMade", typeof(ReadyMadeFontogram?),
+                typeof(Fontogram),
+                new PropertyMetadata(null, OnReadyMadeChanged));
+        public ReadyMadeFontogram? ReadyMade
+        {
+            get { return (ReadyMadeFontogram?)GetValue(ReadyMadeProperty); }
+            set { SetValue(ReadyMadeProperty, value); }
+        }
 
 
         void AddLayers_Logo()

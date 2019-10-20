@@ -271,19 +271,19 @@ namespace PergleLabs.UI
         where _T: struct, System.Enum
     {
 
-        public static readonly DependencyProperty ReadyMadeProperty =
-            DependencyProperty.Register(
-                "ReadyMade", typeof(_T?),
-                typeof(FontogramBase<_T>),
-                new PropertyMetadata(null, OnReadyMadeChanged));
+        //public static readonly DependencyProperty ReadyMadeProperty =
+        //    DependencyProperty.Register(
+        //        "ReadyMade", typeof(_T?),
+        //        typeof(FontogramBase<_T>),
+        //        new PropertyMetadata(null, OnReadyMadeChanged));
         protected static void OnReadyMadeChanged(DependencyObject depObj, DependencyPropertyChangedEventArgs e)
         {
         }
-        public _T? ReadyMade
-        {
-            get { return (_T?)GetValue(ReadyMadeProperty); }
-            set { SetValue(ReadyMadeProperty, value); }
-        }
+        //public _T? ReadyMade
+        //{
+        //    get { return (_T?)GetValue(ReadyMadeProperty); }
+        //    set { SetValue(ReadyMadeProperty, value); }
+        //}
 
 
         protected abstract void CreateBuiltin(ReadyMadeFontogram value);
