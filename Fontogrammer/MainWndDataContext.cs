@@ -39,7 +39,7 @@ namespace PergleLabs.Fontogrammer
             }
 
 
-            this.ReadyMadeFontogramSelection = 0;
+            this.ReadyMadeFontogramSelection = 0;   // default is "none" - an item separate from ReadyMadeFontogramChoices
         }
 
 
@@ -68,7 +68,7 @@ namespace PergleLabs.Fontogrammer
             set
             {
                 if (value > 0)
-                    ReadyMadeSelectedValue = ReadyMadeFontogramChoices[value];
+                    ReadyMadeSelectedValue = ReadyMadeFontogramChoices[value-1];
                 else
                     ReadyMadeSelectedValue = null;
 
