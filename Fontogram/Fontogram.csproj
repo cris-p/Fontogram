@@ -75,6 +75,11 @@
     <Reference Include="PresentationFramework" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="FgLayerProps.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>FgLayerProps.tt</DependentUpon>
+    </Compile>
     <Compile Include="Fontogram.cs" />
     <Compile Include="FgLayer.xaml.cs">
       <DependentUpon>FgLayer.xaml</DependentUpon>
@@ -120,6 +125,10 @@
     <Resource Include="fontogram.ico" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="FgLayerProps.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>FgLayerProps.cs</LastGenOutput>
+    </Content>
     <Content Include="FontogramBaseProps.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>FontogramBaseProps.cs</LastGenOutput>

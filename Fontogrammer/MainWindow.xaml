@@ -189,36 +189,39 @@
                         >
                         <ListBox.ItemTemplate>
                             <DataTemplate>
-                                <Grid>
-                                    <Grid>
-                                        <Rectangle
-                                            >
-                                            <Rectangle.Fill>
-                                                <DrawingBrush Stretch="None" TileMode="Tile" Viewport="0,0,16,16" ViewportUnits="Absolute">
-                                                    <DrawingBrush.Drawing>
-                                                        <DrawingGroup>
-                                                            <GeometryDrawing Geometry="M0,0 L16,0 16,16, 0,16Z" Brush="White"/>
-                                                            <GeometryDrawing Geometry="M0,8 L16,8 16,16, 8,16 8,0 0,0Z" Brush="Silver"/>
-                                                        </DrawingGroup>
-                                                    </DrawingBrush.Drawing>
-                                                </DrawingBrush>
-                                            </Rectangle.Fill>
-                                        </Rectangle>
-                                        <Border BorderThickness="1" BorderBrush="#aaa" />
-                                        <fg:Fontogram
-                                            Width="192" Height="128"
+                                <Grid
+                                    >
+                                    <Rectangle
+                                        >
+                                        <Rectangle.Fill>
+                                            <DrawingBrush Stretch="None" TileMode="Tile" Viewport="0,0,16,16" ViewportUnits="Absolute">
+                                                <DrawingBrush.Drawing>
+                                                    <DrawingGroup>
+                                                        <GeometryDrawing Geometry="M0,0 L16,0 16,16, 0,16Z" Brush="White"/>
+                                                        <GeometryDrawing Geometry="M0,8 L16,8 16,16, 8,16 8,0 0,0Z" Brush="Silver"/>
+                                                    </DrawingGroup>
+                                                </DrawingBrush.Drawing>
+                                            </DrawingBrush>
+                                        </Rectangle.Fill>
+                                    </Rectangle>
+
+                                    <Border
+                                        BorderThickness="1" BorderBrush="#aaa"
+                                        />
+
+                                    <fg:Fontogram
+                                        Width="192" Height="128"
                                             
-                                            Text="{Binding ParentFontogram.Text}"
-                                            TextAttr="{Binding ParentFontogram.TextAttr}"
-                                            TextPosRel="{Binding ParentFontogram.TextPosRel}"
-                                            TextTransform="{Binding ParentFontogram.TextTransform}"
-                                            BackAttr="{Binding ParentFontogram.BackAttr}"
-                                            BackPosRel="{Binding ParentFontogram.BackPosRel}"
-                                            BackTransform="{Binding ParentFontogram.BackTransform}"
+                                        Text="{Binding ParentFontogram.Text}"
+                                        TextAttr="{Binding ParentFontogram.TextAttr}"
+                                        TextPosRel="{Binding ParentFontogram.TextPosRel}"
+                                        TextTransform="{Binding ParentFontogram.TextTransform}"
+                                        BackAttr="{Binding ParentFontogram.BackAttr}"
+                                        BackPosRel="{Binding ParentFontogram.BackPosRel}"
+                                        BackTransform="{Binding ParentFontogram.BackTransform}"
                                             
-                                            SelectiveLayerEnable="{Binding PositionInFontogram}"
-                                            />
-                                    </Grid>
+                                        SelectiveLayerEnable="{Binding PositionInFontogram}"
+                                        />
                                 </Grid>
                             </DataTemplate>
                         </ListBox.ItemTemplate>

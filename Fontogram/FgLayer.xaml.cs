@@ -18,7 +18,6 @@ namespace PergleLabs.UI
 
     internal partial class FgLayer
         : UserControl
-        , FontogramProperties   // flowing down from Fontogram
     {
 
         public FgLayer()
@@ -49,100 +48,7 @@ namespace PergleLabs.UI
 
         #region Fontogram-originated properties
  
-        public string Text
-        {
-            set
-            {
-                _BindingProps.Text.In = value;
-            }
-        }
-
-        public string TextAttr
-        {
-            set
-            {
-                DispatchValues(value,
-                    _BindingProps.TextFont,
-                    _BindingProps.TextFontWeight,
-                    _BindingProps.TextColor
-                    );
-            }
-        }
-
-        public string TextPosRel
-        {
-            set
-            {
-                DispatchValues(value,
-                    _BindingProps.TextFontSize,
-                    _BindingProps.TextShiftX,
-                    _BindingProps.TextShiftY
-                    );
-            }
-        }
-
-        public string TextTransform
-        {
-            set
-            {
-                DispatchValues(value,
-                    _BindingProps.TextRotAngle,
-                    _BindingProps.TextScaleX,
-                    _BindingProps.TextScaleY,
-                    _BindingProps.TextSkewX,
-                    _BindingProps.TextSkewY
-                    );
-            }
-        }
-
-
-        public string BackAttr
-        {
-            set
-            {
-                DispatchValues(value,
-                    _BindingProps.BackOpacity,
-                    _BindingProps.BackFillColor,
-                    _BindingProps.BackStrokeThickness,
-                    _BindingProps.BackStrokeColor
-                    );
-            }
-        }
-
-        public string BackPosRel
-        {
-            set
-            {
-                DispatchValues(value,
-                    _BindingProps.BackWidth,
-                    _BindingProps.BackHeight,
-                    _BindingProps.BackShiftX,
-                    _BindingProps.BackShiftY
-                    );
-            }
-        }
-
-        public string BackCornerRadiusRel
-        {
-            set
-            {
-                _BindingProps.BackCornerRadius.In = value;
-            }
-        }
-
-        public string BackTransform
-        {
-            set
-            {
-                DispatchValues(value,
-                    _BindingProps.BackRotAngle,
-                    _BindingProps.BackScaleX,
-                    _BindingProps.BackScaleY,
-                    _BindingProps.BackSkewX,
-                    _BindingProps.BackSkewY
-                    );
-            }
-        }
+        // see FgLayerProps.cs, generated from FgLayerProps.tt
 
         #endregion
 
