@@ -35,12 +35,19 @@ foreach (string propName in PROPERTY_NAMES)
             "<#= propName #>", typeof(string), typeof(FontogramBase), new PropertyMetadata(null, On<#= propName #>Changed) );
         private static void On<#= propName #>Changed(DependencyObject depObj, DependencyPropertyChangedEventArgs e)
         {
-            (depObj as FontogramBase).SetPropertyValuesInLayers(e.NewValue as string, e.Property.Name);
+            FontogramBase fgObj = depObj as FontogramBase;
+            fgObj.SetPropertyValuesInLayers(e.NewValue as string, fgObj.<#= propName #>_readyMade, e.Property.Name);
         }
         public string <#= propName #>
         {
             get { return (string)GetValue(<#= propName #>Property); }
             set { SetValue(<#= propName #>Property, value); }
+        }
+        private string __<#= propName #>_readyMade;
+        private string <#= propName #>_readyMade
+        {
+            get { return __<#= propName #>_readyMade; }
+            set { __<#= propName #>_readyMade = value; SetPropertyValuesInLayers(<#= propName #>, value, "<#= propName #>"); }
         }
 <#
 }

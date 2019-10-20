@@ -164,8 +164,10 @@ namespace PergleLabs.UI
         }
 
 
-        private void SetPropertyValuesInLayers(string valueList, [CallerMemberName] string propertyName = "")
+        private void SetPropertyValuesInLayers(string valueList, string readyMadeValue, [CallerMemberName] string propertyName = "")
         {
+            if (valueList == null)
+                valueList = readyMadeValue;
             if (valueList == null)
                 valueList = "";
 
@@ -262,6 +264,16 @@ namespace PergleLabs.UI
             _ParentGrid.Children.Clear();
         }
 
+        protected void ClearReadyMade()
+        {
+            Text_readyMade = "";
+        }
+
+        protected void SetReadyMade(string newVal)
+        {
+            Text_readyMade = newVal;
+        }
+
     }
 
 
@@ -271,19 +283,17 @@ namespace PergleLabs.UI
         where _T: struct, System.Enum
     {
 
-        //public static readonly DependencyProperty ReadyMadeProperty =
-        //    DependencyProperty.Register(
-        //        "ReadyMade", typeof(_T?),
-        //        typeof(FontogramBase<_T>),
-        //        new PropertyMetadata(null, OnReadyMadeChanged));
         protected static void OnReadyMadeChanged(DependencyObject depObj, DependencyPropertyChangedEventArgs e)
         {
+            FontogramBase<_T> fgObj = depObj as FontogramBase<_T>;
+
+            if (e.NewValue == null)
+                fgObj.ClearReadyMade();
+
+            fgObj.SetReadyMade(
+                e.NewValue.ToString()
+                );
         }
-        //public _T? ReadyMade
-        //{
-        //    get { return (_T?)GetValue(ReadyMadeProperty); }
-        //    set { SetValue(ReadyMadeProperty, value); }
-        //}
 
 
         protected abstract void CreateBuiltin(ReadyMadeFontogram value);

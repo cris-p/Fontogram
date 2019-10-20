@@ -476,7 +476,6 @@ Selected layer details (override Base)
                 Name="fgLogo"
                 Grid.Row="2"
                 Margin="10"
-                ReadyMade="{Binding ReadyMadeSelectedValue}"
                 
                 Text="🎞|A|A" TextAttr=";;#999|Courier New;bold;#304f|Courier New;bold;#f01d" TextPosRel="100;26;7|70;-16.4;-0.6|70;-12;1"
                 TextTransform="-10;1;0.3;60;-20|-15.8;0.9;1.7;-18,17|-15.8;0.9;1.7;-18,17"
