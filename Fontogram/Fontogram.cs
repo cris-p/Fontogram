@@ -78,9 +78,9 @@ namespace PergleLabs.UI
 
                 case ReadyMadeFontogram.Sample_RgbSwirl:
                     _Text = "G|R|B";
-                    _TextAttr = ";;green|;;red|;;blue";
-                    _TextPosRel = "20|20;-12|20;12";
-                    _TextTransform = "";
+                    _TextAttr = "arial;bold;green|arial;bold;red|arial;bold;blue";
+                    _TextPosRel = "16;1;43|16;23;36.5|16;-20;38.5";
+                    _TextTransform = "30|0|60";
                     _BackAttr = ";#0f0;0,2,4,6;green|;#8f00;0,2,4,6;red|;#500f;0,2,4,6;blue";
                     _BackPosRel = "60;60|60;60|60;60";
                     _BackCornerRadiusRel = "";
