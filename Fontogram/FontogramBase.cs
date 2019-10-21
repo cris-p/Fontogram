@@ -164,25 +164,32 @@ namespace PergleLabs.UI
         }
 
 
-        private void SetPropertyValuesInLayers(string valueList, string readyMadeValue, [CallerMemberName] string propertyName = "")
+        private void SetPropertyValuesInLayers(string explicitAttrString, string readyMadeAttrString, [CallerMemberName] string propertyName = "")
         {
-            if (string.IsNullOrWhiteSpace(valueList))
-                valueList = readyMadeValue;
-            if (valueList == null)
-                valueList = "";
+            if (string.IsNullOrWhiteSpace(explicitAttrString))
+                explicitAttrString = "";
+            if (string.IsNullOrWhiteSpace(readyMadeAttrString))
+                readyMadeAttrString = "";
 
 
             PropertyInfo layerPropInfo = typeof(FgLayer).GetProperty(propertyName);
 
-            string[] values = valueList.Split('|');
+            string[] explicitValues = explicitAttrString.Split('|');
+            string[] readyMadeValues = readyMadeAttrString.Split('|');
 
-            for (int n = 0; n < values.Length; n++)
+            int potentialLayerCount = Math.Max(explicitValues.Length, readyMadeValues.Length);
+
+            for (int n = 0; n < potentialLayerCount; n++)
             {
-                string userValue = values[n];
+                string explicitValue = explicitValues.Length > n ? explicitValues[n] : "";
+                string readyMadeValue = readyMadeValues.Length > n ? readyMadeValues[n] : "";
+
+                // explicit value takes priority
+                string actualValue = string.IsNullOrWhiteSpace(explicitValue) ? readyMadeValue : explicitValue;
 
                 FgLayer layer = GetOrCreateNthLayer(n);
 
-                layerPropInfo.SetValue(layer, userValue);
+                layerPropInfo.SetValue(layer, actualValue);
             }
 
             if (SelectiveLayerEnable != (int)SelectiveLayerEnableProperty.DefaultMetadata.DefaultValue)
