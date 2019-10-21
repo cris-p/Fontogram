@@ -219,6 +219,8 @@
                                         BackAttr="{Binding ParentFontogram.BackAttr}"
                                         BackPosRel="{Binding ParentFontogram.BackPosRel}"
                                         BackTransform="{Binding ParentFontogram.BackTransform}"
+                                        
+                                        ReadyMade="{Binding ParentFontogram.ReadyMade}"
                                             
                                         SelectiveLayerEnable="{Binding PositionInFontogram}"
                                         />
@@ -566,11 +568,6 @@ Selected layer details (override Base)
                 
                 ReadyMade="{Binding ReadyMadeSelectedValue}"
 
-                Text="{Binding FgData.Text}"
-                TextAttr=";;green|;;red|;;blue"
-                TextPosRel="20|20;-12|20;12"
-                BackAttr=";#0f0;0,2,4,6;green|;#8f00;0,2,4,6;red|;#500f;0,2,4,6;blue" BackPosRel="60;60|60;60|60;60"
-                BackTransform="30|0|60"
                 />
             
             <!--
