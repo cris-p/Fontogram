@@ -1,0 +1,12 @@
+﻿<#
+List<string>    PROPERTY_NAMES = new List<string>{
+                    "Text",
+                    "TextAttr",
+                    "TextPosRel",
+                    "TextTransform",
+                    "BackAttr",
+                    "BackPosRel",
+                    "BackCornerRadiusRel",
+                    "BackTransform"
+                    };
+#>

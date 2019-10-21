@@ -1,0 +1,46 @@
+﻿<#@ template debug="false" hostspecific="false" language="C#" #>
+<#@ assembly name="System.Core" #>
+<#@ import namespace="System.Linq" #>
+<#@ import namespace="System.Text" #>
+<#@ import namespace="System.Collections.Generic" #>
+<#@ output extension=".cs" #>
+<#@ include file="FgProps.tt.txt" #>
+using System.Linq;
+
+
+namespace PergleLabs.Fontogrammer
+{
+
+    partial class MainWndDataContext
+    {
+
+
+        private void SetPropertyEventHandlers(XamlLayerItem layer)
+        {
+            layer.TextChanged += OnTextChanged;
+<#
+foreach (string propName in PROPERTY_NAMES)
+{
+#>
+            layer.<#= propName #>Changed += On<#= propName #>Changed;
+<#
+}
+#>
+        }
+
+
+<#
+foreach (string propName in PROPERTY_NAMES)
+{
+#>
+        private void On<#= propName #>Changed()
+        {
+            _FgPreview.<#= propName #> = string.Join("|", XamlLayers.Select(layer => layer.<#= propName #>));
+        }
+<#
+}
+#>
+
+    }
+
+}

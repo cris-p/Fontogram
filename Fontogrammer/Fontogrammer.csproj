@@ -83,6 +83,11 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="ContextLayerPropEvents.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ContextLayerPropEvents.tt</DependentUpon>
+    </Compile>
     <Compile Include="XamlLayerItemProps.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -141,6 +146,11 @@
     <Resource Include="fontogrammer.ico" />
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="FgProps.tt.txt" />
+    <Content Include="ContextLayerPropEvents.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>ContextLayerPropEvents.cs</LastGenOutput>
+    </Content>
     <Content Include="XamlLayerItemProps.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>XamlLayerItemProps.cs</LastGenOutput>

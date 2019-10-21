@@ -4,31 +4,34 @@
 <#@ import namespace="System.Text" #>
 <#@ import namespace="System.Collections.Generic" #>
 <#@ output extension=".cs" #>
-<#
-List<string>    PROPERTY_NAMES = new List<string>{
-                    "Text",
-                    "TextAttr",
-                    "TextPosRel",
-                    "TextTransform",
-                    "BackAttr",
-                    "BackPosRel",
-                    "BackCornerRadiusRel",
-                    "BackTransform"
-                    };
-#>
-using System.Windows;
+<#@ include file="FgProps.tt.txt" #>
+using System;
 
 namespace PergleLabs.Fontogrammer
 {
 
     partial class XamlLayerItem
     {
+
 <#
 foreach (string propName in PROPERTY_NAMES)
 {
 #>
 
-        public string <#= propName #> { get; set; }
+        // <#= propName #>
+
+        private string __<#= propName #>;
+        public string <#= propName #>
+        {
+            get { return __<#= propName #>; }
+            set
+            {
+                __<#= propName #> = value;
+                <#= propName #>Changed?.Invoke();
+            }
+        }
+        public event Action <#= propName #>Changed;
+
 <#
 }
 #>

@@ -272,15 +272,15 @@
                                     <fg:Fontogram
                                         Width="192" Height="128"
                                             
-                                        Text="{Binding ParentFontogram.Text}"
-                                        TextAttr="{Binding ParentFontogram.TextAttr}"
-                                        TextPosRel="{Binding ParentFontogram.TextPosRel}"
-                                        TextTransform="{Binding ParentFontogram.TextTransform}"
-                                        BackAttr="{Binding ParentFontogram.BackAttr}"
-                                        BackPosRel="{Binding ParentFontogram.BackPosRel}"
-                                        BackTransform="{Binding ParentFontogram.BackTransform}"
+                                        Text="{Binding PreviewFontogram.Text}"
+                                        TextAttr="{Binding PreviewFontogram.TextAttr}"
+                                        TextPosRel="{Binding PreviewFontogram.TextPosRel}"
+                                        TextTransform="{Binding PreviewFontogram.TextTransform}"
+                                        BackAttr="{Binding PreviewFontogram.BackAttr}"
+                                        BackPosRel="{Binding PreviewFontogram.BackPosRel}"
+                                        BackTransform="{Binding PreviewFontogram.BackTransform}"
                                         
-                                        ReadyMade="{Binding ParentFontogram.ReadyMade}"
+                                        ReadyMade="{Binding PreviewFontogram.ReadyMade}"
                                             
                                         SelectiveLayerEnable="{Binding PositionInFontogram}"
                                         />
@@ -405,6 +405,7 @@ Selected layer details (override Base)
                                 <RowDefinition Height="10*"/>
                             </Grid.RowDefinitions>
 
+                            <!--Text-->
                             <TextBox
                                 Grid.Row="0"
                                 Name="txtText"
@@ -415,6 +416,7 @@ Selected layer details (override Base)
                                 FontFamily="{Binding ElementName=txtFontName, Path=Text}"
                                 />
 
+                            <!--Font-->
                             <Label
                                 Grid.Row="1"
                                 Width="36"
@@ -422,7 +424,6 @@ Selected layer details (override Base)
                                 >
                                 Font
                             </Label>
-
                             <TextBox                                
                                 Grid.Row="1"
                                 VerticalAlignment="Center"
@@ -436,7 +437,7 @@ Selected layer details (override Base)
                                 Grid.Row="1"
                                 VerticalAlignment="Center"
                                 Width="160" Margin="4,0" HorizontalAlignment="Right"
-                                Text="Arial"
+                                Text="{Binding Path=CurrentXamlLayer.FontName, UpdateSourceTrigger=PropertyChanged}"
                                 Background="Transparent"
                                 />
 

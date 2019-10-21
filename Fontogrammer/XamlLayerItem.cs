@@ -23,14 +23,26 @@ namespace PergleLabs.Fontogrammer
         //}
 
 
-        public Fontogram ParentFontogram { get; }
+        public Fontogram PreviewFontogram { get; }
 
         public int PositionInFontogram { get; }
 
 
+        private string _fontName;
+        public string FontName
+        {
+            get { return _fontName; }
+            set
+            {
+                _fontName = value;
+                TextAttr = $"{FontName};;";
+            }
+        }
+
+
         public XamlLayerItem(Fontogram fg, int pos)
         {
-            ParentFontogram = fg;
+            PreviewFontogram = fg;
 
             PositionInFontogram = pos;
         }

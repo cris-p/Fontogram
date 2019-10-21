@@ -13,7 +13,7 @@ using System.Threading.Tasks;
 namespace PergleLabs.Fontogrammer
 {
 
-    class MainWndDataContext
+    partial class MainWndDataContext
         : INotifyPropertyChanged
     {
 
@@ -96,13 +96,15 @@ namespace PergleLabs.Fontogrammer
 
             var newLayer = new XamlLayerItem(_FgPreview, pos);
 
-            XamlLayers.Add(newLayer);
+            SetPropertyEventHandlers(newLayer);
 
+            XamlLayers.Add(newLayer);
         }
 
-        internal void RemoveCurrentLayer()
+        public void RemoveCurrentLayer()
         {
         }
+
     }
 
 }
