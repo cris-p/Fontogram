@@ -167,6 +167,105 @@ namespace PergleLabs.UI
             set { __BackTransform_readyMade = value; SetPropertyValuesInLayers(BackTransform, value, "BackTransform"); }
         }
 
+
+        #region ReadyMade support
+
+        protected void ClearReadyMade()
+        {
+            ClearLayers();
+            Text_readyMade = "";
+            TextAttr_readyMade = "";
+            TextPosRel_readyMade = "";
+            TextTransform_readyMade = "";
+            BackAttr_readyMade = "";
+            BackPosRel_readyMade = "";
+            BackCornerRadiusRel_readyMade = "";
+            BackTransform_readyMade = "";
+        }
+
+        protected void SetReadyMade(
+              string _Text_readyMade
+            , string _TextAttr_readyMade
+            , string _TextPosRel_readyMade
+            , string _TextTransform_readyMade
+            , string _BackAttr_readyMade
+            , string _BackPosRel_readyMade
+            , string _BackCornerRadiusRel_readyMade
+            , string _BackTransform_readyMade
+        )
+        {
+            Text_readyMade = _Text_readyMade;
+            TextAttr_readyMade = _TextAttr_readyMade;
+            TextPosRel_readyMade = _TextPosRel_readyMade;
+            TextTransform_readyMade = _TextTransform_readyMade;
+            BackAttr_readyMade = _BackAttr_readyMade;
+            BackPosRel_readyMade = _BackPosRel_readyMade;
+            BackCornerRadiusRel_readyMade = _BackCornerRadiusRel_readyMade;
+            BackTransform_readyMade = _BackTransform_readyMade;
+        }
+
+        #endregion
+
+    }
+
+
+    
+    // We need to have another class for ready-made support, because there seem to be problems when generic
+    // classes contain dependency properties. (At least XAML complains by underlining the properties.)
+    public abstract class FontogramBase<_T>
+        : FontogramBase
+        where _T : struct, System.Enum
+    {
+
+        protected static void OnReadyMadeChanged(DependencyObject depObj, DependencyPropertyChangedEventArgs e)
+        {
+            FontogramBase<_T> fgObj = depObj as FontogramBase<_T>;
+
+            fgObj.ClearReadyMade();
+
+            if (e.NewValue == null)
+                return;
+
+
+            _T readyMadeID = (_T)e.NewValue;
+
+            if (!fgObj.GetReadyMadeProperties(readyMadeID
+                , out string _Text
+                , out string _TextAttr
+                , out string _TextPosRel
+                , out string _TextTransform
+                , out string _BackAttr
+                , out string _BackPosRel
+                , out string _BackCornerRadiusRel
+                , out string _BackTransform
+                ))
+                return;
+
+
+            fgObj.SetReadyMade(
+                _Text
+                , _TextAttr
+                , _TextPosRel
+                , _TextTransform
+                , _BackAttr
+                , _BackPosRel
+                , _BackCornerRadiusRel
+                , _BackTransform
+                );
+        }
+
+
+        protected abstract bool GetReadyMadeProperties(_T readyMadeID
+            , out string _Text
+            , out string _TextAttr
+            , out string _TextPosRel
+            , out string _TextTransform
+            , out string _BackAttr
+            , out string _BackPosRel
+            , out string _BackCornerRadiusRel
+            , out string _BackTransform
+            );
+
     }
 
 }

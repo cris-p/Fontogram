@@ -10,37 +10,17 @@ namespace PergleLabs.UI
 
     public enum ReadyMadeFontogram
     {
+        Fontogram_Logo,
+        Fontogram_LogoWide,
+        Sample_RgbSwirl,
         Test1,
-        Test2,
-        Sample_Logo,
-        Sample_LogoWide,
-        Sample_RgbSwirl
+        Test2
     }
 
 
     public class Fontogram
         : FontogramBase<ReadyMadeFontogram>
-        , FontogramProperties
     {
-
-        protected override void CreateBuiltin(ReadyMadeFontogram value)
-        {
-            switch (value)
-            {
-                case ReadyMadeFontogram.Test1:
-                    AddLayers_Test1();
-                    break;
-                case ReadyMadeFontogram.Test2:
-                    AddLayers_Test2();
-                    break;
-                case ReadyMadeFontogram.Sample_Logo:
-                    AddLayers_Logo();  // 
-                    break;
-                default:
-                    AddLayers_Default();
-                    break;
-            }
-        }
 
         public static readonly DependencyProperty ReadyMadeProperty =
             DependencyProperty.Register(
@@ -53,63 +33,88 @@ namespace PergleLabs.UI
             set { SetValue(ReadyMadeProperty, value); }
         }
 
-
-        void AddLayers_Logo()
+        protected override bool GetReadyMadeProperties(ReadyMadeFontogram readyMadeID
+            , out string _Text
+            , out string _TextAttr
+            , out string _TextPosRel
+            , out string _TextTransform
+            , out string _BackAttr
+            , out string _BackPosRel
+            , out string _BackCornerRadiusRel
+            , out string _BackTransform
+            )
         {
-            AddInternalLayer(
-                    "0,0,0,0"
-                    );
+            _Text = "";
+            _TextAttr = "";
+            _TextPosRel = "";
+            _TextTransform = "";
+            _BackAttr = "";
+            _BackPosRel = "";
+            _BackCornerRadiusRel = "";
+            _BackTransform = "";
+
+            switch (readyMadeID)
+            {
+                case ReadyMadeFontogram.Fontogram_Logo:
+                    _Text = "🎞|A|A";
+                    _TextAttr = ";;#999|Courier New;bold;#304f|Courier New;bold;#f01d";
+                    _TextPosRel = "100;26;7|70;-16.4;-0.6|70;-12;1";
+                    _TextTransform = "-10;1;0.3;60;-20|-15.8;0.9;1.7;-18,17|-15.8;0.9;1.7;-18,17";
+                    _BackAttr = ";#7baa;1,0,0,1.5;#cbaa";
+                    _BackPosRel = "105;42;28;10";
+                    _BackTransform = "-10;1;0.3;60;-20";
+                    break;
+
+                case ReadyMadeFontogram.Fontogram_LogoWide:
+                    _Text = "";
+                    _TextAttr = "";
+                    _TextPosRel = "";
+                    _TextTransform = "";
+                    _BackAttr = "";
+                    _BackPosRel = "";
+                    _BackCornerRadiusRel = "";
+                    _BackTransform = "";
+                    break;
+
+                case ReadyMadeFontogram.Sample_RgbSwirl:
+                    _Text = "G|R|B";
+                    _TextAttr = ";;green|;;red|;;blue";
+                    _TextPosRel = "20|20;-12|20;12";
+                    _TextTransform = "";
+                    _BackAttr = ";#0f0;0,2,4,6;green|;#8f00;0,2,4,6;red|;#500f;0,2,4,6;blue";
+                    _BackPosRel = "60;60|60;60|60;60";
+                    _BackCornerRadiusRel = "";
+                    _BackTransform = "30|0|60";
+                    break;
+
+                case ReadyMadeFontogram.Test1:
+                    _Text = "";
+                    _TextAttr = "";
+                    _TextPosRel = "";
+                    _TextTransform = "";
+                    _BackAttr = "";
+                    _BackPosRel = "";
+                    _BackCornerRadiusRel = "";
+                    _BackTransform = "";
+                    break;
+
+                case ReadyMadeFontogram.Test2:
+                    _Text = "";
+                    _TextAttr = "";
+                    _TextPosRel = "";
+                    _TextTransform = "";
+                    _BackAttr = "";
+                    _BackPosRel = "";
+                    _BackCornerRadiusRel = "";
+                    _BackTransform = "";
+                    break;
+
+                default:
+                    return false;
+            }
+
+            return true;
         }
-
-        void AddLayers_Default()
-        {
-
-            AddInternalLayer(
-                    "0,0,0,0"
-                    );
-
-        }
-
-        void AddLayers_Test1()
-        {
-
-            AddInternalLayer(
-                    "0,0,0,0"
-                    );
-
-            AddInternalLayer(
-                    "0,0,0,0"
-                    );
-
-            AddInternalLayer(
-                    "0,0,0,0"
-                    );
-
-            AddInternalLayer(
-                    "0,0,0,0"
-                    );
-        }
-
-        void AddLayers_Test2()
-        {
-
-            AddInternalLayer(
-                    "0,0,0,0"
-                    );
-
-            AddInternalLayer(
-                    "0,0,0,0"
-                    );
-
-            AddInternalLayer(
-                    "0,0,0,0"
-                    );
-
-            AddInternalLayer(
-                    "0,0,0,0"
-                    );
-        }
-
     }
 
 }

@@ -166,7 +166,7 @@ namespace PergleLabs.UI
 
         private void SetPropertyValuesInLayers(string valueList, string readyMadeValue, [CallerMemberName] string propertyName = "")
         {
-            if (valueList == null)
+            if (string.IsNullOrWhiteSpace(valueList))
                 valueList = readyMadeValue;
             if (valueList == null)
                 valueList = "";
@@ -220,6 +220,11 @@ namespace PergleLabs.UI
             }
         }
 
+        private void ClearLayers()
+        {
+            _ParentGrid.Children.Clear();
+        }
+
 
         #region The Properties
 
@@ -259,53 +264,6 @@ namespace PergleLabs.UI
             return null;
         }
 
-        protected void StartClean()
-        {
-            _ParentGrid.Children.Clear();
-        }
-
-        protected void ClearReadyMade()
-        {
-            Text_readyMade = "";
-        }
-
-        protected void SetReadyMade(string newVal)
-        {
-            Text_readyMade = newVal;
-        }
-
     }
-
-
-    // Can't make the UserControl one generic, because then the properties are marked as incorrect in XAML.
-    public abstract class FontogramBase<_T>
-        : FontogramBase
-        where _T: struct, System.Enum
-    {
-
-        protected static void OnReadyMadeChanged(DependencyObject depObj, DependencyPropertyChangedEventArgs e)
-        {
-            FontogramBase<_T> fgObj = depObj as FontogramBase<_T>;
-
-            if (e.NewValue == null)
-                fgObj.ClearReadyMade();
-
-            fgObj.SetReadyMade(
-                e.NewValue.ToString()
-                );
-        }
-
-
-        protected abstract void CreateBuiltin(ReadyMadeFontogram value);
-
-        protected void AddInternalLayer(string spec)
-        {
-            FgLayer newLayer = new FgLayer();
-
-            _ParentGrid.Children.Add(newLayer);
-        }
-
-    }
-
 
 }

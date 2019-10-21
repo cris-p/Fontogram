@@ -53,6 +53,131 @@ foreach (string propName in PROPERTY_NAMES)
 }
 #>
 
+
+        #region ReadyMade support
+
+        protected void ClearReadyMade()
+        {
+            ClearLayers();
+<#
+foreach (string propName in PROPERTY_NAMES)
+{
+#>
+            <#= propName #>_readyMade = "";
+<#
+}
+#>
+        }
+
+        protected void SetReadyMade(
+<#
+bool isFirst = true;
+foreach (string propName in PROPERTY_NAMES)
+{
+    if (isFirst)
+    {
+#>
+              string _<#= propName #>_readyMade
+<#
+        isFirst = false;
+    }
+    else
+    {
+#>
+            , string _<#= propName #>_readyMade
+<#
+    }
+#>
+<#
+}
+#>
+        )
+        {
+<#
+foreach (string propName in PROPERTY_NAMES)
+{
+#>
+            <#= propName #>_readyMade = _<#= propName #>_readyMade;
+<#
+}
+#>
+        }
+
+        #endregion
+
+    }
+
+
+    
+    // We need to have another class for ready-made support, because there seem to be problems when generic
+    // classes contain dependency properties. (At least XAML complains by underlining the properties.)
+    public abstract class FontogramBase<_T>
+        : FontogramBase
+        where _T : struct, System.Enum
+    {
+
+        protected static void OnReadyMadeChanged(DependencyObject depObj, DependencyPropertyChangedEventArgs e)
+        {
+            FontogramBase<_T> fgObj = depObj as FontogramBase<_T>;
+
+            fgObj.ClearReadyMade();
+
+            if (e.NewValue == null)
+                return;
+
+
+            _T readyMadeID = (_T)e.NewValue;
+
+            if (!fgObj.GetReadyMadeProperties(readyMadeID
+<#
+foreach (string propName in PROPERTY_NAMES)
+{
+#>
+                , out string _<#= propName #>
+<#
+}
+#>
+                ))
+                return;
+
+
+            fgObj.SetReadyMade(
+<#
+isFirst = true;
+foreach (string propName in PROPERTY_NAMES)
+{
+    if (isFirst)
+    {
+#>
+                _<#= propName #>
+<#
+        isFirst = false;
+    }
+    else
+    {
+#>
+                , _<#= propName #>
+<#
+    }
+#>
+<#
+}
+#>
+                );
+        }
+
+
+        protected abstract bool GetReadyMadeProperties(_T readyMadeID
+<#
+foreach (string propName in PROPERTY_NAMES)
+{
+#>
+            , out string _<#= propName #>
+<#
+}
+#>
+            );
+
     }
 
 }
