@@ -33,6 +33,7 @@ namespace PergleLabs.UI
         public TranslatedProperty(string def)
         {
             InDefault = def;
+            Val = Translate(def);
         }
 
         public string In
@@ -119,7 +120,8 @@ namespace PergleLabs.UI
             else
                 newRelVal = _DefaultRelsize;
 
-            double newVal = _currControlHeight * newRelVal / LayerBindingProps.UNIT_H_FRACTION;
+            const double CTL_DESIGN_HEIGHT = 60;
+            double newVal = (_currControlHeight > 0.1 ? _currControlHeight : CTL_DESIGN_HEIGHT) * newRelVal / LayerBindingProps.UNIT_H_FRACTION;
 
             return newVal.ToString("f1");
         }
