@@ -70,9 +70,9 @@ namespace PergleLabs.UI
                     _TextAttr = ";;#6000|Courier New;bold;#304f|Courier New;bold;#e04f";
                     _TextPosRel = "100;58;-15|70;-16;-5|70;-13;-4";
                     _TextTransform = "-10;2;0.5;60;-20|-13.1;0.8;1.62;-8|-13.1;0.8;1.62;-8";
-                    _BackAttr = ";#6baa;1,0,0,1.5;#cbaa";
+                    _BackAttr = ";#6baa;0.5,0,0,0.7;#cbaa";
                     _BackPosRel = "90;42;47;2";
-                    _BackCornerRadiusRel = "15";
+                    _BackCornerRadiusRel = "8";
                     _BackTransform = "-10;2;0.5;60;-20";
                     break;
 
@@ -81,9 +81,9 @@ namespace PergleLabs.UI
                     _TextAttr = "arial;bold;green|arial;bold;red|arial;bold;blue";
                     _TextPosRel = "16;1;43|16;23;36.5|16;-20;38.5";
                     _TextTransform = "30|0|60";
-                    _BackAttr = ";#0f0;0,2,4,6;green|;#8f00;0,2,4,6;red|;#500f;0,2,4,6;blue";
+                    _BackAttr = ";#0f0;0.3,1.7,3.2,5;green|;#8f00;0.3,1.7,3.2,5;red|;#500f;0.3,1.7,3.2,5;blue";
                     _BackPosRel = "60;60|60;60|60;60";
-                    _BackCornerRadiusRel = "";
+                    _BackCornerRadiusRel = "6|6|6";
                     _BackTransform = "30|0|60";
                     break;
 

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.ComponentModel;
+using System.Linq;
 using System.Runtime.CompilerServices;
 
 
@@ -128,6 +129,51 @@ namespace PergleLabs.UI
     }
 
 
+    class MultiRelsizeProperty
+        : TranslatedProperty
+    {
+        private readonly double _DefaultRelsize = 0;
+
+        public MultiRelsizeProperty(string relDefault, ControlSizeNotifier sizeNotifier)
+            : base(relDefault)
+        {
+            double.TryParse(relDefault, out _DefaultRelsize);
+
+            sizeNotifier.HeightUpdated += SizeNotifier_HeightUpdated;
+        }
+
+        private double _currControlHeight = 0;
+        private string _currInVals;
+
+        private void SizeNotifier_HeightUpdated(double newHeight)
+        {
+            if (newHeight == _currControlHeight)
+                return;
+
+            _currControlHeight = newHeight;
+            Val = Translate(_currInVals);
+        }
+
+        protected override string Translate(string inVals)
+        {
+            _currInVals = inVals;
+            return string.Join(",", inVals.Split(',').Select(inVal => TranslateEach(inVal)));
+        }
+        private string TranslateEach(string inVal)
+        {
+            double newRelVal;
+
+            if (!double.TryParse(inVal, out newRelVal))
+                newRelVal = _DefaultRelsize;
+
+            const double CTL_DESIGN_HEIGHT = 60;
+            double newVal = (_currControlHeight > 0.1 ? _currControlHeight : CTL_DESIGN_HEIGHT) * newRelVal / LayerBindingProps.UNIT_H_FRACTION;
+
+            return newVal.ToString("f1");
+        }
+    }
+
+
     class MarginProperty
         : BindingProperty
     {
@@ -201,7 +247,7 @@ namespace PergleLabs.UI
         const string DEF_BackHeight = UNIT_H_FRACTION_STR;
         const string DEF_BackShiftX = "0";
         const string DEF_BackShiftY = "0";
-        const string DEF_BackCornerRadius = "10,10,10,10";   // slightly rounded        
+        const string DEF_BackCornerRadius = "5";   // slightly rounded        
         const string DEF_BackRotAngle = "0";
         const string DEF_BackScaleX = "1";
         const string DEF_BackScaleY = "1";
@@ -234,14 +280,14 @@ namespace PergleLabs.UI
 
             BackOpacity = new CopiedProperty(DEF_BackOpacity);
             BackFillColor = new CopiedProperty(DEF_BackFillColor);
-            BackStrokeThickness = new CopiedProperty(DEF_BackStrokeThickness);
+            BackStrokeThickness = new MultiRelsizeProperty(DEF_BackStrokeThickness, this);
             BackStrokeColor = new CopiedProperty(DEF_BackStrokeColor);
             BackWidth = new RelsizeProperty(DEF_BackWidth, this);
             BackHeight = new RelsizeProperty(DEF_BackHeight, this);
             BackMargin = new MarginProperty();
             BackShiftX = new RelsizeProperty(DEF_BackShiftX, this, (val) => BackMargin.ShiftX = val);
             BackShiftY = new RelsizeProperty(DEF_BackShiftY, this, (val) => BackMargin.ShiftY = val);
-            BackCornerRadius = new CopiedProperty(DEF_BackCornerRadius);    // !!!
+            BackCornerRadius = new MultiRelsizeProperty(DEF_BackCornerRadius, this);
             BackRotAngle = new CopiedProperty(DEF_BackRotAngle);
             BackScaleX = new CopiedProperty(DEF_BackScaleX);
             BackScaleY = new CopiedProperty(DEF_BackScaleY);
