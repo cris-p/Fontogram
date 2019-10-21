@@ -66,14 +66,14 @@ namespace PergleLabs.UI
                     break;
 
                 case ReadyMadeFontogram.Fontogram_LogoWide:
-                    _Text = "";
-                    _TextAttr = "";
-                    _TextPosRel = "";
-                    _TextTransform = "";
-                    _BackAttr = "";
-                    _BackPosRel = "";
-                    _BackCornerRadiusRel = "";
-                    _BackTransform = "";
+                    _Text = "🎞|Abc|Abc";
+                    _TextAttr = ";;#6000|Courier New;bold;#304f|Courier New;bold;#e04f";
+                    _TextPosRel = "100;58;-15|70;-16;-5|70;-13;-4";
+                    _TextTransform = "-10;2;0.5;60;-20|-13.1;0.8;1.62;-8|-13.1;0.8;1.62;-8";
+                    _BackAttr = ";#6baa;1,0,0,1.5;#cbaa";
+                    _BackPosRel = "90;42;47;2";
+                    _BackCornerRadiusRel = "15";
+                    _BackTransform = "-10;2;0.5;60;-20";
                     break;
 
                 case ReadyMadeFontogram.Sample_RgbSwirl:

@@ -460,18 +460,16 @@ Selected layer details (override Base)
             <fg:Fontogram
                 Margin="10"
                 Name="fgRgbSwirl"
-                BackAttr=";#0f0;0,2,4,6;green|;#8f00;0,2,4,6;red|;#500f;0,2,4,6;blue" BackPosRel="50;50|50;50|50;50"
-                BackTransform="30|0|60"
+                
+                ReadyMade="Sample_RgbSwirl"
                 />
 
             <fg:Fontogram
                 Name="fgWideLogo"
                 Grid.Column="1"
                 Margin="10"
-                Text="🎞|Abc|Abc" TextAttr=";;#6000|Courier New;bold;#304f|Courier New;bold;#e04f" TextPosRel="100;58;-15|70;-16;-5|70;-13;-4"
-                TextTransform="-10;2;0.5;60;-20|-13.1;0.8;1.62;-8|-13.1;0.8;1.62;-8"
-                BackAttr=";#6baa;1,0,0,1.5;#cbaa" BackPosRel="90;42;47;2" BackCornerRadiusRel="15"
-                BackTransform="-10;2;0.5;60;-20"
+                
+                ReadyMade="Fontogram_LogoWide"
                 />
 
             <fg:Fontogram
@@ -479,10 +477,7 @@ Selected layer details (override Base)
                 Grid.Row="2"
                 Margin="10"
                 
-                Text="🎞|A|A" TextAttr=";;#999|Courier New;bold;#304f|Courier New;bold;#f01d" TextPosRel="100;26;7|70;-16.4;-0.6|70;-12;1"
-                TextTransform="-10;1;0.3;60;-20|-15.8;0.9;1.7;-18,17|-15.8;0.9;1.7;-18,17"
-                BackAttr=";#7baa;1,0,0,1.5;#cbaa" BackPosRel="105;42;28;10"
-                BackTransform="-10;1;0.3;60;-20"
+                ReadyMade="Fontogram_Logo"
                 />
 
             <!--<fg:Fontogram Builtin="Test1"
@@ -513,10 +508,8 @@ Selected layer details (override Base)
                 Name="fgWideLogo2"
                 Grid.Column="1" Grid.Row="2"
                 Margin="10"
-                Text="🎞|Abc|Abc" TextAttr=";;#6000|Courier New;bold;#304f|Courier New;bold;#e04f" TextPosRel="100;58;-15|70;-16;-5|70;-13;-4"
-                TextTransform="-10;2;0.5;60;-20|-13.1;0.8;1.62;-8|-13.1;0.8;1.62;-8"
-                BackAttr=";#6baa;1,0,0,1.5;#cbaa" BackPosRel="90;42;47;2" BackCornerRadiusRel="15"
-                BackTransform="-10;2;0.5;60;-20"
+                
+                ReadyMade="Fontogram_LogoWide"
                 />
 
             <Border
@@ -562,6 +555,10 @@ Selected layer details (override Base)
                 SnapsToDevicePixels="True"
                 />
 
+            
+            
+            <!-- PREVIEW -->
+            
             <fg:Fontogram
                 Grid.Row="1" Grid.Column="1" Margin="4"
                 Name="fgPreview"
@@ -570,27 +567,6 @@ Selected layer details (override Base)
 
                 />
             
-            <!--
-                Text="G|R|B"
-                TextAttr=";;green|;;red|;;blue"
-                TextPosRel="20|20;-12|20;12"
-                BackAttr=";#0f0;0,2,4,6;green|;#8f00;0,2,4,6;red|;#500f;0,2,4,6;blue" BackPosRel="50;50|50;50|50;50"
-                BackTransform="30|0|60"
-            -->
-
-            <!--
-            <fg:Fontogram
-                Grid.Row="1" Grid.Column="1" Margin="4"
-                Name="fgPreview"
-                ReadyMade="{Binding ReadyMadeSelectedValue}"
-                
-                Text="🎞|A|A" TextAttr=";;#999|Courier New;bold;#304f|Courier New;bold;#f01d" TextPosRel="100;26;7|70;-16.4;-0.6|70;-12;1"
-                TextTransform="-10;1;0.3;60;-20|-15.8;0.9;1.7;-18,17|-15.8;0.9;1.7;-18,17"
-                BackAttr=";#7baa;1,0,0,1.5;#cbaa" BackPosRel="105;42;28;10"
-                BackTransform="-10;1;0.3;60;-20"
-                />
-            -->
-
         </Grid>
 
     </Grid>
