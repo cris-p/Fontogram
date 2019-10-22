@@ -1,0 +1,61 @@
+﻿<#
+List<Tuple<string, List<string>>>
+
+        PROPERTY_DEFS = new List<Tuple<string, List<string>>> {
+                            Tuple.Create(
+                    "Text", new List<string>{
+                        "Text",
+                            } ),
+                            Tuple.Create(
+                    "TextAttr", new List<string>{
+                        "TextFont",
+                        "TextFontWeight",
+                        "TextColor",
+                            } ),
+                            Tuple.Create(
+                    "TextPosRel", new List<string>{
+                        "TextFontSize",
+                        "TextShiftX",
+                        "TextShiftY",
+                            } ),
+                            Tuple.Create(
+                    "TextTransform", new List<string>{
+                        "TextRotAngle",
+                        "TextScaleX",
+                        "TextScaleY",
+                        "TextSkewX",
+                        "TextSkewY",
+                            } ),
+                            Tuple.Create(
+                    "BackAttr", new List<string>{
+                        "BackOpacity",
+                        "BackFillColor",
+                        "BackStrokeThickness",
+                        "BackStrokeColor",
+                            } ),
+                            Tuple.Create(
+                    "BackPosRel", new List<string>{
+                        "BackWidth",
+                        "BackHeight",
+                        "BackShiftX",
+                        "BackShiftY",
+                            } ),
+                            Tuple.Create(
+                    "BackCornerRadiusRel", new List<string>{
+                        "BackCornerRadius",
+                            } ),
+                            Tuple.Create(
+                    "BackTransform", new List<string>{
+                        "BackRotAngle",
+                        "BackScaleX",
+                        "BackScaleY",
+                        "BackSkewX",
+                        "BackSkewY",
+                            } )
+                    };
+    IEnumerable<string> PropertyNames()
+    {
+        foreach (var propName in PROPERTY_DEFS)
+            yield return propName.Item1;
+    }
+#>

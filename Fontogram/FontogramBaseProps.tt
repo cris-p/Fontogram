@@ -4,18 +4,7 @@
 <#@ import namespace="System.Text" #>
 <#@ import namespace="System.Collections.Generic" #>
 <#@ output extension=".cs" #>
-<#
-List<string>    PROPERTY_NAMES = new List<string>{
-                    "Text",
-                    "TextAttr",
-                    "TextPosRel",
-                    "TextTransform",
-                    "BackAttr",
-                    "BackPosRel",
-                    "BackCornerRadiusRel",
-                    "BackTransform"
-                    };
-#>
+<#@ include file="FgPropDefs.tt.txt" #>
 using System.Windows;
 
 namespace PergleLabs.UI
@@ -25,7 +14,7 @@ namespace PergleLabs.UI
         : FontogramProperties
     {
 <#
-foreach (string propName in PROPERTY_NAMES)
+foreach (string propName in PropertyNames())
 {
     string depPropName = $"{propName}Property";
 #>
@@ -60,7 +49,7 @@ foreach (string propName in PROPERTY_NAMES)
         {
             ClearLayers();
 <#
-foreach (string propName in PROPERTY_NAMES)
+foreach (string propName in PropertyNames())
 {
 #>
             <#= propName #>_readyMade = "";
@@ -72,7 +61,7 @@ foreach (string propName in PROPERTY_NAMES)
         protected void SetReadyMade(
 <#
 bool isFirst = true;
-foreach (string propName in PROPERTY_NAMES)
+foreach (string propName in PropertyNames())
 {
     if (isFirst)
     {
@@ -94,7 +83,7 @@ foreach (string propName in PROPERTY_NAMES)
         )
         {
 <#
-foreach (string propName in PROPERTY_NAMES)
+foreach (string propName in PropertyNames())
 {
 #>
             <#= propName #>_readyMade = _<#= propName #>_readyMade;
@@ -130,7 +119,7 @@ foreach (string propName in PROPERTY_NAMES)
 
             if (!fgObj.GetReadyMadeProperties(readyMadeID
 <#
-foreach (string propName in PROPERTY_NAMES)
+foreach (string propName in PropertyNames())
 {
 #>
                 , out string _<#= propName #>
@@ -144,7 +133,7 @@ foreach (string propName in PROPERTY_NAMES)
             fgObj.SetReadyMade(
 <#
 isFirst = true;
-foreach (string propName in PROPERTY_NAMES)
+foreach (string propName in PropertyNames())
 {
     if (isFirst)
     {
@@ -169,7 +158,7 @@ foreach (string propName in PROPERTY_NAMES)
 
         protected abstract bool GetReadyMadeProperties(_T readyMadeID
 <#
-foreach (string propName in PROPERTY_NAMES)
+foreach (string propName in PropertyNames())
 {
 #>
             , out string _<#= propName #>

@@ -4,62 +4,7 @@
 <#@ import namespace="System.Text" #>
 <#@ import namespace="System.Collections.Generic" #>
 <#@ output extension=".cs" #>
-<#
-List<Tuple<string, List<string>>>
-
-        PROPERTY_PARTS = new List<Tuple<string, List<string>>> {
-                            Tuple.Create(
-                    "Text", new List<string>{
-                        "Text",
-                            } ),
-                            Tuple.Create(
-                    "TextAttr", new List<string>{
-                        "TextFont",
-                        "TextFontWeight",
-                        "TextColor",
-                            } ),
-                            Tuple.Create(
-                    "TextPosRel", new List<string>{
-                        "TextFontSize",
-                        "TextShiftX",
-                        "TextShiftY",
-                            } ),
-                            Tuple.Create(
-                    "TextTransform", new List<string>{
-                        "TextRotAngle",
-                        "TextScaleX",
-                        "TextScaleY",
-                        "TextSkewX",
-                        "TextSkewY",
-                            } ),
-                            Tuple.Create(
-                    "BackAttr", new List<string>{
-                        "BackOpacity",
-                        "BackFillColor",
-                        "BackStrokeThickness",
-                        "BackStrokeColor",
-                            } ),
-                            Tuple.Create(
-                    "BackPosRel", new List<string>{
-                        "BackWidth",
-                        "BackHeight",
-                        "BackShiftX",
-                        "BackShiftY",
-                            } ),
-                            Tuple.Create(
-                    "BackCornerRadiusRel", new List<string>{
-                        "BackCornerRadius",
-                            } ),
-                            Tuple.Create(
-                    "BackTransform", new List<string>{
-                        "BackRotAngle",
-                        "BackScaleX",
-                        "BackScaleY",
-                        "BackSkewX",
-                        "BackSkewY",
-                            } )
-                    };
-#>
+<#@ include file="FgPropDefs.tt.txt" #>
 using System.Windows;
 
 namespace PergleLabs.UI
@@ -70,7 +15,7 @@ namespace PergleLabs.UI
     {
 
  <#
-foreach (var prop in PROPERTY_PARTS)
+foreach (var prop in PROPERTY_DEFS)
 {
     string propName = prop.Item1;
     List<string> propParts = prop.Item2;
