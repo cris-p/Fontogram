@@ -92,7 +92,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>FontogramBaseProps.tt</DependentUpon>
     </Compile>
-    <Compile Include="RecipeBindingProps.cs" />
+    <Compile Include="LayerBindingProps.cs" />
     <Page Include="FgLayer.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
