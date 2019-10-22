@@ -7,7 +7,9 @@ namespace PergleLabs.Fontogrammer
     {
 
 
-        // Text
+        #region Text
+
+        // Composite property
 
         private string __Text;
         public string Text
@@ -21,8 +23,12 @@ namespace PergleLabs.Fontogrammer
         }
         public event Action TextChanged;
 
+        #endregion
 
-        // TextAttr
+
+        #region TextAttr
+
+        // Composite property
 
         private string __TextAttr;
         public string TextAttr
@@ -36,8 +42,12 @@ namespace PergleLabs.Fontogrammer
         }
         public event Action TextAttrChanged;
 
+        #endregion
 
-        // TextPosRel
+
+        #region TextPosRel
+
+        // Composite property
 
         private string __TextPosRel;
         public string TextPosRel
@@ -51,8 +61,12 @@ namespace PergleLabs.Fontogrammer
         }
         public event Action TextPosRelChanged;
 
+        #endregion
 
-        // TextTransform
+
+        #region TextTransform
+
+        // Composite property
 
         private string __TextTransform;
         public string TextTransform
@@ -66,8 +80,12 @@ namespace PergleLabs.Fontogrammer
         }
         public event Action TextTransformChanged;
 
+        #endregion
 
-        // BackAttr
+
+        #region BackAttr
+
+        // Composite property
 
         private string __BackAttr;
         public string BackAttr
@@ -81,8 +99,12 @@ namespace PergleLabs.Fontogrammer
         }
         public event Action BackAttrChanged;
 
+        #endregion
 
-        // BackPosRel
+
+        #region BackPosRel
+
+        // Composite property
 
         private string __BackPosRel;
         public string BackPosRel
@@ -96,8 +118,12 @@ namespace PergleLabs.Fontogrammer
         }
         public event Action BackPosRelChanged;
 
+        #endregion
 
-        // BackCornerRadiusRel
+
+        #region BackCornerRadiusRel
+
+        // Composite property
 
         private string __BackCornerRadiusRel;
         public string BackCornerRadiusRel
@@ -111,8 +137,12 @@ namespace PergleLabs.Fontogrammer
         }
         public event Action BackCornerRadiusRelChanged;
 
+        #endregion
 
-        // BackTransform
+
+        #region BackTransform
+
+        // Composite property
 
         private string __BackTransform;
         public string BackTransform
@@ -125,6 +155,8 @@ namespace PergleLabs.Fontogrammer
             }
         }
         public event Action BackTransformChanged;
+
+        #endregion
 
 
     }

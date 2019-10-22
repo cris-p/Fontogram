@@ -4,7 +4,7 @@
 <#@ import namespace="System.Text" #>
 <#@ import namespace="System.Collections.Generic" #>
 <#@ output extension=".cs" #>
-<#@ include file="FgProps.tt.txt" #>
+<#@ include file="../Fontogram/FgPropDefs.tt.txt" #>
 using System;
 
 namespace PergleLabs.Fontogrammer
@@ -14,11 +14,13 @@ namespace PergleLabs.Fontogrammer
     {
 
 <#
-foreach (string propName in PROPERTY_NAMES)
+foreach (string propName in PropertyNames())
 {
 #>
 
-        // <#= propName #>
+        #region <#= propName #>
+
+        // Composite property
 
         private string __<#= propName #>;
         public string <#= propName #>
@@ -31,6 +33,8 @@ foreach (string propName in PROPERTY_NAMES)
             }
         }
         public event Action <#= propName #>Changed;
+
+        #endregion
 
 <#
 }

@@ -4,7 +4,7 @@
 <#@ import namespace="System.Text" #>
 <#@ import namespace="System.Collections.Generic" #>
 <#@ output extension=".cs" #>
-<#@ include file="FgProps.tt.txt" #>
+<#@ include file="../Fontogram/FgPropDefs.tt.txt" #>
 using System.Linq;
 
 
@@ -19,7 +19,7 @@ namespace PergleLabs.Fontogrammer
         {
             layer.TextChanged += OnTextChanged;
 <#
-foreach (string propName in PROPERTY_NAMES)
+foreach (string propName in PropertyNames())
 {
 #>
             layer.<#= propName #>Changed += On<#= propName #>Changed;
@@ -30,7 +30,7 @@ foreach (string propName in PROPERTY_NAMES)
 
 
 <#
-foreach (string propName in PROPERTY_NAMES)
+foreach (string propName in PropertyNames())
 {
 #>
         private void On<#= propName #>Changed()
