@@ -1,5 +1,6 @@
 ﻿using PergleLabs.UI;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
@@ -23,9 +24,6 @@ namespace PergleLabs.Fontogrammer
         {
             this.PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
-
-
-        public FontogramData FgData { get; } = new FontogramData();
 
 
         private readonly Fontogram _FgPreview;
@@ -77,7 +75,8 @@ namespace PergleLabs.Fontogrammer
         }
 
 
-        public ObservableCollection<XamlLayerItem> XamlLayers { get; private set; } = new ObservableCollection<XamlLayerItem>();
+        public ObservableCollection<XamlLayerItem> XamlReversedLayers { get; } = new ObservableCollection<XamlLayerItem>();
+
 
         private XamlLayerItem _currentXamlLayer;
         public XamlLayerItem CurrentXamlLayer {
@@ -92,13 +91,13 @@ namespace PergleLabs.Fontogrammer
 
         public void AddLayer()
         {
-            int pos = XamlLayers.Count;
+            int pos = XamlReversedLayers.Count;
 
             var newLayer = new XamlLayerItem(_FgPreview, pos);
 
             SetPropertyEventHandlers(newLayer);
 
-            XamlLayers.Add(newLayer);
+            XamlReversedLayers.Insert(0, newLayer);
         }
 
         public void RemoveCurrentLayer()

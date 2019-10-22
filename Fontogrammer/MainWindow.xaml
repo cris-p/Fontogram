@@ -244,9 +244,14 @@
                         Margin="16,57,8,8"
                         HorizontalContentAlignment="Center"
                         ScrollViewer.VerticalScrollBarVisibility="Visible"
-                        ItemsSource="{Binding XamlLayers}"
+                        ItemsSource="{Binding XamlReversedLayers}"
                         SelectedItem="{Binding CurrentXamlLayer}"
                         >
+                        <ListBox.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <VirtualizingStackPanel VerticalAlignment="Bottom"/>
+                            </ItemsPanelTemplate>
+                        </ListBox.ItemsPanel>
                         <ListBox.ItemTemplate>
                             <DataTemplate>
                                 <Grid

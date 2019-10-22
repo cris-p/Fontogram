@@ -24,35 +24,35 @@ namespace PergleLabs.Fontogrammer
 
         private void OnTextChanged()
         {
-            _FgPreview.Text = string.Join("|", XamlLayers.Select(layer => layer.Text));
+            _FgPreview.Text = string.Join("|", XamlReversedLayers.Reverse().Select(layer => layer.Text));
         }
         private void OnTextAttrChanged()
         {
-            _FgPreview.TextAttr = string.Join("|", XamlLayers.Select(layer => layer.TextAttr));
+            _FgPreview.TextAttr = string.Join("|", XamlReversedLayers.Reverse().Select(layer => layer.TextAttr));
         }
         private void OnTextPosRelChanged()
         {
-            _FgPreview.TextPosRel = string.Join("|", XamlLayers.Select(layer => layer.TextPosRel));
+            _FgPreview.TextPosRel = string.Join("|", XamlReversedLayers.Reverse().Select(layer => layer.TextPosRel));
         }
         private void OnTextTransformChanged()
         {
-            _FgPreview.TextTransform = string.Join("|", XamlLayers.Select(layer => layer.TextTransform));
+            _FgPreview.TextTransform = string.Join("|", XamlReversedLayers.Reverse().Select(layer => layer.TextTransform));
         }
         private void OnBackAttrChanged()
         {
-            _FgPreview.BackAttr = string.Join("|", XamlLayers.Select(layer => layer.BackAttr));
+            _FgPreview.BackAttr = string.Join("|", XamlReversedLayers.Reverse().Select(layer => layer.BackAttr));
         }
         private void OnBackPosRelChanged()
         {
-            _FgPreview.BackPosRel = string.Join("|", XamlLayers.Select(layer => layer.BackPosRel));
+            _FgPreview.BackPosRel = string.Join("|", XamlReversedLayers.Reverse().Select(layer => layer.BackPosRel));
         }
         private void OnBackCornerRadiusRelChanged()
         {
-            _FgPreview.BackCornerRadiusRel = string.Join("|", XamlLayers.Select(layer => layer.BackCornerRadiusRel));
+            _FgPreview.BackCornerRadiusRel = string.Join("|", XamlReversedLayers.Reverse().Select(layer => layer.BackCornerRadiusRel));
         }
         private void OnBackTransformChanged()
         {
-            _FgPreview.BackTransform = string.Join("|", XamlLayers.Select(layer => layer.BackTransform));
+            _FgPreview.BackTransform = string.Join("|", XamlReversedLayers.Reverse().Select(layer => layer.BackTransform));
         }
 
     }
