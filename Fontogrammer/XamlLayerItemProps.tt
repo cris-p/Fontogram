@@ -14,8 +14,9 @@ namespace PergleLabs.Fontogrammer
     {
 
 <#
-foreach (string propName in PropertyNames())
+foreach (var propDef in PROPERTY_DEFS)
 {
+    string propName = propDef.Item1;
 #>
 
         #region <#= propName #>
@@ -33,6 +34,35 @@ foreach (string propName in PropertyNames())
             }
         }
         public event Action <#= propName #>Changed;
+
+
+        // Components
+
+<#
+    var components = propDef.Item2;
+    foreach (var component in components)
+    {
+#>
+        // <#= component #>
+        private string __<#= component #>_;
+        public string <#= component #>_
+        {
+            get { return __<#= component #>_; }
+            set
+            {
+                __<#= component #>_ = value;
+                Update<#= propName #>();
+            }
+        }
+
+<#
+    }
+#>
+
+        private void Update<#= propName #>()
+        {
+            <#= propName #> = $"<#= string.Join(";", components.Select(comp => $"{{{comp}_}}")) #>";
+        }
 
         #endregion
 

@@ -411,7 +411,7 @@ Selected layer details (override Base)
                                 Name="txtText"
                                 Padding="0" Margin="4,8,4,4" VerticalContentAlignment="Center"
                                 HorizontalContentAlignment="Center"
-                                Text="{Binding Path=CurrentXamlLayer.Text, UpdateSourceTrigger=PropertyChanged}"
+                                Text="{Binding Path=CurrentXamlLayer.Text_, UpdateSourceTrigger=PropertyChanged}"
                                 FontSize="20"
                                 FontFamily="{Binding ElementName=txtFontName, Path=Text}"
                                 />
@@ -437,15 +437,46 @@ Selected layer details (override Base)
                                 Grid.Row="1"
                                 VerticalAlignment="Center"
                                 Width="160" Margin="4,0" HorizontalAlignment="Right"
-                                Text="{Binding Path=CurrentXamlLayer.FontName, UpdateSourceTrigger=PropertyChanged}"
+                                Text="{Binding Path=CurrentXamlLayer.TextFont_, UpdateSourceTrigger=PropertyChanged}"
                                 Background="Transparent"
                                 />
 
-                            <Label
+                            <!--Font weight-->
+                            <StackPanel
                                 Grid.Row="2"
+                                Margin="4,0" HorizontalAlignment="Left"
+                                Width="90"
                                 >
-                                color
+                            <Label
+                                Padding="0"
+                                >
+                                Font weight
                             </Label>
+                            <TextBox
+                                x:Name="txtFontWeight"
+                                Text="{Binding Path=CurrentXamlLayer.TextFontWeight_, UpdateSourceTrigger=PropertyChanged}"
+                                Margin="0"
+                                />
+                            </StackPanel>
+
+                            <!--Text color-->
+                            <StackPanel
+                                Grid.Row="2"
+                                Margin="4,0" HorizontalAlignment="Right"
+                                Width="90"
+                                >
+                                <Label
+                                Padding="0"
+                                >
+                                    Text color
+                                </Label>
+                                <TextBox
+                                x:Name="txtTextColor"
+                                Text="{Binding Path=CurrentXamlLayer.TextColor_, UpdateSourceTrigger=PropertyChanged}"
+                                Margin="0"
+                                />
+                            </StackPanel>
+
                             <Label
                                 Grid.Row="3"
                                 >
