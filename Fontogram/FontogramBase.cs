@@ -163,33 +163,62 @@ namespace PergleLabs.UI
             this.AddChild(_ParentGrid);
         }
 
+        private static IEnumerable<string> ComputeEffectivePerLayerValues(string readyMadeAttrString, string explicitAttrString)
+        {
+            // Split the value into its component values - first at layer level, then within layer.
+            // Any "explicit" value overrides any "ready-made" value. Whitespace or null string means missing value.
+
+            if (string.IsNullOrWhiteSpace(readyMadeAttrString))
+                readyMadeAttrString = "";
+            if (string.IsNullOrWhiteSpace(explicitAttrString))
+                explicitAttrString = "";
+
+            string[] readyMadePerLayerValues = readyMadeAttrString.Split('|');
+            string[] explicitPerLayerValues = explicitAttrString.Split('|');
+
+            int potentialLayerCount = Math.Max(explicitPerLayerValues.Length, readyMadePerLayerValues.Length);
+
+            for (int layer = 0; layer < potentialLayerCount; layer++)
+            {
+                string readyMadeLayerValue = readyMadePerLayerValues.Length > layer ? readyMadePerLayerValues[layer] : "";
+                string explicitLayerValue = explicitPerLayerValues.Length > layer ? explicitPerLayerValues[layer] : "";
+
+                string[] readyMadeIntraLayerValues = readyMadeLayerValue.Split(';');
+                string[] explicitIntraLayerValues = explicitLayerValue.Split(';');
+
+                int intraLayerCount = Math.Max(readyMadeIntraLayerValues.Length, explicitIntraLayerValues.Length);
+
+                string[] effectiveIntraLayerValues = new string[intraLayerCount];
+
+                for (int n = 0; n < intraLayerCount; n++)
+                {
+                    string readyMadeValue = readyMadeIntraLayerValues.Length > n ? readyMadeIntraLayerValues[n] : "";
+                    string explicitValue = explicitIntraLayerValues.Length > n ? explicitIntraLayerValues[n] : "";
+
+
+                    // explicit value takes priority
+                    string effectiveValue = string.IsNullOrWhiteSpace(explicitValue) ? readyMadeValue : explicitValue;
+
+                    effectiveIntraLayerValues[n] = effectiveValue;
+                }
+
+                yield return string.Join(";", effectiveIntraLayerValues);
+            }
+
+        }
 
         private void SetPropertyValuesInLayers(string explicitAttrString, string readyMadeAttrString, [CallerMemberName] string propertyName = "")
         {
-            if (string.IsNullOrWhiteSpace(explicitAttrString))
-                explicitAttrString = "";
-            if (string.IsNullOrWhiteSpace(readyMadeAttrString))
-                readyMadeAttrString = "";
-
-
             PropertyInfo layerPropInfo = typeof(FgLayer).GetProperty(propertyName);
 
-            string[] explicitValues = explicitAttrString.Split('|');
-            string[] readyMadeValues = readyMadeAttrString.Split('|');
-
-            int potentialLayerCount = Math.Max(explicitValues.Length, readyMadeValues.Length);
-
-            for (int n = 0; n < potentialLayerCount; n++)
+            int layerNo = 0;
+            foreach (var effectivePerLayerValue in ComputeEffectivePerLayerValues(readyMadeAttrString, explicitAttrString))
             {
-                string explicitValue = explicitValues.Length > n ? explicitValues[n] : "";
-                string readyMadeValue = readyMadeValues.Length > n ? readyMadeValues[n] : "";
+                FgLayer layer = GetOrCreateNthLayer(layerNo);
 
-                // explicit value takes priority
-                string actualValue = string.IsNullOrWhiteSpace(explicitValue) ? readyMadeValue : explicitValue;
+                layerPropInfo.SetValue(layer, effectivePerLayerValue);
 
-                FgLayer layer = GetOrCreateNthLayer(n);
-
-                layerPropInfo.SetValue(layer, actualValue);
+                layerNo++;
             }
 
             if (SelectiveLayerEnable != (int)SelectiveLayerEnableProperty.DefaultMetadata.DefaultValue)
