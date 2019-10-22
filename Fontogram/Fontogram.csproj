@@ -92,6 +92,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>FontogramBaseProps.tt</DependentUpon>
     </Compile>
+    <Compile Include="FontogramProperties.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>FontogramProperties.tt</DependentUpon>
+    </Compile>
     <Compile Include="LayerBindingProps.cs" />
     <Page Include="FgLayer.xaml">
       <SubType>Designer</SubType>
@@ -129,6 +134,11 @@
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>FgLayerProps.cs</LastGenOutput>
     </Content>
+    <Content Include="FontogramProperties.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>FontogramProperties.cs</LastGenOutput>
+    </Content>
+    <Resource Include="FgPropDefs.tt.txt" />
     <Content Include="FontogramBaseProps.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>FontogramBaseProps.cs</LastGenOutput>
