@@ -127,24 +127,24 @@ namespace PergleLabs.UI
             set { __BackPosRel_readyMade = value; SetPropertyValuesInLayers(BackPosRel, value, "BackPosRel"); }
         }
 
-        // BackCornerRadiusRel
-        public static readonly DependencyProperty BackCornerRadiusRelProperty = DependencyProperty.Register(
-            "BackCornerRadiusRel", typeof(string), typeof(FontogramBase), new PropertyMetadata(null, OnBackCornerRadiusRelChanged) );
-        private static void OnBackCornerRadiusRelChanged(DependencyObject depObj, DependencyPropertyChangedEventArgs e)
+        // BackBorderNumbersRel
+        public static readonly DependencyProperty BackBorderNumbersRelProperty = DependencyProperty.Register(
+            "BackBorderNumbersRel", typeof(string), typeof(FontogramBase), new PropertyMetadata(null, OnBackBorderNumbersRelChanged) );
+        private static void OnBackBorderNumbersRelChanged(DependencyObject depObj, DependencyPropertyChangedEventArgs e)
         {
             FontogramBase fgObj = depObj as FontogramBase;
-            fgObj.SetPropertyValuesInLayers(e.NewValue as string, fgObj.BackCornerRadiusRel_readyMade, e.Property.Name);
+            fgObj.SetPropertyValuesInLayers(e.NewValue as string, fgObj.BackBorderNumbersRel_readyMade, e.Property.Name);
         }
-        public string BackCornerRadiusRel
+        public string BackBorderNumbersRel
         {
-            get { return (string)GetValue(BackCornerRadiusRelProperty); }
-            set { SetValue(BackCornerRadiusRelProperty, value); }
+            get { return (string)GetValue(BackBorderNumbersRelProperty); }
+            set { SetValue(BackBorderNumbersRelProperty, value); }
         }
-        private string __BackCornerRadiusRel_readyMade;
-        private string BackCornerRadiusRel_readyMade
+        private string __BackBorderNumbersRel_readyMade;
+        private string BackBorderNumbersRel_readyMade
         {
-            get { return __BackCornerRadiusRel_readyMade; }
-            set { __BackCornerRadiusRel_readyMade = value; SetPropertyValuesInLayers(BackCornerRadiusRel, value, "BackCornerRadiusRel"); }
+            get { return __BackBorderNumbersRel_readyMade; }
+            set { __BackBorderNumbersRel_readyMade = value; SetPropertyValuesInLayers(BackBorderNumbersRel, value, "BackBorderNumbersRel"); }
         }
 
         // BackTransform
@@ -179,7 +179,7 @@ namespace PergleLabs.UI
             TextTransform_readyMade = "";
             BackAttr_readyMade = "";
             BackPosRel_readyMade = "";
-            BackCornerRadiusRel_readyMade = "";
+            BackBorderNumbersRel_readyMade = "";
             BackTransform_readyMade = "";
         }
 
@@ -190,7 +190,7 @@ namespace PergleLabs.UI
             , string _TextTransform_readyMade
             , string _BackAttr_readyMade
             , string _BackPosRel_readyMade
-            , string _BackCornerRadiusRel_readyMade
+            , string _BackBorderNumbersRel_readyMade
             , string _BackTransform_readyMade
         )
         {
@@ -200,7 +200,7 @@ namespace PergleLabs.UI
             TextTransform_readyMade = _TextTransform_readyMade;
             BackAttr_readyMade = _BackAttr_readyMade;
             BackPosRel_readyMade = _BackPosRel_readyMade;
-            BackCornerRadiusRel_readyMade = _BackCornerRadiusRel_readyMade;
+            BackBorderNumbersRel_readyMade = _BackBorderNumbersRel_readyMade;
             BackTransform_readyMade = _BackTransform_readyMade;
         }
 
@@ -236,7 +236,7 @@ namespace PergleLabs.UI
                 , out string _TextTransform
                 , out string _BackAttr
                 , out string _BackPosRel
-                , out string _BackCornerRadiusRel
+                , out string _BackBorderNumbersRel
                 , out string _BackTransform
                 ))
                 return;
@@ -249,7 +249,7 @@ namespace PergleLabs.UI
                 , _TextTransform
                 , _BackAttr
                 , _BackPosRel
-                , _BackCornerRadiusRel
+                , _BackBorderNumbersRel
                 , _BackTransform
                 );
         }
@@ -262,7 +262,7 @@ namespace PergleLabs.UI
             , out string _TextTransform
             , out string _BackAttr
             , out string _BackPosRel
-            , out string _BackCornerRadiusRel
+            , out string _BackBorderNumbersRel
             , out string _BackTransform
             );
 

@@ -68,7 +68,6 @@ namespace PergleLabs.UI
                 DispatchValues(value
                     , _BindingProps.BackOpacity
                     , _BindingProps.BackFillColor
-                    , _BindingProps.BackStrokeThickness
                     , _BindingProps.BackStrokeColor
                 );
             }
@@ -88,12 +87,13 @@ namespace PergleLabs.UI
             }
         }
 
-        // BackCornerRadiusRel
-        public string BackCornerRadiusRel
+        // BackBorderNumbersRel
+        public string BackBorderNumbersRel
         {
             set
             {
                 DispatchValues(value
+                    , _BindingProps.BackStrokeThickness
                     , _BindingProps.BackCornerRadius
                 );
             }

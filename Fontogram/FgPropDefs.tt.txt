@@ -30,7 +30,6 @@ List<Tuple<string, List<string>>>
                     "BackAttr", new List<string>{
                         "BackOpacity",
                         "BackFillColor",
-                        "BackStrokeThickness",
                         "BackStrokeColor",
                             } ),
                             Tuple.Create(
@@ -41,7 +40,8 @@ List<Tuple<string, List<string>>>
                         "BackShiftY",
                             } ),
                             Tuple.Create(
-                    "BackCornerRadiusRel", new List<string>{
+                    "BackBorderNumbersRel", new List<string>{
+                        "BackStrokeThickness",
                         "BackCornerRadius",
                             } ),
                             Tuple.Create(

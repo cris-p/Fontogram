@@ -306,18 +306,6 @@ namespace PergleLabs.Fontogrammer
             }
         }
 
-        // BackStrokeThickness
-        private string __BackStrokeThickness_;
-        public string BackStrokeThickness_
-        {
-            get { return __BackStrokeThickness_; }
-            set
-            {
-                __BackStrokeThickness_ = value;
-                UpdateBackAttr();
-            }
-        }
-
         // BackStrokeColor
         private string __BackStrokeColor_;
         public string BackStrokeColor_
@@ -333,7 +321,7 @@ namespace PergleLabs.Fontogrammer
 
         private void UpdateBackAttr()
         {
-            BackAttr = $"{BackOpacity_};{BackFillColor_};{BackStrokeThickness_};{BackStrokeColor_}";
+            BackAttr = $"{BackOpacity_};{BackFillColor_};{BackStrokeColor_}";
         }
 
         #endregion
@@ -415,24 +403,36 @@ namespace PergleLabs.Fontogrammer
         #endregion
 
 
-        #region BackCornerRadiusRel
+        #region BackBorderNumbersRel
 
         // Composite property
 
-        private string __BackCornerRadiusRel;
-        public string BackCornerRadiusRel
+        private string __BackBorderNumbersRel;
+        public string BackBorderNumbersRel
         {
-            get { return __BackCornerRadiusRel; }
+            get { return __BackBorderNumbersRel; }
             set
             {
-                __BackCornerRadiusRel = value;
-                BackCornerRadiusRelChanged?.Invoke();
+                __BackBorderNumbersRel = value;
+                BackBorderNumbersRelChanged?.Invoke();
             }
         }
-        public event Action BackCornerRadiusRelChanged;
+        public event Action BackBorderNumbersRelChanged;
 
 
         // Components
+
+        // BackStrokeThickness
+        private string __BackStrokeThickness_;
+        public string BackStrokeThickness_
+        {
+            get { return __BackStrokeThickness_; }
+            set
+            {
+                __BackStrokeThickness_ = value;
+                UpdateBackBorderNumbersRel();
+            }
+        }
 
         // BackCornerRadius
         private string __BackCornerRadius_;
@@ -442,14 +442,14 @@ namespace PergleLabs.Fontogrammer
             set
             {
                 __BackCornerRadius_ = value;
-                UpdateBackCornerRadiusRel();
+                UpdateBackBorderNumbersRel();
             }
         }
 
 
-        private void UpdateBackCornerRadiusRel()
+        private void UpdateBackBorderNumbersRel()
         {
-            BackCornerRadiusRel = $"{BackCornerRadius_}";
+            BackBorderNumbersRel = $"{BackStrokeThickness_};{BackCornerRadius_}";
         }
 
         #endregion

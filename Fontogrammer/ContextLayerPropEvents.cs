@@ -17,7 +17,7 @@ namespace PergleLabs.Fontogrammer
             layer.TextTransformChanged += OnTextTransformChanged;
             layer.BackAttrChanged += OnBackAttrChanged;
             layer.BackPosRelChanged += OnBackPosRelChanged;
-            layer.BackCornerRadiusRelChanged += OnBackCornerRadiusRelChanged;
+            layer.BackBorderNumbersRelChanged += OnBackBorderNumbersRelChanged;
             layer.BackTransformChanged += OnBackTransformChanged;
         }
 
@@ -46,9 +46,9 @@ namespace PergleLabs.Fontogrammer
         {
             _FgPreview.BackPosRel = string.Join("|", XamlReversedLayers.Reverse().Select(layer => layer.BackPosRel));
         }
-        private void OnBackCornerRadiusRelChanged()
+        private void OnBackBorderNumbersRelChanged()
         {
-            _FgPreview.BackCornerRadiusRel = string.Join("|", XamlReversedLayers.Reverse().Select(layer => layer.BackCornerRadiusRel));
+            _FgPreview.BackBorderNumbersRel = string.Join("|", XamlReversedLayers.Reverse().Select(layer => layer.BackBorderNumbersRel));
         }
         private void OnBackTransformChanged()
         {

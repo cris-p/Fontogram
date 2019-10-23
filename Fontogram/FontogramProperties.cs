@@ -26,7 +26,7 @@ namespace PergleLabs.UI
         string TextTransform { set; }
 
         /// <summary>
-        /// BackAttr = " BackOpacity_L0;BackFillColor_L0;BackStrokeThickness_L0;BackStrokeColor_L0 | ...(Layer1) | ...(Layer2) | ... "
+        /// BackAttr = " BackOpacity_L0;BackFillColor_L0;BackStrokeColor_L0 | ...(Layer1) | ...(Layer2) | ... "
         /// </summary>
         string BackAttr { set; }
 
@@ -36,9 +36,9 @@ namespace PergleLabs.UI
         string BackPosRel { set; }
 
         /// <summary>
-        /// BackCornerRadiusRel = " BackCornerRadius_L0 | ...(Layer1) | ...(Layer2) | ... "
+        /// BackBorderNumbersRel = " BackStrokeThickness_L0;BackCornerRadius_L0 | ...(Layer1) | ...(Layer2) | ... "
         /// </summary>
-        string BackCornerRadiusRel { set; }
+        string BackBorderNumbersRel { set; }
 
         /// <summary>
         /// BackTransform = " BackRotAngle_L0;BackScaleX_L0;BackScaleY_L0;BackSkewX_L0;BackSkewY_L0 | ...(Layer1) | ...(Layer2) | ... "
