@@ -283,6 +283,7 @@
                                         TextTransform="{Binding PreviewFontogram.TextTransform}"
                                         BackAttr="{Binding PreviewFontogram.BackAttr}"
                                         BackPosRel="{Binding PreviewFontogram.BackPosRel}"
+                                        BackBorderNumbersRel="{Binding PreviewFontogram.BackBorderNumbersRel}"
                                         BackTransform="{Binding PreviewFontogram.BackTransform}"
                                         
                                         ReadyMade="{Binding PreviewFontogram.ReadyMade}"
@@ -349,218 +350,493 @@
 Selected layer details (override Base)
                     </TextBlock>
 
-                    <GroupBox
-                        Margin="8,26,8,0"
-                        VerticalAlignment="Top"
-                        BorderBrush="#aaa"
-                        Height="195"
-                        Padding="0,8,0,4"
+                    <Grid
+                        Margin="0,21,0,8"
                         >
-                        <GroupBox.Header>
-                            <CheckBox
-                                x:Name="chkBackdrop"
-                                >
-                                Backdrop
-                            </CheckBox>
-                        </GroupBox.Header>
-                        <Grid
-                            IsEnabled="{Binding ElementName=chkBackdrop, Path=IsChecked}"
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="100*"/>
+                            <RowDefinition Height="112*"/>
+                        </Grid.RowDefinitions>
+
+                        <GroupBox
+                            Margin="8,8,8,4"
+                            BorderBrush="#aaa"
+                            Padding="0,8,0,4"
+                            Grid.Row="0"
                             >
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="10*"/>
-                                <RowDefinition Height="10*"/>
-                                <RowDefinition Height="10*"/>
-                                <RowDefinition Height="10*"/>
-                            </Grid.RowDefinitions>
-
+                            <GroupBox.Header>
+                                <CheckBox
+                                    x:Name="chkBackdrop"
+                                    >
+                                    Backdrop
+                                </CheckBox>
+                            </GroupBox.Header>
                             <Grid
+                                IsEnabled="{Binding ElementName=chkBackdrop, Path=IsChecked}"
                                 >
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="2*"/>
-                                    <ColumnDefinition Width="3*"/>
-                                    <ColumnDefinition Width="3*"/>
-                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="10*"/>
+                                    <RowDefinition Height="10*"/>
+                                    <RowDefinition Height="10*"/>
+                                    <RowDefinition Height="10*"/>
+                                </Grid.RowDefinitions>
 
-                                <!--Opacity-->
-                                <StackPanel
-                                    Margin="4,0"
+                                <Grid
                                     >
-                                    <Label
-                                        Padding="0"
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="2*"/>
+                                        <ColumnDefinition Width="3*"/>
+                                        <ColumnDefinition Width="3*"/>
+                                    </Grid.ColumnDefinitions>
+
+                                    <!--Opacity-->
+                                    <StackPanel
+                                        Margin="4,0"
                                         >
-                                        Opacity
-                                    </Label>
-                                    <TextBox
-                                        x:Name="txtBackOpacity"
-                                        Text="{Binding Path=CurrentXamlLayer.BackOpacity_, UpdateSourceTrigger=PropertyChanged}"
-                                        />
-                                </StackPanel>
+                                        <Label
+                                            Padding="0"
+                                            >
+                                            Opacity
+                                        </Label>
+                                        <TextBox
+                                            x:Name="txtBackOpacity"
+                                            Text="{Binding Path=CurrentXamlLayer.BackOpacity_, UpdateSourceTrigger=PropertyChanged}"
+                                            />
+                                    </StackPanel>
 
-                                <!--Fill color-->
-                                <StackPanel
-                                    Margin="4,0"
-                                    Grid.Column="1"
-                                    >
-                                    <Label
-                                        Padding="0"
+                                    <!--Fill color-->
+                                    <StackPanel
+                                        Margin="4,0"
+                                        Grid.Column="1"
                                         >
-                                        Fill color
-                                    </Label>
-                                    <TextBox
-                                        x:Name="txtBackFillColor"
-                                        Text="{Binding Path=CurrentXamlLayer.BackFillColor_, UpdateSourceTrigger=PropertyChanged}"
-                                        />
-                                </StackPanel>
+                                        <Label
+                                            Padding="0"
+                                            >
+                                            Fill color
+                                        </Label>
+                                        <TextBox
+                                            x:Name="txtBackFillColor"
+                                            Text="{Binding Path=CurrentXamlLayer.BackFillColor_, UpdateSourceTrigger=PropertyChanged}"
+                                            />
+                                    </StackPanel>
 
-                                <!--Stroke color-->
-                                <StackPanel
-                                    Margin="4,0"
-                                    Grid.Column="2"
-                                    >
-                                    <Label
-                                        Padding="0"
+                                    <!--Stroke color-->
+                                    <StackPanel
+                                        Margin="4,0"
+                                        Grid.Column="2"
                                         >
-                                        Border color
-                                    </Label>
-                                    <TextBox
-                                        x:Name="txtBackStrokeColor"
-                                        Text="{Binding Path=CurrentXamlLayer.BackStrokeColor_, UpdateSourceTrigger=PropertyChanged}"
-                                        />
-                                </StackPanel>
+                                        <Label
+                                            Padding="0"
+                                            >
+                                            Border color
+                                        </Label>
+                                        <TextBox
+                                            x:Name="txtBackStrokeColor"
+                                            Text="{Binding Path=CurrentXamlLayer.BackStrokeColor_, UpdateSourceTrigger=PropertyChanged}"
+                                            />
+                                    </StackPanel>
 
 
-                            </Grid>
+                                </Grid>
                             
-                            <Grid
-                                Grid.Row="1"
-                                ToolTip="% values relative to control height"
-                                HorizontalAlignment="Stretch"
-                                >
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition />
-                                    <ColumnDefinition />
-                                    <ColumnDefinition />
-                                    <ColumnDefinition />
-                                </Grid.ColumnDefinitions>
-
-                                <!--Width-->
-                                <StackPanel
-                                    Margin="4,0"
+                                <Grid
+                                    Grid.Row="1"
+                                    ToolTip="% values relative to control height"
+                                    HorizontalAlignment="Stretch"
                                     >
-                                    <Label
-                                        Padding="0"
-                                        >
-                                        Width
-                                    </Label>
-                                    <TextBox
-                                        x:Name="txtBackWidth"
-                                        Text="{Binding Path=CurrentXamlLayer.BackWidth_, UpdateSourceTrigger=PropertyChanged}"
-                                        Margin="0,0,6,0"
-                                        />
-                                </StackPanel>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition />
+                                        <ColumnDefinition />
+                                        <ColumnDefinition />
+                                        <ColumnDefinition />
+                                    </Grid.ColumnDefinitions>
 
-                                <!--Height-->
-                                <StackPanel
-                                    Margin="4,0"
-                                    Grid.Column="1"
-                                    >
-                                    <Label
-                                        Padding="0"
+                                    <!--Width-->
+                                    <StackPanel
+                                        Margin="4,0"
                                         >
-                                        Height
-                                    </Label>
-                                    <TextBox
-                                        x:Name="txtBackHeight"
-                                        Text="{Binding Path=CurrentXamlLayer.BackHeight_, UpdateSourceTrigger=PropertyChanged}"
-                                        Margin="0,0,6,0"
-                                        />
-                                </StackPanel>
+                                        <Label
+                                            Padding="0"
+                                            >
+                                            Width
+                                        </Label>
+                                        <TextBox
+                                            x:Name="txtBackWidth"
+                                            Text="{Binding Path=CurrentXamlLayer.BackWidth_, UpdateSourceTrigger=PropertyChanged}"
+                                            Margin="0,0,6,0"
+                                            />
+                                    </StackPanel>
 
-                                <!--X shift-->
-                                <StackPanel
-                                    Grid.Column="2"
-                                    Margin="4,0,2,0" Width="36"
-                                    >
-                                    <Label
-                                        Padding="0"
+                                    <!--Height-->
+                                    <StackPanel
+                                        Margin="4,0"
+                                        Grid.Column="1"
                                         >
-                                        X shift
-                                    </Label>
-                                    <TextBox
-                                        x:Name="txtBackShiftX"
-                                        Text="{Binding Path=CurrentXamlLayer.BackShiftX_, UpdateSourceTrigger=PropertyChanged}"
-                                        Margin="0"
-                                        />
-                                </StackPanel>
+                                        <Label
+                                            Padding="0"
+                                            >
+                                            Height
+                                        </Label>
+                                        <TextBox
+                                            x:Name="txtBackHeight"
+                                            Text="{Binding Path=CurrentXamlLayer.BackHeight_, UpdateSourceTrigger=PropertyChanged}"
+                                            Margin="0,0,6,0"
+                                            />
+                                    </StackPanel>
 
-                                <!--Y shift-->
-                                <StackPanel
-                                    Grid.Column="3"
-                                    Margin="2,0,0,0" Width="36"
-                                    >
-                                    <Label
-                                        Padding="0"
+                                    <!--X shift-->
+                                    <StackPanel
+                                        Grid.Column="2"
+                                        Margin="4,0,2,0" Width="36"
                                         >
-                                        Y shift
-                                    </Label>
-                                    <TextBox
-                                        x:Name="txtBackShiftY"
-                                        Text="{Binding Path=CurrentXamlLayer.BackShiftY_, UpdateSourceTrigger=PropertyChanged}"
-                                        Margin="0"
-                                        />
-                                </StackPanel>
+                                        <Label
+                                            Padding="0"
+                                            >
+                                            X shift
+                                        </Label>
+                                        <TextBox
+                                            x:Name="txtBackShiftX"
+                                            Text="{Binding Path=CurrentXamlLayer.BackShiftX_, UpdateSourceTrigger=PropertyChanged}"
+                                            Margin="0"
+                                            />
+                                    </StackPanel>
+
+                                    <!--Y shift-->
+                                    <StackPanel
+                                        Grid.Column="3"
+                                        Margin="2,0,0,0" Width="36"
+                                        >
+                                        <Label
+                                            Padding="0"
+                                            >
+                                            Y shift
+                                        </Label>
+                                        <TextBox
+                                            x:Name="txtBackShiftY"
+                                            Text="{Binding Path=CurrentXamlLayer.BackShiftY_, UpdateSourceTrigger=PropertyChanged}"
+                                            Margin="0"
+                                            />
+                                    </StackPanel>
+                                </Grid>
+
+                                <Grid
+                                    Grid.Row="2"
+                                    >
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="2*"/>
+                                        <ColumnDefinition Width="2*"/>
+                                        <ColumnDefinition Width="1*"/>
+                                    </Grid.ColumnDefinitions>
+
+                                    <!--Border thickness-->
+                                    <StackPanel
+                                        Grid.Column="0"
+                                        Margin="4,0"
+                                        ToolTip="one to four % values, relative to control height; e.g., '1,1,2,2'"
+                                        >
+                                        <Label
+                                            Padding="0"
+                                            >
+                                            Bordr thicknss
+                                        </Label>
+                                        <TextBox
+                                            x:Name="txtBackStrokeThickness"
+                                            Text="{Binding Path=CurrentXamlLayer.BackStrokeThickness_, UpdateSourceTrigger=PropertyChanged}"
+                                            Margin="0"
+                                            />
+                                    </StackPanel>
+
+                                    <!--Corner radius-->
+                                    <StackPanel
+                                        Grid.Column="1"
+                                        Margin="4,0"
+                                        ToolTip="one or four % values, relative to control height; e.g., '0,10,0,10'"
+                                        >
+                                        <Label
+                                            Padding="0"
+                                            >
+                                            Corner radius
+                                        </Label>
+                                        <TextBox
+                                            x:Name="txtBackCornerRadius"
+                                            Text="{Binding Path=CurrentXamlLayer.BackCornerRadius_, UpdateSourceTrigger=PropertyChanged}"
+                                            Margin="0"
+                                            />
+                                    </StackPanel>
+
+                                    <!--Rotation angle-->
+                                    <StackPanel
+                                        Grid.Column="2"
+                                        Margin="4,0"
+                                        ToolTip="Rotation angle, in degrees"
+                                        >
+                                        <Label
+                                            Padding="0"
+                                            >
+                                            Angle
+                                        </Label>
+                                        <TextBox
+                                            x:Name="txtBackRotAngle"
+                                            Text="{Binding Path=CurrentXamlLayer.BackRotAngle_, UpdateSourceTrigger=PropertyChanged}"
+                                            Margin="0"
+                                            HorizontalAlignment="Stretch"
+                                            />
+                                    </StackPanel>
+
+                                </Grid>
+
+
+                                <Grid
+                                    Grid.Row="3"
+                                    >
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="1*"/>
+                                        <ColumnDefinition Width="1*"/>
+                                        <ColumnDefinition Width="0.1*"/>
+                                        <ColumnDefinition Width="1*"/>
+                                        <ColumnDefinition Width="1*"/>
+                                    </Grid.ColumnDefinitions>
+
+                                    <!--Scaling X-->
+                                    <StackPanel
+                                        Grid.Column="0"
+                                        Margin="4,0,0,0"
+                                        >
+                                        <Label
+                                            Padding="0"
+                                            >
+                                            X scale
+                                        </Label>
+                                        <TextBox
+                                            x:Name="txtBackScaleX"
+                                            Text="{Binding Path=CurrentXamlLayer.BackScaleX_, UpdateSourceTrigger=PropertyChanged}"
+                                            Margin="0"
+                                            />
+                                    </StackPanel>
+
+                                    <!--Scaling Y-->
+                                    <StackPanel
+                                        Grid.Column="1"
+                                        Margin="4,0"
+                                        >
+                                        <Label
+                                            Padding="0"
+                                            >
+                                            Y scale
+                                        </Label>
+                                        <TextBox
+                                            x:Name="txtBackScaleY"
+                                            Text="{Binding Path=CurrentXamlLayer.BackScaleY_, UpdateSourceTrigger=PropertyChanged}"
+                                            Margin="0"
+                                            />
+                                    </StackPanel>
+
+                                    <!--Skew X-->
+                                    <StackPanel
+                                        Grid.Column="3"
+                                        Margin="4,0,0,0"
+                                        ToolTip="Angle, in degrees"
+                                        >
+                                        <Label
+                                            Padding="0"
+                                            >
+                                            X skew
+                                        </Label>
+                                        <TextBox
+                                            x:Name="txtBackSkewX"
+                                            Text="{Binding Path=CurrentXamlLayer.BackSkewX_, UpdateSourceTrigger=PropertyChanged}"
+                                            Margin="0"
+                                            />
+                                    </StackPanel>
+
+                                    <!--Skew Y-->
+                                    <StackPanel
+                                        Grid.Column="4"
+                                        Margin="4,0"
+                                        ToolTip="Angle, in degrees"
+                                        >
+                                        <Label
+                                            Padding="0"
+                                            >
+                                            Y skew
+                                        </Label>
+                                        <TextBox
+                                            x:Name="txtBackSkewY"
+                                            Text="{Binding Path=CurrentXamlLayer.BackSkewY_, UpdateSourceTrigger=PropertyChanged}"
+                                            Margin="0"
+                                            />
+                                    </StackPanel>
+                                </Grid>
+
                             </Grid>
+                        </GroupBox>
 
+                        <GroupBox
+                            Margin="8,4,8,8"
+                            BorderBrush="#aaa"
+                            Grid.Row="1"
+                            >
+                            <GroupBox.Header>
+                                <CheckBox
+                                    x:Name="chkText"
+                                    >
+                                    Text
+                                </CheckBox>
+                            </GroupBox.Header>
                             <Grid
-                                Grid.Row="2"
+                                IsEnabled="{Binding ElementName=chkText, Path=IsChecked}"
                                 >
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="2*"/>
-                                    <ColumnDefinition Width="2*"/>
-                                    <ColumnDefinition Width="1*"/>
-                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="10*"/>
+                                    <RowDefinition Height="10*"/>
+                                    <RowDefinition Height="10*"/>
+                                    <RowDefinition Height="10*"/>
+                                    <RowDefinition Height="10*"/>
+                                </Grid.RowDefinitions>
 
-                                <!--Border thickness-->
+                                <!--Text-->
+                                <TextBox
+                                    Grid.Row="0"
+                                    Name="txtText"
+                                    Padding="0" Margin="4,8,4,4" VerticalContentAlignment="Center"
+                                    HorizontalContentAlignment="Center"
+                                    Text="{Binding Path=CurrentXamlLayer.Text_, UpdateSourceTrigger=PropertyChanged}"
+                                    FontSize="20"
+                                    FontFamily="{Binding ElementName=txtFontName, Path=Text}"
+                                    FontWeight="{Binding ElementName=txtFontWeight, Path=Text}"
+                                    Foreground="{Binding ElementName=txtTextColor, Path=Text}"
+                                    />
+
+                                <!--Font-->
+                                <Label
+                                    Grid.Row="1"
+                                    Width="36"
+                                    HorizontalAlignment="Left" VerticalAlignment="Center"
+                                    >
+                                    Font
+                                </Label>
+                                <TextBox                                
+                                    Grid.Row="1"
+                                    VerticalAlignment="Center"
+                                    Width="160" Margin="4,0" HorizontalAlignment="Right"
+                                    Text="{Binding ElementName=txtText, Path=FontFamily}"
+                                    Foreground="Gray"
+                                    IsTabStop="False"
+                                    />
+                                <TextBox                                
+                                    x:Name="txtFontName"
+                                    Grid.Row="1"
+                                    VerticalAlignment="Center"
+                                    Width="160" Margin="4,0" HorizontalAlignment="Right"
+                                    Text="{Binding Path=CurrentXamlLayer.TextFont_, UpdateSourceTrigger=PropertyChanged}"
+                                    Background="Transparent"
+                                    />
+
+                                <!--Font weight-->
                                 <StackPanel
-                                    Grid.Column="0"
-                                    Margin="4,0"
-                                    ToolTip="one to four % values, relative to control height; e.g., '1,1,2,2'"
+                                    Grid.Row="2"
+                                    Margin="4,0" HorizontalAlignment="Left"
+                                    Width="90"
                                     >
                                     <Label
                                         Padding="0"
                                         >
-                                        Bordr thicknss
+                                        Font weight
                                     </Label>
                                     <TextBox
-                                        x:Name="txtBackStrokeThickness"
-                                        Text="{Binding Path=CurrentXamlLayer.BackStrokeThickness_, UpdateSourceTrigger=PropertyChanged}"
+                                        x:Name="txtFontWeight"
+                                        Text="{Binding Path=CurrentXamlLayer.TextFontWeight_, UpdateSourceTrigger=PropertyChanged}"
                                         Margin="0"
                                         />
                                 </StackPanel>
 
-                                <!--Corner radius-->
+                                <!--Text color-->
                                 <StackPanel
-                                    Grid.Column="1"
-                                    Margin="4,0"
-                                    ToolTip="one or four % values, relative to control height; e.g., '0,10,0,10'"
+                                    Grid.Row="2"
+                                    Margin="4,0" HorizontalAlignment="Right"
+                                    Width="90"
                                     >
                                     <Label
                                         Padding="0"
                                         >
-                                        Corner radius
+                                        Text color
                                     </Label>
                                     <TextBox
-                                        x:Name="txtBackCornerRadius"
-                                        Text="{Binding Path=CurrentXamlLayer.BackCornerRadius_, UpdateSourceTrigger=PropertyChanged}"
+                                        x:Name="txtTextColor"
+                                        Text="{Binding Path=CurrentXamlLayer.TextColor_, UpdateSourceTrigger=PropertyChanged}"
                                         Margin="0"
                                         />
                                 </StackPanel>
+
+                                <Grid
+                                    Grid.Row="3"                
+                                    ToolTip="% values relative to control height"
+                                    HorizontalAlignment="Left"
+                                    >
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition />
+                                        <ColumnDefinition />
+                                        <ColumnDefinition />
+                                    </Grid.ColumnDefinitions>
+
+                                    <!--Font size-->
+                                    <StackPanel
+                                        Margin="4,0"
+                                        >
+                                        <Label
+                                            Padding="0"
+                                            >
+                                            Font size
+                                        </Label>
+                                        <TextBox
+                                            x:Name="txtTextFontSize"
+                                            Text="{Binding Path=CurrentXamlLayer.TextFontSize_, UpdateSourceTrigger=PropertyChanged}"
+                                            Margin="0,0,6,0" Width="50"
+                                            HorizontalAlignment="Left"
+                                            />
+                                    </StackPanel>
+
+                                    <!--X shift-->
+                                    <StackPanel
+                                        Grid.Column="1"
+                                        Margin="4,0,2,0" Width="36"
+                                        >
+                                        <Label
+                                            Padding="0"
+                                            >
+                                            X shift
+                                        </Label>
+                                        <TextBox
+                                            x:Name="txtTextShiftX"
+                                            Text="{Binding Path=CurrentXamlLayer.TextShiftX_, UpdateSourceTrigger=PropertyChanged}"
+                                            Margin="0"
+                                            />
+                                    </StackPanel>
+
+                                    <!--Y shift-->
+                                    <StackPanel
+                                        Grid.Column="2"
+                                        Margin="2,0,0,0" Width="36"
+                                        >
+                                        <Label
+                                            Padding="0"
+                                            >
+                                            Y shift
+                                        </Label>
+                                        <TextBox
+                                            x:Name="txtTextShiftY"
+                                            Text="{Binding Path=CurrentXamlLayer.TextShiftY_, UpdateSourceTrigger=PropertyChanged}"
+                                            Margin="0"
+                                            />
+                                    </StackPanel>
+                                </Grid>
 
                                 <!--Rotation angle-->
                                 <StackPanel
-                                    Grid.Column="2"
+                                    Grid.Row="3"
                                     Margin="4,0"
                                     ToolTip="Rotation angle, in degrees"
+                                    HorizontalAlignment="Right" Width="34"
                                     >
                                     <Label
                                         Padding="0"
@@ -568,369 +844,101 @@ Selected layer details (override Base)
                                         Angle
                                     </Label>
                                     <TextBox
-                                        x:Name="txtBackRotAngle"
-                                        Text="{Binding Path=CurrentXamlLayer.BackRotAngle_, UpdateSourceTrigger=PropertyChanged}"
+                                        x:Name="txtTextRotAngle"
+                                        Text="{Binding Path=CurrentXamlLayer.TextRotAngle_, UpdateSourceTrigger=PropertyChanged}"
                                         Margin="0"
                                         HorizontalAlignment="Stretch"
                                         />
                                 </StackPanel>
 
-                            </Grid>
 
 
-                            <Grid
-                                Grid.Row="3"
-                                >
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="1*"/>
-                                    <ColumnDefinition Width="1*"/>
-                                    <ColumnDefinition Width="0.1*"/>
-                                    <ColumnDefinition Width="1*"/>
-                                    <ColumnDefinition Width="1*"/>
-                                </Grid.ColumnDefinitions>
-
-                                <!--Scaling X-->
-                                <StackPanel
-                                    Grid.Column="0"
-                                    Margin="4,0,0,0"
+                                <Grid
+                                    Grid.Row="4"
                                     >
-                                    <Label
-                                        Padding="0"
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="1*"/>
+                                        <ColumnDefinition Width="1*"/>
+                                        <ColumnDefinition Width="0.1*"/>
+                                        <ColumnDefinition Width="1*"/>
+                                        <ColumnDefinition Width="1*"/>
+                                    </Grid.ColumnDefinitions>
+
+                                    <!--Scaling X-->
+                                    <StackPanel
+                                        Grid.Column="0"
+                                        Margin="4,0,0,0"
                                         >
-                                        X scale
-                                    </Label>
-                                    <TextBox
-                                        x:Name="txtBackScaleX"
-                                        Text="{Binding Path=CurrentXamlLayer.BackScaleX_, UpdateSourceTrigger=PropertyChanged}"
-                                        Margin="0"
-                                        />
-                                </StackPanel>
+                                        <Label
+                                            Padding="0"
+                                            >
+                                            X scale
+                                        </Label>
+                                        <TextBox
+                                            x:Name="txtTextScaleX"
+                                            Text="{Binding Path=CurrentXamlLayer.TextScaleX_, UpdateSourceTrigger=PropertyChanged}"
+                                            Margin="0"
+                                            />
+                                    </StackPanel>
 
-                                <!--Scaling Y-->
-                                <StackPanel
-                                    Grid.Column="1"
-                                    Margin="4,0"
-                                    >
-                                    <Label
-                                        Padding="0"
+                                    <!--Scaling Y-->
+                                    <StackPanel
+                                        Grid.Column="1"
+                                        Margin="4,0"
                                         >
-                                        Y scale
-                                    </Label>
-                                    <TextBox
-                                        x:Name="txtBackScaleY"
-                                        Text="{Binding Path=CurrentXamlLayer.BackScaleY_, UpdateSourceTrigger=PropertyChanged}"
-                                        Margin="0"
-                                        />
-                                </StackPanel>
+                                        <Label
+                                            Padding="0"
+                                            >
+                                            Y scale
+                                        </Label>
+                                        <TextBox
+                                            x:Name="txtTextScaleY"
+                                            Text="{Binding Path=CurrentXamlLayer.TextScaleY_, UpdateSourceTrigger=PropertyChanged}"
+                                            Margin="0"
+                                            />
+                                    </StackPanel>
 
-                                <!--Skew X-->
-                                <StackPanel
-                                    Grid.Column="3"
-                                    Margin="4,0,0,0"
-                                    ToolTip="Angle, in degrees"
-                                    >
-                                    <Label
-                                        Padding="0"
+                                    <!--Skew X-->
+                                    <StackPanel
+                                        Grid.Column="3"
+                                        Margin="4,0,0,0"
+                                        ToolTip="Angle, in degrees"
                                         >
-                                        X skew
-                                    </Label>
-                                    <TextBox
-                                        x:Name="txtBackSkewX"
-                                        Text="{Binding Path=CurrentXamlLayer.BackSkewX_, UpdateSourceTrigger=PropertyChanged}"
-                                        Margin="0"
-                                        />
-                                </StackPanel>
+                                        <Label
+                                            Padding="0"
+                                            >
+                                            X skew
+                                        </Label>
+                                        <TextBox
+                                            x:Name="txtTextSkewX"
+                                            Text="{Binding Path=CurrentXamlLayer.TextSkewX_, UpdateSourceTrigger=PropertyChanged}"
+                                            Margin="0"
+                                            />
+                                    </StackPanel>
 
-                                <!--Skew Y-->
-                                <StackPanel
-                                    Grid.Column="4"
-                                    Margin="4,0"
-                                    ToolTip="Angle, in degrees"
-                                    >
-                                    <Label
-                                        Padding="0"
+                                    <!--Skew Y-->
+                                    <StackPanel
+                                        Grid.Column="4"
+                                        Margin="4,0"
+                                        ToolTip="Angle, in degrees"
                                         >
-                                        Y skew
-                                    </Label>
-                                    <TextBox
-                                        x:Name="txtBackSkewY"
-                                        Text="{Binding Path=CurrentXamlLayer.BackSkewY_, UpdateSourceTrigger=PropertyChanged}"
-                                        Margin="0"
-                                        />
-                                </StackPanel>
-                            </Grid>
-
-                        </Grid>
-                    </GroupBox>
-
-
-                    <GroupBox
-                        Margin="8,229,8,0"
-                        Height="240"
-                        VerticalAlignment="Top"
-                        BorderBrush="#aaa"
-                        >
-                        <GroupBox.Header>
-                            <CheckBox
-                                x:Name="chkText"
-                                >
-                                Text
-                            </CheckBox>
-                        </GroupBox.Header>
-                        <Grid
-                            IsEnabled="{Binding ElementName=chkText, Path=IsChecked}"
-                            >
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="10*"/>
-                                <RowDefinition Height="10*"/>
-                                <RowDefinition Height="10*"/>
-                                <RowDefinition Height="10*"/>
-                                <RowDefinition Height="10*"/>
-                            </Grid.RowDefinitions>
-
-                            <!--Text-->
-                            <TextBox
-                                Grid.Row="0"
-                                Name="txtText"
-                                Padding="0" Margin="4,8,4,4" VerticalContentAlignment="Center"
-                                HorizontalContentAlignment="Center"
-                                Text="{Binding Path=CurrentXamlLayer.Text_, UpdateSourceTrigger=PropertyChanged}"
-                                FontSize="20"
-                                FontFamily="{Binding ElementName=txtFontName, Path=Text}"
-                                FontWeight="{Binding ElementName=txtFontWeight, Path=Text}"
-                                Foreground="{Binding ElementName=txtTextColor, Path=Text}"
-                                />
-
-                            <!--Font-->
-                            <Label
-                                Grid.Row="1"
-                                Width="36"
-                                HorizontalAlignment="Left" VerticalAlignment="Center"
-                                >
-                                Font
-                            </Label>
-                            <TextBox                                
-                                Grid.Row="1"
-                                VerticalAlignment="Center"
-                                Width="160" Margin="4,0" HorizontalAlignment="Right"
-                                Text="{Binding ElementName=txtText, Path=FontFamily}"
-                                Foreground="Gray"
-                                IsTabStop="False"
-                                />
-                            <TextBox                                
-                                x:Name="txtFontName"
-                                Grid.Row="1"
-                                VerticalAlignment="Center"
-                                Width="160" Margin="4,0" HorizontalAlignment="Right"
-                                Text="{Binding Path=CurrentXamlLayer.TextFont_, UpdateSourceTrigger=PropertyChanged}"
-                                Background="Transparent"
-                                />
-
-                            <!--Font weight-->
-                            <StackPanel
-                                Grid.Row="2"
-                                Margin="4,0" HorizontalAlignment="Left"
-                                Width="90"
-                                >
-                                <Label
-                                    Padding="0"
-                                    >
-                                    Font weight
-                                </Label>
-                                <TextBox
-                                    x:Name="txtFontWeight"
-                                    Text="{Binding Path=CurrentXamlLayer.TextFontWeight_, UpdateSourceTrigger=PropertyChanged}"
-                                    Margin="0"
-                                    />
-                            </StackPanel>
-
-                            <!--Text color-->
-                            <StackPanel
-                                Grid.Row="2"
-                                Margin="4,0" HorizontalAlignment="Right"
-                                Width="90"
-                                >
-                                <Label
-                                    Padding="0"
-                                    >
-                                    Text color
-                                </Label>
-                                <TextBox
-                                    x:Name="txtTextColor"
-                                    Text="{Binding Path=CurrentXamlLayer.TextColor_, UpdateSourceTrigger=PropertyChanged}"
-                                    Margin="0"
-                                    />
-                            </StackPanel>
-
-                            <Grid
-                                Grid.Row="3"                
-                                ToolTip="% values relative to control height"
-                                HorizontalAlignment="Left"
-                                >
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition />
-                                    <ColumnDefinition />
-                                    <ColumnDefinition />
-                                </Grid.ColumnDefinitions>
-
-                                <!--Font size-->
-                                <StackPanel
-                                    Margin="4,0"
-                                    >
-                                    <Label
-                                        Padding="0"
-                                        >
-                                        Font size
-                                    </Label>
-                                    <TextBox
-                                        x:Name="txtTextFontSize"
-                                        Text="{Binding Path=CurrentXamlLayer.TextFontSize_, UpdateSourceTrigger=PropertyChanged}"
-                                        Margin="0,0,6,0" Width="50"
-                                        HorizontalAlignment="Left"
-                                        />
-                                </StackPanel>
-
-                                <!--X shift-->
-                                <StackPanel
-                                    Grid.Column="1"
-                                    Margin="4,0,2,0" Width="36"
-                                    >
-                                    <Label
-                                        Padding="0"
-                                        >
-                                        X shift
-                                    </Label>
-                                    <TextBox
-                                        x:Name="txtTextShiftX"
-                                        Text="{Binding Path=CurrentXamlLayer.TextShiftX_, UpdateSourceTrigger=PropertyChanged}"
-                                        Margin="0"
-                                        />
-                                </StackPanel>
-
-                                <!--Y shift-->
-                                <StackPanel
-                                    Grid.Column="2"
-                                    Margin="2,0,0,0" Width="36"
-                                    >
-                                    <Label
-                                        Padding="0"
-                                        >
-                                        Y shift
-                                    </Label>
-                                    <TextBox
-                                        x:Name="txtTextShiftY"
-                                        Text="{Binding Path=CurrentXamlLayer.TextShiftY_, UpdateSourceTrigger=PropertyChanged}"
-                                        Margin="0"
-                                        />
-                                </StackPanel>
-                            </Grid>
-
-                            <!--Rotation angle-->
-                            <StackPanel
-                                Grid.Row="3"
-                                Margin="4,0"
-                                ToolTip="Rotation angle, in degrees"
-                                HorizontalAlignment="Right" Width="34"
-                                >
-                                <Label
-                                    Padding="0"
-                                    >
-                                    Angle
-                                </Label>
-                                <TextBox
-                                    x:Name="txtTextRotAngle"
-                                    Text="{Binding Path=CurrentXamlLayer.TextRotAngle_, UpdateSourceTrigger=PropertyChanged}"
-                                    Margin="0"
-                                    HorizontalAlignment="Stretch"
-                                    />
-                            </StackPanel>
-
-
-
-                            <Grid
-                                Grid.Row="4"
-                                >
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="1*"/>
-                                    <ColumnDefinition Width="1*"/>
-                                    <ColumnDefinition Width="0.1*"/>
-                                    <ColumnDefinition Width="1*"/>
-                                    <ColumnDefinition Width="1*"/>
-                                </Grid.ColumnDefinitions>
-
-                                <!--Scaling X-->
-                                <StackPanel
-                                    Grid.Column="0"
-                                    Margin="4,0,0,0"
-                                    >
-                                    <Label
-                                        Padding="0"
-                                        >
-                                        X scale
-                                    </Label>
-                                    <TextBox
-                                        x:Name="txtTextScaleX"
-                                        Text="{Binding Path=CurrentXamlLayer.TextScaleX_, UpdateSourceTrigger=PropertyChanged}"
-                                        Margin="0"
-                                        />
-                                </StackPanel>
-
-                                <!--Scaling Y-->
-                                <StackPanel
-                                    Grid.Column="1"
-                                    Margin="4,0"
-                                    >
-                                    <Label
-                                        Padding="0"
-                                        >
-                                        Y scale
-                                    </Label>
-                                    <TextBox
-                                        x:Name="txtTextScaleY"
-                                        Text="{Binding Path=CurrentXamlLayer.TextScaleY_, UpdateSourceTrigger=PropertyChanged}"
-                                        Margin="0"
-                                        />
-                                </StackPanel>
-
-                                <!--Skew X-->
-                                <StackPanel
-                                    Grid.Column="3"
-                                    Margin="4,0,0,0"
-                                    ToolTip="Angle, in degrees"
-                                    >
-                                    <Label
-                                        Padding="0"
-                                        >
-                                        X skew
-                                    </Label>
-                                    <TextBox
-                                        x:Name="txtTextSkewX"
-                                        Text="{Binding Path=CurrentXamlLayer.TextSkewX_, UpdateSourceTrigger=PropertyChanged}"
-                                        Margin="0"
-                                        />
-                                </StackPanel>
-
-                                <!--Skew Y-->
-                                <StackPanel
-                                    Grid.Column="4"
-                                    Margin="4,0"
-                                    ToolTip="Angle, in degrees"
-                                    >
-                                    <Label
-                                        Padding="0"
-                                        >
-                                        Y skew
-                                    </Label>
-                                    <TextBox
-                                        x:Name="txtTextSkewY"
-                                        Text="{Binding Path=CurrentXamlLayer.TextSkewY_, UpdateSourceTrigger=PropertyChanged}"
-                                        Margin="0"
-                                        />
-                                </StackPanel>
-                            </Grid>
+                                        <Label
+                                            Padding="0"
+                                            >
+                                            Y skew
+                                        </Label>
+                                        <TextBox
+                                            x:Name="txtTextSkewY"
+                                            Text="{Binding Path=CurrentXamlLayer.TextSkewY_, UpdateSourceTrigger=PropertyChanged}"
+                                            Margin="0"
+                                            />
+                                    </StackPanel>
+                                </Grid>
                         
-                        </Grid>
-                    </GroupBox>
+                            </Grid>
+                        </GroupBox>
+
+                    </Grid>
 
                 </Grid>
 

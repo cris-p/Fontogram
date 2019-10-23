@@ -353,8 +353,6 @@ namespace PergleLabs.UI
 
         public TranslatedProperty BackFillColor { get; }
 
-        public TranslatedProperty BackStrokeThickness { get; }
-
         public TranslatedProperty BackStrokeColor { get; }
 
         #endregion
@@ -369,7 +367,9 @@ namespace PergleLabs.UI
 
         #endregion
 
-        #region BackCorderRadiusRel
+        #region BackBorderNumbersRel
+
+        public TranslatedProperty BackStrokeThickness { get; }
 
         public TranslatedProperty BackCornerRadius { get; }
 

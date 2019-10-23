@@ -12,9 +12,12 @@ namespace PergleLabs.UI
     {
         Fontogram_Logo,
         Fontogram_LogoWide,
+        DocState_Ready,
+        DocState_Corrupt,
+        DocState_Waiting,
+        DocState_FolderNotFound,
         Sample_RgbSwirl,
-        Test1,
-        Test2
+        Sample_TopHatSmiley,
     }
 
 
@@ -88,18 +91,7 @@ namespace PergleLabs.UI
                     _BackTransform = "30|0|60";
                     break;
 
-                case ReadyMadeFontogram.Test1:
-                    _Text = "";
-                    _TextAttr = "";
-                    _TextPosRel = "";
-                    _TextTransform = "";
-                    _BackAttr = "";
-                    _BackPosRel = "";
-                    _BackBorderNumbersRel = "";
-                    _BackTransform = "";
-                    break;
-
-                case ReadyMadeFontogram.Test2:
+                case ReadyMadeFontogram.Sample_TopHatSmiley:
                     _Text = "";
                     _TextAttr = "";
                     _TextPosRel = "";
