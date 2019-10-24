@@ -111,39 +111,14 @@
                         Background="LightYellow"
                         >
 
-                        <RichTextBox
-                            x:Name="rtbXaml1"
+                        <TextBox
+                            x:Name="txtXamlCode"
                             Background="LightYellow"
                             ToolTip="Triple-click to select all text."
                             FontFamily="Courier New" FontSize="13"
                             IsReadOnly="True"
-                            BorderBrush="Gray"
-                            >
-                            <FlowDocument
-                                PageWidth="800"
-                                >
-                                <Paragraph>
-                                    &lt;...
-                                    <LineBreak/>
-                                    &#160;&#160;&#160;&#160;xmlns:fg="clr-namespace:PergleLabs.UI;assembly=PergleLabs.Fontogram"
-                                    <LineBreak/>
-                                    &#160;&#160;&#160;&#160;&gt;
-                                    <LineBreak/>
-                                    ...
-
-                                    <LineBreak/>
-                                    &lt;fg:Fontogram
-                                    <LineBreak/>
-                                    &#160;&#160;&#160;&#160;BackAttr=";#0f0;0,2,4,6;green|;#8f00;0,2,4,6;red|;#500f;0,2,4,6;blue"
-                                    <LineBreak/>
-                                    &#160;&#160;&#160;&#160;BackPosRel="50;50|50;50|50;50"
-                                    <LineBreak/>
-                                    &#160;&#160;&#160;&#160;BackTransform="30|0|60"
-                                    <LineBreak/>
-                                    &#160;&#160;&#160;&#160;/&gt;
-                                </Paragraph>
-                            </FlowDocument>
-                        </RichTextBox>
+                            Text="{Binding CodeTextXaml, Mode=OneWay}"
+                            />
 
                     </TabItem>
 
@@ -151,55 +126,14 @@
                         Header="C# for pre-made Fontogram"
                         Background="Honeydew"
                         >
-                        <RichTextBox
-                            x:Name="rtbCsharp"
+                        <TextBox
+                            x:Name="txtCsharpCode"
                             Background="Honeydew"
                             ToolTip="Triple-click to select all text."
                             FontFamily="Courier New" FontSize="13"
                             IsReadOnly="True"
-                            BorderBrush="Gray"
-                            >
-                            <FlowDocument
-                                PageWidth="800"
-                                >
-                                <Paragraph>
-                                    public class Fontogram_
-                                    <LineBreak/>
-                                    &#160;&#160;&#160;&#160;: FontogramBase&lt;ReadyMadeFontogram_&gt;
-                                    <LineBreak/>
-                                    {
-                                    <LineBreak/>
-                                    &#160;&#160;&#160;&#160;protected override bool GetReadyMadeProperties(
-                                    <LineBreak/>
-                                    &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;ReadyMadeFontogram_ readyMadeID,
-                                    <LineBreak/>
-                                    &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;out string _Text,
-                                    <LineBreak/>
-                                    &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;...
-                                    <LineBreak/>
-                                    &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;)
-                                    <LineBreak/>
-                                    &#160;&#160;&#160;&#160;{
-                                    <LineBreak/>
-                                    &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;switch (readyMadeID)
-                                    <LineBreak/>
-                                    &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;{
-                                    <LineBreak/>
-                                    &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; case
-                                    
-                ReadyMadeFontogram_.SomeID:
-                    _Text = "🎞|A|A";
-                    _TextAttr = ";;#999|Courier New;bold;#304f|Courier New;bold;#f01d";
-                    _TextPosRel = "100;26;7|70;-16.4;-0.6|70;-12;1";
-                    _TextTransform = "-10;1;0.3;60;-20|-15.8;0.9;1.7;-18,17|-15.8;0.9;1.7;-18,17";
-                    _BackAttr = ";#7baa;1,0,0,1.5;#cbaa";
-                    _BackPosRel = "105;42;28;10";
-                    _BackTransform = "-10;1;0.3;60;-20";
-                    break;
-
-                                </Paragraph>
-                            </FlowDocument>
-                        </RichTextBox>
+                            Text="{Binding CodeTextCsharp, Mode=OneWay}"
+                            />
                     </TabItem>
 
                 </TabControl>
@@ -276,7 +210,7 @@
 
                                     <fg:Fontogram
                                         Width="192" Height="128"
-                                            
+                                        
                                         Text="{Binding PreviewFontogram.Text}"
                                         TextAttr="{Binding PreviewFontogram.TextAttr}"
                                         TextPosRel="{Binding PreviewFontogram.TextPosRel}"

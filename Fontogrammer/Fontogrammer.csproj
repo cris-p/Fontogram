@@ -83,6 +83,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Codegen.cs" />
     <Compile Include="ContextLayerPropEvents.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
