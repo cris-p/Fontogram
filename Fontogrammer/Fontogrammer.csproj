@@ -84,6 +84,11 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Codegen.cs" />
+    <Compile Include="CodegenProps.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CodegenProps.tt</DependentUpon>
+    </Compile>
     <Compile Include="ContextLayerPropEvents.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -149,6 +154,10 @@
     <Resource Include="..\Fontogram\FgPropDefs.tt.txt">
       <Link>FgPropDefs.tt.txt</Link>
     </Resource>
+    <Content Include="CodegenProps.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>CodegenProps.cs</LastGenOutput>
+    </Content>
     <Content Include="ContextLayerPropEvents.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>ContextLayerPropEvents.cs</LastGenOutput>

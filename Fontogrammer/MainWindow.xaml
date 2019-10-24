@@ -114,7 +114,6 @@
                         <TextBox
                             x:Name="txtXamlCode"
                             Background="LightYellow"
-                            ToolTip="Triple-click to select all text."
                             FontFamily="Courier New" FontSize="13"
                             IsReadOnly="True"
                             Text="{Binding CodeTextXaml, Mode=OneWay}"
@@ -129,7 +128,6 @@
                         <TextBox
                             x:Name="txtCsharpCode"
                             Background="Honeydew"
-                            ToolTip="Triple-click to select all text."
                             FontFamily="Courier New" FontSize="13"
                             IsReadOnly="True"
                             Text="{Binding CodeTextCsharp, Mode=OneWay}"

@@ -39,6 +39,8 @@ namespace PergleLabs.Fontogrammer
             this.ReadyMadeFontogramSelection = 0;   // default is "none" - an item separate from ReadyMadeFontogramChoices
 
 
+            _CodegenXaml = new CodegenXaml(fgPreview);
+
             _CodegenCsharp = new CodegenCsharp(fgPreview);
         }
 
@@ -77,25 +79,25 @@ namespace PergleLabs.Fontogrammer
         }
 
 
-        private string _CodeTextCsharp = null;
-        public string CodeTextCsharp
+        private string _codeTextXaml = null;
+        public string CodeTextXaml
         {
-            get { return _CodeTextCsharp; }
+            get { return _codeTextXaml; }
             private set
             {
-                _CodeTextCsharp = value;
+                _codeTextXaml = value;
 
                 NotifyPropertyChanged();
             }
         }
 
-        private string _genCodeXaml = null;
-        public string GenCodeXaml
+        private string _codeTextCsharp = null;
+        public string CodeTextCsharp
         {
-            get { return _genCodeXaml; }
+            get { return _codeTextCsharp; }
             private set
             {
-                _genCodeXaml = value;
+                _codeTextCsharp = value;
 
                 NotifyPropertyChanged();
             }
@@ -132,12 +134,16 @@ namespace PergleLabs.Fontogrammer
         }
 
 
+        private readonly CodegenXaml _CodegenXaml;
+
         private readonly CodegenCsharp _CodegenCsharp;
 
         private void UpdateGeneratedCode()
         {
 
             this.CodeTextCsharp = _CodegenCsharp.GetCode();
+
+            this.CodeTextXaml = _CodegenXaml.GetCode();
 
         }
 
