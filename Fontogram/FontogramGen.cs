@@ -1,4 +1,100 @@
-﻿using System.Collections.Generic;
+﻿using System.Windows;
+
+namespace PergleLabs.UI
+{
+
+    public enum ReadyMadeFontogram
+    {
+        Fontogram_Logo,
+        Fontogram_LogoWide,
+        DocState_Ready,
+        DocState_Corrupt,
+        DocState_Waiting,
+        DocState_FolderNotFound,
+        Sample_RgbSwirl,
+        Sample_TopHatSmiley,
+    }
+
+    public partial class Fontogram
+        : FontogramBase< ReadyMadeFontogram >
+    {
+
+        public static readonly DependencyProperty ReadyMadeProperty =
+            DependencyProperty.Register(
+                "ReadyMade", typeof(ReadyMadeFontogram?),
+                typeof(Fontogram),
+                new PropertyMetadata(null, OnReadyMadeChanged));
+        public ReadyMadeFontogram? ReadyMade
+        {
+            get { return (ReadyMadeFontogram?)GetValue(ReadyMadeProperty); }
+            set { SetValue(ReadyMadeProperty, value); }
+        }
+
+        protected override bool GetReadyMadeProperties(ReadyMadeFontogram readyMadeID
+            , out string _Text
+            , out string _TextAttr
+            , out string _TextPosRel
+            , out string _TextTransform
+            , out string _BackAttr
+            , out string _BackPosRel
+            , out string _BackBorderNumbersRel
+            , out string _BackTransform
+            )
+        {
+            _Text = "";
+            _TextAttr = "";
+            _TextPosRel = "";
+            _TextTransform = "";
+            _BackAttr = "";
+            _BackPosRel = "";
+            _BackBorderNumbersRel = "";
+            _BackTransform = "";
+
+            switch (readyMadeID)
+            {
+                case ReadyMadeFontogram.Fontogram_Logo:
+                    Create__Fontogram_Logo(ref _Text, ref _TextAttr, ref _TextPosRel, ref _TextTransform, ref _BackAttr, ref _BackPosRel, ref _BackBorderNumbersRel, ref _BackTransform);
+                    break;
+
+                case ReadyMadeFontogram.Fontogram_LogoWide:
+                    Create__Fontogram_LogoWide(ref _Text, ref _TextAttr, ref _TextPosRel, ref _TextTransform, ref _BackAttr, ref _BackPosRel, ref _BackBorderNumbersRel, ref _BackTransform);
+                    break;
+
+                case ReadyMadeFontogram.DocState_Ready:
+                    Create__DocState_Ready(ref _Text, ref _TextAttr, ref _TextPosRel, ref _TextTransform, ref _BackAttr, ref _BackPosRel, ref _BackBorderNumbersRel, ref _BackTransform);
+                    break;
+
+                case ReadyMadeFontogram.DocState_Corrupt:
+                    Create__DocState_Corrupt(ref _Text, ref _TextAttr, ref _TextPosRel, ref _TextTransform, ref _BackAttr, ref _BackPosRel, ref _BackBorderNumbersRel, ref _BackTransform);
+                    break;
+
+                case ReadyMadeFontogram.DocState_Waiting:
+                    Create__DocState_Waiting(ref _Text, ref _TextAttr, ref _TextPosRel, ref _TextTransform, ref _BackAttr, ref _BackPosRel, ref _BackBorderNumbersRel, ref _BackTransform);
+                    break;
+
+                case ReadyMadeFontogram.DocState_FolderNotFound:
+                    Create__DocState_FolderNotFound(ref _Text, ref _TextAttr, ref _TextPosRel, ref _TextTransform, ref _BackAttr, ref _BackPosRel, ref _BackBorderNumbersRel, ref _BackTransform);
+                    break;
+
+                case ReadyMadeFontogram.Sample_RgbSwirl:
+                    Create__Sample_RgbSwirl(ref _Text, ref _TextAttr, ref _TextPosRel, ref _TextTransform, ref _BackAttr, ref _BackPosRel, ref _BackBorderNumbersRel, ref _BackTransform);
+                    break;
+
+                case ReadyMadeFontogram.Sample_TopHatSmiley:
+                    Create__Sample_TopHatSmiley(ref _Text, ref _TextAttr, ref _TextPosRel, ref _TextTransform, ref _BackAttr, ref _BackPosRel, ref _BackBorderNumbersRel, ref _BackTransform);
+                    break;
+
+
+                default:
+                    return false;
+            }
+
+            return true;
+        }
+
+        #region Contents of file Fontogram.cs
+        /*
+using System.Collections.Generic;
 using System.Windows;
 
 namespace PergleLabs.UI
@@ -10,64 +106,65 @@ namespace PergleLabs.UI
         // For each type of ready-made Fontogram, must set each property as a '|'-separated list of layers,
         // each layer being a list of ';'-separated values of the component attributes.
         // Some attributes' values can be lists of ','-separated values.
+        // Leave empty those slots that don't need to be set. (sensible defaults will be used)
 
 
         void Create__Fontogram_Logo(ref string _Text, ref string _TextAttr, ref string _TextPosRel, ref string _TextTransform, ref string _BackAttr, ref string _BackPosRel, ref string _BackBorderNumbersRel, ref string _BackTransform)
         {
 
             // " Text_L0 | ...(Layer1) | ...(Layer2) | ... "
-            _Text = "🎞|A|A";
+            _Text = " | ";
 
             // " TextFont_L0;TextFontWeight_L0;TextColor_L0 | ...(Layer1) | ...(Layer2) | ... "
-            _TextAttr = ";;#999|Courier New;bold;#304f|Courier New;bold;#f01d";
+            _TextAttr = " | ";
 
             // " TextFontSize_L0;TextShiftX_L0;TextShiftY_L0 | ...(Layer1) | ...(Layer2) | ... "
-            _TextPosRel = "100;26;7|70;-16.4;-0.6|70;-12;1";
+            _TextPosRel = " | ";
 
             // " TextRotAngle_L0;TextScaleX_L0;TextScaleY_L0;TextSkewX_L0;TextSkewY_L0 | ...(Layer1) | ...(Layer2) | ... "
-            _TextTransform = "-10;1;0.3;60;-20|-15.8;0.9;1.7;-18,17|-15.8;0.9;1.7;-18,17";
+            _TextTransform = " | ";
 
             // " BackOpacity_L0;BackFillColor_L0;BackStrokeColor_L0 | ...(Layer1) | ...(Layer2) | ... "
-            _BackAttr = ";#7baa;#cbaa";
+            _BackAttr = " | ";
 
             // " BackWidth_L0;BackHeight_L0;BackShiftX_L0;BackShiftY_L0 | ...(Layer1) | ...(Layer2) | ... "
-            _BackPosRel = "105;42;28;10";
+            _BackPosRel = " | ";
 
             // " BackStrokeThickness_L0;BackCornerRadius_L0 | ...(Layer1) | ...(Layer2) | ... "
-            _BackBorderNumbersRel = "1,0,0,1.5";
+            _BackBorderNumbersRel = " | ";
 
             // " BackRotAngle_L0;BackScaleX_L0;BackScaleY_L0;BackSkewX_L0;BackSkewY_L0 | ...(Layer1) | ...(Layer2) | ... "
-            _BackTransform = "-10;1;0.3;60;-20";
-
+            _BackTransform = " | ";
+        
         }
 
         void Create__Fontogram_LogoWide(ref string _Text, ref string _TextAttr, ref string _TextPosRel, ref string _TextTransform, ref string _BackAttr, ref string _BackPosRel, ref string _BackBorderNumbersRel, ref string _BackTransform)
         {
 
             // " Text_L0 | ...(Layer1) | ...(Layer2) | ... "
-            _Text = "🎞|Abc|Abc";
+            _Text = " | ";
 
             // " TextFont_L0;TextFontWeight_L0;TextColor_L0 | ...(Layer1) | ...(Layer2) | ... "
-            _TextAttr = ";;#d999|Courier New;bold;#304f|Courier New;bold;#e04f";
+            _TextAttr = " | ";
 
             // " TextFontSize_L0;TextShiftX_L0;TextShiftY_L0 | ...(Layer1) | ...(Layer2) | ... "
-            _TextPosRel = "100;58;-15|70;-16;-5|70;-13;-4";
+            _TextPosRel = " | ";
 
             // " TextRotAngle_L0;TextScaleX_L0;TextScaleY_L0;TextSkewX_L0;TextSkewY_L0 | ...(Layer1) | ...(Layer2) | ... "
-            _TextTransform = "-10;2;0.5;60;-20|-13.1;0.8;1.62;-8|-13.1;0.8;1.62;-8";
+            _TextTransform = " | ";
 
             // " BackOpacity_L0;BackFillColor_L0;BackStrokeColor_L0 | ...(Layer1) | ...(Layer2) | ... "
-            _BackAttr = ";#6baa;#cbaa";
+            _BackAttr = " | ";
 
             // " BackWidth_L0;BackHeight_L0;BackShiftX_L0;BackShiftY_L0 | ...(Layer1) | ...(Layer2) | ... "
-            _BackPosRel = "90;42;47;2";
+            _BackPosRel = " | ";
 
             // " BackStrokeThickness_L0;BackCornerRadius_L0 | ...(Layer1) | ...(Layer2) | ... "
-            _BackBorderNumbersRel = "0.5,0,0,0.7;8";
+            _BackBorderNumbersRel = " | ";
 
             // " BackRotAngle_L0;BackScaleX_L0;BackScaleY_L0;BackSkewX_L0;BackSkewY_L0 | ...(Layer1) | ...(Layer2) | ... "
-            _BackTransform = "-10;2;0.5;60;-20";
-
+            _BackTransform = " | ";
+        
         }
 
         void Create__DocState_Ready(ref string _Text, ref string _TextAttr, ref string _TextPosRel, ref string _TextTransform, ref string _BackAttr, ref string _BackPosRel, ref string _BackBorderNumbersRel, ref string _BackTransform)
@@ -96,7 +193,7 @@ namespace PergleLabs.UI
 
             // " BackRotAngle_L0;BackScaleX_L0;BackScaleY_L0;BackSkewX_L0;BackSkewY_L0 | ...(Layer1) | ...(Layer2) | ... "
             _BackTransform = " | ";
-
+        
         }
 
         void Create__DocState_Corrupt(ref string _Text, ref string _TextAttr, ref string _TextPosRel, ref string _TextTransform, ref string _BackAttr, ref string _BackPosRel, ref string _BackBorderNumbersRel, ref string _BackTransform)
@@ -125,7 +222,7 @@ namespace PergleLabs.UI
 
             // " BackRotAngle_L0;BackScaleX_L0;BackScaleY_L0;BackSkewX_L0;BackSkewY_L0 | ...(Layer1) | ...(Layer2) | ... "
             _BackTransform = " | ";
-
+        
         }
 
         void Create__DocState_Waiting(ref string _Text, ref string _TextAttr, ref string _TextPosRel, ref string _TextTransform, ref string _BackAttr, ref string _BackPosRel, ref string _BackBorderNumbersRel, ref string _BackTransform)
@@ -154,7 +251,7 @@ namespace PergleLabs.UI
 
             // " BackRotAngle_L0;BackScaleX_L0;BackScaleY_L0;BackSkewX_L0;BackSkewY_L0 | ...(Layer1) | ...(Layer2) | ... "
             _BackTransform = " | ";
-
+        
         }
 
         void Create__DocState_FolderNotFound(ref string _Text, ref string _TextAttr, ref string _TextPosRel, ref string _TextTransform, ref string _BackAttr, ref string _BackPosRel, ref string _BackBorderNumbersRel, ref string _BackTransform)
@@ -183,36 +280,36 @@ namespace PergleLabs.UI
 
             // " BackRotAngle_L0;BackScaleX_L0;BackScaleY_L0;BackSkewX_L0;BackSkewY_L0 | ...(Layer1) | ...(Layer2) | ... "
             _BackTransform = " | ";
-
+        
         }
 
         void Create__Sample_RgbSwirl(ref string _Text, ref string _TextAttr, ref string _TextPosRel, ref string _TextTransform, ref string _BackAttr, ref string _BackPosRel, ref string _BackBorderNumbersRel, ref string _BackTransform)
         {
 
             // " Text_L0 | ...(Layer1) | ...(Layer2) | ... "
-            _Text = "G|R|B";
+            _Text = " | ";
 
             // " TextFont_L0;TextFontWeight_L0;TextColor_L0 | ...(Layer1) | ...(Layer2) | ... "
-            _TextAttr = "arial;bold;green|arial;bold;red|arial;bold;blue";
+            _TextAttr = " | ";
 
             // " TextFontSize_L0;TextShiftX_L0;TextShiftY_L0 | ...(Layer1) | ...(Layer2) | ... "
-            _TextPosRel = "16;1;43|16;23;36.5|16;-20;38.5";
+            _TextPosRel = " | ";
 
             // " TextRotAngle_L0;TextScaleX_L0;TextScaleY_L0;TextSkewX_L0;TextSkewY_L0 | ...(Layer1) | ...(Layer2) | ... "
-            _TextTransform = "30|0|60";
+            _TextTransform = " | ";
 
             // " BackOpacity_L0;BackFillColor_L0;BackStrokeColor_L0 | ...(Layer1) | ...(Layer2) | ... "
-            _BackAttr = ";#0f0;green|;#8f00;red|;#500f;blue";
+            _BackAttr = " | ";
 
             // " BackWidth_L0;BackHeight_L0;BackShiftX_L0;BackShiftY_L0 | ...(Layer1) | ...(Layer2) | ... "
-            _BackPosRel = "60;60|60;60|60;60";
+            _BackPosRel = " | ";
 
             // " BackStrokeThickness_L0;BackCornerRadius_L0 | ...(Layer1) | ...(Layer2) | ... "
-            _BackBorderNumbersRel = "0.3,1.7,3.2,5;6|0.3,1.7,3.2,5;6|0.3,1.7,3.2,5;6";
+            _BackBorderNumbersRel = " | ";
 
             // " BackRotAngle_L0;BackScaleX_L0;BackScaleY_L0;BackSkewX_L0;BackSkewY_L0 | ...(Layer1) | ...(Layer2) | ... "
-            _BackTransform = "30|0|60";
-
+            _BackTransform = " | ";
+        
         }
 
         void Create__Sample_TopHatSmiley(ref string _Text, ref string _TextAttr, ref string _TextPosRel, ref string _TextTransform, ref string _BackAttr, ref string _BackPosRel, ref string _BackBorderNumbersRel, ref string _BackTransform)
@@ -241,7 +338,12 @@ namespace PergleLabs.UI
 
             // " BackRotAngle_L0;BackScaleX_L0;BackScaleY_L0;BackSkewX_L0;BackSkewY_L0 | ...(Layer1) | ...(Layer2) | ... "
             _BackTransform = " | ";
-
+        
         }
     }
+}
+        */
+        #endregion
+    }
+
 }

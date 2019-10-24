@@ -1,0 +1,149 @@
+﻿<#@ template debug="false" hostspecific="false" language="C#" #>
+<#@ assembly name="System.Core" #>
+<#@ import namespace="System.Linq" #>
+<#@ import namespace="System.Text" #>
+<#@ import namespace="System.Collections.Generic" #>
+<#@ output extension=".cs" #>
+<#@ include file="FgPropDefs.tt.txt" #>
+<#
+    const string CUSTOM_CONTROL_NAME =
+    
+                            "Fontogram"
+                            ;
+
+    List<string> READYMADE_NAMES = new List<string>
+    {
+                            "Fontogram_Logo",
+                            "Fontogram_LogoWide",
+                            "DocState_Ready",
+                            "DocState_Corrupt",
+                            "DocState_Waiting",
+                            "DocState_FolderNotFound",
+                            "Sample_RgbSwirl",
+                            "Sample_TopHatSmiley",
+    };
+
+    const string READYMADE_PROPERTY_NAME = "ReadyMade";
+    const string READYMADE_ENUM_PREFIX = "ReadyMade";
+    string ReadyMadeEnumName = $"{READYMADE_ENUM_PREFIX}{CUSTOM_CONTROL_NAME}";
+#>
+using System.Windows;
+
+namespace PergleLabs.UI
+{
+
+    public enum <#= ReadyMadeEnumName #>
+    {
+<#
+    foreach (string readyMadeName in READYMADE_NAMES)
+    {
+#>
+        <#= readyMadeName #>,
+<#
+    }
+#>
+    }
+
+    public partial class <#= CUSTOM_CONTROL_NAME #>
+        : FontogramBase< <#= ReadyMadeEnumName #> >
+    {
+
+        public static readonly DependencyProperty <#= READYMADE_PROPERTY_NAME #>Property =
+            DependencyProperty.Register(
+                "<#= READYMADE_PROPERTY_NAME #>", typeof(<#= ReadyMadeEnumName #>?),
+                typeof(<#= CUSTOM_CONTROL_NAME #>),
+                new PropertyMetadata(null, On<#= READYMADE_PROPERTY_NAME #>Changed));
+        public <#= ReadyMadeEnumName #>? <#= READYMADE_PROPERTY_NAME #>
+        {
+            get { return (<#= ReadyMadeEnumName #>?)GetValue(<#= READYMADE_PROPERTY_NAME #>Property); }
+            set { SetValue(<#= READYMADE_PROPERTY_NAME #>Property, value); }
+        }
+
+        protected override bool Get<#= READYMADE_PROPERTY_NAME #>Properties(<#= ReadyMadeEnumName #> readyMadeID
+<#
+foreach (string propName in PropertyNames())
+{
+#>
+            , out string _<#= propName #>
+<#
+}
+#>
+            )
+        {
+<#
+foreach (string propName in PropertyNames())
+{
+#>
+            _<#= propName #> = "";
+<#
+}
+#>
+
+            switch (readyMadeID)
+            {
+<#
+    foreach (string readyMadeName in READYMADE_NAMES)
+    {
+#>
+                case <#= ReadyMadeEnumName #>.<#= readyMadeName #>:
+                    Create__<#= readyMadeName #>(<#= string.Join(", ", PropertyNames().Select(prop => $"ref _{prop}")) #>);
+                    break;
+
+<#
+    }
+#>
+
+                default:
+                    return false;
+            }
+
+            return true;
+        }
+
+        #region Contents of file <#= CUSTOM_CONTROL_NAME #>.cs
+        /*
+using System.Collections.Generic;
+using System.Windows;
+
+namespace PergleLabs.UI
+{
+
+    public partial class <#= CUSTOM_CONTROL_NAME #>
+    {
+
+        // For each type of ready-made Fontogram, must set each property as a '|'-separated list of layers,
+        // each layer being a list of ';'-separated values of the component attributes.
+        // Some attributes' values can be lists of ','-separated values.
+        // Leave empty those slots that don't need to be set. (sensible defaults will be used)
+
+<#
+    foreach (string readyMadeName in READYMADE_NAMES)
+    {
+#>
+
+        void Create__<#= readyMadeName #>(<#= string.Join(", ", PropertyNames().Select(prop => $"ref string _{prop}")) #>)
+        {
+<#
+foreach (var prop in PROPERTY_DEFS)
+{
+    string propName = prop.Item1;
+    List<string> propParts = prop.Item2;
+#>
+
+            // " <#= string.Join(";", propParts.Select(part => $"{part}_L0")) #> | ...(Layer1) | ...(Layer2) | ... "
+            _<#= propName #> = " | ";
+<#
+}
+#>
+        
+        }
+<#
+    }
+#>
+    }
+}
+        */
+        #endregion
+    }
+
+}
