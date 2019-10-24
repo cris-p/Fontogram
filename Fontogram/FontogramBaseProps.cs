@@ -17,6 +17,7 @@ namespace PergleLabs.UI
         }
         public string Text
         {
+            // get { return GetPropertyValuesFromLayers(); }
             get { return (string)GetValue(TextProperty); }
             set { SetValue(TextProperty, value); }
         }
@@ -37,6 +38,7 @@ namespace PergleLabs.UI
         }
         public string TextAttr
         {
+            // get { return GetPropertyValuesFromLayers(); }
             get { return (string)GetValue(TextAttrProperty); }
             set { SetValue(TextAttrProperty, value); }
         }
@@ -57,6 +59,7 @@ namespace PergleLabs.UI
         }
         public string TextPosRel
         {
+            // get { return GetPropertyValuesFromLayers(); }
             get { return (string)GetValue(TextPosRelProperty); }
             set { SetValue(TextPosRelProperty, value); }
         }
@@ -77,6 +80,7 @@ namespace PergleLabs.UI
         }
         public string TextTransform
         {
+            // get { return GetPropertyValuesFromLayers(); }
             get { return (string)GetValue(TextTransformProperty); }
             set { SetValue(TextTransformProperty, value); }
         }
@@ -97,6 +101,7 @@ namespace PergleLabs.UI
         }
         public string BackAttr
         {
+            // get { return GetPropertyValuesFromLayers(); }
             get { return (string)GetValue(BackAttrProperty); }
             set { SetValue(BackAttrProperty, value); }
         }
@@ -117,6 +122,7 @@ namespace PergleLabs.UI
         }
         public string BackPosRel
         {
+            // get { return GetPropertyValuesFromLayers(); }
             get { return (string)GetValue(BackPosRelProperty); }
             set { SetValue(BackPosRelProperty, value); }
         }
@@ -137,6 +143,7 @@ namespace PergleLabs.UI
         }
         public string BackBorderNumbersRel
         {
+            // get { return GetPropertyValuesFromLayers(); }
             get { return (string)GetValue(BackBorderNumbersRelProperty); }
             set { SetValue(BackBorderNumbersRelProperty, value); }
         }
@@ -157,6 +164,7 @@ namespace PergleLabs.UI
         }
         public string BackTransform
         {
+            // get { return GetPropertyValuesFromLayers(); }
             get { return (string)GetValue(BackTransformProperty); }
             set { SetValue(BackTransformProperty, value); }
         }

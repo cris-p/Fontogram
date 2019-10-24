@@ -4,6 +4,7 @@ using System.Reflection;
 using System.Runtime.CompilerServices;
 using System.Windows;
 using System.Windows.Controls;
+using System.Linq;
 
 
 namespace PergleLabs.UI
@@ -85,6 +86,14 @@ namespace PergleLabs.UI
 
             if (SelectiveLayerEnable != (int)SelectiveLayerEnableProperty.DefaultMetadata.DefaultValue)
                 EnableLayerSelectively(SelectiveLayerEnable);
+        }
+
+
+        private string GetPropertyValuesFromLayers([CallerMemberName] string propertyName = "")
+        {
+            PropertyInfo layerPropInfo = typeof(FgLayer).GetProperty(propertyName);
+
+            return string.Join("|", _ParentGrid.Children.Cast<UIElement>().Select(layer => layerPropInfo.GetValue(layer)));
         }
 
 

@@ -34,19 +34,22 @@ namespace PergleLabs.UI
         public TranslatedProperty(string def)
         {
             InDefault = def;
+            _in = InDefault;
             Val = Translate(def);
         }
 
+        private string _in;
         public string In
         {
+            get { return _in; }
             set
             {
-                string newIn =
+                _in =
                     string.IsNullOrWhiteSpace(value)
                     ? InDefault
                     : value;
 
-                Val = Translate(newIn);
+                Val = Translate(_in);
             }
         }
 

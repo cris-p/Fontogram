@@ -45,9 +45,14 @@ namespace PergleLabs.UI
                     partsIn.Length <= i ? null : partsIn[i];            
         }
 
+        private static string RevealValues(params TranslatedProperty[] xProperties)
+        {
+            return string.Join(";", xProperties.Select(xProp => xProp.In));
+        }
+
 
         #region Fontogram-originated properties
- 
+
         // see FgLayerProps.cs, generated from FgLayerProps.tt
 
         #endregion

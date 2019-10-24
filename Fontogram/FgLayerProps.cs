@@ -11,6 +11,10 @@ namespace PergleLabs.UI
         // Text
         public string Text
         {
+            get
+            {
+                return RevealValues( _BindingProps.Text );
+            }
             set
             {
                 DispatchValues(value
@@ -22,6 +26,10 @@ namespace PergleLabs.UI
         // TextAttr
         public string TextAttr
         {
+            get
+            {
+                return RevealValues( _BindingProps.TextFont, _BindingProps.TextFontWeight, _BindingProps.TextColor );
+            }
             set
             {
                 DispatchValues(value
@@ -35,6 +43,10 @@ namespace PergleLabs.UI
         // TextPosRel
         public string TextPosRel
         {
+            get
+            {
+                return RevealValues( _BindingProps.TextFontSize, _BindingProps.TextShiftX, _BindingProps.TextShiftY );
+            }
             set
             {
                 DispatchValues(value
@@ -48,6 +60,10 @@ namespace PergleLabs.UI
         // TextTransform
         public string TextTransform
         {
+            get
+            {
+                return RevealValues( _BindingProps.TextRotAngle, _BindingProps.TextScaleX, _BindingProps.TextScaleY, _BindingProps.TextSkewX, _BindingProps.TextSkewY );
+            }
             set
             {
                 DispatchValues(value
@@ -63,6 +79,10 @@ namespace PergleLabs.UI
         // BackAttr
         public string BackAttr
         {
+            get
+            {
+                return RevealValues( _BindingProps.BackOpacity, _BindingProps.BackFillColor, _BindingProps.BackStrokeColor );
+            }
             set
             {
                 DispatchValues(value
@@ -76,6 +96,10 @@ namespace PergleLabs.UI
         // BackPosRel
         public string BackPosRel
         {
+            get
+            {
+                return RevealValues( _BindingProps.BackWidth, _BindingProps.BackHeight, _BindingProps.BackShiftX, _BindingProps.BackShiftY );
+            }
             set
             {
                 DispatchValues(value
@@ -90,6 +114,10 @@ namespace PergleLabs.UI
         // BackBorderNumbersRel
         public string BackBorderNumbersRel
         {
+            get
+            {
+                return RevealValues( _BindingProps.BackStrokeThickness, _BindingProps.BackCornerRadius );
+            }
             set
             {
                 DispatchValues(value
@@ -102,6 +130,10 @@ namespace PergleLabs.UI
         // BackTransform
         public string BackTransform
         {
+            get
+            {
+                return RevealValues( _BindingProps.BackRotAngle, _BindingProps.BackScaleX, _BindingProps.BackScaleY, _BindingProps.BackSkewX, _BindingProps.BackSkewY );
+            }
             set
             {
                 DispatchValues(value

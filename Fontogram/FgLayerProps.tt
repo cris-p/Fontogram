@@ -24,6 +24,10 @@ foreach (var prop in PROPERTY_DEFS)
         // <#= propName #>
         public string <#= propName #>
         {
+            get
+            {
+                return RevealValues( <#= string.Join(", ", propParts.Select( part => $"_BindingProps.{part}" )) #> );
+            }
             set
             {
                 DispatchValues(value

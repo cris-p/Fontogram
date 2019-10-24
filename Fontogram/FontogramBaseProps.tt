@@ -29,6 +29,7 @@ foreach (string propName in PropertyNames())
         }
         public string <#= propName #>
         {
+            // get { return GetPropertyValuesFromLayers(); }
             get { return (string)GetValue(<#= propName #>Property); }
             set { SetValue(<#= propName #>Property, value); }
         }
