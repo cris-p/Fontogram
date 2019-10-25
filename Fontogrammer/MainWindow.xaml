@@ -178,6 +178,7 @@
                         ScrollViewer.VerticalScrollBarVisibility="Visible"
                         ItemsSource="{Binding XamlReversedLayers}"
                         SelectedItem="{Binding CurrentXamlLayer}"
+                        SelectedIndex="{Binding CurrentXamlLayerIndex}"
                         >
                         <ListBox.ItemsPanel>
                             <ItemsPanelTemplate>
@@ -221,6 +222,23 @@
                                         ReadyMade="{Binding PreviewFontogram.ReadyMade}"
                                             
                                         SelectiveLayerEnable="{Binding PositionInFontogram}"
+                                        />
+                                    
+                                    <Button
+                                        x:Name="btnMoveUp"
+                                        Content="MOVE UP"
+                                        HorizontalAlignment="Center" VerticalAlignment="Top"
+                                        Padding="8,2" Margin="-1" Width="100"
+                                        Opacity="0.8"
+                                        Click="btnMoveUp_Click"
+                                        />
+                                    <Button
+                                        x:Name="btnMoveDown"
+                                        Content="MOVE DOWN"
+                                        HorizontalAlignment="Center" VerticalAlignment="Bottom"
+                                        Padding="8,2" Margin="-1" Width="100"
+                                        Opacity="0.8"
+                                        Click="btnMoveDown_Click"
                                         />
                                 </Grid>
                             </DataTemplate>

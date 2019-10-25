@@ -12,20 +12,29 @@ namespace PergleLabs.Fontogrammer
 {
 
     partial class XamlLayerItem
-        //: INotifyPropertyChanged
+        : INotifyPropertyChanged
     {
 
-        //public event PropertyChangedEventHandler PropertyChanged;
+        public event PropertyChangedEventHandler PropertyChanged;
 
-        //private void NotifyPropertyChanged([CallerMemberName] String propertyName = "")
-        //{
-        //    this.PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-        //}
+        private void NotifyPropertyChanged([CallerMemberName] String propertyName = "")
+        {
+            this.PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
 
 
         public Fontogram PreviewFontogram { get; }
 
-        public int PositionInFontogram { get; }
+        int _positionInFontogram;
+        public int PositionInFontogram
+        { 
+            get { return _positionInFontogram; }
+            set
+            {
+                _positionInFontogram = value;
+                NotifyPropertyChanged();
+            }
+        }
 
 
 

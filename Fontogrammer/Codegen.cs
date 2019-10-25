@@ -79,17 +79,19 @@ namespace PergleLabs.Fontogrammer
             _currentIndent = 4;
             string pad = string.Empty.PadLeft(_currentIndent, ' ');
 
+            codeText.AppendLine();
             codeText.AppendLine($"{pad}<fg:Fontogram");
 
             _currentIndent += 4;
 
+            codeText.AppendLine();
+            codeText.AppendLine($"{string.Empty.PadLeft(_currentIndent, ' ')}ReadyMade = \"{_ReferenceFontogram.ReadyMade}\";");
+            codeText.AppendLine();
         }
 
         protected override void AddEnding(StringBuilder codeText)
         {
             string pad = string.Empty.PadLeft(_currentIndent, ' ');
-
-            codeText.AppendLine($"{string.Empty.PadLeft(_currentIndent, ' ')}ReadyMade = \"{_ReferenceFontogram.ReadyMade}\";");
 
             codeText.AppendLine($"{pad}/>");
         }

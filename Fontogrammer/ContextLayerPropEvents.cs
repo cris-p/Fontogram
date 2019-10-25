@@ -11,7 +11,6 @@ namespace PergleLabs.Fontogrammer
         private void SetPropertyEventHandlers(XamlLayerItem layer)
         {
             layer.TextChanged += OnTextChanged;
-            layer.TextChanged += OnTextChanged;
             layer.TextAttrChanged += OnTextAttrChanged;
             layer.TextPosRelChanged += OnTextPosRelChanged;
             layer.TextTransformChanged += OnTextTransformChanged;
@@ -63,6 +62,19 @@ namespace PergleLabs.Fontogrammer
             UpdateGeneratedCode();
         }
 
-    }
+
+        public void ReapplyProperties()
+        {
+            _FgPreview.Text = string.Join("|", XamlReversedLayers.Reverse().Select(layer => layer.Text));
+            _FgPreview.TextAttr = string.Join("|", XamlReversedLayers.Reverse().Select(layer => layer.TextAttr));
+            _FgPreview.TextPosRel = string.Join("|", XamlReversedLayers.Reverse().Select(layer => layer.TextPosRel));
+            _FgPreview.TextTransform = string.Join("|", XamlReversedLayers.Reverse().Select(layer => layer.TextTransform));
+            _FgPreview.BackAttr = string.Join("|", XamlReversedLayers.Reverse().Select(layer => layer.BackAttr));
+            _FgPreview.BackPosRel = string.Join("|", XamlReversedLayers.Reverse().Select(layer => layer.BackPosRel));
+            _FgPreview.BackBorderNumbersRel = string.Join("|", XamlReversedLayers.Reverse().Select(layer => layer.BackBorderNumbersRel));
+            _FgPreview.BackTransform = string.Join("|", XamlReversedLayers.Reverse().Select(layer => layer.BackTransform));
+            UpdateGeneratedCode();
+        }
+}
 
 }

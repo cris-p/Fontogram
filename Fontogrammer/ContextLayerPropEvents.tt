@@ -17,7 +17,6 @@ namespace PergleLabs.Fontogrammer
 
         private void SetPropertyEventHandlers(XamlLayerItem layer)
         {
-            layer.TextChanged += OnTextChanged;
 <#
 foreach (string propName in PropertyNames())
 {
@@ -42,6 +41,19 @@ foreach (string propName in PropertyNames())
 }
 #>
 
-    }
+
+        public void ReapplyProperties()
+        {
+<#
+foreach (string propName in PropertyNames())
+{
+#>
+            _FgPreview.<#= propName #> = string.Join("|", XamlReversedLayers.Reverse().Select(layer => layer.<#= propName #>));
+<#
+}
+#>
+            UpdateGeneratedCode();
+        }
+}
 
 }

@@ -100,6 +100,16 @@ namespace PergleLabs.Fontogrammer
         {
             (this.DataContext as MainWndDataContext).RemoveCurrentLayer();
         }
+
+        private void btnMoveUp_Click(object sender, RoutedEventArgs e)
+        {
+            (this.DataContext as MainWndDataContext).MoveUpSelectedLayer();
+        }
+
+        private void btnMoveDown_Click(object sender, RoutedEventArgs e)
+        {
+            (this.DataContext as MainWndDataContext).MoveDownSelectedLayer();
+        }
     }
 
 }
