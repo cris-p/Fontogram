@@ -134,17 +134,15 @@ namespace PergleLabs.Fontogrammer
 
         public void AddLayer()
         {
-            int pos = XamlReversedLayers.Count;
-
-            var newLayer = new XamlLayerItem(_FgPreview, pos);
-
-            SetPropertyEventHandlers(newLayer);
-
-            XamlReversedLayers.Insert(0, newLayer);
+            int newIndex = CurrentXamlLayerIndex;
+            if (newIndex < 0)
+                newIndex = 0;
+            RepositionLayer(-1, newIndex);
         }
 
         public void RemoveCurrentLayer()
         {
+            RepositionLayer(CurrentXamlLayerIndex, -1);
         }
 
 
@@ -165,34 +163,50 @@ namespace PergleLabs.Fontogrammer
         private void RepositionLayer(int originalLayerIndex, int newLayerIndex)
         {
             int layerCount = XamlReversedLayers.Count;
-            if (originalLayerIndex < 0 || originalLayerIndex >= layerCount)
-                return;
+            XamlLayerItem layerItem = null;
 
-            if (newLayerIndex < 0 || newLayerIndex >= layerCount)
-                return;
+            bool changeEffected = false;
 
+            // 1. Remove from old position.
 
-            // Remove from old position.
-            XamlLayerItem layerItem = XamlReversedLayers[originalLayerIndex];
-            XamlReversedLayers.RemoveAt(originalLayerIndex);
+            if (originalLayerIndex >= 0 && originalLayerIndex < layerCount)
+            {
+                layerItem = XamlReversedLayers[originalLayerIndex];
+                XamlReversedLayers.RemoveAt(originalLayerIndex);
 
-            // Layers above (meaning: at lower indexes in the ListBox) will have their position in the Fontogram decremented.
-            for (int i=0; i<originalLayerIndex; i++)
-                XamlReversedLayers[i].PositionInFontogram--;
+                // Layers above (meaning: at lower indexes in the ListBox) will have their position in the Fontogram decremented.
+                for (int i = 0; i < originalLayerIndex; i++)
+                    XamlReversedLayers[i].PositionInFontogram--;
 
-
-            // Add into new position.
-            XamlReversedLayers.Insert(newLayerIndex, layerItem);
-
-            // Layers starting from the new position and up (lower indexes in the ListBox) must have their position in the Fontogram updated.
-            // ('layerCount' is now again accurate.)
-            for (int i = 0; i <= newLayerIndex; i++)
-                XamlReversedLayers[i].PositionInFontogram = layerCount - i - 1;
-
-            CurrentXamlLayerIndex = newLayerIndex;
+                changeEffected = true;
+            }
 
 
-            ReapplyProperties();
+            // 2. Add into new position.
+
+            layerCount = XamlReversedLayers.Count;
+            if (newLayerIndex >= 0 && newLayerIndex <= layerCount)
+            {
+                if (layerItem == null)
+                {
+                    layerItem = new XamlLayerItem(_FgPreview, layerCount);    // in case we just add new
+                    SetPropertyEventHandlers(layerItem);
+                }
+
+                XamlReversedLayers.Insert(newLayerIndex, layerItem);
+
+                // Layers starting from the new position and up (lower indexes in the ListBox) must have their position in the Fontogram updated.
+                for (int i = 0; i <= newLayerIndex; i++)
+                    XamlReversedLayers[i].PositionInFontogram = layerCount - i;
+
+                CurrentXamlLayerIndex = newLayerIndex;
+
+                changeEffected = true;
+            }
+
+
+            if (changeEffected)
+                ReapplyProperties();
         }
 
         private readonly CodegenXaml _CodegenXaml;
