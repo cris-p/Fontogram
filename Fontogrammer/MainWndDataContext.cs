@@ -15,6 +15,7 @@ namespace PergleLabs.Fontogrammer
 
     partial class MainWndDataContext
         : INotifyPropertyChanged
+        , LayerObjectCreator
     {
 
         public event PropertyChangedEventHandler PropertyChanged;
@@ -27,11 +28,13 @@ namespace PergleLabs.Fontogrammer
 
 
         private readonly Fontogram _FgPreview;
-        public MainWndDataContext(Fontogram fgPreview, ObservableCollection<LayerBoxItem> liveTopToBottomLayers)
+        public MainWndDataContext(Fontogram fgPreview, LayerEditor layerEditor)
         {
             _FgPreview = fgPreview;
 
-            _LiveTopToBottomLayers = liveTopToBottomLayers;
+            _LayerEditor = layerEditor;
+            _LayerEditor.SetLayerCreator(this);
+            _LayerEditor.LayersChanged += _LayerEditor_LayersChanged;
 
 
             _CodegenXaml = new CodegenXaml(fgPreview);
@@ -47,8 +50,10 @@ namespace PergleLabs.Fontogrammer
             this.ReadyMadeFontogramSelection = 0;   // default is "none" - an item separate from ReadyMadeFontogramChoices
         }
 
-
-
+        private void _LayerEditor_LayersChanged()
+        {
+            ReapplyProperties();
+        }
 
         public List<ReadyMadeFontogram> ReadyMadeFontogramChoices { get; private set; } = new List<ReadyMadeFontogram>();
 
@@ -109,7 +114,12 @@ namespace PergleLabs.Fontogrammer
         }
 
 
-        private readonly ObservableCollection<LayerBoxItem> _LiveTopToBottomLayers;
+        private readonly LayerEditor _LayerEditor;
+
+        private ObservableCollection<LayerBoxItem> _LiveTopToBottomLayers
+        {
+            get { return _LayerEditor.LiveTopToBottomLayers; }
+        }
 
         private IEnumerable<LayerBoxItem> _BottomToTopLayers
         {
@@ -128,95 +138,6 @@ namespace PergleLabs.Fontogrammer
         }
 
 
-        private int _currentXamlLayerIndex;
-        public int CurrentXamlLayerIndex
-        {
-            get { return _currentXamlLayerIndex; }
-            set
-            {
-                _currentXamlLayerIndex = value;
-                NotifyPropertyChanged();
-            }
-        }
-
-
-        public void AddLayer()
-        {
-            int newIndex = CurrentXamlLayerIndex;
-            if (newIndex < 0)
-                newIndex = 0;
-            RepositionLayer(-1, newIndex);
-        }
-
-        public void RemoveCurrentLayer()
-        {
-            RepositionLayer(CurrentXamlLayerIndex, -1);
-        }
-
-
-        public void MoveUpSelectedLayer()
-        {
-            // since layers are shown reversed, we need to decrease the index
-
-            RepositionLayer(CurrentXamlLayerIndex, CurrentXamlLayerIndex - 1);
-        }
-
-        public void MoveDownSelectedLayer()
-        {
-            // since layers are shown reversed, we need to increase the index
-
-            RepositionLayer(CurrentXamlLayerIndex, CurrentXamlLayerIndex + 1);
-        }
-
-        private void RepositionLayer(int originalLayerIndex, int newLayerIndex)
-        {
-            int layerCount = _LiveTopToBottomLayers.Count;
-            LayerBoxItem layerItem = null;
-
-            bool changeEffected = false;
-
-            // 1. Remove from old position.
-
-            if (originalLayerIndex >= 0 && originalLayerIndex < layerCount)
-            {
-                layerItem = _LiveTopToBottomLayers[originalLayerIndex];
-                _LiveTopToBottomLayers.RemoveAt(originalLayerIndex);
-
-                // Layers above (meaning: at lower indexes in the ListBox) will have their position in the Fontogram decremented.
-                for (int i = 0; i < originalLayerIndex; i++)
-                    _LiveTopToBottomLayers[i].Position--;
-
-                changeEffected = true;
-            }
-
-
-            // 2. Add into new position.
-
-            layerCount = _LiveTopToBottomLayers.Count;
-            if (newLayerIndex >= 0 && newLayerIndex <= layerCount)
-            {
-                if (layerItem == null)
-                {
-                    var newLayerItem = new FgLayerItem(_FgPreview, layerCount);    // in case we just add new
-                    layerItem = newLayerItem;
-                    SetPropertyEventHandlers(newLayerItem);
-                }
-
-                _LiveTopToBottomLayers.Insert(newLayerIndex, layerItem);
-
-                // Layers starting from the new position and up (lower indexes in the ListBox) must have their position in the Fontogram updated.
-                for (int i = 0; i <= newLayerIndex; i++)
-                    _LiveTopToBottomLayers[i].Position = layerCount - i;
-
-                CurrentXamlLayerIndex = newLayerIndex;
-
-                changeEffected = true;
-            }
-
-
-            if (changeEffected)
-                ReapplyProperties();
-        }
 
         private readonly CodegenXaml _CodegenXaml;
 
@@ -231,6 +152,13 @@ namespace PergleLabs.Fontogrammer
 
         }
 
+        public LayerBoxItem CreateLayer(int position)
+        {
+            var newLayerItem = new FgLayerItem(_FgPreview, position);    // in case we just add new
+            SetPropertyEventHandlers(newLayerItem);
+
+            return newLayerItem;
+        }
     }
 
 }

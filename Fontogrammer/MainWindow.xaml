@@ -206,14 +206,14 @@
                         Content="ADD NEW"
                         Padding="0,4" HorizontalContentAlignment="Center" Width="84"
                         Margin="19,29" HorizontalAlignment="Left" VerticalAlignment="Top"
-                        Click="btnNewLayer_Click"
+                        Command="{Binding ElementName=uiLayerBox, Path=_AddCommand}"
                         />
                     <Button
                         x:Name="btnRemoveLayer"
                         Content="REMOVE SELECTED"
                         Padding="0,4" HorizontalContentAlignment="Center" Width="134"
                         Margin="0,29,11,0" HorizontalAlignment="Right" VerticalAlignment="Top"
-                        Command="{Binding _RemoveCommand}"
+                        Command="{Binding ElementName=uiLayerBox, Path=_RemoveCommand}"
                         />
                     <!--Click="btnRemoveLayer_Click"-->
 

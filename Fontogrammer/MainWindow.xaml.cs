@@ -31,7 +31,7 @@ namespace PergleLabs.Fontogrammer
         {
             InitializeComponent();
 
-            this.DataContext = new MainWndDataContext(fgPreview, uiLayerBox.TopToBottomLayers);
+            this.DataContext = new MainWndDataContext(fgPreview, uiLayerBox);
         }
 
         private void GridSplitter_MouseDoubleClick(object sender, MouseButtonEventArgs e)
@@ -91,25 +91,6 @@ namespace PergleLabs.Fontogrammer
             colDefs[2].Width = new GridLength(W2, GridUnitType.Star);
         }
 
-        private void btnNewLayer_Click(object sender, RoutedEventArgs e)
-        {
-            (this.DataContext as MainWndDataContext).AddLayer();
-        }
-
-        private void btnRemoveLayer_Click(object sender, RoutedEventArgs e)
-        {
-            (this.DataContext as MainWndDataContext).RemoveCurrentLayer();
-        }
-
-        private void btnMoveUp_Click(object sender, RoutedEventArgs e)
-        {
-            (this.DataContext as MainWndDataContext).MoveUpSelectedLayer();
-        }
-
-        private void btnMoveDown_Click(object sender, RoutedEventArgs e)
-        {
-            (this.DataContext as MainWndDataContext).MoveDownSelectedLayer();
-        }
     }
 
 }

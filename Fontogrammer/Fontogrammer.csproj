@@ -94,7 +94,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>ContextLayerPropEvents.tt</DependentUpon>
     </Compile>
-    <Compile Include="LayerBox.cs" />
     <Compile Include="LayerBoxControl.xaml.cs">
       <DependentUpon>LayerBoxControl.xaml</DependentUpon>
     </Compile>
