@@ -74,7 +74,7 @@ namespace PergleLabs.Fontogrammer
         }
 
 
-        private ListBoxItem _ListBoxItem;
+        public ListBoxItem ListBoxItem { get; private set; }
 
 
         public LayerBoxFgItem()
@@ -86,25 +86,25 @@ namespace PergleLabs.Fontogrammer
         {
             base.OnVisualParentChanged(oldParent);
 
-            _ListBoxItem = this.FindAncestor<ListBoxItem>();
+            ListBoxItem = this.FindAncestor<ListBoxItem>();
 
-            _ListBoxItem.Selected += _ListBoxItem_Selected;
-            _ListBoxItem.Unselected += _ListBoxItem_Unselected;
+            ListBoxItem.Selected += ListBoxItem_Selected;
+            ListBoxItem.Unselected += ListBoxItem_Unselected;
         }
 
-        private void _ListBoxItem_Selected(object sender, RoutedEventArgs e)
+        private void ListBoxItem_Selected(object sender, RoutedEventArgs e)
         {
             ItemBrush = SystemColors.HighlightBrush;
         }
 
-        private void _ListBoxItem_Unselected(object sender, RoutedEventArgs e)
+        private void ListBoxItem_Unselected(object sender, RoutedEventArgs e)
         {
             ItemBrush = SystemColors.InactiveSelectionHighlightBrush;
         }
 
         private void UserControl_MouseEnter(object sender, MouseEventArgs e)
         {
-            _ListBoxItem.IsSelected = true;
+            //_ListBoxItem.IsSelected = true;
 
             btnMoveDown.Visibility = Visibility.Visible;
             btnMoveUp.Visibility = Visibility.Visible;

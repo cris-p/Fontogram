@@ -59,7 +59,7 @@
                 HorizontalAlignment="Center" VerticalAlignment="Top"
                 Padding="8,2" Margin="-1" Width="100"
                 Opacity="0.8"
-                Command="{Binding LayerEditor._MoveUpCommand}"
+                Command="{Binding LayerEditor._MoveUpCommand}" CommandParameter="{Binding}"
                 Visibility="Hidden"
                 >
             </Button>
@@ -69,7 +69,7 @@
                 HorizontalAlignment="Center" VerticalAlignment="Bottom"
                 Padding="8,2" Margin="-1" Width="100"
                 Opacity="0.8"
-                Command="{Binding LayerEditor._MoveDownCommand}"
+                Command="{Binding LayerEditor._MoveDownCommand}" CommandParameter="{Binding}"
                 Visibility="Hidden"
                 />
         </Grid>

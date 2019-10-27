@@ -76,6 +76,19 @@ namespace PergleLabs.Fontogrammer
             : base(layerEditor)
         {
         }
+
+        public override bool CanExecute(object parameter)
+        {
+            return true;
+        }
+
+        protected void UpdateSelection(object cmdLayerItem)
+        {
+            var listboxItem = cmdLayerItem as LayerBoxFgItem;
+            var layer = listboxItem.DataContext as FgLayerItem;
+
+            _LayerEditor.SelectedLayerPosition = layer.Position;
+        }
     }
 
     public class RemoveLayerCommand
@@ -85,11 +98,6 @@ namespace PergleLabs.Fontogrammer
         internal RemoveLayerCommand(LayerEditor layerEditor)
             : base(layerEditor)
         {
-        }
-
-        public override bool CanExecute(object parameter)
-        {
-            return true;
         }
 
         public override void Execute(object parameter)
@@ -107,11 +115,6 @@ namespace PergleLabs.Fontogrammer
         {
         }
 
-        public override bool CanExecute(object parameter)
-        {
-            return true;
-        }
-
         public override void Execute(object parameter)
         {
             _LayerEditor.AddLayer();
@@ -127,16 +130,9 @@ namespace PergleLabs.Fontogrammer
         {
         }
 
-        public override bool CanExecute(object cmdLayerItem)
+        public override void Execute(object cmdLayerItem)
         {
-            return true;
-            // 'false' only if it's the top layer
-//            return !object.ReferenceEquals(cmdLayerItem, _LayerEditor.LiveTopToBottomLayers[0]);
-//            return !object.ReferenceEquals((cmdLayerItem as LayerBoxFgItem).DataContext, _LayerEditor.LiveTopToBottomLayers[0]);
-        }
-
-        public override void Execute(object parameter)
-        {
+            UpdateSelection(cmdLayerItem);
             _LayerEditor.MoveUpSelectedLayer();
         }
     }
@@ -155,8 +151,9 @@ namespace PergleLabs.Fontogrammer
             return true;
         }
 
-        public override void Execute(object parameter)
+        public override void Execute(object cmdLayerItem)
         {
+            UpdateSelection(cmdLayerItem);
             _LayerEditor.MoveDownSelectedLayer();
         }
     }
