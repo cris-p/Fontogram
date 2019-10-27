@@ -3,7 +3,7 @@
 namespace PergleLabs.Fontogrammer
 {
 
-    partial class XamlLayerItem
+    partial class FgLayerItem
     {
 
 

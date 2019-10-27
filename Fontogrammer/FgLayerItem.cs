@@ -11,8 +11,14 @@ using System.Windows;
 namespace PergleLabs.Fontogrammer
 {
 
-    partial class XamlLayerItem
+    interface LayerBoxItem
+    {
+        int Position { get; set; }
+    }
+
+    partial class FgLayerItem
         : INotifyPropertyChanged
+        , LayerBoxItem
     {
 
         public event PropertyChangedEventHandler PropertyChanged;
@@ -24,6 +30,13 @@ namespace PergleLabs.Fontogrammer
 
 
         public Fontogram PreviewFontogram { get; }
+
+
+        public int Position
+        {
+            get { return PositionInFontogram; }
+            set { PositionInFontogram = value; }
+        }
 
         int _positionInFontogram;
         public int PositionInFontogram
@@ -37,8 +50,7 @@ namespace PergleLabs.Fontogrammer
         }
 
 
-
-        public XamlLayerItem(Fontogram fg, int pos)
+        public FgLayerItem(Fontogram fg, int pos)
         {
             PreviewFontogram = fg;
 
