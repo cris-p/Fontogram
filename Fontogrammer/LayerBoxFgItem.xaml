@@ -5,8 +5,10 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:PergleLabs.Fontogrammer"
              xmlns:fg="clr-namespace:PergleLabs.UI;assembly=PergleLabs.Fontogram"
-             mc:Ignorable="d" 
-             d:DesignHeight="128" d:DesignWidth="192">
+             mc:Ignorable="d"
+             d:DesignHeight="128" d:DesignWidth="192"
+             MouseEnter="UserControl_MouseEnter"
+             >
     <Grid
         >
         <Rectangle
@@ -46,21 +48,25 @@
             SelectiveLayerEnable="{Binding PositionInFontogram}"
             />
 
-        <Button
-            x:Name="btnMoveUp"
-            Content="MOVE UP"
-            HorizontalAlignment="Center" VerticalAlignment="Top"
-            Padding="8,2" Margin="-1" Width="100"
-            Opacity="0.8"
-            Command="{Binding Path=LayerEditor._MoveUpCommand, RelativeSource={RelativeSource AncestorType={x:Type local:LayerBoxFgItem}}}"
-            />
-        <Button
-            x:Name="btnMoveDown"
-            Content="MOVE DOWN"
-            HorizontalAlignment="Center" VerticalAlignment="Bottom"
-            Padding="8,2" Margin="-1" Width="100"
-            Opacity="0.8"
-            Command="{Binding Path=LayerEditor._MoveDownCommand, RelativeSource={RelativeSource AncestorType={x:Type local:LayerBoxFgItem}}}"
-            />
+        <Grid
+            DataContext="{Binding RelativeSource={RelativeSource AncestorType={x:Type local:LayerBoxFgItem}}}"
+            >
+            <Button
+                x:Name="btnMoveUp"
+                Content="MOVE UP"
+                HorizontalAlignment="Center" VerticalAlignment="Top"
+                Padding="8,2" Margin="-1" Width="100"
+                Opacity="0.8"
+                Command="{Binding LayerEditor._MoveUpCommand}"
+                />
+            <Button
+                x:Name="btnMoveDown"
+                Content="MOVE DOWN"
+                HorizontalAlignment="Center" VerticalAlignment="Bottom"
+                Padding="8,2" Margin="-1" Width="100"
+                Opacity="0.8"
+                Command="{Binding LayerEditor._MoveDownCommand}"
+                />
+        </Grid>
     </Grid>
 </UserControl>

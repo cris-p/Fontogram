@@ -16,6 +16,25 @@ using System.Windows.Shapes;
 
 namespace PergleLabs.Fontogrammer
 {
+
+    public static class DependencyObjectEx
+    {
+
+        public static _T FindAncestor<_T>(this DependencyObject dependencyObject)
+            where _T : DependencyObject
+        {
+            var parent = VisualTreeHelper.GetParent(dependencyObject);
+
+            if (parent == null) return null;
+
+            var typedParent = parent as _T;
+
+            return typedParent ?? FindAncestor<_T>(parent);
+        }
+
+    }
+
+
     /// <summary>
     /// Interaction logic for LayerBoxFgItem.xaml
     /// </summary>
@@ -32,10 +51,25 @@ namespace PergleLabs.Fontogrammer
         }
 
 
+        private ListBoxItem _ListBoxItem;
+
+
         public LayerBoxFgItem()
         {
             InitializeComponent();
         }
 
+        protected override void OnVisualParentChanged(DependencyObject oldParent)
+        {
+            base.OnVisualParentChanged(oldParent);
+
+            _ListBoxItem = this.FindAncestor<ListBoxItem>();
+        }
+
+        private void UserControl_MouseEnter(object sender, MouseEventArgs e)
+        {
+            _ListBoxItem.IsSelected = true;
+        }
     }
+
 }
