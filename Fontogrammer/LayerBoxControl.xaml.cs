@@ -81,9 +81,8 @@ namespace PergleLabs.Fontogrammer
         , LayerEditor
     {
 
-        private ObservableCollection<LayerBoxItem> _ReversedLayerItems;
+        public readonly ObservableCollection<LayerBoxItem> TopToBottomLayers = new ObservableCollection<LayerBoxItem>();
 
-        
         public RemoveLayerCommand _RemoveCommand { get; }
 
 
@@ -92,13 +91,10 @@ namespace PergleLabs.Fontogrammer
             InitializeComponent();
 
             _RemoveCommand = new RemoveLayerCommand(this);
+
+            this.ItemsSource = TopToBottomLayers;
         }
 
-        protected override void OnItemsSourceChanged(IEnumerable oldValue, IEnumerable newValue)
-        {
-            base.OnItemsSourceChanged(oldValue, newValue);
-
-            _ReversedLayerItems = (ObservableCollection<LayerBoxItem>)ItemsSource;
-        }
     }
+
 }

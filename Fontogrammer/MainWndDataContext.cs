@@ -27,9 +27,12 @@ namespace PergleLabs.Fontogrammer
 
 
         private readonly Fontogram _FgPreview;
-        public MainWndDataContext(Fontogram fgPreview)
+        public MainWndDataContext(Fontogram fgPreview, ObservableCollection<LayerBoxItem> liveTopToBottomLayers)
         {
             _FgPreview = fgPreview;
+
+            _LiveTopToBottomLayers = liveTopToBottomLayers;
+
 
             _CodegenXaml = new CodegenXaml(fgPreview);
 
@@ -106,7 +109,12 @@ namespace PergleLabs.Fontogrammer
         }
 
 
-        public ObservableCollection<LayerBoxItem> XamlReversedLayers { get; } = new ObservableCollection<LayerBoxItem>();
+        private readonly ObservableCollection<LayerBoxItem> _LiveTopToBottomLayers;
+
+        private IEnumerable<LayerBoxItem> _BottomToTopLayers
+        {
+            get { return _LiveTopToBottomLayers.Reverse(); }
+        }
 
 
         private FgLayerItem _currentXamlLayer;
@@ -162,7 +170,7 @@ namespace PergleLabs.Fontogrammer
 
         private void RepositionLayer(int originalLayerIndex, int newLayerIndex)
         {
-            int layerCount = XamlReversedLayers.Count;
+            int layerCount = _LiveTopToBottomLayers.Count;
             LayerBoxItem layerItem = null;
 
             bool changeEffected = false;
@@ -171,12 +179,12 @@ namespace PergleLabs.Fontogrammer
 
             if (originalLayerIndex >= 0 && originalLayerIndex < layerCount)
             {
-                layerItem = XamlReversedLayers[originalLayerIndex];
-                XamlReversedLayers.RemoveAt(originalLayerIndex);
+                layerItem = _LiveTopToBottomLayers[originalLayerIndex];
+                _LiveTopToBottomLayers.RemoveAt(originalLayerIndex);
 
                 // Layers above (meaning: at lower indexes in the ListBox) will have their position in the Fontogram decremented.
                 for (int i = 0; i < originalLayerIndex; i++)
-                    XamlReversedLayers[i].Position--;
+                    _LiveTopToBottomLayers[i].Position--;
 
                 changeEffected = true;
             }
@@ -184,7 +192,7 @@ namespace PergleLabs.Fontogrammer
 
             // 2. Add into new position.
 
-            layerCount = XamlReversedLayers.Count;
+            layerCount = _LiveTopToBottomLayers.Count;
             if (newLayerIndex >= 0 && newLayerIndex <= layerCount)
             {
                 if (layerItem == null)
@@ -194,11 +202,11 @@ namespace PergleLabs.Fontogrammer
                     SetPropertyEventHandlers(newLayerItem);
                 }
 
-                XamlReversedLayers.Insert(newLayerIndex, layerItem);
+                _LiveTopToBottomLayers.Insert(newLayerIndex, layerItem);
 
                 // Layers starting from the new position and up (lower indexes in the ListBox) must have their position in the Fontogram updated.
                 for (int i = 0; i <= newLayerIndex; i++)
-                    XamlReversedLayers[i].Position = layerCount - i;
+                    _LiveTopToBottomLayers[i].Position = layerCount - i;
 
                 CurrentXamlLayerIndex = newLayerIndex;
 

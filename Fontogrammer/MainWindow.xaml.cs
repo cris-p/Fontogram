@@ -31,7 +31,7 @@ namespace PergleLabs.Fontogrammer
         {
             InitializeComponent();
 
-            this.DataContext = new MainWndDataContext(fgPreview);
+            this.DataContext = new MainWndDataContext(fgPreview, uiLayerBox.TopToBottomLayers);
         }
 
         private void GridSplitter_MouseDoubleClick(object sender, MouseButtonEventArgs e)

@@ -11,7 +11,7 @@ using System.Windows;
 namespace PergleLabs.Fontogrammer
 {
 
-    interface LayerBoxItem
+    public interface LayerBoxItem
     {
         int Position { get; set; }
     }
