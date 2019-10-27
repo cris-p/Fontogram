@@ -1,7 +1,9 @@
 ﻿using PergleLabs.UI;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -40,7 +42,16 @@ namespace PergleLabs.Fontogrammer
     /// </summary>
     public partial class LayerBoxFgItem
         : UserControl
+        , INotifyPropertyChanged
     {
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        private void NotifyPropertyChanged([CallerMemberName] String propertyName = "")
+        {
+            this.PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
+
 
         public static readonly DependencyProperty LayerEditorProperty = DependencyProperty.Register("LayerEditor", typeof(LayerEditor), typeof(LayerBoxFgItem)
             );
@@ -48,6 +59,18 @@ namespace PergleLabs.Fontogrammer
         {
             get { return (LayerEditor)GetValue(LayerEditorProperty); }
             set { SetValue(LayerEditorProperty, value); }
+        }
+
+
+        private Brush _itemBrush = SystemColors.InactiveSelectionHighlightBrush;
+        public Brush ItemBrush
+        {
+            get { return _itemBrush; }
+            private set
+            {
+                _itemBrush = value;
+                NotifyPropertyChanged();
+            }
         }
 
 
@@ -64,6 +87,19 @@ namespace PergleLabs.Fontogrammer
             base.OnVisualParentChanged(oldParent);
 
             _ListBoxItem = this.FindAncestor<ListBoxItem>();
+
+            _ListBoxItem.Selected += _ListBoxItem_Selected;
+            _ListBoxItem.Unselected += _ListBoxItem_Unselected;
+        }
+
+        private void _ListBoxItem_Selected(object sender, RoutedEventArgs e)
+        {
+            ItemBrush = SystemColors.HighlightBrush;
+        }
+
+        private void _ListBoxItem_Unselected(object sender, RoutedEventArgs e)
+        {
+            ItemBrush = SystemColors.InactiveSelectionHighlightBrush;
         }
 
         private void UserControl_MouseEnter(object sender, MouseEventArgs e)

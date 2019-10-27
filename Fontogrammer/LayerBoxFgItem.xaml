@@ -26,12 +26,6 @@
             </Rectangle.Fill>
         </Rectangle>
 
-        <Border
-            BorderThickness="1" BorderBrush="#aaa"
-            >
-
-        </Border>
-
         <fg:Fontogram
             Width="192" Height="128"
                                         
@@ -49,10 +43,16 @@
             SelectiveLayerEnable="{Binding PositionInFontogram}"
             />
 
+        
         <Grid
             DataContext="{Binding RelativeSource={RelativeSource AncestorType={x:Type local:LayerBoxFgItem}}}"
             Name="grdItem"
             >
+            
+            <Border            
+                BorderThickness="1" BorderBrush="{Binding ItemBrush}"
+                />
+
             <Button
                 x:Name="btnMoveUp"
                 Content="MOVE UP"
