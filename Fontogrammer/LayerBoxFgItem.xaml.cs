@@ -69,6 +69,19 @@ namespace PergleLabs.Fontogrammer
         private void UserControl_MouseEnter(object sender, MouseEventArgs e)
         {
             _ListBoxItem.IsSelected = true;
+
+            btnMoveDown.Visibility = Visibility.Visible;
+            btnMoveUp.Visibility = Visibility.Visible;
+
+            // Having some trouble with refreshing command's CanExecute - this is the workaround.
+            btnMoveDown.IsEnabled = (DataContext as FgLayerItem).Position > 0;
+            btnMoveUp.IsEnabled = (DataContext as FgLayerItem).Position < LayerEditor.LiveTopToBottomLayers.Count - 1;
+        }
+
+        private void UserControl_MouseLeave(object sender, MouseEventArgs e)
+        {
+            btnMoveDown.Visibility = Visibility.Hidden;
+            btnMoveUp.Visibility = Visibility.Hidden;
         }
     }
 

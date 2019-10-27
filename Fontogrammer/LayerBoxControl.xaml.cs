@@ -29,7 +29,7 @@ namespace PergleLabs.Fontogrammer
 
     public interface LayerEditor
     {
-        int SelectedLayerIndex { get; set; }
+        int SelectedLayerPosition { get; set; }
 
         ObservableCollection<LayerBoxItem> LiveTopToBottomLayers { get; }
 
@@ -127,9 +127,12 @@ namespace PergleLabs.Fontogrammer
         {
         }
 
-        public override bool CanExecute(object parameter)
+        public override bool CanExecute(object cmdLayerItem)
         {
             return true;
+            // 'false' only if it's the top layer
+//            return !object.ReferenceEquals(cmdLayerItem, _LayerEditor.LiveTopToBottomLayers[0]);
+//            return !object.ReferenceEquals((cmdLayerItem as LayerBoxFgItem).DataContext, _LayerEditor.LiveTopToBottomLayers[0]);
         }
 
         public override void Execute(object parameter)
@@ -195,7 +198,7 @@ namespace PergleLabs.Fontogrammer
         }
 
 
-        public int SelectedLayerIndex
+        public int SelectedLayerPosition
         {
             get { return this.LiveTopToBottomLayers.Count - this.SelectedIndex - 1; }
             set { this.SelectedIndex = this.LiveTopToBottomLayers.Count - value - 1; }
@@ -243,10 +246,6 @@ namespace PergleLabs.Fontogrammer
                 layerItem = LiveTopToBottomLayers[originalLayerIndex];
                 LiveTopToBottomLayers.RemoveAt(originalLayerIndex);
 
-                // Layers above (meaning: at lower indexes in the ListBox) will have their position in the Fontogram decremented.
-                for (int i = 0; i < originalLayerIndex; i++)
-                    LiveTopToBottomLayers[i].Position--;
-
                 changeEffected = true;
             }
 
@@ -266,10 +265,6 @@ namespace PergleLabs.Fontogrammer
                 {
                     LiveTopToBottomLayers.Insert(newLayerIndex, layerItem);
 
-                    // Layers starting from the new position and up (lower indexes in the ListBox) must have their position in the Fontogram updated.
-                    for (int i = 0; i <= newLayerIndex; i++)
-                        LiveTopToBottomLayers[i].Position = layerCount - i;
-
                     SelectedIndex = newLayerIndex;
 
                     changeEffected = true;
@@ -278,7 +273,15 @@ namespace PergleLabs.Fontogrammer
 
 
             if (changeEffected)
+            {
+                // Layers starting from the new position and up (lower indexes in the ListBox) must have their position in the Fontogram updated.
+                layerCount = LiveTopToBottomLayers.Count;
+                for (int i = 0; i < layerCount; i++)
+                    LiveTopToBottomLayers[i].Position = layerCount - i - 1;
+
                 LayersChanged?.Invoke();
+            }
+
         }
 
         public void SetLayerCreator(LayerObjectCreator creator)
