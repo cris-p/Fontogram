@@ -118,6 +118,46 @@ namespace PergleLabs.Fontogrammer
         }
     }
 
+    public class MoveUpLayerCommand
+        : SelectedLayerCommand
+    {
+
+        internal MoveUpLayerCommand(LayerEditor layerEditor)
+            : base(layerEditor)
+        {
+        }
+
+        public override bool CanExecute(object parameter)
+        {
+            return true;
+        }
+
+        public override void Execute(object parameter)
+        {
+            _LayerEditor.MoveUpSelectedLayer();
+        }
+    }
+
+    public class MoveDownLayerCommand
+        : SelectedLayerCommand
+    {
+
+        internal MoveDownLayerCommand(LayerEditor layerEditor)
+            : base(layerEditor)
+        {
+        }
+
+        public override bool CanExecute(object parameter)
+        {
+            return true;
+        }
+
+        public override void Execute(object parameter)
+        {
+            _LayerEditor.MoveDownSelectedLayer();
+        }
+    }
+
 
     /// <summary>
     /// Interaction logic for LayerBoxControl.xaml
@@ -134,6 +174,13 @@ namespace PergleLabs.Fontogrammer
 
         public AddLayerCommand _AddCommand { get; }
 
+        public MoveUpLayerCommand _MoveUpCommand { get; }
+
+        public MoveDownLayerCommand _MoveDownCommand { get; }
+
+
+        public LayerEditor Editor { get { return this; } }
+
 
         public LayerBox()
         {
@@ -143,10 +190,11 @@ namespace PergleLabs.Fontogrammer
 
             _RemoveCommand = new RemoveLayerCommand(this);
             _AddCommand = new AddLayerCommand(this);
+            _MoveUpCommand = new MoveUpLayerCommand(this);
+            _MoveDownCommand = new MoveDownLayerCommand(this);
         }
 
 
-        private int _selectedLayerIndex;
         public int SelectedLayerIndex
         {
             get { return this.LiveTopToBottomLayers.Count - this.SelectedIndex - 1; }

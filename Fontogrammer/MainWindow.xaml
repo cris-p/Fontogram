@@ -183,7 +183,9 @@
                         >
                         <ListBox.ItemTemplate>
                             <DataTemplate>
-                                <local:LayerBoxFgItem />
+                                <local:LayerBoxFgItem
+                                    LayerEditor="{Binding Path=Editor, RelativeSource={RelativeSource AncestorType={x:Type local:LayerBox}}}"
+                                    />
                             </DataTemplate>
                         </ListBox.ItemTemplate>
                     </local:LayerBox>

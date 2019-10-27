@@ -22,9 +22,20 @@ namespace PergleLabs.Fontogrammer
     public partial class LayerBoxFgItem
         : UserControl
     {
+
+        public static readonly DependencyProperty LayerEditorProperty = DependencyProperty.Register("LayerEditor", typeof(LayerEditor), typeof(LayerBoxFgItem)
+            );
+        public LayerEditor LayerEditor
+        {
+            get { return (LayerEditor)GetValue(LayerEditorProperty); }
+            set { SetValue(LayerEditorProperty, value); }
+        }
+
+
         public LayerBoxFgItem()
         {
             InitializeComponent();
         }
+
     }
 }
