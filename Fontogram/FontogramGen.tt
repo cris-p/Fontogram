@@ -21,6 +21,9 @@
                             "DocState_FolderNotFound",
                             "Sample_RgbSwirl",
                             "Sample_TopHatSmiley",
+                            "Sample_TallHatSmiley",
+                            "Sample_CBClogo",
+                            "Search_Video"
     };
 
     const string READYMADE_PROPERTY_NAME = "ReadyMade";

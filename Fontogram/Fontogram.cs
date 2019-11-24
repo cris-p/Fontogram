@@ -217,6 +217,30 @@ namespace PergleLabs.UI
 
         void Create__Sample_TopHatSmiley(ref string _Text, ref string _TextAttr, ref string _TextPosRel, ref string _TextTransform, ref string _BackAttr, ref string _BackPosRel, ref string _BackBorderNumbersRel, ref string _BackTransform)
         {
+            _Text = "😉||☝||🎩";
+            _TextAttr = ";;#c00||;;#aaa";
+            _TextPosRel = "55;17;15||47;-32;18||40;8;-30";
+            _TextTransform = "-15||||;1.6";
+            _BackAttr = ";#fd0|;white|;white|;#444|;black|;darkorange";
+            _BackPosRel = "56;56;18;18|26;33;-32;29|8;30;-22;10|12;41;-3;-28|48;7.5;7;-16.3|54.5;9;8;-20";
+            _BackBorderNumbersRel = ";30|;9,0,0,17||;0|;0|;0";
+            _BackTransform = "";
+        }
+
+        void Create__Sample_TallHatSmiley(ref string _Text, ref string _TextAttr, ref string _TextPosRel, ref string _TextTransform, ref string _BackAttr, ref string _BackPosRel, ref string _BackBorderNumbersRel, ref string _BackTransform)
+        {
+            _Text = "😉|||☝||🎩";
+            _TextAttr = ";;#800|||;;#aaa";
+            _TextPosRel = "40;10;21|||34;-22;22||42;4;-23.5";
+            _TextTransform = "-15|||||0;1;1.1";
+            _BackAttr = ";#fa0|;transparent;#fa0|;white|;white|;#444|;#06f";
+            _BackPosRel = "41;41;11;23.5|45.5;45.5;10.5;23.3|21;27;-22;30|6;20;-15;15|8;48;-3.5;-21|30;7.5;4;-8";
+            _BackBorderNumbersRel = ";30|4;23|;10,0,0,16||;0|;0";
+            _BackTransform = "";
+        }        
+
+        void Create__Sample_CBClogo(ref string _Text, ref string _TextAttr, ref string _TextPosRel, ref string _TextTransform, ref string _BackAttr, ref string _BackPosRel, ref string _BackBorderNumbersRel, ref string _BackTransform)
+        {
 
             // " Text_L0 | ...(Layer1) | ...(Layer2) | ... "
             _Text = " | ";
@@ -242,6 +266,18 @@ namespace PergleLabs.UI
             // " BackRotAngle_L0;BackScaleX_L0;BackScaleY_L0;BackSkewX_L0;BackSkewY_L0 | ...(Layer1) | ...(Layer2) | ... "
             _BackTransform = " | ";
 
+        }
+
+        void Create__Search_Video(ref string _Text, ref string _TextAttr, ref string _TextPosRel, ref string _TextTransform, ref string _BackAttr, ref string _BackPosRel, ref string _BackBorderNumbersRel, ref string _BackTransform)
+        {
+            _Text =                 "🎞         |😐         |.          |🔍";
+            _TextAttr =             ";;#888     |;bold;black|;;#4fff    |;bold;#800";
+            _TextPosRel =           "130;4;-1   |32;-6;26   |245;16;-118|62;14;-17";
+            _TextTransform =        "90;1;0.76  |           |0;;;-10    |";
+            _BackAttr =             ";orange    |;;white    |;#b5ae    |;#fad";
+            _BackPosRel =           "32;32;-6;28|120;128;-4 |40;40;3;-25|15;30;28;2";
+            _BackBorderNumbersRel = ";20        |14;0       |;30        |;0";
+            _BackTransform =        "           |           |           |-45";
         }
     }
 }

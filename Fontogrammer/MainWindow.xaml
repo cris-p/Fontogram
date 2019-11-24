@@ -887,64 +887,55 @@ Selected layer details (override Base)
             >
 
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="3*" MinWidth="5px"/>
+                <ColumnDefinition Width="5*" MinWidth="5px"/>
                 <ColumnDefinition Width="7*" MinWidth="5px"/>
-                <ColumnDefinition Width="2*" MinWidth="5px"/>
+                <ColumnDefinition Width="4*" MinWidth="5px"/>
             </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
-                <RowDefinition Height="4*" MinHeight="5px"/>
+                <RowDefinition Height="3*" MinHeight="5px"/>
                 <RowDefinition Height="5*" MinHeight="5px"/>
                 <RowDefinition Height="3*" MinHeight="5px"/>
             </Grid.RowDefinitions>
 
 
             <fg:Fontogram
-                Margin="10"
                 Name="fgRgbSwirl"
+                Grid.Column="2"
+                Margin="0,0,0,10"
                 
                 ReadyMade="Sample_RgbSwirl"
                 />
 
             <fg:Fontogram
-                Name="fgWideLogo"
-                Grid.Column="1"
+                Name="fgTallHat"
+                Grid.Row="1"
                 Margin="10"
                 
-                ReadyMade="Fontogram_LogoWide"
+                ReadyMade="Sample_TallHatSmiley"
+                />
+
+            <fg:Fontogram
+                Name="fgTopHat"
+                Grid.Row="1" Grid.Column="2"
+                Margin="10"
+                
+                ReadyMade="Sample_TopHatSmiley"
                 />
 
             <fg:Fontogram
                 Name="fgLogo"
-                Grid.Row="2"
-                Margin="10"
                 
                 ReadyMade="Fontogram_Logo"
                 />
 
-            <!--<fg:Fontogram Builtin="Test1"
-                Grid.Row="0" Grid.Column="0" Margin="10"
-                />
-            <fg:Fontogram Text="😀" TextAttr="" TextPosRel=""
-                Grid.Row="0" Grid.Column="1" Margin="10"
-                />
             <fg:Fontogram
-                Grid.Row="0" Grid.Column="2" Margin="10"
+                Name="fgSearcvhVideo"
+                Grid.Row="2" Grid.Column="2"
+                Margin="10,10,0,10"
+                
+                ReadyMade="Search_Video"
                 />
-            <fg:Fontogram
-                Grid.Row="1" Grid.Column="0" Margin="10"
-                />
-            <fg:Fontogram
-                Grid.Row="1" Grid.Column="2" Margin="10"
-                />
-            <fg:Fontogram
-                Grid.Row="2" Grid.Column="0" Margin="10"
-                />
-            <fg:Fontogram Builtin="Test2"
-                Grid.Row="2" Grid.Column="1" Margin="10"
-                />
-            <fg:Fontogram
-                Grid.Row="2" Grid.Column="2" Margin="10"
-                />-->
+
             <fg:Fontogram
                 Name="fgWideLogo2"
                 Grid.Column="1" Grid.Row="2"
