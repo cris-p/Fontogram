@@ -7,15 +7,20 @@ namespace PergleLabs.UI
     {
         Fontogram_Logo,
         Fontogram_LogoWide,
-        DocState_Ready,
-        DocState_Corrupt,
+        DocState_OK,
+        DocState_Unknown,
+        DocState_Missing,
         DocState_Waiting,
+        DocState_NoAccess,
         DocState_FolderNotFound,
+        Sample_VideoFaceSearch,
         Sample_RgbSwirl,
         Sample_TopHatSmiley,
         Sample_TallHatSmiley,
+        Sample_GoogleChromeLogo,
+        Sample_ABClogo,
+        Sample_BBClogo,
         Sample_CBClogo,
-        Search_Video,
     }
 
     public partial class Fontogram
@@ -63,20 +68,32 @@ namespace PergleLabs.UI
                     Create__Fontogram_LogoWide(ref _Text, ref _TextAttr, ref _TextPosRel, ref _TextTransform, ref _BackAttr, ref _BackPosRel, ref _BackBorderNumbersRel, ref _BackTransform);
                     break;
 
-                case ReadyMadeFontogram.DocState_Ready:
-                    Create__DocState_Ready(ref _Text, ref _TextAttr, ref _TextPosRel, ref _TextTransform, ref _BackAttr, ref _BackPosRel, ref _BackBorderNumbersRel, ref _BackTransform);
+                case ReadyMadeFontogram.DocState_OK:
+                    Create__DocState_OK(ref _Text, ref _TextAttr, ref _TextPosRel, ref _TextTransform, ref _BackAttr, ref _BackPosRel, ref _BackBorderNumbersRel, ref _BackTransform);
                     break;
 
-                case ReadyMadeFontogram.DocState_Corrupt:
-                    Create__DocState_Corrupt(ref _Text, ref _TextAttr, ref _TextPosRel, ref _TextTransform, ref _BackAttr, ref _BackPosRel, ref _BackBorderNumbersRel, ref _BackTransform);
+                case ReadyMadeFontogram.DocState_Unknown:
+                    Create__DocState_Unknown(ref _Text, ref _TextAttr, ref _TextPosRel, ref _TextTransform, ref _BackAttr, ref _BackPosRel, ref _BackBorderNumbersRel, ref _BackTransform);
+                    break;
+
+                case ReadyMadeFontogram.DocState_Missing:
+                    Create__DocState_Missing(ref _Text, ref _TextAttr, ref _TextPosRel, ref _TextTransform, ref _BackAttr, ref _BackPosRel, ref _BackBorderNumbersRel, ref _BackTransform);
                     break;
 
                 case ReadyMadeFontogram.DocState_Waiting:
                     Create__DocState_Waiting(ref _Text, ref _TextAttr, ref _TextPosRel, ref _TextTransform, ref _BackAttr, ref _BackPosRel, ref _BackBorderNumbersRel, ref _BackTransform);
                     break;
 
+                case ReadyMadeFontogram.DocState_NoAccess:
+                    Create__DocState_NoAccess(ref _Text, ref _TextAttr, ref _TextPosRel, ref _TextTransform, ref _BackAttr, ref _BackPosRel, ref _BackBorderNumbersRel, ref _BackTransform);
+                    break;
+
                 case ReadyMadeFontogram.DocState_FolderNotFound:
                     Create__DocState_FolderNotFound(ref _Text, ref _TextAttr, ref _TextPosRel, ref _TextTransform, ref _BackAttr, ref _BackPosRel, ref _BackBorderNumbersRel, ref _BackTransform);
+                    break;
+
+                case ReadyMadeFontogram.Sample_VideoFaceSearch:
+                    Create__Sample_VideoFaceSearch(ref _Text, ref _TextAttr, ref _TextPosRel, ref _TextTransform, ref _BackAttr, ref _BackPosRel, ref _BackBorderNumbersRel, ref _BackTransform);
                     break;
 
                 case ReadyMadeFontogram.Sample_RgbSwirl:
@@ -91,12 +108,20 @@ namespace PergleLabs.UI
                     Create__Sample_TallHatSmiley(ref _Text, ref _TextAttr, ref _TextPosRel, ref _TextTransform, ref _BackAttr, ref _BackPosRel, ref _BackBorderNumbersRel, ref _BackTransform);
                     break;
 
-                case ReadyMadeFontogram.Sample_CBClogo:
-                    Create__Sample_CBClogo(ref _Text, ref _TextAttr, ref _TextPosRel, ref _TextTransform, ref _BackAttr, ref _BackPosRel, ref _BackBorderNumbersRel, ref _BackTransform);
+                case ReadyMadeFontogram.Sample_GoogleChromeLogo:
+                    Create__Sample_GoogleChromeLogo(ref _Text, ref _TextAttr, ref _TextPosRel, ref _TextTransform, ref _BackAttr, ref _BackPosRel, ref _BackBorderNumbersRel, ref _BackTransform);
                     break;
 
-                case ReadyMadeFontogram.Search_Video:
-                    Create__Search_Video(ref _Text, ref _TextAttr, ref _TextPosRel, ref _TextTransform, ref _BackAttr, ref _BackPosRel, ref _BackBorderNumbersRel, ref _BackTransform);
+                case ReadyMadeFontogram.Sample_ABClogo:
+                    Create__Sample_ABClogo(ref _Text, ref _TextAttr, ref _TextPosRel, ref _TextTransform, ref _BackAttr, ref _BackPosRel, ref _BackBorderNumbersRel, ref _BackTransform);
+                    break;
+
+                case ReadyMadeFontogram.Sample_BBClogo:
+                    Create__Sample_BBClogo(ref _Text, ref _TextAttr, ref _TextPosRel, ref _TextTransform, ref _BackAttr, ref _BackPosRel, ref _BackBorderNumbersRel, ref _BackTransform);
+                    break;
+
+                case ReadyMadeFontogram.Sample_CBClogo:
+                    Create__Sample_CBClogo(ref _Text, ref _TextAttr, ref _TextPosRel, ref _TextTransform, ref _BackAttr, ref _BackPosRel, ref _BackBorderNumbersRel, ref _BackTransform);
                     break;
 
 
@@ -182,7 +207,7 @@ namespace PergleLabs.UI
         
         }
 
-        void Create__DocState_Ready(ref string _Text, ref string _TextAttr, ref string _TextPosRel, ref string _TextTransform, ref string _BackAttr, ref string _BackPosRel, ref string _BackBorderNumbersRel, ref string _BackTransform)
+        void Create__DocState_OK(ref string _Text, ref string _TextAttr, ref string _TextPosRel, ref string _TextTransform, ref string _BackAttr, ref string _BackPosRel, ref string _BackBorderNumbersRel, ref string _BackTransform)
         {
 
             // " Text_L0 | ...(Layer1) | ...(Layer2) | ... "
@@ -211,7 +236,36 @@ namespace PergleLabs.UI
         
         }
 
-        void Create__DocState_Corrupt(ref string _Text, ref string _TextAttr, ref string _TextPosRel, ref string _TextTransform, ref string _BackAttr, ref string _BackPosRel, ref string _BackBorderNumbersRel, ref string _BackTransform)
+        void Create__DocState_Unknown(ref string _Text, ref string _TextAttr, ref string _TextPosRel, ref string _TextTransform, ref string _BackAttr, ref string _BackPosRel, ref string _BackBorderNumbersRel, ref string _BackTransform)
+        {
+
+            // " Text_L0 | ...(Layer1) | ...(Layer2) | ... "
+            _Text = " | ";
+
+            // " TextFont_L0;TextFontWeight_L0;TextColor_L0 | ...(Layer1) | ...(Layer2) | ... "
+            _TextAttr = " | ";
+
+            // " TextFontSize_L0;TextShiftX_L0;TextShiftY_L0 | ...(Layer1) | ...(Layer2) | ... "
+            _TextPosRel = " | ";
+
+            // " TextRotAngle_L0;TextScaleX_L0;TextScaleY_L0;TextSkewX_L0;TextSkewY_L0 | ...(Layer1) | ...(Layer2) | ... "
+            _TextTransform = " | ";
+
+            // " BackOpacity_L0;BackFillColor_L0;BackStrokeColor_L0 | ...(Layer1) | ...(Layer2) | ... "
+            _BackAttr = " | ";
+
+            // " BackWidth_L0;BackHeight_L0;BackShiftX_L0;BackShiftY_L0 | ...(Layer1) | ...(Layer2) | ... "
+            _BackPosRel = " | ";
+
+            // " BackStrokeThickness_L0;BackCornerRadius_L0 | ...(Layer1) | ...(Layer2) | ... "
+            _BackBorderNumbersRel = " | ";
+
+            // " BackRotAngle_L0;BackScaleX_L0;BackScaleY_L0;BackSkewX_L0;BackSkewY_L0 | ...(Layer1) | ...(Layer2) | ... "
+            _BackTransform = " | ";
+        
+        }
+
+        void Create__DocState_Missing(ref string _Text, ref string _TextAttr, ref string _TextPosRel, ref string _TextTransform, ref string _BackAttr, ref string _BackPosRel, ref string _BackBorderNumbersRel, ref string _BackTransform)
         {
 
             // " Text_L0 | ...(Layer1) | ...(Layer2) | ... "
@@ -269,7 +323,65 @@ namespace PergleLabs.UI
         
         }
 
+        void Create__DocState_NoAccess(ref string _Text, ref string _TextAttr, ref string _TextPosRel, ref string _TextTransform, ref string _BackAttr, ref string _BackPosRel, ref string _BackBorderNumbersRel, ref string _BackTransform)
+        {
+
+            // " Text_L0 | ...(Layer1) | ...(Layer2) | ... "
+            _Text = " | ";
+
+            // " TextFont_L0;TextFontWeight_L0;TextColor_L0 | ...(Layer1) | ...(Layer2) | ... "
+            _TextAttr = " | ";
+
+            // " TextFontSize_L0;TextShiftX_L0;TextShiftY_L0 | ...(Layer1) | ...(Layer2) | ... "
+            _TextPosRel = " | ";
+
+            // " TextRotAngle_L0;TextScaleX_L0;TextScaleY_L0;TextSkewX_L0;TextSkewY_L0 | ...(Layer1) | ...(Layer2) | ... "
+            _TextTransform = " | ";
+
+            // " BackOpacity_L0;BackFillColor_L0;BackStrokeColor_L0 | ...(Layer1) | ...(Layer2) | ... "
+            _BackAttr = " | ";
+
+            // " BackWidth_L0;BackHeight_L0;BackShiftX_L0;BackShiftY_L0 | ...(Layer1) | ...(Layer2) | ... "
+            _BackPosRel = " | ";
+
+            // " BackStrokeThickness_L0;BackCornerRadius_L0 | ...(Layer1) | ...(Layer2) | ... "
+            _BackBorderNumbersRel = " | ";
+
+            // " BackRotAngle_L0;BackScaleX_L0;BackScaleY_L0;BackSkewX_L0;BackSkewY_L0 | ...(Layer1) | ...(Layer2) | ... "
+            _BackTransform = " | ";
+        
+        }
+
         void Create__DocState_FolderNotFound(ref string _Text, ref string _TextAttr, ref string _TextPosRel, ref string _TextTransform, ref string _BackAttr, ref string _BackPosRel, ref string _BackBorderNumbersRel, ref string _BackTransform)
+        {
+
+            // " Text_L0 | ...(Layer1) | ...(Layer2) | ... "
+            _Text = " | ";
+
+            // " TextFont_L0;TextFontWeight_L0;TextColor_L0 | ...(Layer1) | ...(Layer2) | ... "
+            _TextAttr = " | ";
+
+            // " TextFontSize_L0;TextShiftX_L0;TextShiftY_L0 | ...(Layer1) | ...(Layer2) | ... "
+            _TextPosRel = " | ";
+
+            // " TextRotAngle_L0;TextScaleX_L0;TextScaleY_L0;TextSkewX_L0;TextSkewY_L0 | ...(Layer1) | ...(Layer2) | ... "
+            _TextTransform = " | ";
+
+            // " BackOpacity_L0;BackFillColor_L0;BackStrokeColor_L0 | ...(Layer1) | ...(Layer2) | ... "
+            _BackAttr = " | ";
+
+            // " BackWidth_L0;BackHeight_L0;BackShiftX_L0;BackShiftY_L0 | ...(Layer1) | ...(Layer2) | ... "
+            _BackPosRel = " | ";
+
+            // " BackStrokeThickness_L0;BackCornerRadius_L0 | ...(Layer1) | ...(Layer2) | ... "
+            _BackBorderNumbersRel = " | ";
+
+            // " BackRotAngle_L0;BackScaleX_L0;BackScaleY_L0;BackSkewX_L0;BackSkewY_L0 | ...(Layer1) | ...(Layer2) | ... "
+            _BackTransform = " | ";
+        
+        }
+
+        void Create__Sample_VideoFaceSearch(ref string _Text, ref string _TextAttr, ref string _TextPosRel, ref string _TextTransform, ref string _BackAttr, ref string _BackPosRel, ref string _BackBorderNumbersRel, ref string _BackTransform)
         {
 
             // " Text_L0 | ...(Layer1) | ...(Layer2) | ... "
@@ -385,7 +497,7 @@ namespace PergleLabs.UI
         
         }
 
-        void Create__Sample_CBClogo(ref string _Text, ref string _TextAttr, ref string _TextPosRel, ref string _TextTransform, ref string _BackAttr, ref string _BackPosRel, ref string _BackBorderNumbersRel, ref string _BackTransform)
+        void Create__Sample_GoogleChromeLogo(ref string _Text, ref string _TextAttr, ref string _TextPosRel, ref string _TextTransform, ref string _BackAttr, ref string _BackPosRel, ref string _BackBorderNumbersRel, ref string _BackTransform)
         {
 
             // " Text_L0 | ...(Layer1) | ...(Layer2) | ... "
@@ -414,7 +526,65 @@ namespace PergleLabs.UI
         
         }
 
-        void Create__Search_Video(ref string _Text, ref string _TextAttr, ref string _TextPosRel, ref string _TextTransform, ref string _BackAttr, ref string _BackPosRel, ref string _BackBorderNumbersRel, ref string _BackTransform)
+        void Create__Sample_ABClogo(ref string _Text, ref string _TextAttr, ref string _TextPosRel, ref string _TextTransform, ref string _BackAttr, ref string _BackPosRel, ref string _BackBorderNumbersRel, ref string _BackTransform)
+        {
+
+            // " Text_L0 | ...(Layer1) | ...(Layer2) | ... "
+            _Text = " | ";
+
+            // " TextFont_L0;TextFontWeight_L0;TextColor_L0 | ...(Layer1) | ...(Layer2) | ... "
+            _TextAttr = " | ";
+
+            // " TextFontSize_L0;TextShiftX_L0;TextShiftY_L0 | ...(Layer1) | ...(Layer2) | ... "
+            _TextPosRel = " | ";
+
+            // " TextRotAngle_L0;TextScaleX_L0;TextScaleY_L0;TextSkewX_L0;TextSkewY_L0 | ...(Layer1) | ...(Layer2) | ... "
+            _TextTransform = " | ";
+
+            // " BackOpacity_L0;BackFillColor_L0;BackStrokeColor_L0 | ...(Layer1) | ...(Layer2) | ... "
+            _BackAttr = " | ";
+
+            // " BackWidth_L0;BackHeight_L0;BackShiftX_L0;BackShiftY_L0 | ...(Layer1) | ...(Layer2) | ... "
+            _BackPosRel = " | ";
+
+            // " BackStrokeThickness_L0;BackCornerRadius_L0 | ...(Layer1) | ...(Layer2) | ... "
+            _BackBorderNumbersRel = " | ";
+
+            // " BackRotAngle_L0;BackScaleX_L0;BackScaleY_L0;BackSkewX_L0;BackSkewY_L0 | ...(Layer1) | ...(Layer2) | ... "
+            _BackTransform = " | ";
+        
+        }
+
+        void Create__Sample_BBClogo(ref string _Text, ref string _TextAttr, ref string _TextPosRel, ref string _TextTransform, ref string _BackAttr, ref string _BackPosRel, ref string _BackBorderNumbersRel, ref string _BackTransform)
+        {
+
+            // " Text_L0 | ...(Layer1) | ...(Layer2) | ... "
+            _Text = " | ";
+
+            // " TextFont_L0;TextFontWeight_L0;TextColor_L0 | ...(Layer1) | ...(Layer2) | ... "
+            _TextAttr = " | ";
+
+            // " TextFontSize_L0;TextShiftX_L0;TextShiftY_L0 | ...(Layer1) | ...(Layer2) | ... "
+            _TextPosRel = " | ";
+
+            // " TextRotAngle_L0;TextScaleX_L0;TextScaleY_L0;TextSkewX_L0;TextSkewY_L0 | ...(Layer1) | ...(Layer2) | ... "
+            _TextTransform = " | ";
+
+            // " BackOpacity_L0;BackFillColor_L0;BackStrokeColor_L0 | ...(Layer1) | ...(Layer2) | ... "
+            _BackAttr = " | ";
+
+            // " BackWidth_L0;BackHeight_L0;BackShiftX_L0;BackShiftY_L0 | ...(Layer1) | ...(Layer2) | ... "
+            _BackPosRel = " | ";
+
+            // " BackStrokeThickness_L0;BackCornerRadius_L0 | ...(Layer1) | ...(Layer2) | ... "
+            _BackBorderNumbersRel = " | ";
+
+            // " BackRotAngle_L0;BackScaleX_L0;BackScaleY_L0;BackSkewX_L0;BackSkewY_L0 | ...(Layer1) | ...(Layer2) | ... "
+            _BackTransform = " | ";
+        
+        }
+
+        void Create__Sample_CBClogo(ref string _Text, ref string _TextAttr, ref string _TextPosRel, ref string _TextTransform, ref string _BackAttr, ref string _BackPosRel, ref string _BackBorderNumbersRel, ref string _BackTransform)
         {
 
             // " Text_L0 | ...(Layer1) | ...(Layer2) | ... "

@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Windows;
 
 namespace PergleLabs.UI
@@ -70,120 +71,76 @@ namespace PergleLabs.UI
 
         }
 
-        void Create__DocState_Ready(ref string _Text, ref string _TextAttr, ref string _TextPosRel, ref string _TextTransform, ref string _BackAttr, ref string _BackPosRel, ref string _BackBorderNumbersRel, ref string _BackTransform)
+        void Create__DocState_OK(ref string _Text, ref string _TextAttr, ref string _TextPosRel, ref string _TextTransform, ref string _BackAttr, ref string _BackPosRel, ref string _BackBorderNumbersRel, ref string _BackTransform)
         {
-
-            // " Text_L0 | ...(Layer1) | ...(Layer2) | ... "
-            _Text = " | ";
-
-            // " TextFont_L0;TextFontWeight_L0;TextColor_L0 | ...(Layer1) | ...(Layer2) | ... "
-            _TextAttr = " | ";
-
-            // " TextFontSize_L0;TextShiftX_L0;TextShiftY_L0 | ...(Layer1) | ...(Layer2) | ... "
-            _TextPosRel = " | ";
-
-            // " TextRotAngle_L0;TextScaleX_L0;TextScaleY_L0;TextSkewX_L0;TextSkewY_L0 | ...(Layer1) | ...(Layer2) | ... "
-            _TextTransform = " | ";
-
-            // " BackOpacity_L0;BackFillColor_L0;BackStrokeColor_L0 | ...(Layer1) | ...(Layer2) | ... "
-            _BackAttr = " | ";
-
-            // " BackWidth_L0;BackHeight_L0;BackShiftX_L0;BackShiftY_L0 | ...(Layer1) | ...(Layer2) | ... "
-            _BackPosRel = " | ";
-
-            // " BackStrokeThickness_L0;BackCornerRadius_L0 | ...(Layer1) | ...(Layer2) | ... "
-            _BackBorderNumbersRel = " | ";
-
-            // " BackRotAngle_L0;BackScaleX_L0;BackScaleY_L0;BackSkewX_L0;BackSkewY_L0 | ...(Layer1) | ...(Layer2) | ... "
-            _BackTransform = " | ";
-
+            _Text = "📄|✔";
+            _TextAttr = ";;#a6a|;;#0b0";
+            _TextPosRel = "89;-6;-5.5|60;18;16";
+            _TextTransform = "|";
+            _BackAttr = ";white;|";
+            _BackPosRel = "76;92;-6;1|";
+            _BackBorderNumbersRel = ";0,15,0,0|";
+            _BackTransform = "|";
         }
 
-        void Create__DocState_Corrupt(ref string _Text, ref string _TextAttr, ref string _TextPosRel, ref string _TextTransform, ref string _BackAttr, ref string _BackPosRel, ref string _BackBorderNumbersRel, ref string _BackTransform)
+        void Create__DocState_Missing(ref string _Text, ref string _TextAttr, ref string _TextPosRel, ref string _TextTransform, ref string _BackAttr, ref string _BackPosRel, ref string _BackBorderNumbersRel, ref string _BackTransform)
         {
+            _Text = "📄|❌";
+            _TextAttr = ";;#bbb|;;#d33";
+            _TextPosRel = "89;-6;-5.5|60;23;16";
+            _TextTransform = "|";
+            _BackAttr = ";white;|";
+            _BackPosRel = "76;92;-6;1|";
+            _BackBorderNumbersRel = ";0,15,0,0|";
+            _BackTransform = "|";
+        }
 
-            // " Text_L0 | ...(Layer1) | ...(Layer2) | ... "
-            _Text = " | ";
-
-            // " TextFont_L0;TextFontWeight_L0;TextColor_L0 | ...(Layer1) | ...(Layer2) | ... "
-            _TextAttr = " | ";
-
-            // " TextFontSize_L0;TextShiftX_L0;TextShiftY_L0 | ...(Layer1) | ...(Layer2) | ... "
-            _TextPosRel = " | ";
-
-            // " TextRotAngle_L0;TextScaleX_L0;TextScaleY_L0;TextSkewX_L0;TextSkewY_L0 | ...(Layer1) | ...(Layer2) | ... "
-            _TextTransform = " | ";
-
-            // " BackOpacity_L0;BackFillColor_L0;BackStrokeColor_L0 | ...(Layer1) | ...(Layer2) | ... "
-            _BackAttr = " | ";
-
-            // " BackWidth_L0;BackHeight_L0;BackShiftX_L0;BackShiftY_L0 | ...(Layer1) | ...(Layer2) | ... "
-            _BackPosRel = " | ";
-
-            // " BackStrokeThickness_L0;BackCornerRadius_L0 | ...(Layer1) | ...(Layer2) | ... "
-            _BackBorderNumbersRel = " | ";
-
-            // " BackRotAngle_L0;BackScaleX_L0;BackScaleY_L0;BackSkewX_L0;BackSkewY_L0 | ...(Layer1) | ...(Layer2) | ... "
-            _BackTransform = " | ";
-
+        void Create__DocState_Unknown(ref string _Text, ref string _TextAttr, ref string _TextPosRel, ref string _TextTransform, ref string _BackAttr, ref string _BackPosRel, ref string _BackBorderNumbersRel, ref string _BackTransform)
+        {
+            _Text = "📄|❓";
+            _TextAttr = ";;#bbb|;;#f60";
+            _TextPosRel = "89;-6;-5.5|72;24;5";
+            _TextTransform = "|";
+            _BackAttr = ";white;|";
+            _BackPosRel = "76;92;-6;1|";
+            _BackBorderNumbersRel = ";0,15,0,0|";
+            _BackTransform = "|";
         }
 
         void Create__DocState_Waiting(ref string _Text, ref string _TextAttr, ref string _TextPosRel, ref string _TextTransform, ref string _BackAttr, ref string _BackPosRel, ref string _BackBorderNumbersRel, ref string _BackTransform)
         {
+            _Text = "📄|⏳";
+            _TextAttr = ";;#c9c|;;#05a";
+            _TextPosRel = "89;-6;-5.5|66;24;3";
+            _TextTransform = "|";
+            _BackAttr = ";white;|";
+            _BackPosRel = "76;92;-6;1|";
+            _BackBorderNumbersRel = ";0,15,0,0|";
+            _BackTransform = "|";
+        }
 
-            // " Text_L0 | ...(Layer1) | ...(Layer2) | ... "
-            _Text = " | ";
-
-            // " TextFont_L0;TextFontWeight_L0;TextColor_L0 | ...(Layer1) | ...(Layer2) | ... "
-            _TextAttr = " | ";
-
-            // " TextFontSize_L0;TextShiftX_L0;TextShiftY_L0 | ...(Layer1) | ...(Layer2) | ... "
-            _TextPosRel = " | ";
-
-            // " TextRotAngle_L0;TextScaleX_L0;TextScaleY_L0;TextSkewX_L0;TextSkewY_L0 | ...(Layer1) | ...(Layer2) | ... "
-            _TextTransform = " | ";
-
-            // " BackOpacity_L0;BackFillColor_L0;BackStrokeColor_L0 | ...(Layer1) | ...(Layer2) | ... "
-            _BackAttr = " | ";
-
-            // " BackWidth_L0;BackHeight_L0;BackShiftX_L0;BackShiftY_L0 | ...(Layer1) | ...(Layer2) | ... "
-            _BackPosRel = " | ";
-
-            // " BackStrokeThickness_L0;BackCornerRadius_L0 | ...(Layer1) | ...(Layer2) | ... "
-            _BackBorderNumbersRel = " | ";
-
-            // " BackRotAngle_L0;BackScaleX_L0;BackScaleY_L0;BackSkewX_L0;BackSkewY_L0 | ...(Layer1) | ...(Layer2) | ... "
-            _BackTransform = " | ";
-
+        void Create__DocState_NoAccess(ref string _Text, ref string _TextAttr, ref string _TextPosRel, ref string _TextTransform, ref string _BackAttr, ref string _BackPosRel, ref string _BackBorderNumbersRel, ref string _BackTransform)
+        {
+            _Text = "📄|🚫";
+            _TextAttr = ";;#555|;bold;red";
+            _TextPosRel = "89;-6;-5.5|60;19;10";
+            _TextTransform = "|";
+            _BackAttr = ";white;|";
+            _BackPosRel = "76;92;-6;1|";
+            _BackBorderNumbersRel = ";0,15,0,0|";
+            _BackTransform = "|";
         }
 
         void Create__DocState_FolderNotFound(ref string _Text, ref string _TextAttr, ref string _TextPosRel, ref string _TextTransform, ref string _BackAttr, ref string _BackPosRel, ref string _BackBorderNumbersRel, ref string _BackTransform)
         {
-
-            // " Text_L0 | ...(Layer1) | ...(Layer2) | ... "
-            _Text = " | ";
-
-            // " TextFont_L0;TextFontWeight_L0;TextColor_L0 | ...(Layer1) | ...(Layer2) | ... "
-            _TextAttr = " | ";
-
-            // " TextFontSize_L0;TextShiftX_L0;TextShiftY_L0 | ...(Layer1) | ...(Layer2) | ... "
-            _TextPosRel = " | ";
-
-            // " TextRotAngle_L0;TextScaleX_L0;TextScaleY_L0;TextSkewX_L0;TextSkewY_L0 | ...(Layer1) | ...(Layer2) | ... "
-            _TextTransform = " | ";
-
-            // " BackOpacity_L0;BackFillColor_L0;BackStrokeColor_L0 | ...(Layer1) | ...(Layer2) | ... "
-            _BackAttr = " | ";
-
-            // " BackWidth_L0;BackHeight_L0;BackShiftX_L0;BackShiftY_L0 | ...(Layer1) | ...(Layer2) | ... "
-            _BackPosRel = " | ";
-
-            // " BackStrokeThickness_L0;BackCornerRadius_L0 | ...(Layer1) | ...(Layer2) | ... "
-            _BackBorderNumbersRel = " | ";
-
-            // " BackRotAngle_L0;BackScaleX_L0;BackScaleY_L0;BackSkewX_L0;BackSkewY_L0 | ...(Layer1) | ...(Layer2) | ... "
-            _BackTransform = " | ";
-
+            _Text = "📁|🔍";
+            _TextAttr = ";;red|;bold;";
+            _TextPosRel = "89;;-10|60;14;12";
+            _TextTransform = "|";
+            _BackAttr = ";white;|";
+            _BackPosRel = "81;54.4;-2;1|";
+            _BackBorderNumbersRel = ";0,0,30,0|";
+            _BackTransform = "|";
         }
 
         void Create__Sample_RgbSwirl(ref string _Text, ref string _TextAttr, ref string _TextPosRel, ref string _TextTransform, ref string _BackAttr, ref string _BackPosRel, ref string _BackBorderNumbersRel, ref string _BackTransform)
@@ -237,38 +194,46 @@ namespace PergleLabs.UI
             _BackPosRel = "41;41;11;23.5|45.5;45.5;10.5;23.3|21;27;-22;30|6;20;-15;15|8;48;-3.5;-21|30;7.5;4;-8";
             _BackBorderNumbersRel = ";30|4;23|;10,0,0,16||;0|;0";
             _BackTransform = "";
-        }        
+        }
+
+        void Create__Sample_GoogleChromeLogo(ref string _Text, ref string _TextAttr, ref string _TextPosRel, ref string _TextTransform, ref string _BackAttr, ref string _BackPosRel, ref string _BackBorderNumbersRel, ref string _BackTransform)
+        {
+            _BackAttr = ";#14a361|;#de4e41|;#ffcf42|;#14a361|;#4b8cf5;white|;;white";
+            _BackPosRel = "|80;80;5.8;-24|50;74;25;14|20;47;1.5;24.5|45.7;45.7|150;150";
+            _BackBorderNumbersRel = "|;0,0,22,0|;0|;0|4.6;25|25;100";
+            _BackTransform = "|60||27";
+        }
+
+        void Create__Sample_ABClogo(ref string _Text, ref string _TextAttr, ref string _TextPosRel, ref string _TextTransform, ref string _BackAttr, ref string _BackPosRel, ref string _BackBorderNumbersRel, ref string _BackTransform)
+        {
+            _BackAttr = ";black;|;;white|;white;|;;white|;white;|;;white|;black;";
+            _BackPosRel = "|31.5;31.5;-33;|8;15.75;-21.25;7.875|31.5;31.5;;|8;26;-11.75;-13|31.5;31.5;33;|10;7;44;";
+            _BackBorderNumbersRel = ";50|8;16|;0|8;16|;0|8;16|;0";
+        }
+
+        void Create__Sample_BBClogo(ref string _Text, ref string _TextAttr, ref string _TextPosRel, ref string _TextTransform, ref string _BackAttr, ref string _BackPosRel, ref string _BackBorderNumbersRel, ref string _BackTransform)
+        {
+            _Text = "B|B|C";
+            _TextAttr = "gill sans mt;;white|gill sans mt;;white|gill sans mt;;white";
+            _TextPosRel = "32;-35.5;|32;-0.5;|32;34;";
+            _BackAttr = ";black;|;black;|;black;";
+            _BackPosRel = "30;30;-35;|30;30;;|30;30;35;";
+            _BackBorderNumbersRel = ";0|;0|;0";
+        }
 
         void Create__Sample_CBClogo(ref string _Text, ref string _TextAttr, ref string _TextPosRel, ref string _TextTransform, ref string _BackAttr, ref string _BackPosRel, ref string _BackBorderNumbersRel, ref string _BackTransform)
         {
-
-            // " Text_L0 | ...(Layer1) | ...(Layer2) | ... "
-            _Text = " | ";
-
-            // " TextFont_L0;TextFontWeight_L0;TextColor_L0 | ...(Layer1) | ...(Layer2) | ... "
-            _TextAttr = " | ";
-
-            // " TextFontSize_L0;TextShiftX_L0;TextShiftY_L0 | ...(Layer1) | ...(Layer2) | ... "
-            _TextPosRel = " | ";
-
-            // " TextRotAngle_L0;TextScaleX_L0;TextScaleY_L0;TextSkewX_L0;TextSkewY_L0 | ...(Layer1) | ...(Layer2) | ... "
-            _TextTransform = " | ";
-
             // " BackOpacity_L0;BackFillColor_L0;BackStrokeColor_L0 | ...(Layer1) | ...(Layer2) | ... "
-            _BackAttr = " | ";
+            _BackAttr = " 1;white | 1;#e60505 | 1;#e60505 | 1;#e60505 | 1;#e60505 | 1;#e60505 | 1;white | 1;white | 1;#e60505 | 1;#e60505 | 1;#e60505 | 1;#e60505 | 1;white | 1;#e60505";
 
             // " BackWidth_L0;BackHeight_L0;BackShiftX_L0;BackShiftY_L0 | ...(Layer1) | ...(Layer2) | ... "
-            _BackPosRel = " | ";
+            _BackPosRel = " | 36;36;-31 | 36;36;;-31 | 36;36;31 | 36;36;;31 | 75;75 | 82;41 | 41;82 | 36;36;-21 | 36;36;;-21 | 36;36;21 | 36;36;;21 | 41;41 | 36;36";
 
             // " BackStrokeThickness_L0;BackCornerRadius_L0 | ...(Layer1) | ...(Layer2) | ... "
-            _BackBorderNumbersRel = " | ";
-
-            // " BackRotAngle_L0;BackScaleX_L0;BackScaleY_L0;BackSkewX_L0;BackSkewY_L0 | ...(Layer1) | ...(Layer2) | ... "
-            _BackTransform = " | ";
-
+            _BackBorderNumbersRel = " ;0 | ;18 | ;18 | ;18 | ;18 | ;17 | ;0 | ;0 | ;18 | ;18 | ;18 | ;18 | ;0 | ;18";
         }
 
-        void Create__Search_Video(ref string _Text, ref string _TextAttr, ref string _TextPosRel, ref string _TextTransform, ref string _BackAttr, ref string _BackPosRel, ref string _BackBorderNumbersRel, ref string _BackTransform)
+        void Create__Sample_VideoFaceSearch(ref string _Text, ref string _TextAttr, ref string _TextPosRel, ref string _TextTransform, ref string _BackAttr, ref string _BackPosRel, ref string _BackBorderNumbersRel, ref string _BackTransform)
         {
             _Text =                 "🎞         |😐         |.          |🔍";
             _TextAttr =             ";;#888     |;bold;black|;;#4fff    |;bold;#800";

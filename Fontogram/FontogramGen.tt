@@ -15,15 +15,20 @@
     {
                             "Fontogram_Logo",
                             "Fontogram_LogoWide",
-                            "DocState_Ready",
-                            "DocState_Corrupt",
+                            "DocState_OK",
+                            "DocState_Unknown",
+                            "DocState_Missing",
                             "DocState_Waiting",
+                            "DocState_NoAccess",
                             "DocState_FolderNotFound",
+                            "Sample_VideoFaceSearch",
                             "Sample_RgbSwirl",
                             "Sample_TopHatSmiley",
                             "Sample_TallHatSmiley",
+                            "Sample_GoogleChromeLogo",
+                            "Sample_ABClogo",
+                            "Sample_BBClogo",
                             "Sample_CBClogo",
-                            "Search_Video"
     };
 
     const string READYMADE_PROPERTY_NAME = "ReadyMade";
