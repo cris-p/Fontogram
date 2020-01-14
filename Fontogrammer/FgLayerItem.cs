@@ -14,6 +14,7 @@ namespace PergleLabs.Fontogrammer
     public interface LayerBoxItem
     {
         int Position { get; set; }
+        void Show(bool doShow);
     }
 
     partial class FgLayerItem
@@ -37,6 +38,12 @@ namespace PergleLabs.Fontogrammer
             get { return PositionInFontogram; }
             set { PositionInFontogram = value; }
         }
+
+        public void Show(bool doShow)
+        {
+            PreviewFontogram.ShowLayer(PositionInFontogram, doShow);
+        }
+
 
         int _positionInFontogram;
         public int PositionInFontogram

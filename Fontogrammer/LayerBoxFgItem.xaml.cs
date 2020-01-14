@@ -86,7 +86,7 @@ namespace PergleLabs.Fontogrammer
             }
         }
 
-        public string LabelColor => _isShown ? "Black" : "#d95";
+        public string LabelColor => _isShown ? "Black" : "Red";
 
 
         public ListBoxItem ListBoxItem { get; private set; }

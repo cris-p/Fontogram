@@ -45,6 +45,8 @@ namespace PergleLabs.Fontogrammer
         void MoveUpSelectedLayer();
 
         void MoveDownSelectedLayer();
+
+        void ShowSelectedLayer(bool doShow);
     }
 
 
@@ -158,6 +160,30 @@ namespace PergleLabs.Fontogrammer
         }
     }
 
+    public class ShowLayerCommand
+        : SelectedLayerCommand
+    {
+
+        internal ShowLayerCommand(LayerEditor layerEditor)
+            : base(layerEditor)
+        {
+        }
+
+        public override bool CanExecute(object parameter)
+        {
+            return true;
+        }
+
+        public override void Execute(object cmdLayerItem)
+        {
+            UpdateSelection(cmdLayerItem);
+            
+            var listboxItem = cmdLayerItem as LayerBoxFgItem;
+
+            _LayerEditor.ShowSelectedLayer(listboxItem.IsShown);
+        }
+    }
+
 
     /// <summary>
     /// Interaction logic for LayerBoxControl.xaml
@@ -178,6 +204,8 @@ namespace PergleLabs.Fontogrammer
 
         public MoveDownLayerCommand _MoveDownCommand { get; }
 
+        public ShowLayerCommand _ShowCommand { get; }
+
 
         public LayerEditor Editor { get { return this; } }
 
@@ -192,6 +220,7 @@ namespace PergleLabs.Fontogrammer
             _AddCommand = new AddLayerCommand(this);
             _MoveUpCommand = new MoveUpLayerCommand(this);
             _MoveDownCommand = new MoveDownLayerCommand(this);
+            _ShowCommand = new ShowLayerCommand(this);
         }
 
 
@@ -228,6 +257,12 @@ namespace PergleLabs.Fontogrammer
 
             RepositionLayer(SelectedIndex, SelectedIndex + 1);
         }
+
+        public void ShowSelectedLayer(bool doShow)
+        {
+            ShowLayer(SelectedIndex, doShow);
+        }
+
 
         private void RepositionLayer(int originalLayerIndex, int newLayerIndex)
         {
@@ -280,6 +315,15 @@ namespace PergleLabs.Fontogrammer
             }
 
         }
+
+
+        private void ShowLayer(int layerIndex, bool doShow)
+        {
+            LayerBoxItem layerItem = LiveTopToBottomLayers[layerIndex];
+
+            layerItem.Show(doShow);
+        }
+
 
         public void SetLayerCreator(LayerObjectCreator creator)
         {

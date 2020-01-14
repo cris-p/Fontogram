@@ -127,6 +127,17 @@ namespace PergleLabs.UI
             }
         }
 
+
+        public void ShowLayer(int layerPos, bool doShow)
+        {
+            if (layerPos < 0 && layerPos >= _ParentGrid.Children.Count)
+                return;
+
+            FgLayer layer = _ParentGrid.Children[layerPos] as FgLayer;
+            layer.Visibility = doShow ? Visibility.Visible : Visibility.Hidden;
+        }
+
+
         private void ClearLayers()
         {
             _ParentGrid.Children.Clear();

@@ -57,6 +57,7 @@
                 HorizontalAlignment="Left" VerticalAlignment="Top"
                 IsChecked="{Binding IsShown}"
                 Foreground="{Binding LabelColor}"
+                Command="{Binding LayerEditor._ShowCommand}" CommandParameter="{Binding}"
                 ToolTip="show layer"
                 >
                 👁
