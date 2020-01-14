@@ -10,6 +10,9 @@
         WindowStartupLocation="CenterScreen"
         >
     <Window.Resources>
+        <Style TargetType="Button">
+            <Setter Property="Background" Value="#e8e8e8"/>
+        </Style>
     </Window.Resources>
 
     <Grid>
@@ -30,7 +33,7 @@
                 <RowDefinition Height="70"/>
                 <RowDefinition />
                 <RowDefinition Height="500"/>
-                <RowDefinition Height="100"/>
+                <RowDefinition Height="86"/>
             </Grid.RowDefinitions>
 
 
@@ -56,14 +59,14 @@
                 <Label 
                     VerticalAlignment="Top" HorizontalAlignment="Left"
                     Margin="16,22,0,0" Padding="0">
-                    Base Fontogram (ready-made)
+                    Base Fontogram ('ReadyMade')
                 </Label>
                 <ComboBox
                     VerticalAlignment="Top" HorizontalAlignment="Left"
-                    Margin="16,40,0,0" Width="160"
+                    Margin="16,40,0,0" Width="166"
                     SelectedIndex="{Binding ReadyMadeFontogramSelection}"
                     IsSynchronizedWithCurrentItem="True"
-                    Background="#e4e4e4"
+                    Background="#e8e8e8"
                     >
                     <ComboBox.Resources>
                         <CollectionViewSource x:Key="ReadyMadeTypes" Source="{Binding ReadyMadeFontogramChoices}" />
@@ -89,7 +92,8 @@
                     VerticalAlignment="Top" HorizontalAlignment="Right"
                     Margin="16,42,16,0" Width="110" Padding="0,0,0,2"
                     Grid.Column="1"
-                    Text="white" HorizontalContentAlignment="Center"
+                    Text="YELLOW" HorizontalContentAlignment="Center"
+                    Background="{Binding RelativeSource={RelativeSource self}, Path=Text}"
                     >
 
                 </TextBox>
@@ -122,7 +126,7 @@
                     </TabItem>
 
                     <TabItem
-                        Header="C# for pre-made Fontogram"
+                        Header="C# for 'ReadyMade' Fontogram"
                         Background="Honeydew"
                         >
                         <TextBox
@@ -332,7 +336,7 @@ Selected layer details (override Base)
 
 
                                 </Grid>
-                            
+
                                 <Grid
                                     Grid.Row="1"
                                     ToolTip="% values relative to control height"
@@ -828,7 +832,7 @@ Selected layer details (override Base)
                                             />
                                     </StackPanel>
                                 </Grid>
-                        
+
                             </Grid>
                         </GroupBox>
 
@@ -844,17 +848,16 @@ Selected layer details (override Base)
                 Grid.Row="3"
                 >
 
-                <Button
+                <!--<Button
                     Margin="16,8,16,16" HorizontalAlignment="Left"
                     Padding="16,0"
-                    Content="Save..."
-                    Background="#e4e4e4"
-                    />
+                    Content="SAVE..."
+                    />-->
 
 
                 <Border
-                    Margin="16,8,16,16" HorizontalAlignment="Right"
-                    Width="360"
+                    Margin="16,8,16,16" HorizontalAlignment="Stretch"
+                    Width="464"
                     BorderBrush="Silver" BorderThickness="1"
                     >
                     <Grid
@@ -864,13 +867,39 @@ Selected layer details (override Base)
                             VerticalAlignment="Top"
                             Background="#bbb"
                             >
-                        Export as Bitmap
+                            Export as Bitmap
                         </TextBlock>
+
+                        <Label
+                            HorizontalAlignment="Left" VerticalAlignment="Top"
+                            Margin="20,25,0,0"
+                            >
+                            Width
+                        </Label>
+                        <TextBox
+                            HorizontalAlignment="Left" VerticalAlignment="Top" HorizontalContentAlignment="Right"
+                            Margin="70,29,0,0" Width="38" Padding="2,0"
+                            >
+                            256
+                        </TextBox>
+
+                        <Label
+                            HorizontalAlignment="Left" VerticalAlignment="Top"
+                            Margin="150,25,0,0"
+                            >
+                            Height
+                        </Label>
+                        <TextBox
+                            HorizontalAlignment="Left" VerticalAlignment="Top" HorizontalContentAlignment="Right"
+                            Margin="200,29,0,0" Width="38" Padding="2,0"
+                            >
+                            256
+                        </TextBox>
+
                         <Button
-                            Margin="8" HorizontalAlignment="Right"
+                            Margin="0,24,16,8" HorizontalAlignment="Right"
                             Padding="16,0"
-                            Background="#e4e4e4"
-                            Content="Export..."
+                            Content="EXPORT..."
                             />
                     </Grid>
                 </Border>
@@ -938,7 +967,7 @@ Selected layer details (override Base)
                 
                 ReadyMade="Sample_ABClogo"
                 />
-                
+
                 <fg:Fontogram
                 Name="fgCBC"
                 Grid.Row="1"
@@ -947,7 +976,7 @@ Selected layer details (override Base)
                 ReadyMade="Sample_CBClogo"
                 />
             </Grid>
-            
+
             <fg:Fontogram
                 Name="fgLogo"
                 Grid.Column="2" Grid.Row="2"
@@ -955,7 +984,7 @@ Selected layer details (override Base)
                 ReadyMade="Fontogram_Logo"
                 />
 
-            
+
             <Grid
                 Grid.Row="2" Grid.Column="0"
                 >
@@ -1006,7 +1035,7 @@ Selected layer details (override Base)
                 />
             </Grid>
 
-            
+
             <fg:Fontogram
                 Name="fgSearcvhVideo"
                 Grid.Row="0" Grid.Column="2"

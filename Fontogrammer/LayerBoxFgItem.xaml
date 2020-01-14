@@ -19,7 +19,7 @@
                     <DrawingBrush.Drawing>
                         <DrawingGroup>
                             <GeometryDrawing Geometry="M0,0 L16,0 16,16, 0,16Z" Brush="White"/>
-                            <GeometryDrawing Geometry="M0,8 L16,8 16,16, 8,16 8,0 0,0Z" Brush="Silver"/>
+                            <GeometryDrawing Geometry="M0,8 L16,8 16,16, 8,16 8,0 0,0Z" Brush="Gainsboro"/>
                         </DrawingGroup>
                     </DrawingBrush.Drawing>
                 </DrawingBrush>
@@ -53,6 +53,15 @@
                 BorderThickness="1" BorderBrush="{Binding ItemBrush}"
                 />
 
+            <CheckBox
+                HorizontalAlignment="Left" VerticalAlignment="Top"
+                IsChecked="{Binding IsShown}"
+                Foreground="{Binding LabelColor}"
+                ToolTip="show layer"
+                >
+                👁
+            </CheckBox>
+            
             <Button
                 x:Name="btnMoveUp"
                 Content="MOVE UP"

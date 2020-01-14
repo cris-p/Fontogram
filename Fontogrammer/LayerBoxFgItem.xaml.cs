@@ -74,6 +74,21 @@ namespace PergleLabs.Fontogrammer
         }
 
 
+        private bool _isShown = true;
+        public bool IsShown
+        {
+            get { return _isShown; }
+            set
+            {
+                _isShown = value;
+                NotifyPropertyChanged();
+                NotifyPropertyChanged("LabelColor");
+            }
+        }
+
+        public string LabelColor => _isShown ? "Black" : "#d95";
+
+
         public ListBoxItem ListBoxItem { get; private set; }
 
 
