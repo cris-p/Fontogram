@@ -31,9 +31,14 @@ namespace PergleLabs.UI
     {
         public readonly string InDefault;
 
-        public TranslatedProperty(string def)
+        public readonly bool DoTrim;
+
+
+        public TranslatedProperty(string def, bool doTrim = true)
         {
             InDefault = def;
+            DoTrim = doTrim;
+
             _in = InDefault;
             Val = Translate(def);
         }
@@ -44,10 +49,8 @@ namespace PergleLabs.UI
             get { return _in; }
             set
             {
-                _in =
-                    string.IsNullOrWhiteSpace(value)
-                    ? InDefault
-                    : value;
+                _in = value == null ? "" : value;
+                _in = DoTrim ? _in.Trim() : _in;
 
                 Val = Translate(_in);
             }
@@ -59,8 +62,8 @@ namespace PergleLabs.UI
     class CopiedProperty
         : TranslatedProperty
     {
-        public CopiedProperty(string def)
-            : base(def)
+        public CopiedProperty(string def, bool doTrim = true)
+            : base(def, doTrim)
         { }
 
         protected override string Translate(string inVal)
@@ -264,7 +267,7 @@ namespace PergleLabs.UI
         {
             // TEXT
 
-            Text = new CopiedProperty(DEF_Text);
+            Text = new CopiedProperty(DEF_Text, false);
             TextFont = new CopiedProperty(DEF_TextFont);
             TextFontWeight = new CopiedProperty(DEF_TextFontWeight);
             TextColor = new CopiedProperty(DEF_TextColor);

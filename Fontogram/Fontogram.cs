@@ -235,7 +235,7 @@ namespace PergleLabs.UI
 
         void Create__Sample_VideoFaceSearch(ref string _Text, ref string _TextAttr, ref string _TextPosRel, ref string _TextTransform, ref string _BackAttr, ref string _BackPosRel, ref string _BackBorderNumbersRel, ref string _BackTransform)
         {
-            _Text =                 "🎞         |😐         |.          |🔍";
+            _Text =                 "🎞" +     "|😐" +    "|." +      "|🔍";
             _TextAttr =             ";;#888     |;bold;black|;;#4fff    |;bold;#800";
             _TextPosRel =           "130;4;-1   |32;-6;26   |245;16;-118|62;14;-17";
             _TextTransform =        "90;1;0.76  |           |0;;;-10    |";

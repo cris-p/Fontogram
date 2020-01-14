@@ -45,6 +45,29 @@ namespace PergleLabs.Fontogrammer
         }
 
 
+        private bool _isTextApplied = true;
+        public bool IsTextApplied
+        {
+            get { return _isTextApplied; }
+            set
+            {
+                _isTextApplied = value;
+                UpdateTextApplication();
+            }
+        }
+
+        private bool _isBackdropApplied = true;
+        public bool IsBackdropApplied
+        {
+            get { return _isBackdropApplied; }
+            set
+            {
+                _isBackdropApplied = value;
+                UpdateBackdropApplication();
+            }
+        }
+
+
         int _positionInFontogram;
         public int PositionInFontogram
         { 
@@ -62,6 +85,48 @@ namespace PergleLabs.Fontogrammer
             PreviewFontogram = fg;
 
             PositionInFontogram = pos;
+
+
+            UpdateTextApplication();
+
+            UpdateBackdropApplication();
+        }
+
+
+        private void UpdateTextApplication()
+        {
+            if (IsTextApplied)
+            {
+                UpdateText();
+                UpdateTextAttr();
+                UpdateTextPosRel();
+                UpdateTextTransform();
+            }
+            else
+            {
+                Text = "";
+                TextAttr = "";
+                TextPosRel = "";
+                TextTransform = "";
+            }
+        }
+
+        private void UpdateBackdropApplication()
+        {
+            if (IsBackdropApplied)
+            {
+                UpdateBackAttr();
+                UpdateBackPosRel();
+                UpdateBackBorderNumbersRel();
+                UpdateBackTransform();
+            }
+            else
+            {
+                BackAttr = "";
+                BackPosRel = "";
+                BackBorderNumbersRel = "";
+                BackTransform = "";
+            }
         }
 
     }

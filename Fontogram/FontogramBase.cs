@@ -31,9 +31,9 @@ namespace PergleLabs.UI
             // Split the value into its component values - first at layer level, then within layer.
             // Any "explicit" value overrides any "ready-made" value. Whitespace or null string means missing value.
 
-            if (string.IsNullOrWhiteSpace(readyMadeAttrString))
+            if (string.IsNullOrEmpty(readyMadeAttrString))
                 readyMadeAttrString = "";
-            if (string.IsNullOrWhiteSpace(explicitAttrString))
+            if (string.IsNullOrEmpty(explicitAttrString))
                 explicitAttrString = "";
 
             string[] readyMadePerLayerValues = readyMadeAttrString.Split('|');
@@ -60,7 +60,7 @@ namespace PergleLabs.UI
 
 
                     // explicit value takes priority
-                    string effectiveValue = string.IsNullOrWhiteSpace(explicitValue) ? readyMadeValue : explicitValue;
+                    string effectiveValue = string.IsNullOrEmpty(explicitValue) ? readyMadeValue : explicitValue;
 
                     effectiveIntraLayerValues[n] = effectiveValue;
                 }

@@ -265,6 +265,7 @@ Selected layer details (override Base)
                             <GroupBox.Header>
                                 <CheckBox
                                     x:Name="chkBackdrop"
+                                    IsChecked="{Binding Path=CurrentXamlLayer.IsBackdropApplied, UpdateSourceTrigger=PropertyChanged}"
                                     >
                                     Backdrop
                                 </CheckBox>
@@ -577,6 +578,7 @@ Selected layer details (override Base)
                             <GroupBox.Header>
                                 <CheckBox
                                     x:Name="chkText"
+                                    IsChecked="{Binding Path=CurrentXamlLayer.IsTextApplied, UpdateSourceTrigger=PropertyChanged}"
                                     >
                                     Text
                                 </CheckBox>
@@ -857,7 +859,6 @@ Selected layer details (override Base)
 
                 <Border
                     Margin="16,8,16,16" HorizontalAlignment="Stretch"
-                    Width="464"
                     BorderBrush="Silver" BorderThickness="1"
                     >
                     <Grid

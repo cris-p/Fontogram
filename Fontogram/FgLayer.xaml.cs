@@ -38,11 +38,14 @@ namespace PergleLabs.UI
 
         private static void DispatchValues(string cslVals, params TranslatedProperty[] xProperties)
         {
-            string[] partsIn = cslVals.Split(';').Select(part => part.Trim()).ToArray();
+            string[] partsInTrimmed = cslVals.Split(';').Select(part => part.Trim()).ToArray();
+            string[] partsIn = cslVals.Split(';');
 
             for (int i = 0; i < xProperties.Length; i++)
                 xProperties[i].In =
-                    partsIn.Length <= i ? null : partsIn[i];            
+                    partsIn.Length <= i
+                        ? null
+                        : (xProperties[i].DoTrim ? partsInTrimmed[i] : partsIn[i]);
         }
 
         private static string RevealValues(params TranslatedProperty[] xProperties)
