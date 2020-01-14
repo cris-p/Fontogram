@@ -1,20 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.ComponentModel;
-using System.Linq;
-using System.Runtime.CompilerServices;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 
 namespace PergleLabs.Fontogrammer
@@ -89,28 +75,6 @@ namespace PergleLabs.Fontogrammer
             colDefs[0].Width = new GridLength(W0, GridUnitType.Star);
             colDefs[1].Width = new GridLength(W1, GridUnitType.Star);
             colDefs[2].Width = new GridLength(W2, GridUnitType.Star);
-        }
-
-
-        private void BitmapExport_Click(object sender, RoutedEventArgs e)
-        {
-            RenderTargetBitmap renderTargetBitmap = new RenderTargetBitmap(300, 300, 96, 96, PixelFormats.Pbgra32);
-
-            var drawingVisual = new DrawingVisual();
-            using (var drawingContext = drawingVisual.RenderOpen())
-            {
-                var visualBrush = new VisualBrush(fgPreview);
-                drawingContext.DrawRectangle(visualBrush, null, new Rect(new Size(300, 300)));
-            }
-
-            renderTargetBitmap.Render(drawingVisual);
-
-            var encoder = new PngBitmapEncoder();
-
-            encoder.Frames.Add(BitmapFrame.Create(renderTargetBitmap));
-
-            using (System.IO.Stream stm = System.IO.File.Create(@"c:\DEV\~tmp\test.png"))
-                encoder.Save(stm);
         }
 
     }

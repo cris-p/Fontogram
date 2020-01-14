@@ -139,7 +139,7 @@
                     </TabItem>
 
                 </TabControl>
-                
+
 
                 <!--<Canvas
                     Grid.Column="1"
@@ -874,35 +874,45 @@ Selected layer details (override Base)
 
                         <Label
                             HorizontalAlignment="Left" VerticalAlignment="Top"
-                            Margin="20,25,0,0"
+                            Margin="27,25,0,0"
                             >
                             Width
                         </Label>
                         <TextBox
                             HorizontalAlignment="Left" VerticalAlignment="Top" HorizontalContentAlignment="Right"
-                            Margin="70,29,0,0" Width="38" Padding="2,0"
-                            >
-                            256
-                        </TextBox>
+                            Margin="70,29,0,0" Width="42" Padding="2,0"
+                            Text="{Binding ExportWidth}"
+                            />
 
                         <Label
                             HorizontalAlignment="Left" VerticalAlignment="Top"
-                            Margin="150,25,0,0"
+                            Margin="134,25,0,0"
                             >
                             Height
                         </Label>
                         <TextBox
                             HorizontalAlignment="Left" VerticalAlignment="Top" HorizontalContentAlignment="Right"
-                            Margin="200,29,0,0" Width="38" Padding="2,0"
+                            Margin="180,29,0,0" Width="42" Padding="2,0"
+                            Text="{Binding ExportHeight}"
+                            />
+
+                        <Label
+                            HorizontalAlignment="Left" VerticalAlignment="Top"
+                            Margin="265,25,0,0"
                             >
-                            256
-                        </TextBox>
+                            DPI
+                        </Label>
+                        <TextBox
+                            HorizontalAlignment="Left" VerticalAlignment="Top" HorizontalContentAlignment="Right"
+                            Margin="294,29,0,0" Width="30" Padding="2,0"
+                            Text="{Binding ExportResolution}"
+                            />
 
                         <Button
                             Margin="0,24,16,8" HorizontalAlignment="Right"
                             Padding="16,0"
                             Content="EXPORT..."
-                            Click="BitmapExport_Click"
+                            Command="{Binding _ExportBitmapCommand}" CommandParameter="{Binding ElementName=fgPreview}"
                             />
                     </Grid>
                 </Border>

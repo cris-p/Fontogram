@@ -1,4 +1,5 @@
-﻿using PergleLabs.UI;
+﻿using Microsoft.Win32;
+using PergleLabs.UI;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -8,14 +9,87 @@ using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Input;
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
+
 
 namespace PergleLabs.Fontogrammer
 {
 
+    interface BitmapFileParams
+    {
+        string ExportWidth { get; }
+        string ExportHeight { get; }
+        string ExportResolution { get; }
+    }
+
+
+    class ExportBitmapCommand
+        : ICommand
+    {
+        public event EventHandler CanExecuteChanged;
+
+        public bool CanExecute(object parameter)
+        {
+            return true;
+        }
+
+        public void Execute(object fgPreview)
+        {
+            SaveFileDialog saveDlg = new SaveFileDialog();
+            saveDlg.DefaultExt = "png";
+            saveDlg.Title = "Export Fontogram to PNG file";
+
+            if (saveDlg.ShowDialog() == false)
+                return;
+
+
+            int w;
+            if (!int.TryParse(_BitmapFileParams.ExportWidth, out w))
+                w = 256;
+            int h;
+            if (!int.TryParse(_BitmapFileParams.ExportHeight, out h))
+                h = 256;
+            double res;
+            if (!double.TryParse(_BitmapFileParams.ExportResolution, out res))
+                res = 256;
+
+            RenderTargetBitmap renderTargetBitmap = new RenderTargetBitmap(w, h, res, res, PixelFormats.Pbgra32);
+
+            var drawingVisual = new DrawingVisual();
+            using (var drawingContext = drawingVisual.RenderOpen())
+            {
+                var visualBrush = new VisualBrush((Visual)fgPreview);
+                drawingContext.DrawRectangle(visualBrush, null, new Rect(new Size(w, h)));
+            }
+
+            renderTargetBitmap.Render(drawingVisual);
+
+            var encoder = new PngBitmapEncoder();
+
+            encoder.Frames.Add(BitmapFrame.Create(renderTargetBitmap));
+
+            using (System.IO.Stream stream = System.IO.File.Create(saveDlg.FileName))
+                encoder.Save(stream);
+        }
+
+        public ExportBitmapCommand(BitmapFileParams bitmapFileParams)
+        {
+            _BitmapFileParams = bitmapFileParams;
+        }
+
+
+        private readonly BitmapFileParams _BitmapFileParams;
+
+    }
+
+
     partial class MainWndDataContext
         : INotifyPropertyChanged
         , LayerObjectCreator
+        , BitmapFileParams
     {
 
         public event PropertyChangedEventHandler PropertyChanged;
@@ -26,8 +100,12 @@ namespace PergleLabs.Fontogrammer
         }
 
 
+        public ICommand _ExportBitmapCommand { get; }
+
 
         private readonly Fontogram _FgPreview;
+
+
         public MainWndDataContext(Fontogram fgPreview, LayerEditor layerEditor)
         {
             _FgPreview = fgPreview;
@@ -35,6 +113,9 @@ namespace PergleLabs.Fontogrammer
             _LayerEditor = layerEditor;
             _LayerEditor.SetLayerCreator(this);
             _LayerEditor.LayersChanged += _LayerEditor_LayersChanged;
+
+
+            _ExportBitmapCommand = new ExportBitmapCommand(this);
 
 
             _CodegenXaml = new CodegenXaml(fgPreview);
@@ -137,6 +218,12 @@ namespace PergleLabs.Fontogrammer
             }
         }
 
+
+        public string ExportWidth { get; set; } = "256";
+
+        public string ExportHeight { get; set; } = "256";
+
+        public string ExportResolution { get; set; } = "96";
 
 
         private readonly CodegenXaml _CodegenXaml;
