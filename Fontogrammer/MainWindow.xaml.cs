@@ -91,6 +91,28 @@ namespace PergleLabs.Fontogrammer
             colDefs[2].Width = new GridLength(W2, GridUnitType.Star);
         }
 
+
+        private void BitmapExport_Click(object sender, RoutedEventArgs e)
+        {
+            RenderTargetBitmap renderTargetBitmap = new RenderTargetBitmap(300, 300, 96, 96, PixelFormats.Pbgra32);
+
+            var drawingVisual = new DrawingVisual();
+            using (var drawingContext = drawingVisual.RenderOpen())
+            {
+                var visualBrush = new VisualBrush(fgPreview);
+                drawingContext.DrawRectangle(visualBrush, null, new Rect(new Size(300, 300)));
+            }
+
+            renderTargetBitmap.Render(drawingVisual);
+
+            var encoder = new PngBitmapEncoder();
+
+            encoder.Frames.Add(BitmapFrame.Create(renderTargetBitmap));
+
+            using (System.IO.Stream stm = System.IO.File.Create(@"c:\DEV\~tmp\test.png"))
+                encoder.Save(stm);
+        }
+
     }
 
 }

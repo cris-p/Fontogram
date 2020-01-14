@@ -862,6 +862,7 @@ Selected layer details (override Base)
                     BorderBrush="Silver" BorderThickness="1"
                     >
                     <Grid
+                        x:Name="grdPreview"
                         >
                         <TextBlock
                             Padding="4,0"
@@ -901,6 +902,7 @@ Selected layer details (override Base)
                             Margin="0,24,16,8" HorizontalAlignment="Right"
                             Padding="16,0"
                             Content="EXPORT..."
+                            Click="BitmapExport_Click"
                             />
                     </Grid>
                 </Border>
