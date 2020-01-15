@@ -879,9 +879,10 @@ Selected layer details (override Base)
                             Width
                         </Label>
                         <TextBox
+                            Name="txtExportWidth"
                             HorizontalAlignment="Left" VerticalAlignment="Top" HorizontalContentAlignment="Right"
                             Margin="70,29,0,0" Width="42" Padding="2,0"
-                            Text="{Binding ExportWidth}"
+                            Text="{Binding ExportWidth, Mode=OneWayToSource, NotifyOnTargetUpdated=True}"
                             />
 
                         <Label
@@ -891,9 +892,10 @@ Selected layer details (override Base)
                             Height
                         </Label>
                         <TextBox
+                            Name="txtExportHeight"
                             HorizontalAlignment="Left" VerticalAlignment="Top" HorizontalContentAlignment="Right"
                             Margin="180,29,0,0" Width="42" Padding="2,0"
-                            Text="{Binding ExportHeight}"
+                            Text="{Binding ExportHeight, Mode=OneWayToSource, NotifyOnSourceUpdated=True, NotifyOnTargetUpdated=True}"
                             />
 
                         <Label
@@ -1115,6 +1117,8 @@ Selected layer details (override Base)
             <fg:Fontogram
                 Grid.Row="1" Grid.Column="1" Margin="4"
                 Name="fgPreview"
+                
+                SizeChanged="fgPreview_SizeChanged"
                 
                 ReadyMade="{Binding ReadyMadeSelectedValue}"
                 />

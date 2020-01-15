@@ -86,10 +86,17 @@ namespace PergleLabs.Fontogrammer
     }
 
 
+    interface PreviewResizeClient
+    {
+        void OnPreviewResize(int w, int h);
+    }
+
+
     partial class MainWndDataContext
         : INotifyPropertyChanged
         , LayerObjectCreator
         , BitmapFileParams
+        , PreviewResizeClient
     {
 
         public event PropertyChangedEventHandler PropertyChanged;
@@ -224,6 +231,16 @@ namespace PergleLabs.Fontogrammer
         public string ExportHeight { get; set; } = "256";
 
         public string ExportResolution { get; set; } = "96";
+
+        
+        public void OnPreviewResize(int w, int h)
+        {
+            ExportWidth = $"{w}";
+            NotifyPropertyChanged("ExportWidth");
+
+            ExportHeight = $"{h}";
+            NotifyPropertyChanged("ExportHeight");
+        }
 
 
         private readonly CodegenXaml _CodegenXaml;

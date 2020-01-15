@@ -17,7 +17,9 @@ namespace PergleLabs.Fontogrammer
         {
             InitializeComponent();
 
-            this.DataContext = new MainWndDataContext(fgPreview, uiLayerBox);
+            var dataContext = new MainWndDataContext(fgPreview, uiLayerBox);
+            _PreviewResizeClient = dataContext;
+            this.DataContext = dataContext;
         }
 
         private void GridSplitter_MouseDoubleClick(object sender, MouseButtonEventArgs e)
@@ -76,6 +78,20 @@ namespace PergleLabs.Fontogrammer
             colDefs[1].Width = new GridLength(W1, GridUnitType.Star);
             colDefs[2].Width = new GridLength(W2, GridUnitType.Star);
         }
+
+        private void fgPreview_SizeChanged(object sender, SizeChangedEventArgs e)
+        {
+            int w = (int)e.NewSize.Width;
+            int h = (int)e.NewSize.Height;
+
+            txtExportWidth.Text = $"{w}";
+            txtExportHeight.Text = $"{h}";
+
+            _PreviewResizeClient.OnPreviewResize(w, h);
+        }
+
+
+        private readonly PreviewResizeClient _PreviewResizeClient;
 
     }
 
