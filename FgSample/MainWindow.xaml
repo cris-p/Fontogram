@@ -6,21 +6,27 @@
         xmlns:local="clr-namespace:FgSample"
         xmlns:fg="clr-namespace:PergleLabs.UI;assembly=PergleLabs.Fontogram"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="320" Width="800">
     
     <Window.Resources>
         <Style TargetType="fg:Fontogram">
             <Setter Property="Height" Value="20"/>
             <Setter Property="Width" Value="30"/>
             <Setter Property="HorizontalAlignment" Value="Left"/>
+            <Setter Property="Margin" Value="4"/>
         </Style>
         <Style TargetType="local:CustomFgPack">
             <Setter Property="Height" Value="50"/>
             <Setter Property="Width" Value="50"/>
             <Setter Property="HorizontalAlignment" Value="Left"/>
+            <Setter Property="Margin" Value="4"/>
         </Style>
         <Style TargetType="Label">
             <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="Padding" Value="8,0"/>
+        </Style>
+        <Style TargetType="GroupBox">
+            <Setter Property="Padding" Value="4"/>
         </Style>
     </Window.Resources>
     
@@ -52,7 +58,7 @@
                     <fg:Fontogram
                         ReadyMade="DocState_OK"
                         />
-                    <Label>Document OK</Label>
+                    <Label>Document ready</Label>
                 </StackPanel>
 
                 <StackPanel Orientation="Horizontal">
@@ -130,9 +136,9 @@
             <fg:Fontogram
                 Width="160"
                 Height="160"
-                Text="0123456789"
-                TextAttr="Courier New;bold;crimson"
-                TextPosRel="16;;-30"
+                Text="123🙂ABC"
+                TextAttr="Courier New;bold;darkorange"
+                TextPosRel="20;;-33"
                 BackAttr="1;gainsboro;#08f"
                 BackBorderNumbersRel="5,0,15,40;50,80,17,40"
                 BackPosRel="80;80;;5"

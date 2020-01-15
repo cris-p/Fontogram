@@ -229,9 +229,9 @@ namespace PergleLabs.UI
         public const int UNIT_H_FRACTION = 100;
         const string UNIT_H_FRACTION_STR = "100";
 
-        #region Defaults (in original units)
+        #region Defaults (in units used by client)
 
-        const string DEF_Text = ""; // no text //?
+        const string DEF_Text = ""; // no text
         const string DEF_TextFont = "Segoe UI Emoji";
         const string DEF_TextFontWeight = "Normal";
         const string DEF_TextColor = "Black";
