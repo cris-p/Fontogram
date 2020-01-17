@@ -64,8 +64,8 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="CustomFgPack.cs" />
-    <Compile Include="CustomFgPackGen.cs">
+    <Compile Include="CustomFgPack\CustomFgPack.cs" />
+    <Compile Include="CustomFgPack\CustomFgPackGen.cs">
       <DependentUpon>CustomFgPackGen.tt</DependentUpon>
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -108,11 +108,11 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="CustomFgPackGen.tt">
+    <Content Include="CustomFgPack\CustomFgPackGen.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>CustomFgPackGen.cs</LastGenOutput>
     </Content>
-    <Resource Include="FgPropDefs.tt.txt" />
+    <Resource Include="CustomFgPack\FgPropDefs.tt.txt" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

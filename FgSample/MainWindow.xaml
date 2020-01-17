@@ -8,6 +8,7 @@
         mc:Ignorable="d"
         Title="Fontogram Sampler" Height="500" Width="800"
         ResizeMode="NoResize"
+        Background="WhiteSmoke"
         >
     
     <Window.Resources>
@@ -31,6 +32,7 @@
             <Setter Property="Padding" Value="4"/>
             <Setter Property="HorizontalAlignment" Value="Center"/>
             <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="Background" Value="White"/>
         </Style>
     </Window.Resources>
     
