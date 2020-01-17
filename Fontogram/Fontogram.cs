@@ -71,6 +71,14 @@ namespace PergleLabs.UI
 
         }
 
+        void Create__Fontogrammer_Logo(ref string _Text, ref string _TextAttr, ref string _TextPosRel, ref string _TextTransform, ref string _BackAttr, ref string _BackPosRel, ref string _BackBorderNumbersRel, ref string _BackTransform)
+        {
+            _Text = "🎞|F";
+            _TextAttr = ";;#555|Impact;;red";
+            _TextPosRel = "134;8.5;49|;-1";
+            _TextTransform = "90;;1.4";
+        }
+
         void Create__DocState_OK(ref string _Text, ref string _TextAttr, ref string _TextPosRel, ref string _TextTransform, ref string _BackAttr, ref string _BackPosRel, ref string _BackBorderNumbersRel, ref string _BackTransform)
         {
             _Text = "📄|✔";

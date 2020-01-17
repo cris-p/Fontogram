@@ -7,6 +7,7 @@ namespace PergleLabs.UI
     {
         Fontogram_Logo,
         Fontogram_LogoWide,
+        Fontogrammer_Logo,
         DocState_OK,
         DocState_Unknown,
         DocState_Missing,
@@ -66,6 +67,10 @@ namespace PergleLabs.UI
 
                 case ReadyMadeFontogram.Fontogram_LogoWide:
                     Create__Fontogram_LogoWide(ref _Text, ref _TextAttr, ref _TextPosRel, ref _TextTransform, ref _BackAttr, ref _BackPosRel, ref _BackBorderNumbersRel, ref _BackTransform);
+                    break;
+
+                case ReadyMadeFontogram.Fontogrammer_Logo:
+                    Create__Fontogrammer_Logo(ref _Text, ref _TextAttr, ref _TextPosRel, ref _TextTransform, ref _BackAttr, ref _BackPosRel, ref _BackBorderNumbersRel, ref _BackTransform);
                     break;
 
                 case ReadyMadeFontogram.DocState_OK:
@@ -179,6 +184,35 @@ namespace PergleLabs.UI
         }
 
         void Create__Fontogram_LogoWide(ref string _Text, ref string _TextAttr, ref string _TextPosRel, ref string _TextTransform, ref string _BackAttr, ref string _BackPosRel, ref string _BackBorderNumbersRel, ref string _BackTransform)
+        {
+
+            // " Text_L0 | ...(Layer1) | ...(Layer2) | ... "
+            _Text = " | ";
+
+            // " TextFont_L0;TextFontWeight_L0;TextColor_L0 | ...(Layer1) | ...(Layer2) | ... "
+            _TextAttr = " | ";
+
+            // " TextFontSize_L0;TextShiftX_L0;TextShiftY_L0 | ...(Layer1) | ...(Layer2) | ... "
+            _TextPosRel = " | ";
+
+            // " TextRotAngle_L0;TextScaleX_L0;TextScaleY_L0;TextSkewX_L0;TextSkewY_L0 | ...(Layer1) | ...(Layer2) | ... "
+            _TextTransform = " | ";
+
+            // " BackOpacity_L0;BackFillColor_L0;BackStrokeColor_L0 | ...(Layer1) | ...(Layer2) | ... "
+            _BackAttr = " | ";
+
+            // " BackWidth_L0;BackHeight_L0;BackShiftX_L0;BackShiftY_L0 | ...(Layer1) | ...(Layer2) | ... "
+            _BackPosRel = " | ";
+
+            // " BackStrokeThickness_L0;BackCornerRadius_L0 | ...(Layer1) | ...(Layer2) | ... "
+            _BackBorderNumbersRel = " | ";
+
+            // " BackRotAngle_L0;BackScaleX_L0;BackScaleY_L0;BackSkewX_L0;BackSkewY_L0 | ...(Layer1) | ...(Layer2) | ... "
+            _BackTransform = " | ";
+        
+        }
+
+        void Create__Fontogrammer_Logo(ref string _Text, ref string _TextAttr, ref string _TextPosRel, ref string _TextTransform, ref string _BackAttr, ref string _BackPosRel, ref string _BackBorderNumbersRel, ref string _BackTransform)
         {
 
             // " Text_L0 | ...(Layer1) | ...(Layer2) | ... "
