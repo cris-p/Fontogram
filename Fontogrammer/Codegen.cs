@@ -85,7 +85,7 @@ namespace PergleLabs.Fontogrammer
             _currentIndent += 4;
 
             codeText.AppendLine();
-            codeText.AppendLine($"{string.Empty.PadLeft(_currentIndent, ' ')}ReadyMade = \"{_ReferenceFontogram.ReadyMade}\";");
+            codeText.AppendLine($"{string.Empty.PadLeft(_currentIndent, ' ')}ReadyMade = \"{_ReferenceFontogram.ReadyMade}\"");
             codeText.AppendLine();
         }
 
@@ -98,7 +98,7 @@ namespace PergleLabs.Fontogrammer
 
         protected override void AddProperty(StringBuilder codeText, string propertyName, string propertyValue)
         {
-            codeText.AppendLine($"{string.Empty.PadLeft(_currentIndent, ' ')}{propertyName} = \"{propertyValue}\";");
+            codeText.AppendLine($"{string.Empty.PadLeft(_currentIndent, ' ')}{propertyName} = \"{propertyValue}\"");
         }
     }
 

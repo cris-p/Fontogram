@@ -40,6 +40,7 @@ namespace PergleLabs.Fontogrammer
         {
             SaveFileDialog saveDlg = new SaveFileDialog();
             saveDlg.DefaultExt = "png";
+            saveDlg.Filter = "PNG format - extension added automatically|*.png";
             saveDlg.Title = "Export Fontogram to PNG file";
 
             if (saveDlg.ShowDialog() == false)
