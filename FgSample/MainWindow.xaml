@@ -50,7 +50,14 @@
             <RowDefinition Height="6*"/>
             <RowDefinition Height="2*"/>
         </Grid.RowDefinitions>
-        
+
+        <fg:Fontogram
+            ReadyMade="Sample_HoodedSmiley"
+            Grid.Column="1" Grid.ColumnSpan="2" HorizontalAlignment="Center"
+            Grid.Row="1" Grid.RowSpan="2" VerticalAlignment="Center"
+            Width="140" Height="140" Margin="0,20,10,0"
+            />
+
         <GroupBox
             Grid.Column="0" Grid.Row="1"
             Header="Built into original Fontogram"
