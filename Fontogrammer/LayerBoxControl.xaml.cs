@@ -53,7 +53,7 @@ namespace PergleLabs.Fontogrammer
     public abstract class LayerCommand
         : ICommand
     {
-        public event EventHandler CanExecuteChanged;
+        public event EventHandler CanExecuteChanged { add { } remove { } }
 
         public virtual bool CanExecute(object parameter)
         {
