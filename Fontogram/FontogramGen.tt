@@ -30,6 +30,7 @@
                             "Sample_ABClogo",
                             "Sample_BBClogo",
                             "Sample_CBClogo",
+                            "Sample_HoodedSmiley",
     };
 
     const string READYMADE_PROPERTY_NAME = "ReadyMade";

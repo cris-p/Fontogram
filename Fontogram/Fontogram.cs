@@ -252,5 +252,17 @@ namespace PergleLabs.UI
             _BackBorderNumbersRel = ";20        |14;0       |;30        |;0";
             _BackTransform =        "           |           |           |-45";
         }
+
+        void Create__Sample_HoodedSmiley(ref string _Text, ref string _TextAttr, ref string _TextPosRel, ref string _TextTransform, ref string _BackAttr, ref string _BackPosRel, ref string _BackBorderNumbersRel, ref string _BackTransform)
+        {
+            _Text = "|🙂";
+            _TextAttr = "|;;silver";
+            _TextPosRel = "|42;-6.3;-12";
+            _TextTransform = "|;0.66;;;10";
+            _BackAttr = ";whitesmoke;gainsboro|;whitesmoke;gainsboro";
+            _BackPosRel = "80;40;;25|50;50;3;-10";
+            _BackBorderNumbersRel = "2.5,2.5,2.5,0;22,22,0,0|2.5,2.5,20,0;20,29,27,25";
+        }
+
     }
 }
