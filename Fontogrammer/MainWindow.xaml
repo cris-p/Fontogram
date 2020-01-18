@@ -183,7 +183,6 @@
                         HorizontalContentAlignment="Center"
                         ScrollViewer.VerticalScrollBarVisibility="Visible"
                         SelectedItem="{Binding CurrentXamlLayer}"
-                        SelectedIndex="{Binding CurrentXamlLayerIndex}"
                         >
                         <ListBox.ItemTemplate>
                             <DataTemplate>
