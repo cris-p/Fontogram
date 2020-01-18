@@ -26,7 +26,7 @@ namespace PergleLabs.UI
             _TextPosRel = "100;26;7|70;-16.4;-0.6|70;-12;1";
 
             // " TextRotAngle_L0;TextScaleX_L0;TextScaleY_L0;TextSkewX_L0;TextSkewY_L0 | ...(Layer1) | ...(Layer2) | ... "
-            _TextTransform = "-10;1;0.3;60;-20|-15.8;0.9;1.7;-18,17|-15.8;0.9;1.7;-18,17";
+            _TextTransform = "-10;1;0.3;60;-20|-15.8;0.9;1.7;-18|-15.8;0.9;1.7;-18";
 
             // " BackOpacity_L0;BackFillColor_L0;BackStrokeColor_L0 | ...(Layer1) | ...(Layer2) | ... "
             _BackAttr = ";#7baa;#cbaa";
@@ -49,7 +49,7 @@ namespace PergleLabs.UI
             _Text = "🎞|Abc|Abc";
 
             // " TextFont_L0;TextFontWeight_L0;TextColor_L0 | ...(Layer1) | ...(Layer2) | ... "
-            _TextAttr = ";;#d999|Courier New;bold;#304f|Courier New;bold;#e04f";
+            _TextAttr = ";;#d999|Courier New;bold;#404f|Courier New;bold;#e04f";
 
             // " TextFontSize_L0;TextShiftX_L0;TextShiftY_L0 | ...(Layer1) | ...(Layer2) | ... "
             _TextPosRel = "100;58;-15|70;-16;-5|70;-13;-4";
