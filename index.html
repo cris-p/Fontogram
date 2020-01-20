@@ -10,14 +10,15 @@
 
         body
         {
-            font-family: 'Anonymous Pro', "Lucida Console", Monaco, monospace;
+            font-family: 'Anonymous Pro', 'Lucida Console', Monaco, monospace;
             font-size: 120%;
             text-align: left;
         }
 
         p
         {
-            font-size: 85%;
+            font-size: 84%;
+            margin: 1.5em 0;
         }
 
         #container
@@ -53,12 +54,30 @@
 
         a
         {
-            color: #04c;            
+            color: #04c;
         }
         a:hover
         {
             font-weight: bold;
+            color: #8bf;
         }
+
+        div.note
+        {
+            margin: 1.5em 0 1em 0;
+            padding: 1em;
+            font-size: 80%;
+            background-color: white;
+            border: 1px solid gainsboro;            
+        }
+
+        div.note h2
+        {
+            margin: 0;
+            font-size: 120%;
+        }
+
+        div.note ul { margin-bottom: 2mm; }
 
     </style>
 
@@ -68,17 +87,23 @@
 
     <div id="container">
 
+        <div style="margin: 1em 0 -2em 0; text-align: right; font-family: Georgia, 'Times New Roman', Times, serif">
+            <a href="http://pergle.com"
+                style="border: 1px solid #bdf; background-color: #f0f8ff; border-radius: 1mm; display: inline-block; padding: 1mm 0 1.5mm 0; width: 10em; text-align: center">
+                PERGLE Labs</a>
+        </div>
+
         <h1>Fontogram</h1>
         <span style="font-size: 60%">(more detailed instructions to come)</span>
-        <div style="display: grid; text-align: center; margin: 5mm 0; padding: 3mm; border: 1px solid silver; border-width: 1px 0; grid-template-columns: auto auto auto auto;">
+        <div style="display: grid; text-align: center; margin: 5mm 0; padding: 3mm; border: 1px solid silver; border-width: 1px 0; grid-template-columns: auto auto auto auto; grid-column-gap: 4mm;">
             <div>
-                    <a href="https://github.com/cris-p/Fontogram/tree/master/Fontogram"><i>Fontogram</i> library</a>
+                    <a href="https://github.com/cris-p/Fontogram/tree/master/Fontogram"><b>Fontogram</b> library</a>
             </div>
             <div>
-                    <a href="https://github.com/cris-p/Fontogram/blob/master/FgSample/MainWindow.xaml#L150">sample code</a>
+                    <a href="https://github.com/cris-p/Fontogram/blob/master/FgSample">sample code</a>
             </div>
             <div>
-                    <a href="https://github.com/cris-p/Fontogram/tree/master/Fontogrammer"><i>Fontogrammer</i> tool</a>
+                    <a href="https://github.com/cris-p/Fontogram/tree/master/Fontogrammer"><b>Fontogrammer</b> app</a>
             </div>
             <div>
                     <a href="https://github.com/cris-p/Fontogram/archive/master.zip">download project code</a>
@@ -98,31 +123,123 @@
             </span>
             (of particular Windows fonts).
 
-            <fgName>Fontogram</fgName> is a method and library for generating a large variety of such icons
-            for Microsoft .NET WPF applications, using a simple scheme for combining WPF Border shapes with
-            symbols of any installed fonts. 
+            <fgName>Fontogram</fgName> is a method, WPF control type name, and library for generating a large variety of
+            such icons for Microsoft .NET WPF applications, using a simple scheme for combining characters of any installed
+            fonts with WPF Border shapes used as backdrop.
         </p>
         <p>
-            The screenshot below shows more Fontogram examples.
+            This screenshot of the included sample app shows more Fontogram examples:
         </p>
 
         <img src="_homepage/fg-sampler.png"/>
 
         <p>
-            One creates an icon by creating an instance of the WPF control class 'Fontogram'. The provided sample
-            code shows how to create custom Fontograms in XAML and how to create reusable Fontogram packs in C# code.
-            Info about Fontogram attributes can be found in the comments for some of the built-in Fontograms:
-            <a href="https://github.com/cris-p/Fontogram/blob/master/Fontogram/Fontogram.cs#L11">Fontogram.cs</a>.
+            You create an icon by creating an instance of the WPF control class 'Fontogram'. You specify a backdrop and a text,
+            using any desired attribute values to modify them from their defaults. Multiple backdrop-text pairs can be specified
+            in the same Fontogram, as different layers.
         </p>
 
+        <div class="note">
+            <h2>Why <fgName>Fontogram</fgName></h2>
+            <ul>
+                <li>
+                    Useful: potentially good looking icons created with simple XAML/C#.
+                </li>
+                <li>
+                    Removes complexity and repetition in creating a set of icons with WPF methods.
+                </li>
+                <li>
+                    Minimal learning required: the creation of text+Border objects and the setting of control attributes
+                    are already familiar to any WPF developer.
+                </li>
+                <li>
+                    Productivity: easy for WPF developers to think in terms of text and Border objects, with their specific
+                    attributes. The associated <fgName>Fontogrammer</fgName> app makes things even easier.
+                </li>
+                <li>
+                    Quality: the operating system is very good at rendering fonts at any size.
+                </li>
+                <li>
+                    Scalability: Fontograms are vector based, so no pixelation; antialiasing makes edges look smooth.
+                </li>
+                <li>
+                    Color: works around WPF's inability to render emoji/symbol fonts in multicolor.
+                </li>
+                <li>
+                    Flexibility: arbitrary number of backdrop and symbol objects; decent array of presentation and transformation parameters.
+                </li>
+            </ul>
+        </div>
+
         <p>
-            The library and sample code is completed by the <fgName>Fontogrammer</fgName> tool, which
-            makes it easy to design custom Fontograms with their specific creation code.
+            The provided sample
+            code shows how to create <a href="https://github.com/cris-p/Fontogram/blob/master/FgSample/MainWindow.xaml#L150">
+                custom Fontograms in XAML</a>
+            and <a href="https://github.com/cris-p/Fontogram/tree/master/FgSample/CustomFgPack">
+                reusable Fontogram packs</a>
+            in C# code. The code generated for the custom Fontograms includes 
+            <a href="https://github.com/cris-p/Fontogram/blob/master/FgSample/CustomFgPack/CustomFgPackGen.cs#L81">
+                comments that explain the control attributes</a>.
+        </p>
+
+        <div class="note">
+            <h2>What fonts</h2>
+            <p>
+                Windows 10 (which Fontogram should be used on) has some useful fonts - containing emojis, symbols, glyphs,
+                object icons:
+            </p>
+            <ul>
+                    <li>Segoe UI Emoji</li>
+                    <li>Segoe MDL2 Assets</li>
+                    <li>Webdings</li>
+                    <li>Wingdings</li>
+                    <li>Wingdings 2</li>
+                    <li>Wingdings 3</li>
+                </ul>
+        </div>
+
+        <p>
+            The library and sample code are accompanied by the <fgName>Fontogrammer</fgName> tool, which displays a live preview
+            of the Fontogram being designed, and generates the specific XAML and C# code that you need to use.
+            Fontogrammer can also be used as documentation for Fontogram attributes - see the fields' tooltips.
         </p>
 
         <img src="_homepage/fgmer.png"/>
 
-    </div>
+        <div class="note">
+                <h2>When <fgName>Fontogram</fgName></h2>
+                <ul>
+                    <li>
+                        user interface needs some color or pictorial aids
+                    </li>
+                    <li>
+                        need to display icons at arbitrary sizes - especially on the small side
+                    </li>
+                    <li>
+                        an adequate icon library is not available
+                    </li>
+                    <li>
+                        no help from a specialized icon designer available
+                    </li>
+                    <li>
+                        must not spend much time on icons
+                    </li>
+                    <li>
+                        simple monochrome font-based icons are not satisfactory
+                    </li>
+                </ul>
+            </div>
+    
+            <p>
+                Enjoy!
+            </p>
+            
+            <p style="margin: 3em 0 0 9em; font-family: 'Comic Sans MS', cursive, sans-serif; font-style: italic">
+                Cris
+                <br/>
+                2020-01-19
+            </p>
+        </div>
 
 </body>
 
