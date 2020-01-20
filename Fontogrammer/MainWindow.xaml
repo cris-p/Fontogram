@@ -290,6 +290,7 @@ Selected layer details (override Base)
                                     <!--Opacity-->
                                     <StackPanel
                                         Margin="4,0"
+                                        ToolTip="Backdrop OPACITY | 0...1 | default=1"
                                         >
                                         <Label
                                             Padding="0"
@@ -306,6 +307,7 @@ Selected layer details (override Base)
                                     <StackPanel
                                         Margin="4,0"
                                         Grid.Column="1"
+                                        ToolTip="Backdrop FILL COLOR | CSS/XAML format | default='Transparent'"
                                         >
                                         <Label
                                             Padding="0"
@@ -322,6 +324,7 @@ Selected layer details (override Base)
                                     <StackPanel
                                         Margin="4,0"
                                         Grid.Column="2"
+                                        ToolTip="Backdrop BORDER color | CSS/XAML format | default='Black'"
                                         >
                                         <Label
                                             Padding="0"
@@ -352,6 +355,7 @@ Selected layer details (override Base)
                                     <!--Width-->
                                     <StackPanel
                                         Margin="4,0"
+                                        ToolTip="Backdrop WIDTH, in Fontogram height percentages | default=100"
                                         >
                                         <Label
                                             Padding="0"
@@ -369,6 +373,7 @@ Selected layer details (override Base)
                                     <StackPanel
                                         Margin="4,0"
                                         Grid.Column="1"
+                                        ToolTip="Backdrop HEIGHT, in Fontogram height percentages | default=100"
                                         >
                                         <Label
                                             Padding="0"
@@ -386,6 +391,7 @@ Selected layer details (override Base)
                                     <StackPanel
                                         Grid.Column="2"
                                         Margin="4,0,2,0" Width="36"
+                                        ToolTip="Backdrop X SHIFT, in Fontogram height percentages | default=0"
                                         >
                                         <Label
                                             Padding="0"
@@ -403,6 +409,7 @@ Selected layer details (override Base)
                                     <StackPanel
                                         Grid.Column="3"
                                         Margin="2,0,0,0" Width="36"
+                                        ToolTip="Backdrop Y SHIFT, in Fontogram height percentages | default=0"
                                         >
                                         <Label
                                             Padding="0"
@@ -430,7 +437,7 @@ Selected layer details (override Base)
                                     <StackPanel
                                         Grid.Column="0"
                                         Margin="4,0"
-                                        ToolTip="one to four % values, relative to control height; e.g., '1,1,2,2'"
+                                        ToolTip="Backdrop LINE THICKNESS, in Fontogram height percentages | XAML format: 1, 2, or 4 values, for the different sides | default=0"
                                         >
                                         <Label
                                             Padding="0"
@@ -448,7 +455,7 @@ Selected layer details (override Base)
                                     <StackPanel
                                         Grid.Column="1"
                                         Margin="4,0"
-                                        ToolTip="one or four % values, relative to control height; e.g., '0,10,0,10'"
+                                        ToolTip="Backdrop rectangle CORNER RADIUS, in Fontogram height percentages | XAML format: 1 or 4 values, for the different corners | default=5"
                                         >
                                         <Label
                                             Padding="0"
@@ -466,7 +473,7 @@ Selected layer details (override Base)
                                     <StackPanel
                                         Grid.Column="2"
                                         Margin="4,0"
-                                        ToolTip="Rotation angle, in degrees"
+                                        ToolTip="Backdrop ROTATION ANGLE, in degrees | default=0"
                                         >
                                         <Label
                                             Padding="0"
@@ -499,6 +506,7 @@ Selected layer details (override Base)
                                     <StackPanel
                                         Grid.Column="0"
                                         Margin="4,0,0,0"
+                                        ToolTip="Backdrop X SCALING FACTOR | default=1"
                                         >
                                         <Label
                                             Padding="0"
@@ -516,6 +524,7 @@ Selected layer details (override Base)
                                     <StackPanel
                                         Grid.Column="1"
                                         Margin="4,0"
+                                        ToolTip="Backdrop Y SCALING FACTOR | default=1"
                                         >
                                         <Label
                                             Padding="0"
@@ -533,7 +542,7 @@ Selected layer details (override Base)
                                     <StackPanel
                                         Grid.Column="3"
                                         Margin="4,0,0,0"
-                                        ToolTip="Angle, in degrees"
+                                        ToolTip="Backdrop X SKEW value, in degrees | default=0"
                                         >
                                         <Label
                                             Padding="0"
@@ -551,7 +560,7 @@ Selected layer details (override Base)
                                     <StackPanel
                                         Grid.Column="4"
                                         Margin="4,0"
-                                        ToolTip="Angle, in degrees"
+                                        ToolTip="Backdrop Y SKEW value, in degrees | default=0"
                                         >
                                         <Label
                                             Padding="0"
@@ -604,6 +613,7 @@ Selected layer details (override Base)
                                     FontFamily="{Binding ElementName=txtFontName, Path=Text}"
                                     FontWeight="{Binding ElementName=txtFontWeight, Path=Text}"
                                     Foreground="{Binding ElementName=txtTextColor, Path=Text}"
+                                    ToolTip='Current layer text - e.g. "🙂" - default="" (empty)'
                                     />
 
                                 <!--Font-->
@@ -629,6 +639,7 @@ Selected layer details (override Base)
                                     Width="160" Margin="4,0" HorizontalAlignment="Right"
                                     Text="{Binding Path=CurrentXamlLayer.TextFont_, UpdateSourceTrigger=PropertyChanged}"
                                     Background="Transparent"
+                                    ToolTip="Text FONT NAME | CSS/XAML format | default='Segoe UI Emoji'"
                                     />
 
                                 <!--Font weight-->
@@ -636,6 +647,7 @@ Selected layer details (override Base)
                                     Grid.Row="2"
                                     Margin="4,0" HorizontalAlignment="Left"
                                     Width="90"
+                                    ToolTip="Text FONT WEIGHT | CSS/XAML format | default='Normal'"
                                     >
                                     <Label
                                         Padding="0"
@@ -654,6 +666,7 @@ Selected layer details (override Base)
                                     Grid.Row="2"
                                     Margin="4,0" HorizontalAlignment="Right"
                                     Width="90"
+                                    ToolTip="Text COLOR | CSS/XAML format | default='Black'"
                                     >
                                     <Label
                                         Padding="0"
@@ -681,6 +694,7 @@ Selected layer details (override Base)
                                     <!--Font size-->
                                     <StackPanel
                                         Margin="4,0"
+                                        ToolTip="Text FONT SIZE, in Fontogram height percentages | default=100"
                                         >
                                         <Label
                                             Padding="0"
@@ -699,6 +713,7 @@ Selected layer details (override Base)
                                     <StackPanel
                                         Grid.Column="1"
                                         Margin="4,0,2,0" Width="36"
+                                        ToolTip="Text X SHIFT, in Fontogram height percentages | default=0"
                                         >
                                         <Label
                                             Padding="0"
@@ -716,6 +731,7 @@ Selected layer details (override Base)
                                     <StackPanel
                                         Grid.Column="2"
                                         Margin="2,0,0,0" Width="36"
+                                        ToolTip="Text Y SHIFT, in Fontogram height percentages | default=0"
                                         >
                                         <Label
                                             Padding="0"
@@ -734,8 +750,8 @@ Selected layer details (override Base)
                                 <StackPanel
                                     Grid.Row="3"
                                     Margin="4,0"
-                                    ToolTip="Rotation angle, in degrees"
                                     HorizontalAlignment="Right" Width="34"
+                                    ToolTip="Text ROTATION ANGLE, in degrees | default=0"
                                     >
                                     <Label
                                         Padding="0"
@@ -767,6 +783,7 @@ Selected layer details (override Base)
                                     <StackPanel
                                         Grid.Column="0"
                                         Margin="4,0,0,0"
+                                        ToolTip="Text X SCALING FACTOR | default=1"
                                         >
                                         <Label
                                             Padding="0"
@@ -784,6 +801,7 @@ Selected layer details (override Base)
                                     <StackPanel
                                         Grid.Column="1"
                                         Margin="4,0"
+                                        ToolTip="Text Y SCALING FACTOR | default=1"
                                         >
                                         <Label
                                             Padding="0"
@@ -801,7 +819,7 @@ Selected layer details (override Base)
                                     <StackPanel
                                         Grid.Column="3"
                                         Margin="4,0,0,0"
-                                        ToolTip="Angle, in degrees"
+                                        ToolTip="Text X SKEW value, in degrees | default=0"
                                         >
                                         <Label
                                             Padding="0"
@@ -819,7 +837,7 @@ Selected layer details (override Base)
                                     <StackPanel
                                         Grid.Column="4"
                                         Margin="4,0"
-                                        ToolTip="Angle, in degrees"
+                                        ToolTip="Text Y SKEW value, in degrees | default=0"
                                         >
                                         <Label
                                             Padding="0"
