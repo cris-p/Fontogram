@@ -136,20 +136,24 @@
             </span>
             (of particular Windows fonts).
 
-            <fgName>Fontogram</fgName> is a method, WPF control type name, and library for generating a large variety of
-            such icons for Microsoft .NET WPF applications, using a simple scheme for combining characters of any installed
-            fonts with WPF Border shapes used as backdrop.
+            <fgName>Fontogram</fgName> is a method, control type name, and library for generating a large variety of
+            such icons for Microsoft .NET WPF applications, using a simple scheme for easily combining WPF Label and
+            Border elements, to create text based on any installed fonts, overlayed on top of a custom backdrop.
         </p>
         <p>
-            This screenshot of the included sample app shows more Fontogram examples:
+            This screenshot of the included sample app shows more examples of icons created with Fontogram:
         </p>
 
         <img src="_homepage/fg-sampler.png"/>
 
         <p>
+            The Fontogram control instances and the generated images are called <i>fontograms</i>.
+            The <fgName>Fontogrammer</fgName> application is a fontogram design tool.
+        </p>
+        <p>
             You create an icon by creating an instance of the WPF control class 'Fontogram'. You specify a backdrop and a text,
             using any desired attribute values to modify them from their defaults. Multiple backdrop-text pairs can be specified
-            in the same Fontogram, as different layers.
+            in the same fontogram, as different layers.
         </p>
 
         <div class="note">
@@ -162,7 +166,7 @@
                     Removes complexity and repetition in creating a set of icons with WPF methods.
                 </li>
                 <li>
-                    Comfort: working with TextBlock-like and Border objects, and setting their attributes
+                    Comfort: working with Label and Border objects, and setting their attributes
                     are already familiar to any WPF developer.
                 </li>
                 <li>
@@ -173,7 +177,7 @@
                     Quality: the operating system is very good at rendering fonts at any size.
                 </li>
                 <li>
-                    Scalability: Fontograms are vector based, so no pixelation; edges always look smooth.
+                    Scalability: fontograms are vector based, so no pixelation; edges always look smooth.
                 </li>
                 <li>
                     Color: works around WPF's inability to render emoji fonts in multicolor.
@@ -188,10 +192,10 @@
         <p>
             The provided sample
             code shows how to create <a href="https://github.com/cris-p/Fontogram/blob/master/FgSample/MainWindow.xaml#L150">
-                custom Fontograms in XAML</a>
+                custom fontograms in XAML</a>
             and <a href="https://github.com/cris-p/Fontogram/tree/master/FgSample/CustomFgPack">
-                reusable Fontogram packs</a>
-            in C# code. The code generated for the custom Fontograms includes 
+                reusable fontogram packs</a>
+            in C# code. The code generated for the custom fontograms includes 
             <a href="https://github.com/cris-p/Fontogram/blob/master/FgSample/CustomFgPack/CustomFgPackGen.cs#L81">
                 comments that explain the control attributes</a>.
         </p>
@@ -215,7 +219,7 @@
 
         <p>
             The library and sample code are accompanied by the <fgName>Fontogrammer</fgName> tool, which displays a live preview
-            of the Fontogram being designed, and generates the specific XAML and C# code that you need to use.
+            of the fontogram being designed, and generates the specific XAML and C# code that you need to use.
             Fontogrammer can also be used as documentation for Fontogram attributes - see the fields' tooltips.
         </p>
 
