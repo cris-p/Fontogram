@@ -102,12 +102,6 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Fontogram\Fontogram.csproj">
-      <Project>{3156bff7-21b4-48e8-b4c8-9e6e320eb7d1}</Project>
-      <Name>Fontogram</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <Content Include="CustomFgPack\CustomFgPackGen.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>CustomFgPackGen.cs</LastGenOutput>
@@ -116,6 +110,11 @@
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Fontogram">
+      <Version>1.0.0</Version>
+    </PackageReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

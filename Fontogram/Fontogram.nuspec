@@ -16,7 +16,7 @@
     <description>Easily create scalable, colorful font-based icons in WPF applications.</description>
     <copyright>Copyright © 2020 Cris Pergel</copyright>
     <tags>fontogram font icon color wpf</tags>
-    <repository type="git" url="https://github.com/cris-p/Fontogram" branch="master" commit="....." />
+    <repository type="git" url="https://github.com/cris-p/Fontogram" branch="master" commit="2e0ce2c471e173dfda5cf6b0f30d5dffb2e62ddf" />
     <dependencies>
       <group targetFramework=".NETFramework4.6.2"/>
     </dependencies>
