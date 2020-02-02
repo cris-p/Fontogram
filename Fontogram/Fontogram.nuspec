@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package >
+
+  <metadata>
+    <id>Fontogram</id>
+    <version>1.0.0</version>
+    <title>Fontogram</title>
+    <authors>Cris Pergel</authors>
+    <owners>cris-p</owners>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <license type="expression">MIT</license>
+    <licenseUrl>https://licenses.nuget.org/MIT</licenseUrl>
+    <icon>fg-nuget.png</icon>
+    <projectUrl>https://fontogram.pergle.com/</projectUrl>
+    <iconUrl>https://github.com/cris-p/Fontogram/raw/master/_homepage/fg-nuget.png</iconUrl>
+    <description>Easily create scalable, colorful font-based icons in WPF applications.</description>
+    <copyright>Copyright © 2020 Cris Pergel</copyright>
+    <tags>fontogram font icon color wpf</tags>
+    <repository type="git" url="https://github.com/cris-p/Fontogram" branch="master" commit="....." />
+    <dependencies>
+      <group targetFramework=".NETFramework4.6.2"/>
+    </dependencies>
+  </metadata>
+
+  <files>
+      <file src="fg-nuget.png" target="" />
+  </files>
+
+</package>

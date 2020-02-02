@@ -135,23 +135,23 @@
     <Resource Include="fontogram.ico" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="FgLayerProps.tt">
+    <None Include="FgLayerProps.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>FgLayerProps.cs</LastGenOutput>
-    </Content>
-    <Content Include="FontogramGen.tt">
+    </None>
+    <None Include="FontogramGen.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>FontogramGen.cs</LastGenOutput>
-    </Content>
-    <Content Include="FontogramProperties.tt">
+    </None>
+    <None Include="FontogramProperties.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>FontogramProperties.cs</LastGenOutput>
-    </Content>
-    <Resource Include="FgPropDefs.tt.txt" />
-    <Content Include="FontogramBaseProps.tt">
+    </None>
+    <Content Include="FgPropDefs.tt.txt" />
+    <None Include="FontogramBaseProps.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>FontogramBaseProps.cs</LastGenOutput>
-    </Content>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

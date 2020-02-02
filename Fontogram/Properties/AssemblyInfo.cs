@@ -8,9 +8,9 @@ using System.Windows;
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 [assembly: AssemblyTitle("Fontogram")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyDescription("Easily create scalable, colorful font-based icons in WPF applications.")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
+[assembly: AssemblyCompany("PERGLE Labs")]
 [assembly: AssemblyProduct("Fontogram")]
 [assembly: AssemblyCopyright("Copyright © 2020 Cris Pergel")]
 [assembly: AssemblyTrademark("")]
@@ -53,3 +53,4 @@ using System.Windows;
 // [assembly: AssemblyVersion("1.0.*")]
 [assembly: AssemblyVersion("1.0.0.0")]
 [assembly: AssemblyFileVersion("1.0.0.0")]
+[assembly: Guid("92B7196B-EFBF-4C6A-875F-BB7090BA73BB")]
