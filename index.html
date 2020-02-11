@@ -13,6 +13,7 @@
             font-family: 'Anonymous Pro', 'Lucida Console', Monaco, monospace;
             font-size: 120%;
             text-align: left;
+            background-color: #f8faff;
         }
 
         h1
@@ -20,6 +21,7 @@
             color: #42d;
             font-size: 11mm;
             text-shadow: 0 0 1.5mm #68f;
+            margin: 0 1mm;
         }
 
         p
@@ -28,14 +30,34 @@
             margin: 1.5em 0;
         }
 
+        #banner
+        {
+            position: fixed;
+            background-color: #f8faff;
+            top: 0;
+            right: 0;
+            left: 0;
+        }
+        #heading
+        {
+            margin: 0 auto;
+            width: 80%;
+            padding: 0 2mm 5mm 2mm;
+            border-bottom: 1px dotted black;
+        }
+
         #container
         {
-            background-color: #f7faff;
-            border-radius: 5mm;
-            border: 1px solid #e0e3ff;
-            margin: 1cm auto;
-            padding: 1mm 1cm 1cm 1cm;
+            margin: 0 auto;
             width: 80%;
+        }
+
+        #page
+        {
+            background-color: white;
+            margin: 7.8cm 0 1cm 0;
+            padding: 1mm 1cm 1cm 1cm;
+            box-shadow: 0 1px 5px black;
         }
 
         img
@@ -43,15 +65,15 @@
             display: block;
             margin-left: auto;
             margin-right: auto;
-            box-shadow: 0 0 3mm #666;
         }
         img.logo
         {
-            border: 2px solid white;
+            border: 1px solid gray;
+            padding: 2px;
             border-radius: 24px;
-            width: 200px;
-            height: 200px;
-            box-shadow: 0 0 1mm black;
+            width: 150px;
+            height: 150px;
+            margin-top: -7mm;
         }
 
         fgName
@@ -63,11 +85,13 @@
         a
         {
             color: #05c;
+            text-decoration-style: dotted;
         }
         a:hover
         {
             font-weight: bold;
             color: #8bf;
+            text-decoration-style: solid;
         }
 
         div.note
@@ -75,8 +99,8 @@
             margin: 1.5em 0 1em 0;
             padding: 1em;
             font-size: 80%;
-            background-color: white;
-            box-shadow: 0 0 0.7mm #77b;
+            background-color: whitesmoke;
+            box-shadow: 0 0 0.6mm #000;
         }
 
         div.note h2
@@ -96,35 +120,53 @@
 
 <body>
 
-    <div id="container">
 
-        <div style="margin: 1em 0 -2em 0; text-align: right; font-family: Georgia, 'Times New Roman', Times, serif" >
-            <a href="https://twitter.com/ComputingCris" style="padding: 1.2mm 0.8mm 1.6mm 0.7mm; margin-right: 8mm; text-decoration: none; background-color: white; border: 1px solid #7ce; border-radius: 2mm"
-                title="contact on Twitter"><svg viewBox="0 0 24 24" width="8mm" height="8mm" style="margin-bottom:-2.5mm" >
-                    <g><path class="twitter" fill="#1a91da" d="M23.643 4.937c-.835.37-1.732.62-2.675.733.962-.576 1.7-1.49 2.048-2.578-.9.534-1.897.922-2.958 1.13-.85-.904-2.06-1.47-3.4-1.47-2.572 0-4.658 2.086-4.658 4.66 0 .364.042.718.12 1.06-3.873-.195-7.304-2.05-9.602-4.868-.4.69-.63 1.49-.63 2.342 0 1.616.823 3.043 2.072 3.878-.764-.025-1.482-.234-2.11-.583v.06c0 2.257 1.605 4.14 3.737 4.568-.392.106-.803.162-1.227.162-.3 0-.593-.028-.877-.082.593 1.85 2.313 3.198 4.352 3.234-1.595 1.25-3.604 1.995-5.786 1.995-.376 0-.747-.022-1.112-.065 2.062 1.323 4.51 2.093 7.14 2.093 8.57 0 13.255-7.098 13.255-13.254 0-.2-.005-.402-.014-.602.91-.658 1.7-1.477 2.323-2.41z"></path></g>
-                </svg></a><a href="http://pergle.com"
-                style="border: 1px solid #acf; background-color: #e0f0ff; border-radius: 1mm; display: inline-block; padding: 1mm 0 1.5mm 0; width: 10em; text-align: center">
-                PERGLE Labs</a>
-        </div>
+    <div id="banner">
 
-        <h1>Fontogram</h1>
+            <div id="heading" >
 
-        <div style="display: grid; text-align: center; margin: 5mm 0; padding: 3mm; border: 1px solid #e0e3ff; border-width: 1px 0; grid-template-columns: auto auto auto auto; grid-column-gap: 4mm;">
-            <div class="link">
-                    <a href="https://www.nuget.org/packages/Fontogram/">NuGet package</a>
-            </div>
-            <div class="link">
-                <a href="_homepage/Fontogram.zip">application</a>
-            </div>
-            <div class="link">
-                <a href="https://github.com/cris-p/Fontogram/tree/master/FgSample">sample code</a>
-            </div>
-            <div class="link">
-                <a href="https://github.com/cris-p/Fontogram/archive/master.zip">project archive</a>
-            </div>        
-        </div>
+                    <table style="width:100%">
+                        <tr>
+                            <td>
+                                <div style="display: grid; text-align: center; margin: 5mm 0; padding: 1.5mm 0; border: 1px solid #d0d8e8; background-color: #e0e5f0; grid-template-columns: auto auto auto auto; grid-column-gap: 3mm;">
+                                    <div class="link">
+                                            <a href="https://www.nuget.org/packages/Fontogram/">NuGet package</a>
+                                    </div>
+                                    <div class="link">
+                                        <a href="_homepage/Fontogram.zip">application</a>
+                                    </div>
+                                    <div class="link">
+                                        <a href="https://github.com/cris-p/Fontogram/tree/master/FgSample">sample code</a>
+                                    </div>
+                                    <div class="link">
+                                        <a href="https://github.com/cris-p/Fontogram/archive/master.zip">project archive</a>
+                                    </div>        
+                                </div>
+                            </td>
+                            <td style="width: 6cm">
+                                <div style="text-align: right; font-family: Georgia, 'Times New Roman', Times, serif" >
+                                    <a href="https://twitter.com/ComputingCris" style="padding: 1.8mm 0.8mm 1.6mm 0.7mm; margin-right: 4mm; text-decoration: none; background-color: white; border: 1px solid #7ce; border-radius: 2mm"
+                                        title="contact on Twitter"><svg viewBox="0 0 24 24" width="8mm" height="8mm" style="margin-bottom:-2.5mm" >
+                                            <g><path class="twitter" fill="#1a91da" d="M23.643 4.937c-.835.37-1.732.62-2.675.733.962-.576 1.7-1.49 2.048-2.578-.9.534-1.897.922-2.958 1.13-.85-.904-2.06-1.47-3.4-1.47-2.572 0-4.658 2.086-4.658 4.66 0 .364.042.718.12 1.06-3.873-.195-7.304-2.05-9.602-4.868-.4.69-.63 1.49-.63 2.342 0 1.616.823 3.043 2.072 3.878-.764-.025-1.482-.234-2.11-.583v.06c0 2.257 1.605 4.14 3.737 4.568-.392.106-.803.162-1.227.162-.3 0-.593-.028-.877-.082.593 1.85 2.313 3.198 4.352 3.234-1.595 1.25-3.604 1.995-5.786 1.995-.376 0-.747-.022-1.112-.065 2.062 1.323 4.51 2.093 7.14 2.093 8.57 0 13.255-7.098 13.255-13.254 0-.2-.005-.402-.014-.602.91-.658 1.7-1.477 2.323-2.41z"></path></g>
+                                        </svg></a><a href="http://pergle.com"
+                                        style="font-size: 4.5mm; border: 1px solid #acf; background-color: #e0f0ff; border-radius: 1mm; display: inline-block; padding: 1.4mm 0; width: 8em; text-align: center"
+                                        >PERGLE Labs</a>
+                                </div>
+                            </td>
+                        </tr>
+                    </table>
+            
+                    <h1>Fontogram</h1>
+            
+                    <img class="logo" src="_homepage/fg.png" />
+            
+                </div>
+                </div>
 
-        <img class="logo" src="_homepage/fg.png" />
+<div id="container">
+
+
+    <div id="page">
 
         <p>
             The above logo is based on two symbols:
@@ -211,6 +253,10 @@
             </p>
             <ul>
                     <li>Segoe UI Emoji</li>
+                    <li>Segoe UI Symbol
+                        <br/>
+                        ❕ Includes some of the same characters as the "Emoji" font, having a different look.
+                    </li>
                     <li>Segoe MDL2 Assets</li>
                     <li>Webdings</li>
                     <li>Wingdings</li>
@@ -228,40 +274,42 @@
         <img src="_homepage/fgmer.png"/>
 
         <div class="note">
-                <h2>When <fgName>Fontogram</fgName></h2>
-                <ul>
-                    <li>
-                        user interface needs some color, or pictorial aids
-                    </li>
-                    <li>
-                        need to display icons at arbitrary sizes - especially on the small side
-                    </li>
-                    <li>
-                        an adequate icon library is not available
-                    </li>
-                    <li>
-                        no help from a specialized icon designer
-                    </li>
-                    <li>
-                        must not spend much time on icons
-                    </li>
-                    <li>
-                        simple monochrome font-based icons are not satisfactory
-                    </li>
-                </ul>
-            </div>
-    
-            <p>
-                Enjoy!
-            </p>
-            
-            <p style="margin: 3em 0 0 9em; font-family: 'Comic Sans MS', cursive, sans-serif; font-style: italic">
-                -- Cris
-                <br/>
-                2020.02.02
-            </p>
+            <h2>When <fgName>Fontogram</fgName></h2>
+            <ul>
+                <li>
+                    user interface needs some color, or pictorial aids
+                </li>
+                <li>
+                    need to display icons at arbitrary sizes - especially on the small side
+                </li>
+                <li>
+                    an adequate icon library is not available
+                </li>
+                <li>
+                    no help from a specialized icon designer
+                </li>
+                <li>
+                    must not spend much time on icons
+                </li>
+                <li>
+                    simple monochrome font-based icons are not satisfactory
+                </li>
+            </ul>
         </div>
+    
+        <p>
+            Enjoy!
+        </p>
+        
+        <p style="margin: 3em 0 0 9em; font-family: 'Comic Sans MS', cursive, sans-serif; font-style: italic">
+            -- Cris
+            <br/>
+            2020.02.02
+        </p>
 
+    </div>
+
+</div>
 </body>
 
 </html>
